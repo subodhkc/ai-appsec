@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# NEVER COMMIT — PRIVATE RULE MIGRATION STAGING
+.private-rule-staging/

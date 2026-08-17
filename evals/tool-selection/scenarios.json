@@ -1,0 +1,2118 @@
+[
+  {
+    "id": "S001",
+    "naturalLanguagePrompt": "Review this AI-generated code for security issues",
+    "projectContext": "Next.js app with OpenAI integration",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "AI-generated code security review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S002",
+    "naturalLanguagePrompt": "Check the code the agent just wrote for vulnerabilities",
+    "projectContext": "Python FastAPI with LangChain",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Agent-generated code needs security review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S003",
+    "naturalLanguagePrompt": "Scan my AI application for security risks",
+    "projectContext": "Node.js app using Anthropic SDK",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "AI app source security scan",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S004",
+    "naturalLanguagePrompt": "Is this RAG implementation secure?",
+    "projectContext": "Python app with Pinecone and OpenAI",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "RAG implementation security review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S005",
+    "naturalLanguagePrompt": "Security review the new agent code",
+    "projectContext": "TypeScript app with MCP tools",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Agent code security review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S006",
+    "naturalLanguagePrompt": "Check if my prompt handling is safe",
+    "projectContext": "Python app using OpenAI chat completions",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Prompt handling security check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S007",
+    "naturalLanguagePrompt": "Scan the LLM integration for vulnerabilities",
+    "projectContext": "Next.js app with streaming responses",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM integration security scan",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S008",
+    "naturalLanguagePrompt": "Are there security issues in my AI code?",
+    "projectContext": "Python app with function calling",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "AI code security check",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S009",
+    "naturalLanguagePrompt": "Review the tool calling implementation for safety",
+    "projectContext": "TypeScript app with MCP server",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Tool calling safety review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S010",
+    "naturalLanguagePrompt": "Check my AI agent for security problems",
+    "projectContext": "Python app with LangGraph",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "AI agent security check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "security_review_after_ai_code_gen"
+  },
+  {
+    "id": "S011",
+    "naturalLanguagePrompt": "Can tenant A read tenant B's rows?",
+    "projectContext": "PostgreSQL multi-tenant SaaS",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Cross-tenant data access check",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S012",
+    "naturalLanguagePrompt": "Check my multi-tenant app for data isolation",
+    "projectContext": "Next.js SaaS with Prisma",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Tenant isolation review",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S013",
+    "naturalLanguagePrompt": "Are there RLS gaps in my database?",
+    "projectContext": "PostgreSQL with row-level security",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "RLS gap detection",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S014",
+    "naturalLanguagePrompt": "Check if tenants can access each other's data",
+    "projectContext": "Multi-tenant SaaS with shared database",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Cross-tenant data exposure check",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S015",
+    "naturalLanguagePrompt": "Is my tenant isolation correct?",
+    "projectContext": "Node.js SaaS with organization-based tenancy",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Tenant isolation verification",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S016",
+    "naturalLanguagePrompt": "Check the shared cache for tenant leakage",
+    "projectContext": "Redis-backed multi-tenant app",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Shared cache tenant scoping",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S017",
+    "naturalLanguagePrompt": "Are my vector store namespaces tenant-isolated?",
+    "projectContext": "Python app with Pinecone multi-tenant",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Vector store tenant isolation",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S018",
+    "naturalLanguagePrompt": "Check the tenant-aware MCP tools for isolation",
+    "projectContext": "TypeScript MCP server with tenant scoping",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "MCP tool tenant boundary check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tenant_db_modifications"
+  },
+  {
+    "id": "S019",
+    "naturalLanguagePrompt": "Is my RAG retrieval scoped correctly?",
+    "projectContext": "Python app with vector DB and OpenAI",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "RAG retrieval scope security",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S020",
+    "naturalLanguagePrompt": "Check the RAG pipeline for security issues",
+    "projectContext": "Node.js app with embeddings and retrieval",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "RAG pipeline security review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S021",
+    "naturalLanguagePrompt": "Can users inject content into my RAG knowledge base?",
+    "projectContext": "Python app with document ingestion",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "RAG poisoning risk",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S022",
+    "naturalLanguagePrompt": "Is the embedding access control secure?",
+    "projectContext": "Multi-tenant app with shared vector store",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Embedding access control review",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S023",
+    "naturalLanguagePrompt": "Check my document provenance tracking in RAG",
+    "projectContext": "Python RAG system with document sources",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Document provenance security",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S024",
+    "naturalLanguagePrompt": "Are there metadata injection risks in my RAG?",
+    "projectContext": "Node.js app with vector metadata",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "RAG metadata injection",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S025",
+    "naturalLanguagePrompt": "Review the retrieval scope for data leakage",
+    "projectContext": "Multi-tenant RAG with shared index",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Retrieval scope leakage",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "rag_implementation"
+  },
+  {
+    "id": "S026",
+    "naturalLanguagePrompt": "Is my MCP server secure?",
+    "projectContext": "TypeScript MCP server with tool handlers",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP server security review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S027",
+    "naturalLanguagePrompt": "Check my MCP tools for security issues",
+    "projectContext": "Python MCP server with resources",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP tool security check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S028",
+    "naturalLanguagePrompt": "Are my MCP tool inputs validated?",
+    "projectContext": "TypeScript MCP server with user input",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP input validation review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S029",
+    "naturalLanguagePrompt": "Can my MCP server be exploited through tool calls?",
+    "projectContext": "Node.js MCP server with file access",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP tool exploitation risk",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S030",
+    "naturalLanguagePrompt": "Check the MCP resource handlers for security",
+    "projectContext": "Python MCP server with file resources",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP resource security",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S031",
+    "naturalLanguagePrompt": "Is my MCP server vulnerable to prompt injection?",
+    "projectContext": "TypeScript MCP server with LLM integration",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP prompt injection risk",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S032",
+    "naturalLanguagePrompt": "Review the MCP server for path traversal risks",
+    "projectContext": "Node.js MCP server with filesystem tools",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "MCP path traversal check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "mcp_server_creation"
+  },
+  {
+    "id": "S033",
+    "naturalLanguagePrompt": "Is my function calling implementation secure?",
+    "projectContext": "Python app with OpenAI function calling",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Function calling security",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S034",
+    "naturalLanguagePrompt": "Can the agent execute dangerous tools?",
+    "projectContext": "TypeScript app with tool execution",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Dangerous tool execution risk",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S035",
+    "naturalLanguagePrompt": "Check the tool calling for injection risks",
+    "projectContext": "Node.js app with agent tools",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Tool calling injection risk",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S036",
+    "naturalLanguagePrompt": "Are the tool arguments validated before execution?",
+    "projectContext": "Python app with function tools",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Tool argument validation",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S037",
+    "naturalLanguagePrompt": "Can a malicious user control tool execution?",
+    "projectContext": "TypeScript app with user-driven tools",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Tool execution control risk",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S038",
+    "naturalLanguagePrompt": "Check the agent loop for safety",
+    "projectContext": "Python app with LangGraph agent",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Agent loop safety review",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S039",
+    "naturalLanguagePrompt": "Is the multi-agent communication secure?",
+    "projectContext": "TypeScript multi-agent system",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Multi-agent trust boundary",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "tool_function_calling"
+  },
+  {
+    "id": "S040",
+    "naturalLanguagePrompt": "Check my code for hardcoded secrets",
+    "projectContext": "Python app with API integrations",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Hardcoded secret detection",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S041",
+    "naturalLanguagePrompt": "Are there API keys in my source code?",
+    "projectContext": "Node.js app with multiple integrations",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "API key exposure check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S042",
+    "naturalLanguagePrompt": "Check the environment variable handling",
+    "projectContext": "TypeScript app with dotenv",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Env var security review",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S043",
+    "naturalLanguagePrompt": "Is my secret management secure?",
+    "projectContext": "Python app with AWS Secrets Manager",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Secret management review",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S044",
+    "naturalLanguagePrompt": "Check for credentials in the configuration files",
+    "projectContext": "Node.js app with YAML configs",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Config credential exposure",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S045",
+    "naturalLanguagePrompt": "Are there tokens in my code?",
+    "projectContext": "TypeScript app with OAuth",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Token exposure detection",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S046",
+    "naturalLanguagePrompt": "Check the API key rotation logic",
+    "projectContext": "Python app with key management",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Key rotation security",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "secret_config_changes"
+  },
+  {
+    "id": "S047",
+    "naturalLanguagePrompt": "Are these AI changes ready to release?",
+    "projectContext": "Next.js app with AI features",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Release readiness gate",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S048",
+    "naturalLanguagePrompt": "Can I merge this PR safely?",
+    "projectContext": "TypeScript app with security changes",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Pre-merge security gate",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S049",
+    "naturalLanguagePrompt": "Is it safe to deploy to production?",
+    "projectContext": "Node.js app with AI endpoints",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Deploy security verification",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S050",
+    "naturalLanguagePrompt": "Check before we release",
+    "projectContext": "Python app with new AI features",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Release security check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S051",
+    "naturalLanguagePrompt": "Run the security gate before merge",
+    "projectContext": "TypeScript monorepo with AI packages",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Explicit security gate request",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S052",
+    "naturalLanguagePrompt": "Should I deploy this?",
+    "projectContext": "Node.js app with tenant changes",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Deploy decision request",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S053",
+    "naturalLanguagePrompt": "Is this safe for production?",
+    "projectContext": "Python app with LLM integration",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Production safety check",
+    "riskIfWrong": "CRITICAL",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S054",
+    "naturalLanguagePrompt": "Verify security before the release",
+    "projectContext": "TypeScript app with MCP server",
+    "expectedTool": "check_deploy_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Pre-release security verification",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "deploy_merge_release_intent"
+  },
+  {
+    "id": "S055",
+    "naturalLanguagePrompt": "Add a new function to calculate the total price",
+    "projectContext": "TypeScript e-commerce app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ordinary coding task, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S056",
+    "naturalLanguagePrompt": "Refactor the user service to use a repository pattern",
+    "projectContext": "Node.js app with TypeScript",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Code refactoring, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S057",
+    "naturalLanguagePrompt": "Fix the null pointer exception in the parser",
+    "projectContext": "Python app with data processing",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Bug fix, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S058",
+    "naturalLanguagePrompt": "Add unit tests for the math utilities",
+    "projectContext": "TypeScript library",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Test writing, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S059",
+    "naturalLanguagePrompt": "Optimize the database query for performance",
+    "projectContext": "Node.js app with PostgreSQL",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Performance optimization, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S060",
+    "naturalLanguagePrompt": "Update the package.json with new scripts",
+    "projectContext": "TypeScript project",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Config update, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S061",
+    "naturalLanguagePrompt": "Rename the variables for better readability",
+    "projectContext": "Python script",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Code cleanup, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S062",
+    "naturalLanguagePrompt": "Add error handling to the API client",
+    "projectContext": "TypeScript app with REST API",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Error handling improvement, no direct security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S063",
+    "naturalLanguagePrompt": "Convert the callback functions to async/await",
+    "projectContext": "Node.js app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Code modernization, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S064",
+    "naturalLanguagePrompt": "Add logging to the order processing flow",
+    "projectContext": "Python e-commerce app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Logging addition, no direct security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ordinary_coding"
+  },
+  {
+    "id": "S065",
+    "naturalLanguagePrompt": "Fix the CSS padding on the login page",
+    "projectContext": "React app with Tailwind",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "CSS fix, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S066",
+    "naturalLanguagePrompt": "Make the button blue",
+    "projectContext": "Vue.js app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "UI styling, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S067",
+    "naturalLanguagePrompt": "Center the navigation bar",
+    "projectContext": "HTML/CSS website",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "CSS layout, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S068",
+    "naturalLanguagePrompt": "Add a hover effect to the cards",
+    "projectContext": "React app with CSS modules",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "CSS effect, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S069",
+    "naturalLanguagePrompt": "Fix the responsive layout for mobile",
+    "projectContext": "Next.js app with responsive design",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Responsive CSS, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S070",
+    "naturalLanguagePrompt": "Update the color scheme to dark mode",
+    "projectContext": "Vue.js app with CSS variables",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Theme update, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S071",
+    "naturalLanguagePrompt": "Fix the flexbox alignment issue",
+    "projectContext": "React app with styled-components",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "CSS alignment fix, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ui_css"
+  },
+  {
+    "id": "S072",
+    "naturalLanguagePrompt": "Write a README for the project",
+    "projectContext": "TypeScript library",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Documentation task, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "documentation"
+  },
+  {
+    "id": "S073",
+    "naturalLanguagePrompt": "Add JSDoc comments to the utility functions",
+    "projectContext": "Node.js library",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Documentation, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "documentation"
+  },
+  {
+    "id": "S074",
+    "naturalLanguagePrompt": "Update the API documentation",
+    "projectContext": "Python REST API",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "API docs, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "documentation"
+  },
+  {
+    "id": "S075",
+    "naturalLanguagePrompt": "Write a changelog entry for v2.0",
+    "projectContext": "TypeScript package",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Changelog, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "documentation"
+  },
+  {
+    "id": "S076",
+    "naturalLanguagePrompt": "Document the deployment process",
+    "projectContext": "Node.js app with Docker",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Documentation, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "documentation"
+  },
+  {
+    "id": "S077",
+    "naturalLanguagePrompt": "Why is my function returning undefined?",
+    "projectContext": "TypeScript app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Generic debugging, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "generic_debugging"
+  },
+  {
+    "id": "S078",
+    "naturalLanguagePrompt": "Debug the TypeError in the user controller",
+    "projectContext": "Node.js Express app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Debugging, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "generic_debugging"
+  },
+  {
+    "id": "S079",
+    "naturalLanguagePrompt": "The API returns 500 for large payloads",
+    "projectContext": "Python FastAPI app",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Debugging, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "generic_debugging"
+  },
+  {
+    "id": "S080",
+    "naturalLanguagePrompt": "Fix the memory leak in the worker process",
+    "projectContext": "Node.js background worker",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Debugging, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "generic_debugging"
+  },
+  {
+    "id": "S081",
+    "naturalLanguagePrompt": "Why are my tests failing on CI?",
+    "projectContext": "TypeScript project with Jest",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "CI debugging, no security relevance",
+    "riskIfWrong": "LOW",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "generic_debugging"
+  },
+  {
+    "id": "S082",
+    "naturalLanguagePrompt": "Check this LLM response for PII",
+    "projectContext": "Chat app with GPT-4 responses",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM response PII check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S083",
+    "naturalLanguagePrompt": "Does this AI output contain prompt injection?",
+    "projectContext": "Customer support chatbot",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM output prompt injection detection",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S084",
+    "naturalLanguagePrompt": "Verify the LLM generated text for harmful content",
+    "projectContext": "Content generation app",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM content safety verification",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S085",
+    "naturalLanguagePrompt": "Check if the model output leaks sensitive information",
+    "projectContext": "AI assistant with system prompts",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM output sensitive info check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S086",
+    "naturalLanguagePrompt": "Is this AI response safe to show to users?",
+    "projectContext": "Customer-facing chatbot",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM response safety verification",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S087",
+    "naturalLanguagePrompt": "Analyze this LLM input for injection attempts",
+    "projectContext": "User-facing AI tool",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM input injection analysis",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S088",
+    "naturalLanguagePrompt": "Check the AI-generated email for sensitive data",
+    "projectContext": "Email drafting assistant",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM output sensitive data check",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S089",
+    "naturalLanguagePrompt": "Verify the chatbot response is appropriate",
+    "projectContext": "Mental health support chatbot",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "LLM response appropriateness check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "llm_response_evaluation"
+  },
+  {
+    "id": "S090",
+    "naturalLanguagePrompt": "Check this",
+    "projectContext": "Unknown context — ambiguous request",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous request without context — should ask for clarification, not invoke a tool",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S091",
+    "naturalLanguagePrompt": "Is this safe?",
+    "projectContext": "Unknown context — ambiguous",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous safety question — should ask for clarification",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S092",
+    "naturalLanguagePrompt": "Check the code",
+    "projectContext": "Unknown context — could be security or not",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous — should ask what kind of check",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S093",
+    "naturalLanguagePrompt": "Verify this",
+    "projectContext": "Unknown context — ambiguous",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous — should ask what to verify",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S094",
+    "naturalLanguagePrompt": "Check this for issues",
+    "projectContext": "Unknown context — ambiguous",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous — should ask what kind of issues",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S095",
+    "naturalLanguagePrompt": "Is this okay?",
+    "projectContext": "Unknown context — ambiguous",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous — should ask what to check",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S096",
+    "naturalLanguagePrompt": "Review this",
+    "projectContext": "Unknown context — could be code review or security",
+    "expectedTool": "NONE",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation",
+      "verify_llm_content",
+      "check_deploy_security"
+    ],
+    "reason": "Ambiguous — should ask what to review and for what purpose",
+    "riskIfWrong": "MEDIUM",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "ambiguous_phrases"
+  },
+  {
+    "id": "S097",
+    "naturalLanguagePrompt": "Run a security scan",
+    "projectContext": "Next.js app with AI features",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Explicit security scan request — source code context",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "explicit_security_scan"
+  },
+  {
+    "id": "S098",
+    "naturalLanguagePrompt": "Run a security scan on my code",
+    "projectContext": "Python app with OpenAI integration",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Explicit security scan — code context",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "explicit_security_scan"
+  },
+  {
+    "id": "S099",
+    "naturalLanguagePrompt": "Scan for security vulnerabilities",
+    "projectContext": "TypeScript app with AI tools",
+    "expectedTool": "scan_ai_security",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "verify_llm_content",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Explicit vulnerability scan",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "explicit_security_scan"
+  },
+  {
+    "id": "S100",
+    "naturalLanguagePrompt": "Check tenant security",
+    "projectContext": "Multi-tenant SaaS app",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Explicit tenant security check",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "explicit_security_scan"
+  },
+  {
+    "id": "S101",
+    "naturalLanguagePrompt": "Check tenant isolation security",
+    "projectContext": "Node.js multi-tenant app",
+    "expectedTool": "scan_tenant_isolation",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "verify_llm_content"
+    ],
+    "reason": "Explicit tenant isolation request",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "explicit_security_scan"
+  },
+  {
+    "id": "S102",
+    "naturalLanguagePrompt": "Verify the LLM content",
+    "projectContext": "Chat app with AI responses",
+    "expectedTool": "verify_llm_content",
+    "allowedAlternatives": [],
+    "forbiddenTools": [
+      "scan_ai_security",
+      "scan_tenant_isolation"
+    ],
+    "reason": "Explicit LLM content verification",
+    "riskIfWrong": "HIGH",
+    "hostApplicability": [
+      "cursor",
+      "claude-code",
+      "windsurf",
+      "vscode"
+    ],
+    "category": "explicit_security_scan"
+  }
+]
