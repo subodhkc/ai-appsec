@@ -33,6 +33,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Semgrep ${{ env.SEMGREP_VERSION }}
+        run: |
+          pip install semgrep==${{ env.SEMGREP_VERSION }}
+          semgrep --version
+
       - name: Typecheck
         run: npx tsc --noEmit
 
