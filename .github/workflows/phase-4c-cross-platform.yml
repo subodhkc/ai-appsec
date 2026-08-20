@@ -234,11 +234,16 @@ jobs:
           main().catch(e => { console.error(e); process.exit(1); });
           "
 
+      - name: Rename evidence file for cross-OS comparison
+        shell: bash
+        run: |
+          mv matrix-evidence.json "matrix-evidence-${{ matrix.os }}-node${{ matrix.node }}.json"
+
       - name: Upload matrix evidence
         uses: actions/upload-artifact@v4
         with:
           name: matrix-evidence-${{ matrix.os }}-node${{ matrix.node }}
-          path: matrix-evidence.json
+          path: "matrix-evidence-${{ matrix.os }}-node${{ matrix.node }}.json"
           retention-days: 30
 
   # ─────────────────────────────────────────────────────────────
