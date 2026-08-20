@@ -189,23 +189,25 @@ Authenticated as `kingcaliber`
 
 ## 41. npm Prerelease Publication Status
 
-**NOT_PUBLISHED** — awaiting founder authorization
+**PUBLISHED** — `ai-appsec@0.1.0-rc.1` is live on npm registry
+
+npm integrity: `sha512-+HNfv6OWo40yplaSVOLrCDO4nQ62YcYtsuCAXPzoqmMOqefreFoIUunwhjjAkjwYQgkyipvBLT354yNWKLpYHw==`
 
 ## 42. npm Dist-Tag
 
-`next` (planned, not yet published)
+`next` → `0.1.0-rc.1` (prerelease, NOT stable)
 
 ## 43. npm Provenance Result
 
-PENDING — will use GitHub Actions OIDC + npm provenance after first publication
+PENDING — will configure GitHub Actions OIDC + npm provenance for future publications
 
 ## 44. Trusted Publisher Status
 
-PENDING — requires first publication to configure
+PENDING — now that package exists, can configure Trusted Publishing
 
 ## 45. Bootstrap Credential Retirement Result
 
-PENDING — will retire after Trusted Publishing configured
+PENDING — bootstrap token used for first publication. Should be retired after Trusted Publishing configured.
 
 ## 46. server.json Validation
 
@@ -234,18 +236,17 @@ CONFIRMED — zero tags exist. No tag created.
 ## 52. Exact Remaining Blockers
 
 1. ~~Remote CI qualification~~ — COMPLETE (all 13 jobs SUCCESS)
-2. Founder publication authorization for `ai-appsec@0.1.0-rc.1`
-3. npm Trusted Publishing configuration (after first publication)
+2. ~~Founder publication authorization~~ — GRANTED
+3. ~~npm publication~~ — COMPLETE (`ai-appsec@0.1.0-rc.1` PUBLISHED with dist-tag `next`)
+4. npm Trusted Publishing configuration (for future publications)
+5. MCP Registry validation (now that npm package exists)
+6. Bootstrap token retirement (after Trusted Publishing configured)
 
 ## 53. Final Status
 
-**AI_APPSEC_RC_TECHNICALLY_QUALIFIED**
+**AI_APPSEC_PRERELEASE_PUBLISHED**
 
-Local qualification: PASS (276/276 tests)
-Remote qualification: PASS (all 13 CI jobs SUCCESS)
-npm name: AVAILABLE
-npm auth: AUTHENTICATED (kingcaliber)
-Supply-chain: PASS
-Governance: 0 exceptions
-
-Awaiting founder publication authorization to publish `ai-appsec@0.1.0-rc.1` with dist-tag `next`.
+`ai-appsec@0.1.0-rc.1` is live on npm with dist-tag `next`.
+Stable 0.1.0 remains unpublished.
+Main has not been merged.
+No stable tag has been created.
