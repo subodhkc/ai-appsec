@@ -388,23 +388,28 @@ jobs:
 
       - name: Hard offline scan (network=none via Docker)
         run: |
-          # Pack the test environment for Docker (including node_modules and Semgrep)
-          # Install Semgrep into the test environment so it's available offline
-          pip install semgrep==${{ env.SEMGREP_VERSION }} --target /tmp/semgrep-offline
-          tar czf /tmp/offline-env.tar.gz test-install corpus-export /tmp/semgrep-offline
+          # Create a Dockerfile that pre-installs everything while network is available
+          # Then run the resulting image with --network=none
+          cat > /tmp/Dockerfile.offline << 'DOCKERFILE'
+          FROM node:24
+          RUN apt-get update && apt-get install -y python3 python3-pip && rm -rf /var/lib/apt/lists/*
+          RUN pip3 install semgrep==1.173.0 --break-system-packages 2>/dev/null || pip3 install semgrep==1.173.0
+          RUN semgrep --version
+          DOCKERFILE
 
-          # Run in Docker with --network=none
-          # Mount Semgrep binary from the runner since we can't install it offline
-          SEMGREP_BIN=$(which semgrep)
+          # Build the image with network access (preparing offline environment)
+          docker build -f /tmp/Dockerfile.offline -t haiec-offline-test .
+
+          # Pack the test environment
+          tar czf /tmp/offline-env.tar.gz test-install corpus-export
+
+          # Run in Docker with --network=none (hard offline)
           docker run --network=none \
             -v /tmp/offline-env.tar.gz:/env.tar.gz \
-            -v ${SEMGREP_BIN}:/usr/local/bin/semgrep:ro \
-            -v $(dirname $(dirname ${SEMGREP_BIN}))/lib/python3.12/site-packages:/semgrep-packages:ro \
-            node:24 bash -c '
+            haiec-offline-test bash -c '
             cd /tmp
             tar xzf /env.tar.gz
-            export PYTHONPATH=/semgrep-packages:$PYTHONPATH
-            semgrep --version 2>/dev/null || echo "Semgrep not available in Docker"
+            semgrep --version
 
             node -e "
               const { createServer } = require(\"./test-install/node_modules/haiec-agent-security/dist/mcp/server-factory.js\");
