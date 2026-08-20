@@ -2,7 +2,7 @@ name: AI AppSec Remote Release Qualification
 
 on:
   push:
-    branches: [release/ai-appsec-v0.1.0-rc1, release/ai-appsec-v0.1.0-rc2]
+    branches: [release/ai-appsec-v0.1.0-rc1, release/ai-appsec-v0.1.0-rc2, release/ai-appsec-v0.1.0-rc3]
   workflow_dispatch:
 
 env:
@@ -569,14 +569,14 @@ jobs:
   package-name-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check npm registry for ai-appsec RC2 availability
+      - name: Check npm registry for ai-appsec RC3 availability
         run: |
-          # Package now exists (RC1 published). Check that RC2 does NOT exist yet.
-          RESULT=$(npm view ai-appsec@0.1.0-rc.2 version 2>&1 || echo "NOT_FOUND")
+          # Package now exists (RC1/RC2 published). Check that RC3 does NOT exist yet.
+          RESULT=$(npm view ai-appsec@0.1.0-rc.3 version 2>&1 || echo "NOT_FOUND")
           echo "Registry result: $RESULT"
           if echo "$RESULT" | grep -q "NOT_FOUND\|E404"; then
-            echo "RC2_VERSION_AVAILABLE — safe to publish"
+            echo "RC3_VERSION_AVAILABLE — safe to publish"
           else
-            echo "RC2_VERSION_CONFLICT — version already exists: $RESULT"
+            echo "RC3_VERSION_CONFLICT — version already exists: $RESULT"
             exit 1
           fi

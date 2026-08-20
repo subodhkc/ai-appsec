@@ -16,7 +16,7 @@ describe('MCP server factory', () => {
   });
 
   it('uses the correct server version constant', () => {
-    assert.equal(SERVER_VERSION, '0.1.0-rc.2');
+    assert.equal(SERVER_VERSION, '0.1.0-rc.3');
   });
 
   it('does not register tool handlers in Phase 0', () => {

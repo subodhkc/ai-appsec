@@ -1,6 +1,6 @@
 {
   "name": "ai-appsec",
-  "version": "0.1.0-rc.2",
+  "version": "0.1.0-rc.3",
   "mcpName": "io.github.subodhkc/ai-appsec",
   "description": "Audit AI applications and agents for security risks before commit, PR, merge, or deployment. Deterministic findings with coverage and evidence receipts.",
   "type": "module",
