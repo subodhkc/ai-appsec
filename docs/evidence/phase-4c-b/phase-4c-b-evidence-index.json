@@ -1,0 +1,44 @@
+{
+  "phase": "4C-B",
+  "artifact": "phase-4c-b-evidence-index",
+  "generatedAt": "2026-08-20T06:19:41.400Z",
+  "environment": {
+    "os": "Windows local + GitHub Actions remote",
+    "node": "v24.11.1",
+    "semgrep": "1.173.0"
+  },
+  "workflowRunId": 32338627544,
+  "candidateBranch": "release/mcp-v0.1.0-rc1",
+  "artifacts": [
+    {
+      "file": "HUMAN-PROVENANCE-AND-LICENSE-RELEASE-PACKET.md",
+      "sizeBytes": 12738,
+      "sha256": "sha256:25ee467825d2838c5e94349d1d7af3f14faa0dc3dee37b6a149b3b5fe92323b1"
+    },
+    {
+      "file": "HUMAN-REVIEW-ESCALATION-MODEL.md",
+      "sizeBytes": 2322,
+      "sha256": "sha256:14f029181ea3e631feaef7c83b5937406fc87bcfc54145c5477e02d333763352"
+    },
+    {
+      "file": "OSS-DEPENDENCY-LEGAL-PACKET.md",
+      "sizeBytes": 3461,
+      "sha256": "sha256:9227c6cf1ba20f3bc908d18ffb9e7fed487076690f0fa314c319793bf6d0e47a"
+    },
+    {
+      "file": "PHASE-4C-B-REMOTE-QUALIFICATION.json",
+      "sizeBytes": 2217,
+      "sha256": "sha256:334f48c1faa2f9b2845fc0078746d8dbdf8ea9e7f41cf224335a534f0694de96"
+    },
+    {
+      "file": "RELEASE-SIGNOFF.md",
+      "sizeBytes": 4727,
+      "sha256": "sha256:e1035162d87a6fdeb8cb815ca6b72c8f5a906b1f66bccf9ff443f3d15bc0ab2a"
+    },
+    {
+      "file": "REMOTE-RELEASE-FREEZE-MANIFEST.json",
+      "sizeBytes": 1395,
+      "sha256": "sha256:6edfb822c471288018416cc3c016c427b16844533ea430ccecfaf2154ea93303"
+    }
+  ]
+}
