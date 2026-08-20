@@ -1,0 +1,28 @@
+{
+  "manifestVersion": "1.0.0",
+  "createdAt": "2026-08-19",
+  "publicCoreVersion": "0.1.0-rc.5-public-core",
+  "semgrepRequiredVersion": "1.173.0",
+  "publicCore": {
+    "rulepackPath": "rules/public-core/haiec-ai-security.yml",
+    "manifestPath": "rules/public-core/manifest.json",
+    "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+    "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+    "detectorCount": 122,
+    "securityCheckCount": 79,
+    "allDetectorsPublicReady": true
+  },
+  "excludedFromPackage": [
+    ".private-rule-staging/",
+    ".env",
+    ".env.*",
+    "*.tgz",
+    "scripts/private-*.ts",
+    "tests/fixtures/synthetic-rulepack/",
+    "docs/phase-*",
+    "baseline/"
+  ],
+  "classification": "ALL_122_DETECTORS_PUBLIC_CORE",
+  "privateArtifactsExcluded": 0,
+  "failClosed": true
+}

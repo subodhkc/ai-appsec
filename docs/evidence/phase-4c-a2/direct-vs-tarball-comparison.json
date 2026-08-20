@@ -1,0 +1,42 @@
+{
+  "phase": "4C-A2",
+  "artifact": "direct-vs-tarball-comparison",
+  "generatedAt": "2026-08-20T02:26:35.952Z",
+  "direct": {
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "rawEngineMatches": 898,
+    "actionableFindingInstances": 833,
+    "observationInstances": 54,
+    "concernFamiliesFound": 13,
+    "findingSetDigest": "sha256:98d6f5399b2ea40de651f5d8f5c2ae3b109bc88929cef2379132d833ab8b3734",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifestDigest": "sha256:1aecdab24032115c1cb454d06261689db64efd416290de3b9af2867aa0a16712",
+    "semgrepVersion": "1.173.0"
+  },
+  "tarball": {
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "rawEngineMatches": 898,
+    "actionableFindingInstances": 833,
+    "observationInstances": 54,
+    "concernFamiliesFound": 13,
+    "findingSetDigest": "sha256:98d6f5399b2ea40de651f5d8f5c2ae3b109bc88929cef2379132d833ab8b3734",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifestDigest": "sha256:1aecdab24032115c1cb454d06261689db64efd416290de3b9af2867aa0a16712",
+    "semgrepVersion": "1.173.0"
+  },
+  "comparison": {
+    "verdict": true,
+    "completeness": true,
+    "rawEngineMatches": true,
+    "actionableFindingInstances": true,
+    "findingSetDigest": true,
+    "concernFamilySetDigest": true,
+    "rulepackDigest": true,
+    "manifestDigest": true,
+    "EXACT_MATCH": true
+  }
+}

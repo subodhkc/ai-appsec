@@ -1,0 +1,40 @@
+{
+  "session": 1,
+  "timestamp": "2026-08-20T04:49:55.518Z",
+  "pid": 382740,
+  "durationMs": 11879,
+  "goldenCorpusSourceDigest": "sha256:6a22ebd47c0c6dd7c2fbd589d562b4b13e9adadccf57445e860735ab7ab55d1c",
+  "goldenCorpusExportDigest": "sha256:6a22ebd47c0c6dd7c2fbd589d562b4b13e9adadccf57445e860735ab7ab55d1c",
+  "goldenCorpusDigestsMatch": true,
+  "scanId": "scan-1787201383642-zt53gh",
+  "verdict": "REVIEW",
+  "completeness": "COMPLETE",
+  "rawEngineMatches": 7,
+  "actionableFindingInstances": 7,
+  "filesAnalyzed": 3,
+  "receipt": {
+    "findingSetDigest": "sha256:d08c913a91ed5e7e3f9d16b4e411bb99eaaea763a5da0e2187f5f8947b79884f",
+    "concernFamilySetDigest": "sha256:44cdb033efd92e42ab7a2fed7282a262176e0f5f8e55accced8fbd4dc5d6ef0f",
+    "discoveredFileSetDigest": "sha256:f869fce9a0bee1c4d5211bbc701c9797c689cd228ac76835434cbcc32ef4b104",
+    "targetedFileSetDigest": "sha256:f869fce9a0bee1c4d5211bbc701c9797c689cd228ac76835434cbcc32ef4b104",
+    "intentionallyExcludedFileSetDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "unsupportedFileSetDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "engineReportedScannedFileSetDigest": "sha256:f869fce9a0bee1c4d5211bbc701c9797c689cd228ac76835434cbcc32ef4b104",
+    "parseFailureFileSetDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "successfullyAnalyzedFileSetDigest": "sha256:f869fce9a0bee1c4d5211bbc701c9797c689cd228ac76835434cbcc32ef4b104",
+    "coverageDigest": "sha256:491db53ba2f23e3698337e20c60f35138302119cb6bb9c8c4763389b3139a240",
+    "evaluatedSecurityCheckSetDigest": "sha256:6b1bc822e6f8e5750e3806963b74d35d4c58d69a1eb73511f44872834de04ae7",
+    "evaluatedDetectorSetDigest": "sha256:77a6b7477dcff1826265f2e3aa3c1c209eb0700ee42c5568ddf84c345e83a941",
+    "semanticReceiptDigest": "sha256:b3b20d8aaed945d03bbce43e54a71ab1ac7604649f6273d2e9176a6d8eac7709",
+    "receiptDocumentDigest": "sha256:148fb9b1eaf55e27d3db94eff54de94332176f9d1a5531d943fdfe782fd45262",
+    "completeness": "COMPLETE",
+    "verdict": "REVIEW"
+  },
+  "evidenceEnvelope": {
+    "schemaVersion": "0.1.0",
+    "evidenceStatus": "PRODUCED",
+    "semanticReceiptDigest": "sha256:b3b20d8aaed945d03bbce43e54a71ab1ac7604649f6273d2e9176a6d8eac7709",
+    "receiptDocumentDigest": "sha256:148fb9b1eaf55e27d3db94eff54de94332176f9d1a5531d943fdfe782fd45262",
+    "envelopeDigest": "sha256:54bf2963c4900671a1a2d11c18779c6a6f8914b58453d8ec06512e0286afad98"
+  }
+}

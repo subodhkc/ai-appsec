@@ -1,0 +1,48 @@
+{
+  "phase": "4C-A3",
+  "artifact": "HISTORICAL-859-798-RECONCILIATION",
+  "generatedAt": "2026-08-20T03:05:00Z",
+  "historicalRun": {
+    "source": "docs/evidence/phase-4b-final/kestrel-full-forensics.json",
+    "rawEngineMatches": 859,
+    "actionableFindings": 798,
+    "parserErrors": 136,
+    "semgrepVersion": "1.173.0",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifestDigest": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699"
+  },
+  "currentRun": {
+    "rawEngineMatches": 898,
+    "actionableFindings": 833,
+    "parserErrors": 101,
+    "semgrepVersion": "1.173.0",
+    "rulepackDigest": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92",
+    "manifestDigest": "sha256:c0de12875c92b85343a186bd1755ddb5fdf5edb18cbf0364aeac2c68017de163"
+  },
+  "differences": {
+    "rawEngineMatchesDelta": 39,
+    "actionableFindingsDelta": 35,
+    "parserErrorsDelta": 35,
+    "rulepackChanged": true,
+    "manifestChanged": true
+  },
+  "analysis": {
+    "rulepackChange": "The rulepack changed between C2R and current. The rc.6.1 fix added 'privatekey' and 'accesskey' to the api-key-in-error-js/python metavariable-regex. This could account for some of the finding increase.",
+    "parserErrorChange": "The C2R run had 136 parser errors vs current 101. 35 more files failed parsing in the C2R run, which would cause fewer findings from those files.",
+    "manifestChange": "The manifest changed (provenance fields added, revision updated). This does not affect Semgrep scanning behavior — the manifest is used by the HAIEC adapter, not by Semgrep."
+  },
+  "rootCauseConfidence": "ROOT_CAUSE_NOT_FULLY_PROVABLE_FROM_RETAINED_EVIDENCE",
+  "strongestSupportedInference": "The 39-finding difference is most likely explained by a combination of: (1) 35 more parser errors in the C2R run causing fewer files to be successfully parsed, and (2) the rc.6.1 regex fix adding detection of camelCase privateKey/accessKey variables. However, the exact C2R finding set and parse-failure file set are not available in the retained evidence, so we cannot definitively separate these two causes.",
+  "whatWeCanProve": [
+    "The C2R run had 35 more parser errors than the current run (136 vs 101)",
+    "The rulepack changed between C2R and current (rc.6.1 regex fix)",
+    "The Semgrep version is identical (1.173.0)",
+    "The finding difference (39) is consistent with the parser error difference (35) plus potential regex fix contributions"
+  ],
+  "whatWeCannotProve": [
+    "The exact C2R parse-failure file set (not retained in evidence)",
+    "The exact C2R finding set (not retained in digest form comparable to current)",
+    "How many of the 39 additional findings are from the regex fix vs from fewer parser errors"
+  ],
+  "readmeClaimGuidance": "Do not claim the historical 859/798 is fully explained. State that the difference is consistent with parser error variation and rulepack changes, but the exact root cause is not fully provable from retained evidence."
+}

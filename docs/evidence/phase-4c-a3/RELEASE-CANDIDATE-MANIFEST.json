@@ -1,0 +1,66 @@
+{
+  "phase": "4C-A3",
+  "artifact": "RELEASE-CANDIDATE-MANIFEST",
+  "generatedAt": "2026-08-20T03:20:00Z",
+  "packageVersion": "0.1.0",
+  "packagePrivateFlag": false,
+  "packageTarball": "haiec-agent-security-0.1.0.tgz",
+  "packageSHA256": "sha256:df9b24e5c5e63cb7eb6cf47613bcc98228f89a142f117a3c89a163d648630151",
+  "packageSizeBytes": 106146,
+  "packageFileCount": 143,
+  "rulepackVersion": "0.1.0-rc.6.1-public-core",
+  "rulepackSHA256": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92",
+  "manifestSHA256": "sha256:205ea6b336953a9cefdfe16800d8ad117ddbc4ab77495a8e51528b67d3fae85f",
+  "semgrepVersion": "1.173.0",
+  "receiptVersion": "0.1.0",
+  "receiptSchemaVersion": "0.1.0",
+  "evidenceEnvelopeVersion": "0.1.0",
+  "testCount": 256,
+  "testFailures": 0,
+  "typecheckStatus": "PASS",
+  "npmAuditStatus": "0 vulnerabilities",
+  "provenanceStatus": "STRONG origin evidence, HAIEC_CAN_LICENSE, PENDING_HUMAN_REVIEW (all 122 detectors)",
+  "humanLegalReviewRequired": true,
+  "publicationStatus": "NOT_PUBLISHED",
+  "gitHead": "fd277140a9d8b6e18a8d0f5af0ea0bc15838a7b0",
+  "workingTreeStatus": "dirty — Phase 4C-A3 changes",
+  "nothingCommittedPushedPublishedTaggedDeployed": true,
+  "kestrelDeterminism": {
+    "findingSetDigest": "MATCH across 3 independent processes",
+    "concernFamilySetDigest": "MATCH across 3 independent processes",
+    "parseFailureFileSetDigest": "MISMATCH — Session 1 differs from Sessions 2/3 (same count, different file set)",
+    "semanticReceiptDigest": "MISMATCH — correctly reflects parseFailureFileSetDigest difference",
+    "classification": "FINDING_REPRODUCIBLE, COVERAGE_NOT_IDENTICAL"
+  },
+  "directVsTarball": {
+    "result": "EXACT_SEMANTIC_MATCH",
+    "semanticReceiptDigestMatch": true
+  },
+  "rc6FixtureQualification": {
+    "jsPositive": "12/12 detected (100%)",
+    "jsNegative": "0/4 detected (0%)",
+    "pythonPositive": "12/12 detected (100%)",
+    "pythonNegative": "0/4 detected (0%)",
+    "fixtureTests": "7/7 pass"
+  },
+  "receiptIntegration": "Receipt is wired into scan_ai_security structured output",
+  "evidenceEnvelopeIntegration": "Evidence Envelope is wired into scan_ai_security structured output",
+  "coverageFields": [
+    "targetedFileSetDigest",
+    "analyzedFileSetDigest",
+    "intentionallyExcludedFileSetDigest",
+    "parseFailureFileSetDigest",
+    "unsupportedFileSetDigest",
+    "coverageDigest"
+  ],
+  "evaluatedMembershipFields": [
+    "evaluatedSecurityCheckIds[]",
+    "evaluatedSecurityCheckSetDigest",
+    "evaluatedDetectorIds[]",
+    "evaluatedDetectorSetDigest"
+  ],
+  "proofOfFix": "fail-closed — NOT_VERIFIABLE when check absent from evaluated set",
+  "historicalReconciliation": "ROOT_CAUSE_NOT_FULLY_PROVABLE_FROM_RETAINED_EVIDENCE — 859/798 vs 898/833 consistent with parser error variation (136 vs 101) and rulepack change (rc.6.1 regex fix)",
+  "mcpToSaasHold": "ACTIVE — no integration until Platform U0-U6",
+  "evidenceIndexDigest": "NOT_INCLUDED — avoids circular hash dependency"
+}

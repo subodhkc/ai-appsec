@@ -1,0 +1,30 @@
+{
+  "phase": "4C-B",
+  "artifact": "REMOTE-RELEASE-FREEZE-MANIFEST",
+  "generatedAt": "2026-08-20T05:10:00Z",
+  "localBaseline": {
+    "status": "PHASE_4C_A_LOCAL_READY_FOR_REMOTE_VALIDATION",
+    "packageVersion": "0.1.0",
+    "coverageContractVersion": "0.1.1",
+    "receiptVersion": "0.1.0",
+    "evidenceEnvelopeVersion": "0.1.0",
+    "rulepackVersion": "0.1.0-rc.6.1-public-core",
+    "rulepackSHA256": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92",
+    "manifestSHA256": "sha256:205ea6b336953a9cefdfe16800d8ad117ddbc4ab77495a8e51528b67d3fae85f",
+    "semgrepVersion": "1.173.0",
+    "detectorCount": 122,
+    "securityCheckCount": 79,
+    "localTests": "276 pass, 0 fail",
+    "localNpmAudit": "0 vulnerabilities",
+    "localPreflightTarballSHA256": "sha256:cbca50c70302f003a4695b88b3940533f85dd35c4ced542b0427eb14b6dcb017",
+    "nodeEnginePolicy": ">=22",
+    "node20Supported": false,
+    "node22Supported": true,
+    "node24Supported": true,
+    "node26Canary": "optional, non-blocking"
+  },
+  "mcpToSaasHold": "ACTIVE — no integration until Platform U0-U6",
+  "publicationStatus": "NOT_PUBLISHED",
+  "releaseCandidateBranch": "release/mcp-v0.1.0-rc1",
+  "preflightTarballNote": "The local preflight SHA-256 is a PREFLIGHT identity. The canonical remote release-candidate artifact will be created once by CI from the committed release-candidate source."
+}

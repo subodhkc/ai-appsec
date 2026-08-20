@@ -1,0 +1,41 @@
+{
+  "session": 3,
+  "timestamp": "2026-08-20T04:10:28.022Z",
+  "pid": 378044,
+  "durationMs": 66098,
+  "scanId": "scan-1787198961926-s0m50z",
+  "verdict": "REVIEW",
+  "completeness": "PARTIAL",
+  "rawEngineMatches": 898,
+  "actionableFindingInstances": 833,
+  "observationInstances": 54,
+  "concernFamiliesFound": 13,
+  "filesAnalyzed": 2473,
+  "filesSkippedByEngine": 102,
+  "receipt": {
+    "findingSetDigest": "sha256:919f64a49bfa38552f1a7cb55ed8c543a3eafa804fe799c688b3e407fb30fcb4",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "targetedFileSetDigest": "sha256:19d5a950b287a12d05c86b7de37f1cc2c11c8519e85b0daa420de1570e914004",
+    "analyzedFileSetDigest": "sha256:63edbf50c8d9f96f3c6399bb6ef1d9dcddfdf77e15493a584597f2c0879a80d5",
+    "intentionallyExcludedFileSetDigest": "sha256:4d0a4dff1f762e594ecf10f259c33a6b71a7c02f49e2ce89a95e0719a3bd0529",
+    "parseFailureFileSetDigest": "sha256:ed02fcc91efee2a3f61131890594b4301546f463ca24b69753c968729de99c9f",
+    "unsupportedFileSetDigest": "sha256:dbb70ac7391fcc3ffe5dce9e976330d9ed4e2ee385c97731e8a3aafb4b91f066",
+    "coverageDigest": "sha256:2d733ea8b9657fb0fbb608baa7457936d4b23e4cb9a0259fd9285fb91fb11496",
+    "evaluatedSecurityCheckSetDigest": "sha256:6b1bc822e6f8e5750e3806963b74d35d4c58d69a1eb73511f44872834de04ae7",
+    "evaluatedDetectorSetDigest": "sha256:77a6b7477dcff1826265f2e3aa3c1c209eb0700ee42c5568ddf84c345e83a941",
+    "semanticReceiptDigest": "sha256:1e3ff5983f36fdc2af20b755a37923ad7390004cb2e3ea064aa9ab4b0d7bb1a4",
+    "receiptDocumentDigest": "sha256:4df787835a86a27132e3a5751674d5650f58810e56da9b8056112a88f892afad",
+    "completeness": "PARTIAL",
+    "verdict": "REVIEW"
+  },
+  "evidenceEnvelope": {
+    "schemaVersion": "0.1.0",
+    "evidenceStatus": "PRODUCED",
+    "semanticReceiptDigest": "sha256:1e3ff5983f36fdc2af20b755a37923ad7390004cb2e3ea064aa9ab4b0d7bb1a4",
+    "receiptDocumentDigest": "sha256:4df787835a86a27132e3a5751674d5650f58810e56da9b8056112a88f892afad",
+    "envelopeDigest": "sha256:3bd10af032d83a2807af706e50ea2cdb998cf4a2eab88f9081fad5b224a756a9"
+  },
+  "rulepackDigest": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92",
+  "manifestDigest": "sha256:205ea6b336953a9cefdfe16800d8ad117ddbc4ab77495a8e51528b67d3fae85f",
+  "semgrepVersion": "1.173.0"
+}

@@ -1,11 +1,14 @@
 {
   "name": "haiec-agent-security",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Agent-native AI security orchestration layer for MCP-compatible coding agents",
   "type": "module",
-  "private": true,
+  "private": false,
   "engines": {
     "node": ">=22"
+  },
+  "bin": {
+    "haiec-agent-security": "dist/mcp/index.js"
   },
   "keywords": [
     "mcp",
@@ -18,7 +21,11 @@
     "model-context-protocol"
   ],
   "files": [
-    "dist"
+    "dist",
+    "rules/public-core",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "TRADEMARKS.md"
   ],
   "scripts": {
     "build": "tsc",
@@ -39,6 +46,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@modelcontextprotocol/client": "^2.0.0",
     "@types/node": "26.2.0",
     "eslint": "10.8.1",
     "tsx": "4.23.12",

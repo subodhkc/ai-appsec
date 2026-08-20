@@ -1,0 +1,19 @@
+{
+  "packageName": "haiec-agent-security",
+  "packageVersion": "0.0.0",
+  "private": true,
+  "tarballFileCount": 110,
+  "tarballSizeBytes": 50073,
+  "unpackedSizeBytes": 133632,
+  "productionDependencies": 3,
+  "developmentDependencies": 5,
+  "installScripts": [],
+  "postinstallScripts": [],
+  "vulnerabilities": 0,
+  "privateFilesLeaked": 0,
+  "binEntry": "dist/mcp/index.js",
+  "filesField": ["dist"],
+  "cleanInstallResult": "PASS",
+  "mcpsServerStartsFromCleanInstall": true,
+  "auditDate": "2026-08-17"
+}

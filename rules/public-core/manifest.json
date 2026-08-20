@@ -1,0 +1,3798 @@
+{
+  "schemaVersion": "1.0.0",
+  "rulepackVersion": "0.1.0-rc.6.1-public-core",
+  "manifestVersion": "1.0.0",
+  "analysisEngine": "semgrep",
+  "semgrepCompatibility": {
+    "engine": "semgrep",
+    "minVersion": "1.52.0",
+    "verifiedStable": "1.173.0",
+    "verifiedDigest": "sha256:67319956da3dcb58baf5b322899c15458e3963e7018a86aeeb5cd224e69cb77a",
+    "verifiedPlatform": "linux/amd64",
+    "githubRelease": "v1.173.0",
+    "releaseDate": "2026-08-12"
+  },
+  "securityChecks": [
+    {
+      "securityCheckId": "HAIEC-AI-OUTPUT-TO-DYNAMIC-CODE-EXECUTION",
+      "canonicalName": "AI Output to Dynamic Code Execution",
+      "securityProposition": "THE CHECK PROVES: AI/LLM model output flows to a dynamic code execution sink (eval, exec, os.system, os.popen, new Function). BECAUSE: Semgrep taint mode tracks from AI invocation sources (openai.chat.completions.create, anthropic.messages.create, $LLM.invoke, $LLM.predict, $LLM.generate, $CHAIN.run, $CHAIN.invoke) to dangerous code execution sinks.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "BLOCK",
+      "detectorIds": [
+        "ai-tool-abuse-output-exec",
+        "dangerous-eval-exec-ai-output-js",
+        "dangerous-eval-exec-ai-output-python"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Taint tracking is limited by Semgrep's intra-file, pattern-based analysis.",
+        "May miss flows through complex data structures or cross-file assignments.",
+        "May have false negatives on indirect flows.",
+        "Does not detect AI output flowing to subprocess.run or subprocess.Popen (future detector)."
+      ],
+      "remediationClass": "SANITIZE_AI_OUTPUT_BEFORE_EXECUTION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2"
+    },
+    {
+      "securityCheckId": "SC-AI-AGENT-LOOP",
+      "canonicalName": "AI Agent Loop",
+      "securityProposition": "An AI agent loop pattern is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-agent-loop-python",
+        "ai-agent-loop-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects loop pattern, not that it is dangerous."
+      ],
+      "remediationClass": "REVIEW_AGENT_LOOP_SAFETY",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.1"
+    },
+    {
+      "securityCheckId": "SC-AI-AGENT-RECURSIVE",
+      "canonicalName": "AI Agent Recursive Call",
+      "securityProposition": "A recursive AI agent call pattern is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-agent-recursive-python",
+        "ai-agent-recursive-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects recursive pattern, not that it is dangerous."
+      ],
+      "remediationClass": "REVIEW_RECURSION_SAFETY",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.2"
+    },
+    {
+      "securityCheckId": "SC-AI-AGENT-SAFETY-FRAMEWORK",
+      "canonicalName": "AI Agent Safety Framework",
+      "securityProposition": "An AI agent safety framework is used.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-agent-safety-python",
+        "ai-agent-safety-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects safety framework usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.3"
+    },
+    {
+      "securityCheckId": "SC-AI-CONTEXT-OVERFLOW",
+      "canonicalName": "AI Context Window Overflow Risk",
+      "securityProposition": "A pattern that may cause AI context window overflow is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-context-overflow-python",
+        "ai-context-overflow-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove overflow will occur."
+      ],
+      "remediationClass": "IMPLEMENT_CONTEXT_LIMITS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.4"
+    },
+    {
+      "securityCheckId": "SC-AI-COT-EXPOSURE",
+      "canonicalName": "AI Chain-of-Thought Exposure",
+      "securityProposition": "AI chain-of-thought reasoning may be exposed to users.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-cot-exposure"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove CoT is actually exposed."
+      ],
+      "remediationClass": "FILTER_COT_FROM_USER_OUTPUT",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.5"
+    },
+    {
+      "securityCheckId": "SC-AI-FILESYSTEM-ACCESS",
+      "canonicalName": "AI Filesystem Access",
+      "securityProposition": "AI agent has filesystem access patterns.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-filesystem-access"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, access may be appropriately restricted."
+      ],
+      "remediationClass": "RESTRICT_FILESYSTEM_ACCESS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R12.3"
+    },
+    {
+      "securityCheckId": "SC-AI-FRAMEWORK-IMPORT-LANGCHAIN",
+      "canonicalName": "AI Framework Import — LangChain",
+      "securityProposition": "The LangChain Python library is imported in the codebase.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-langchain-import"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Does not prove LangChain is invoked, only imported."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1-langchain-import"
+    },
+    {
+      "securityCheckId": "SC-AI-FUNCTION-CALLING",
+      "canonicalName": "AI Function Calling",
+      "securityProposition": "AI function calling is used.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-function-calling-python",
+        "ai-function-calling-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects function calling usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.6"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-REST",
+      "canonicalName": "AI Invocation — Anthropic REST",
+      "securityProposition": "A direct Anthropic REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-anthropic-python",
+        "ai-rest-anthropic-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.2"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+      "canonicalName": "AI Invocation — Anthropic SDK",
+      "securityProposition": "An Anthropic SDK model invocation exists. Review for prompt injection risk.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-prompt-injection-anthropic"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects API call existence, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-AWS-BEDROCK-REST",
+      "canonicalName": "AI Invocation — AWS Bedrock REST",
+      "securityProposition": "A direct AWS Bedrock REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-aws-bedrock-python",
+        "ai-rest-aws-bedrock-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.6"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-AZURE-OPENAI-REST",
+      "canonicalName": "AI Invocation — Azure OpenAI REST",
+      "securityProposition": "A direct Azure OpenAI REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-azure-openai-python",
+        "ai-rest-azure-openai-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.7"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-COHERE-REST",
+      "canonicalName": "AI Invocation — Cohere REST",
+      "securityProposition": "A direct Cohere REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-cohere-python",
+        "ai-rest-cohere-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.4"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-GENERIC-REST",
+      "canonicalName": "AI Invocation — Generic REST",
+      "securityProposition": "A generic AI-related REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-generic"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "May have false positives on non-AI REST calls."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.8"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-GOOGLE",
+      "canonicalName": "AI Invocation — Google AI",
+      "securityProposition": "A Google AI model invocation exists. Review for prompt injection risk.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-prompt-injection-google"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects Google AI call, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-GOOGLE-REST",
+      "canonicalName": "AI Invocation — Google AI REST",
+      "securityProposition": "A direct Google AI REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-google-python",
+        "ai-rest-google-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.3"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE",
+      "canonicalName": "AI Invocation — HuggingFace",
+      "securityProposition": "A HuggingFace model invocation exists. Review for prompt injection risk.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-prompt-injection-huggingface"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects HuggingFace model usage, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE-REST",
+      "canonicalName": "AI Invocation — HuggingFace REST",
+      "securityProposition": "A direct HuggingFace REST API call exists.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-huggingface-python",
+        "ai-rest-huggingface-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.5"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-LANGCHAIN",
+      "canonicalName": "AI Invocation — LangChain",
+      "securityProposition": "A LangChain model invocation exists. Review for prompt injection risk.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-prompt-injection-langchain"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects LangChain usage, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-LLAMAINDEX",
+      "canonicalName": "AI Invocation — LlamaIndex",
+      "securityProposition": "A LlamaIndex model invocation exists. Review for prompt injection risk.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-prompt-injection-llamaindex"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects LlamaIndex usage, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-REST",
+      "canonicalName": "AI Invocation — OpenAI REST",
+      "securityProposition": "A direct OpenAI REST API call exists (not via SDK).",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-rest-openai-python",
+        "ai-rest-openai-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2.1"
+    },
+    {
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+      "canonicalName": "AI Invocation — OpenAI SDK",
+      "securityProposition": "An OpenAI SDK model invocation exists. Review for prompt injection risk.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-prompt-injection-openai",
+        "ai-prompt-injection-openai-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects API call existence, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability.",
+        "Should not be described as 'prompt injection detection'.",
+        "Actual prompt injection detection requires taint: untrusted input → prompt construction → model invocation."
+      ],
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1"
+    },
+    {
+      "securityCheckId": "SC-AI-MEMORY-INJECTION",
+      "canonicalName": "AI Memory Injection",
+      "securityProposition": "A pattern that may allow AI memory injection is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-memory-injection"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "remediationClass": "SANITIZE_MEMORY_INPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.8"
+    },
+    {
+      "securityCheckId": "SC-AI-MODEL-EXTRACTION",
+      "canonicalName": "AI Model Extraction",
+      "securityProposition": "A pattern that may allow model extraction is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-model-extraction"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects pattern, does not prove extraction is occurring."
+      ],
+      "remediationClass": "IMPLEMENT_RATE_LIMITS_AND_ACCESS_CONTROLS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4"
+    },
+    {
+      "securityCheckId": "SC-AI-MULTIMODAL-AV",
+      "canonicalName": "AI Multimodal Audio/Video",
+      "securityProposition": "Audio/video data is sent to AI model.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-multimodal-av-python",
+        "ai-multimodal-av-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, input may be appropriately validated."
+      ],
+      "remediationClass": "VALIDATE_AV_INPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R12.2"
+    },
+    {
+      "securityCheckId": "SC-AI-MULTIMODAL-INPUT",
+      "canonicalName": "AI Multimodal Input",
+      "securityProposition": "Multimodal input (images, audio) is sent to AI model.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-multimodal-input-python",
+        "ai-multimodal-input-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, input may be appropriately validated."
+      ],
+      "remediationClass": "VALIDATE_MULTIMODAL_INPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R12.1"
+    },
+    {
+      "securityCheckId": "SC-AI-OUTPUT-SQL-INJECTION",
+      "canonicalName": "AI Output SQL Injection",
+      "securityProposition": "AI output is used in SQL queries without parameterization.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-sql-injection-python",
+        "ai-sql-injection-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, parameterization may exist elsewhere."
+      ],
+      "remediationClass": "PARAMETERIZE_SQL_QUERIES",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R11.2"
+    },
+    {
+      "securityCheckId": "SC-AI-OUTPUT-SSRF",
+      "canonicalName": "AI Output SSRF",
+      "securityProposition": "AI output is used in URL requests without validation.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-ssrf-python",
+        "ai-ssrf-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, validation may exist elsewhere."
+      ],
+      "remediationClass": "VALIDATE_AI_OUTPUT_URLS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R11.3"
+    },
+    {
+      "securityCheckId": "SC-AI-OUTPUT-XSS",
+      "canonicalName": "AI Output XSS",
+      "securityProposition": "AI output is rendered in DOM without sanitization.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-xss-python",
+        "ai-xss-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, sanitization may exist elsewhere."
+      ],
+      "remediationClass": "SANITIZE_AI_OUTPUT_BEFORE_RENDERING",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R11.1"
+    },
+    {
+      "securityCheckId": "SC-AI-PROVIDER-IMPORT-ANTHROPIC",
+      "canonicalName": "AI Provider Import — Anthropic",
+      "securityProposition": "The Anthropic Python library is imported in the codebase.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-anthropic-import"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Does not prove Anthropic is invoked, only imported."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1-anthropic-import"
+    },
+    {
+      "securityCheckId": "SC-AI-PROVIDER-IMPORT-OPENAI",
+      "canonicalName": "AI Provider Import — OpenAI",
+      "securityProposition": "The OpenAI Python library is imported in the codebase.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-openai-import"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Does not prove OpenAI is invoked, only imported."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R1-import"
+    },
+    {
+      "securityCheckId": "SC-AI-RAG-POISONING",
+      "canonicalName": "AI RAG Poisoning",
+      "securityProposition": "A RAG vector store document ingestion pattern is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-rag-poisoning"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects ingestion pattern, does not prove poisoning occurred."
+      ],
+      "remediationClass": "VALIDATE_RAG_INPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R3"
+    },
+    {
+      "securityCheckId": "SC-AI-SDK-COHERE",
+      "canonicalName": "AI SDK — Cohere",
+      "securityProposition": "Cohere SDK usage detected.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-sdk-cohere-python",
+        "ai-sdk-cohere-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R3.1"
+    },
+    {
+      "securityCheckId": "SC-AI-SDK-MISTRAL",
+      "canonicalName": "AI SDK — Mistral",
+      "securityProposition": "Mistral SDK usage detected.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-sdk-mistral-python",
+        "ai-sdk-mistral-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R3.2"
+    },
+    {
+      "securityCheckId": "SC-AI-SDK-OLLAMA",
+      "canonicalName": "AI SDK — Ollama",
+      "securityProposition": "Ollama SDK usage detected.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-sdk-ollama-python",
+        "ai-sdk-ollama-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R3.3"
+    },
+    {
+      "securityCheckId": "SC-AI-SDK-REPLICATE",
+      "canonicalName": "AI SDK — Replicate",
+      "securityProposition": "Replicate SDK usage detected.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-sdk-replicate-python",
+        "ai-sdk-replicate-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R3.4"
+    },
+    {
+      "securityCheckId": "SC-AI-SDK-TOGETHER",
+      "canonicalName": "AI SDK — Together",
+      "securityProposition": "Together AI SDK usage detected.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-sdk-together-python",
+        "ai-sdk-together-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R3.5"
+    },
+    {
+      "securityCheckId": "SC-AI-STREAMING-RESPONSE",
+      "canonicalName": "AI Streaming Response",
+      "securityProposition": "AI streaming response handling is used.",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": [
+        "ai-streaming-response-python",
+        "ai-streaming-response-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects streaming usage only."
+      ],
+      "remediationClass": "NONE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.10"
+    },
+    {
+      "securityCheckId": "SC-AI-TOOL-OUTPUT-INJECTION",
+      "canonicalName": "AI Tool Output Injection",
+      "securityProposition": "AI tool output may be injected into subsequent prompts.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-tool-output-injection-python",
+        "ai-tool-output-injection-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "remediationClass": "SANITIZE_TOOL_OUTPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R6.8"
+    },
+    {
+      "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+      "canonicalName": "API Key in Error Messages",
+      "securityProposition": "An API key may be exposed in error messages.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "api-key-in-error-python",
+        "api-key-in-error-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "May have false positives if metavariable matches non-key expressions."
+      ],
+      "remediationClass": "SANITIZE_ERROR_MESSAGES",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R5.4"
+    },
+    {
+      "securityCheckId": "SC-API-KEY-IN-LOGS",
+      "canonicalName": "API Key in Logs",
+      "securityProposition": "A secret-like variable (api_key, secret, token, password, credential) is passed to a logging call.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "api-key-in-logs-python",
+        "api-key-in-logs-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Only detects variables with secret-like names being logged.",
+        "Does not detect arbitrary expressions that may contain secrets.",
+        "metavariable-regex constrains to secret-like identifier patterns."
+      ],
+      "remediationClass": "REMOVE_SECRETS_FROM_LOGS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R5.3"
+    },
+    {
+      "securityCheckId": "SC-API-KEY-IN-URL",
+      "canonicalName": "API Key in URL",
+      "securityProposition": "An API key is passed as a URL parameter.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "api-key-in-url-python",
+        "api-key-in-url-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects URL parameter patterns, may need URL context verification."
+      ],
+      "remediationClass": "USE_HEADER_AUTHENTICATION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R5.5"
+    },
+    {
+      "securityCheckId": "SC-CORS-MISCONFIGURATION-AI",
+      "canonicalName": "CORS Misconfiguration on AI Endpoint",
+      "securityProposition": "AI endpoint has overly permissive CORS configuration.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "cors-misconfiguration-ai-python",
+        "cors-misconfiguration-ai-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, CORS may be intentionally permissive in some contexts."
+      ],
+      "remediationClass": "RESTRICT_CORS_POLICY",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.5"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-LAMBDA-SHELL",
+      "canonicalName": "Dangerous Lambda with Shell Execution",
+      "securityProposition": "A lambda function with shell execution (os.popen, os.system, subprocess.run) is defined.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-dangerous-lambda-shell"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects dangerous lambda pattern, not that AI output flows to it.",
+        "Message says 'dangerous if used with AI agents' — conditional."
+      ],
+      "remediationClass": "REVIEW_LAMBDA_SHELL_USAGE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-API-REQUESTS",
+      "canonicalName": "Dangerous Tool — HTTP/API Requests",
+      "securityProposition": "An HTTP request tool is available to AI agents.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "dangerous-tool-api-requests"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "remediationClass": "RESTRICT_API_ACCESS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4.6"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+      "canonicalName": "Dangerous Tool — Browser Automation",
+      "securityProposition": "A browser automation tool (puppeteer, playwright) is available to AI agents.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "dangerous-tool-browser"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "remediationClass": "RESTRICT_BROWSER_ACCESS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4.5"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-CLASS",
+      "canonicalName": "Dangerous Tool Class Available to AI Agent",
+      "securityProposition": "A dangerous tool class (PythonREPLTool, ShellTool, BashProcess, Shell-named Tool) is instantiated.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "ai-tool-abuse-dangerous"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects tool class existence, not that AI output flows to it.",
+        "Tool may have appropriate sandboxing not visible to static analysis."
+      ],
+      "remediationClass": "RESTRICT_DANGEROUS_TOOLS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R2"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-FILESYSTEM-WRITE",
+      "canonicalName": "Dangerous Tool — Filesystem Write",
+      "securityProposition": "A filesystem write tool is available to AI agents.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "dangerous-tool-filesystem-write"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "remediationClass": "RESTRICT_FILESYSTEM_ACCESS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4.3"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-PYTHON-REPL",
+      "canonicalName": "Dangerous Tool — Python REPL",
+      "securityProposition": "A Python REPL tool is available to AI agents.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "dangerous-tool-python-repl"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "remediationClass": "REMOVE_REPL_TOOL",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4.1"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-SHELL",
+      "canonicalName": "Dangerous Tool — Shell",
+      "securityProposition": "A shell execution tool is available to AI agents.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "dangerous-tool-shell"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "remediationClass": "REMOVE_SHELL_TOOL",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4.2"
+    },
+    {
+      "securityCheckId": "SC-DANGEROUS-TOOL-SQL",
+      "canonicalName": "Dangerous Tool — SQL",
+      "securityProposition": "A SQL execution tool is available to AI agents.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "dangerous-tool-sql"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "remediationClass": "RESTRICT_SQL_ACCESS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R4.4"
+    },
+    {
+      "securityCheckId": "SC-DEBUG-MODE-PRODUCTION",
+      "canonicalName": "Debug Mode in Production",
+      "securityProposition": "Debug mode is enabled in what appears to be a production AI endpoint.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "debug-mode-production-python",
+        "debug-mode-production-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, environment may not be production."
+      ],
+      "remediationClass": "DISABLE_DEBUG_IN_PRODUCTION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.7"
+    },
+    {
+      "securityCheckId": "SC-EMBEDDINGS-SENSITIVE-DATA",
+      "canonicalName": "Embeddings of Sensitive Data",
+      "securityProposition": "Sensitive data is being embedded into vector representations.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "embeddings-sensitive-data"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, data sensitivity may vary by context."
+      ],
+      "remediationClass": "AVOID_EMBEDDING_SENSITIVE_DATA",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R7.6"
+    },
+    {
+      "securityCheckId": "SC-HARDCODED-ANTHROPIC-API-KEY",
+      "canonicalName": "Hardcoded Anthropic API Key",
+      "securityProposition": "A hardcoded Anthropic API key (sk-ant-...) is present in source code.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "hardcoded-anthropic-api-key-python",
+        "hardcoded-anthropic-api-key-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Regex may match non-key strings."
+      ],
+      "remediationClass": "USE_ENV_VARIABLES_OR_SECRETS_MANAGER",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R5.2"
+    },
+    {
+      "securityCheckId": "SC-HARDCODED-API-KEY-GENERIC",
+      "canonicalName": "Hardcoded API Key (Generic)",
+      "securityProposition": "A hardcoded API key is assigned in source code.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "hardcoded-api-key-python",
+        "hardcoded-api-key-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "May match placeholder values if they match the regex pattern."
+      ],
+      "remediationClass": "USE_ENV_VARIABLES_OR_SECRETS_MANAGER",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R5"
+    },
+    {
+      "securityCheckId": "SC-HARDCODED-OPENAI-API-KEY",
+      "canonicalName": "Hardcoded OpenAI API Key",
+      "securityProposition": "A hardcoded OpenAI API key (sk-...) is present in source code.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "hardcoded-openai-api-key"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Regex sk-[A-Za-z0-9-]{20,} may match non-key strings."
+      ],
+      "remediationClass": "USE_ENV_VARIABLES_OR_SECRETS_MANAGER",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R5.1"
+    },
+    {
+      "securityCheckId": "SC-LLM-RESPONSE-PII-NOT-FILTERED",
+      "canonicalName": "LLM Response PII Not Filtered",
+      "securityProposition": "LLM response is used without PII filtering.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "llm-response-pii-not-filtered"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove PII is actually present in response."
+      ],
+      "remediationClass": "FILTER_PII_FROM_LLM_RESPONSES",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R7.4"
+    },
+    {
+      "securityCheckId": "SC-MISSING-AI-AUTH",
+      "canonicalName": "Missing AI Endpoint Authentication",
+      "securityProposition": "AI endpoint without authentication at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-ai-auth-python",
+        "missing-ai-auth-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_ENDPOINT_AUTHENTICATION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.4"
+    },
+    {
+      "securityCheckId": "SC-MISSING-COST-TRACKING",
+      "canonicalName": "Missing Cost Tracking",
+      "securityProposition": "LLM call without cost tracking at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-cost-tracking",
+        "missing-cost-tracking-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_COST_TRACKING",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.3"
+    },
+    {
+      "securityCheckId": "SC-MISSING-DATA-MINIMIZATION",
+      "canonicalName": "Missing Data Minimization",
+      "securityProposition": "PII data sent to LLM without minimization at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-data-minimization-python",
+        "missing-data-minimization-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "IMPLEMENT_DATA_MINIMIZATION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R7.3"
+    },
+    {
+      "securityCheckId": "SC-MISSING-ERROR-LOGGING-AI",
+      "canonicalName": "Missing AI Error Logging",
+      "securityProposition": "AI error handling without logging at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-error-logging-ai-python",
+        "missing-error-logging-ai-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_ERROR_LOGGING",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.8"
+    },
+    {
+      "securityCheckId": "SC-MISSING-INPUT-VALIDATION-AI",
+      "canonicalName": "Missing AI Input Validation",
+      "securityProposition": "AI input without validation at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-input-validation-ai-python",
+        "missing-input-validation-ai-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_INPUT_VALIDATION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.6"
+    },
+    {
+      "securityCheckId": "SC-MISSING-LLM-RATE-LIMIT",
+      "canonicalName": "Missing LLM Rate Limit",
+      "securityProposition": "LLM call without rate limiting at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-llm-rate-limit-python",
+        "missing-llm-rate-limit-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_RATE_LIMITING",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.1"
+    },
+    {
+      "securityCheckId": "SC-MISSING-MAX-TOKENS",
+      "canonicalName": "Missing max_tokens Argument",
+      "securityProposition": "LLM call without local max_tokens argument at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-max-tokens",
+        "missing-max-tokens-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence.",
+        "max_tokens may be set via configuration not visible to static analysis."
+      ],
+      "remediationClass": "ADD_MAX_TOKENS_ARGUMENT",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R9.2"
+    },
+    {
+      "securityCheckId": "SC-MISSING-MODEL-INTEGRITY",
+      "canonicalName": "Missing Model Integrity Verification",
+      "securityProposition": "Model loading without integrity verification at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-model-integrity"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_MODEL_INTEGRITY_VERIFICATION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R10.3"
+    },
+    {
+      "securityCheckId": "SC-MISSING-RETRIEVED-CONTEXT-VALIDATION",
+      "canonicalName": "Missing Retrieved Context Validation",
+      "securityProposition": "Retrieved RAG context is used without validation at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-retrieved-context-validation"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "VALIDATE_RETRIEVED_CONTEXT",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R8.6"
+    },
+    {
+      "securityCheckId": "SC-MISSING-VECTORSTORE-AUTH",
+      "canonicalName": "Missing Vector Store Authentication",
+      "securityProposition": "Vector store access without authentication at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "missing-vectorstore-auth"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_VECTORSTORE_AUTHENTICATION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R8.3"
+    },
+    {
+      "securityCheckId": "SC-MODEL-EXTRACTION-RISK",
+      "canonicalName": "Model Extraction Risk",
+      "securityProposition": "A pattern that may allow model extraction is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "model-extraction-risk"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects pattern, does not prove extraction is occurring."
+      ],
+      "remediationClass": "PREVENT_MODEL_EXTRACTION",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R10.4"
+    },
+    {
+      "securityCheckId": "SC-MODEL-POISONING-RISK",
+      "canonicalName": "Model Poisoning Risk",
+      "securityProposition": "A pattern that may allow model poisoning is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "model-poisoning-risk"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects pattern, does not prove poisoning occurred."
+      ],
+      "remediationClass": "PREVENT_MODEL_POISONING",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R10.2"
+    },
+    {
+      "securityCheckId": "SC-PII-IN-LLM-PROMPT",
+      "canonicalName": "PII in LLM Prompt",
+      "securityProposition": "PII data is included in an LLM prompt.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "pii-in-llm-prompt"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove PII is actually sensitive in context."
+      ],
+      "remediationClass": "REMOVE_PII_FROM_PROMPTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R7.1"
+    },
+    {
+      "securityCheckId": "SC-RAG-METADATA-INJECTION",
+      "canonicalName": "RAG Metadata Injection",
+      "securityProposition": "RAG metadata injection pattern is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "rag-metadata-injection"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "remediationClass": "SANITIZE_RAG_METADATA",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R8.4"
+    },
+    {
+      "securityCheckId": "SC-SENSITIVE-DB-FIELDS-IN-PROMPT",
+      "canonicalName": "Sensitive DB Fields in Prompt",
+      "securityProposition": "Sensitive database fields are included in an LLM prompt.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "sensitive-db-fields-in-prompt-python",
+        "sensitive-db-fields-in-prompt-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, field sensitivity may vary by context."
+      ],
+      "remediationClass": "REMOVE_SENSITIVE_FIELDS_FROM_PROMPTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R7.2"
+    },
+    {
+      "securityCheckId": "SC-TRAINING-DATA-LEAKAGE",
+      "canonicalName": "Training Data Leakage",
+      "securityProposition": "A pattern that may allow training data leakage is detected.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "training-data-leakage"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects pattern, does not prove leakage is occurring."
+      ],
+      "remediationClass": "PREVENT_TRAINING_DATA_LEAKAGE",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R7.5"
+    },
+    {
+      "securityCheckId": "SC-UNRESTRICTED-SIMILARITY-SEARCH",
+      "canonicalName": "Unrestricted Similarity Search",
+      "securityProposition": "Similarity search without access restrictions at the evaluated site.",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "unrestricted-similarity-search"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "remediationClass": "ADD_SIMILARITY_SEARCH_RESTRICTIONS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R8.5"
+    },
+    {
+      "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+      "canonicalName": "Unvalidated Vector Store",
+      "securityProposition": "A vector store is used without input validation.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "unvalidated-vector-store"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects pattern, not absence of validation elsewhere."
+      ],
+      "remediationClass": "VALIDATE_VECTOR_STORE_INPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R8.1"
+    },
+    {
+      "securityCheckId": "SC-UNVERIFIED-MODEL-LOADING",
+      "canonicalName": "Unverified Model Loading",
+      "securityProposition": "A model is loaded from an unverified source without integrity checking.",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "ERROR",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "unverified-model-loading"
+      ],
+      "applicability": "python",
+      "limitations": [
+        "Detects loading pattern, verification may exist elsewhere."
+      ],
+      "remediationClass": "VERIFY_MODEL_INTEGRITY",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R10.1"
+    },
+    {
+      "securityCheckId": "SC-USER-CONTROLLED-EMBEDDING",
+      "canonicalName": "User-Controlled Embedding",
+      "securityProposition": "User input directly controls embedding generation.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "WARNING",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "user-controlled-embedding"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, does not prove exploitation."
+      ],
+      "remediationClass": "VALIDATE_EMBEDDING_INPUTS",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R8.2"
+    },
+    {
+      "securityCheckId": "SC-VERBOSE-ERROR-MESSAGES",
+      "canonicalName": "Verbose Error Messages",
+      "securityProposition": "Verbose error messages may expose sensitive information.",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": [
+        "verbose-error-messages-python",
+        "verbose-error-messages-js"
+      ],
+      "applicability": "python, javascript, typescript",
+      "limitations": [
+        "Detects pattern, verbosity may be acceptable in non-production."
+      ],
+      "remediationClass": "REDUCE_ERROR_MESSAGE_VERBOSITY",
+      "primaryEngine": "scan_ai_security",
+      "legacyDisplayId": "R12.4"
+    }
+  ],
+  "detectors": [
+    {
+      "detectorId": "ai-prompt-injection-openai",
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects API call existence, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability.",
+        "Should not be described as 'prompt injection detection'.",
+        "Actual prompt injection detection requires taint: untrusted input → prompt construction → model invocation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-openai-import",
+      "securityCheckId": "SC-AI-PROVIDER-IMPORT-OPENAI",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Does not prove OpenAI is invoked, only imported."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-anthropic-import",
+      "securityCheckId": "SC-AI-PROVIDER-IMPORT-ANTHROPIC",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Does not prove Anthropic is invoked, only imported."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-openai-js",
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects API call existence, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability.",
+        "Should not be described as 'prompt injection detection'.",
+        "Actual prompt injection detection requires taint: untrusted input → prompt construction → model invocation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-anthropic",
+      "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects API call existence, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-langchain",
+      "securityCheckId": "SC-AI-INVOCATION-LANGCHAIN",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects LangChain usage, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-langchain-import",
+      "securityCheckId": "SC-AI-FRAMEWORK-IMPORT-LANGCHAIN",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Does not prove LangChain is invoked, only imported."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-llamaindex",
+      "securityCheckId": "SC-AI-INVOCATION-LLAMAINDEX",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects LlamaIndex usage, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-huggingface",
+      "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects HuggingFace model usage, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-google",
+      "securityCheckId": "SC-AI-INVOCATION-GOOGLE",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects Google AI call, NOT untrusted input flow to model.",
+        "Does not prove prompt injection vulnerability."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-abuse-dangerous",
+      "securityCheckId": "SC-DANGEROUS-TOOL-CLASS",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool class existence, not that AI output flows to it.",
+        "Tool may have appropriate sandboxing not visible to static analysis."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-abuse-output-exec",
+      "securityCheckId": "HAIEC-AI-OUTPUT-TO-DYNAMIC-CODE-EXECUTION",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Taint tracking is limited by Semgrep's intra-file, pattern-based analysis.",
+        "May miss flows through complex data structures or cross-file assignments.",
+        "May have false negatives on indirect flows.",
+        "Does not detect AI output flowing to subprocess.run or subprocess.Popen (future detector)."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-dangerous-lambda-shell",
+      "securityCheckId": "SC-DANGEROUS-LAMBDA-SHELL",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects dangerous lambda pattern, not that AI output flows to it.",
+        "Message says 'dangerous if used with AI agents' — conditional."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rag-poisoning",
+      "securityCheckId": "SC-AI-RAG-POISONING",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects ingestion pattern, does not prove poisoning occurred."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-model-extraction",
+      "securityCheckId": "SC-AI-MODEL-EXTRACTION",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove extraction is occurring."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-api-key-python",
+      "securityCheckId": "SC-HARDCODED-API-KEY-GENERIC",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "May match placeholder values if they match the regex pattern."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-api-key-js",
+      "securityCheckId": "SC-HARDCODED-API-KEY-GENERIC",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "May match placeholder values if they match the regex pattern."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-memory-injection",
+      "securityCheckId": "SC-AI-MEMORY-INJECTION",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-anthropic-api-key-python",
+      "securityCheckId": "SC-HARDCODED-ANTHROPIC-API-KEY",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Regex may match non-key strings."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-anthropic-api-key-js",
+      "securityCheckId": "SC-HARDCODED-ANTHROPIC-API-KEY",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Regex may match non-key strings."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-logs-python",
+      "securityCheckId": "SC-API-KEY-IN-LOGS",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Only detects variables with secret-like names being logged.",
+        "Does not detect arbitrary expressions that may contain secrets.",
+        "metavariable-regex constrains to secret-like identifier patterns."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-logs-js",
+      "securityCheckId": "SC-API-KEY-IN-LOGS",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Only detects variables with secret-like names being logged.",
+        "Does not detect arbitrary expressions that may contain secrets.",
+        "metavariable-regex constrains to secret-like identifier patterns."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-error-python",
+      "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.6.1",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "May have false positives if metavariable matches non-key expressions."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-error-js",
+      "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.6.1",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "May have false positives if metavariable matches non-key expressions."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-url-python",
+      "securityCheckId": "SC-API-KEY-IN-URL",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects URL parameter patterns, may need URL context verification."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-url-js",
+      "securityCheckId": "SC-API-KEY-IN-URL",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects URL parameter patterns, may need URL context verification."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "pii-in-llm-prompt",
+      "securityCheckId": "SC-PII-IN-LLM-PROMPT",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove PII is actually sensitive in context."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "sensitive-db-fields-in-prompt-python",
+      "securityCheckId": "SC-SENSITIVE-DB-FIELDS-IN-PROMPT",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, field sensitivity may vary by context."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "sensitive-db-fields-in-prompt-js",
+      "securityCheckId": "SC-SENSITIVE-DB-FIELDS-IN-PROMPT",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, field sensitivity may vary by context."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-data-minimization-python",
+      "securityCheckId": "SC-MISSING-DATA-MINIMIZATION",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-data-minimization-js",
+      "securityCheckId": "SC-MISSING-DATA-MINIMIZATION",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "llm-response-pii-not-filtered",
+      "securityCheckId": "SC-LLM-RESPONSE-PII-NOT-FILTERED",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove PII is actually present in response."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "training-data-leakage",
+      "securityCheckId": "SC-TRAINING-DATA-LEAKAGE",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove leakage is occurring."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "embeddings-sensitive-data",
+      "securityCheckId": "SC-EMBEDDINGS-SENSITIVE-DATA",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, data sensitivity may vary by context."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "unvalidated-vector-store",
+      "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, not absence of validation elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "user-controlled-embedding",
+      "securityCheckId": "SC-USER-CONTROLLED-EMBEDDING",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-vectorstore-auth",
+      "securityCheckId": "SC-MISSING-VECTORSTORE-AUTH",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "rag-metadata-injection",
+      "securityCheckId": "SC-RAG-METADATA-INJECTION",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "unrestricted-similarity-search",
+      "securityCheckId": "SC-UNRESTRICTED-SIMILARITY-SEARCH",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-retrieved-context-validation",
+      "securityCheckId": "SC-MISSING-RETRIEVED-CONTEXT-VALIDATION",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-llm-rate-limit-python",
+      "securityCheckId": "SC-MISSING-LLM-RATE-LIMIT",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-llm-rate-limit-js",
+      "securityCheckId": "SC-MISSING-LLM-RATE-LIMIT",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-max-tokens",
+      "securityCheckId": "SC-MISSING-MAX-TOKENS",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence.",
+        "max_tokens may be set via configuration not visible to static analysis."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-max-tokens-js",
+      "securityCheckId": "SC-MISSING-MAX-TOKENS",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence.",
+        "max_tokens may be set via configuration not visible to static analysis."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-cost-tracking",
+      "securityCheckId": "SC-MISSING-COST-TRACKING",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-cost-tracking-js",
+      "securityCheckId": "SC-MISSING-COST-TRACKING",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-ai-auth-python",
+      "securityCheckId": "SC-MISSING-AI-AUTH",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-ai-auth-js",
+      "securityCheckId": "SC-MISSING-AI-AUTH",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "cors-misconfiguration-ai-python",
+      "securityCheckId": "SC-CORS-MISCONFIGURATION-AI",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, CORS may be intentionally permissive in some contexts."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "cors-misconfiguration-ai-js",
+      "securityCheckId": "SC-CORS-MISCONFIGURATION-AI",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, CORS may be intentionally permissive in some contexts."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-input-validation-ai-python",
+      "securityCheckId": "SC-MISSING-INPUT-VALIDATION-AI",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-input-validation-ai-js",
+      "securityCheckId": "SC-MISSING-INPUT-VALIDATION-AI",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "debug-mode-production-python",
+      "securityCheckId": "SC-DEBUG-MODE-PRODUCTION",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, environment may not be production."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "debug-mode-production-js",
+      "securityCheckId": "SC-DEBUG-MODE-PRODUCTION",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, environment may not be production."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-error-logging-ai-python",
+      "securityCheckId": "SC-MISSING-ERROR-LOGGING-AI",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-error-logging-ai-js",
+      "securityCheckId": "SC-MISSING-ERROR-LOGGING-AI",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "verbose-error-messages-python",
+      "securityCheckId": "SC-VERBOSE-ERROR-MESSAGES",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, verbosity may be acceptable in non-production."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "verbose-error-messages-js",
+      "securityCheckId": "SC-VERBOSE-ERROR-MESSAGES",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, verbosity may be acceptable in non-production."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "unverified-model-loading",
+      "securityCheckId": "SC-UNVERIFIED-MODEL-LOADING",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects loading pattern, verification may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "model-poisoning-risk",
+      "securityCheckId": "SC-MODEL-POISONING-RISK",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove poisoning occurred."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-model-integrity",
+      "securityCheckId": "SC-MISSING-MODEL-INTEGRITY",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects absence at evaluated site, not repository-wide absence."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "model-extraction-risk",
+      "securityCheckId": "SC-MODEL-EXTRACTION-RISK",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove extraction is occurring."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-openai-python",
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-openai-js",
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-anthropic-python",
+      "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-anthropic-js",
+      "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-google-python",
+      "securityCheckId": "SC-AI-INVOCATION-GOOGLE-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-google-js",
+      "securityCheckId": "SC-AI-INVOCATION-GOOGLE-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-cohere-python",
+      "securityCheckId": "SC-AI-INVOCATION-COHERE-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-cohere-js",
+      "securityCheckId": "SC-AI-INVOCATION-COHERE-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-huggingface-python",
+      "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-huggingface-js",
+      "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-aws-bedrock-python",
+      "securityCheckId": "SC-AI-INVOCATION-AWS-BEDROCK-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-aws-bedrock-js",
+      "securityCheckId": "SC-AI-INVOCATION-AWS-BEDROCK-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-azure-openai-python",
+      "securityCheckId": "SC-AI-INVOCATION-AZURE-OPENAI-REST",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-azure-openai-js",
+      "securityCheckId": "SC-AI-INVOCATION-AZURE-OPENAI-REST",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects REST call existence only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-generic",
+      "securityCheckId": "SC-AI-INVOCATION-GENERIC-REST",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "May have false positives on non-AI REST calls."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-cohere-python",
+      "securityCheckId": "SC-AI-SDK-COHERE",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-cohere-js",
+      "securityCheckId": "SC-AI-SDK-COHERE",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-mistral-python",
+      "securityCheckId": "SC-AI-SDK-MISTRAL",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-mistral-js",
+      "securityCheckId": "SC-AI-SDK-MISTRAL",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-ollama-python",
+      "securityCheckId": "SC-AI-SDK-OLLAMA",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-ollama-js",
+      "securityCheckId": "SC-AI-SDK-OLLAMA",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-replicate-python",
+      "securityCheckId": "SC-AI-SDK-REPLICATE",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-replicate-js",
+      "securityCheckId": "SC-AI-SDK-REPLICATE",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-together-python",
+      "securityCheckId": "SC-AI-SDK-TOGETHER",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-together-js",
+      "securityCheckId": "SC-AI-SDK-TOGETHER",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects SDK usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-python-repl",
+      "securityCheckId": "SC-DANGEROUS-TOOL-PYTHON-REPL",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-shell",
+      "securityCheckId": "SC-DANGEROUS-TOOL-SHELL",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-filesystem-write",
+      "securityCheckId": "SC-DANGEROUS-TOOL-FILESYSTEM-WRITE",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-sql",
+      "securityCheckId": "SC-DANGEROUS-TOOL-SQL",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-browser",
+      "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-api-requests",
+      "securityCheckId": "SC-DANGEROUS-TOOL-API-REQUESTS",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects tool availability, not actual exploitation."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-eval-exec-ai-output-python",
+      "securityCheckId": "HAIEC-AI-OUTPUT-TO-DYNAMIC-CODE-EXECUTION",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Taint tracking is limited by Semgrep's intra-file, pattern-based analysis.",
+        "May miss flows through complex data structures or cross-file assignments.",
+        "May have false negatives on indirect flows.",
+        "Does not detect AI output flowing to subprocess.run or subprocess.Popen (future detector)."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-eval-exec-ai-output-js",
+      "securityCheckId": "HAIEC-AI-OUTPUT-TO-DYNAMIC-CODE-EXECUTION",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Taint tracking is limited by Semgrep's intra-file, pattern-based analysis.",
+        "May miss flows through complex data structures or cross-file assignments.",
+        "May have false negatives on indirect flows.",
+        "Does not detect AI output flowing to subprocess.run or subprocess.Popen (future detector)."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-openai-api-key",
+      "securityCheckId": "SC-HARDCODED-OPENAI-API-KEY",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Regex sk-[A-Za-z0-9-]{20,} may match non-key strings."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-loop-python",
+      "securityCheckId": "SC-AI-AGENT-LOOP",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects loop pattern, not that it is dangerous."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-loop-js",
+      "securityCheckId": "SC-AI-AGENT-LOOP",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects loop pattern, not that it is dangerous."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-recursive-python",
+      "securityCheckId": "SC-AI-AGENT-RECURSIVE",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects recursive pattern, not that it is dangerous."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-recursive-js",
+      "securityCheckId": "SC-AI-AGENT-RECURSIVE",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects recursive pattern, not that it is dangerous."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-safety-python",
+      "securityCheckId": "SC-AI-AGENT-SAFETY-FRAMEWORK",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects safety framework usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-safety-js",
+      "securityCheckId": "SC-AI-AGENT-SAFETY-FRAMEWORK",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects safety framework usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-context-overflow-python",
+      "securityCheckId": "SC-AI-CONTEXT-OVERFLOW",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove overflow will occur."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-context-overflow-js",
+      "securityCheckId": "SC-AI-CONTEXT-OVERFLOW",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove overflow will occur."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-cot-exposure",
+      "securityCheckId": "SC-AI-COT-EXPOSURE",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove CoT is actually exposed."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-function-calling-python",
+      "securityCheckId": "SC-AI-FUNCTION-CALLING",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects function calling usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-function-calling-js",
+      "securityCheckId": "SC-AI-FUNCTION-CALLING",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects function calling usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-output-injection-python",
+      "securityCheckId": "SC-AI-TOOL-OUTPUT-INJECTION",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-output-injection-js",
+      "securityCheckId": "SC-AI-TOOL-OUTPUT-INJECTION",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, does not prove injection is exploitable."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-streaming-response-python",
+      "securityCheckId": "SC-AI-STREAMING-RESPONSE",
+      "languages": "python",
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects streaming usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-streaming-response-js",
+      "securityCheckId": "SC-AI-STREAMING-RESPONSE",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "INFO",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects streaming usage only."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-xss-js",
+      "securityCheckId": "SC-AI-OUTPUT-XSS",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, sanitization may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-xss-python",
+      "securityCheckId": "SC-AI-OUTPUT-XSS",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, sanitization may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sql-injection-python",
+      "securityCheckId": "SC-AI-OUTPUT-SQL-INJECTION",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, parameterization may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sql-injection-js",
+      "securityCheckId": "SC-AI-OUTPUT-SQL-INJECTION",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, parameterization may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-ssrf-python",
+      "securityCheckId": "SC-AI-OUTPUT-SSRF",
+      "languages": "python",
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, validation may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-ssrf-js",
+      "securityCheckId": "SC-AI-OUTPUT-SSRF",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "ERROR",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, validation may exist elsewhere."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-input-python",
+      "securityCheckId": "SC-AI-MULTIMODAL-INPUT",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, input may be appropriately validated."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-input-js",
+      "securityCheckId": "SC-AI-MULTIMODAL-INPUT",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, input may be appropriately validated."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-av-python",
+      "securityCheckId": "SC-AI-MULTIMODAL-AV",
+      "languages": "python",
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, input may be appropriately validated."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-av-js",
+      "securityCheckId": "SC-AI-MULTIMODAL-AV",
+      "languages": [
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, input may be appropriately validated."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-filesystem-access",
+      "securityCheckId": "SC-AI-FILESYSTEM-ACCESS",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript"
+      ],
+      "rawSeverity": "WARNING",
+      "revision": "rc.5",
+      "provenance": "HAIEC_ASSERTED",
+      "candidateStatus": "PUBLIC_READY",
+      "publicStatus": "PUBLIC_READY",
+      "enabledByDefault": true,
+      "limitations": [
+        "Detects pattern, access may be appropriately restricted."
+      ],
+      "originEvidence": "STRONG",
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    }
+  ],
+  "excludedDetectors": [],
+  "exclusionReason": "NONE"
+}

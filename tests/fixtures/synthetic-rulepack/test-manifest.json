@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "1.0.0",
+  "rulepackVersion": "test-0.1.0",
+  "manifestVersion": "test-0.1.0",
+  "analysisEngine": "semgrep",
+  "semgrepCompatibility": {
+    "engine": "semgrep",
+    "minVersion": "1.173.0",
+    "verifiedStable": "1.173.0",
+    "verifiedDigest": "sha256:test",
+    "verifiedPlatform": "test",
+    "githubRelease": "v1.173.0",
+    "releaseDate": "test"
+  },
+  "securityChecks": [
+    {
+      "securityCheckId": "TEST-AI-SDK-PRESENCE",
+      "canonicalName": "Test AI SDK Presence",
+      "securityProposition": "Test AI SDK is imported (synthetic test)",
+      "findingKind": "PRESENCE",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "INFORMATIONAL",
+      "detectorIds": ["test-ai-sdk-presence"],
+      "applicability": "test",
+      "limitations": ["Synthetic test rule — not production coverage"],
+      "remediationClass": "test",
+      "primaryEngine": "ai-security",
+      "legacyDisplayId": "T1"
+    },
+    {
+      "securityCheckId": "TEST-MISSING-MAX-TOKENS",
+      "canonicalName": "Test Missing Max Tokens",
+      "securityProposition": "Test AI call without max_tokens (synthetic test)",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": ["test-missing-max-tokens"],
+      "applicability": "test",
+      "limitations": ["Synthetic test rule — not production coverage"],
+      "remediationClass": "test",
+      "primaryEngine": "ai-security",
+      "legacyDisplayId": "T2"
+    },
+    {
+      "securityCheckId": "TEST-MISSING-ERROR-HANDLING",
+      "canonicalName": "Test Missing Error Handling",
+      "securityProposition": "Test AI call without error handling (synthetic test)",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "detectorIds": ["test-missing-error-handling"],
+      "applicability": "test",
+      "limitations": ["Synthetic test rule — not production coverage"],
+      "remediationClass": "test",
+      "primaryEngine": "ai-security",
+      "legacyDisplayId": "T3"
+    },
+    {
+      "securityCheckId": "TEST-AI-OUTPUT-TO-EVAL",
+      "canonicalName": "Test AI Output To Eval",
+      "securityProposition": "Test AI output flows to eval/exec (synthetic test)",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "HIGH",
+      "defaultDisposition": "BLOCK",
+      "detectorIds": ["test-ai-output-to-eval"],
+      "applicability": "test",
+      "limitations": ["Synthetic test rule — not production coverage"],
+      "remediationClass": "test",
+      "primaryEngine": "ai-security",
+      "legacyDisplayId": "T4"
+    }
+  ],
+  "detectors": [
+    {
+      "detectorId": "test-ai-sdk-presence",
+      "securityCheckId": "TEST-AI-SDK-PRESENCE",
+      "languages": ["python", "javascript", "typescript"],
+      "rawSeverity": "INFO",
+      "revision": "test-0.1.0",
+      "provenance": "synthetic-test",
+      "candidateStatus": "test",
+      "publicStatus": "test",
+      "enabledByDefault": true,
+      "limitations": ["Synthetic test rule — not production coverage"]
+    },
+    {
+      "detectorId": "test-missing-max-tokens",
+      "securityCheckId": "TEST-MISSING-MAX-TOKENS",
+      "languages": ["python", "javascript", "typescript"],
+      "rawSeverity": "WARNING",
+      "revision": "test-0.1.0",
+      "provenance": "synthetic-test",
+      "candidateStatus": "test",
+      "publicStatus": "test",
+      "enabledByDefault": true,
+      "limitations": ["Synthetic test rule — not production coverage"]
+    },
+    {
+      "detectorId": "test-missing-error-handling",
+      "securityCheckId": "TEST-MISSING-ERROR-HANDLING",
+      "languages": ["python"],
+      "rawSeverity": "WARNING",
+      "revision": "test-0.1.0",
+      "provenance": "synthetic-test",
+      "candidateStatus": "test",
+      "publicStatus": "test",
+      "enabledByDefault": true,
+      "limitations": ["Synthetic test rule — not production coverage"]
+    },
+    {
+      "detectorId": "test-ai-output-to-eval",
+      "securityCheckId": "TEST-AI-OUTPUT-TO-EVAL",
+      "languages": ["python"],
+      "rawSeverity": "ERROR",
+      "revision": "test-0.1.0",
+      "provenance": "synthetic-test",
+      "candidateStatus": "test",
+      "publicStatus": "test",
+      "enabledByDefault": true,
+      "limitations": ["Synthetic test rule — not production coverage"]
+    }
+  ]
+}

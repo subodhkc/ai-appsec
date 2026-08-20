@@ -1,0 +1,953 @@
+{
+  "corpus": {
+    "repository": "kestrel/AI-Service-Call-Agent-",
+    "commit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+    "branch": "main",
+    "dirtyState": true,
+    "dirtyFiles": [
+      "?? \"frontend/public/demo-screenshots/witness and questions netflix source .png\"",
+      "?? modal_logs_consolidated.txt",
+      "?? modal_logs_hvac_demo.txt"
+    ],
+    "treeSha": "4054fef7a5e360403e1d9ed36771d3a03a7a6b22",
+    "fileCount": 5528,
+    "fileSetDigest": "sha256:9133283e2c17ef177cd03500df22215329b6f27a1a366f138100387b9db1793d",
+    "snapshotMethod": "git ls-tree -r HEAD (immutable committed tree)"
+  },
+  "scan": {
+    "duration": "119256ms",
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "completenessReasons": [
+      "103 parser error(s) occurred during scanning."
+    ],
+    "isError": false,
+    "summary": {
+      "filesAnalyzed": 2473,
+      "filesWithFindings": 647,
+      "filesSkippedByEngine": 103,
+      "filesUnscannedDueToTimeout": 0,
+      "findingsExcludedByReportingScope": 14,
+      "actionableTotal": 1636,
+      "vulnerabilityTotal": 351,
+      "controlGapTotal": 14,
+      "riskSignalTotal": 1271,
+      "presenceTotal": 54,
+      "blockTotal": 0,
+      "reviewTotal": 1636,
+      "informationalTotal": 54,
+      "rawFindingCount": 1704,
+      "detectorInstancesFound": 1690,
+      "canonicalFindingsFound": 1704,
+      "materialConcernsFound": 13,
+      "observationsFound": 54
+    },
+    "truncation": {
+      "actionableReturned": 20,
+      "actionableTotal": 1636,
+      "observationsReturned": 10,
+      "observationsTotal": 54,
+      "truncated": true,
+      "checksRepresented": 9,
+      "checksTotal": 13,
+      "checksOmittedDueToDisplayBounds": 4
+    },
+    "versions": {
+      "scanner": "HAIEC Static AI Security",
+      "scannerVersion": "0.1.0",
+      "rulepack": "haiec-ai-security",
+      "rulepackVersion": "0.1.0-rc.5-public-core",
+      "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+      "manifest": "haiec-ai-security-manifest",
+      "manifestVersion": "1.0.0",
+      "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+      "semgrep": "semgrep",
+      "semgrepVersion": "1.173.0"
+    },
+    "errors": [],
+    "limitations": [
+      "103 files had parse errors."
+    ],
+    "securityConcernCount": 13,
+    "topConcerns": [
+      {
+        "concernId": "concern-00zdfhbq",
+        "securityCheckId": "SC-API-KEY-IN-LOGS",
+        "findingKind": "VULNERABILITY",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "API Key in Logs",
+        "remediationClass": "REMOVE_SECRETS_FROM_LOGS",
+        "instanceCount": 351,
+        "affectedFileCount": 110,
+        "affectedDetectorCount": 2,
+        "affectedDetectors": [
+          "api-key-in-logs-js",
+          "api-key-in-logs-python"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-API-KEY-IN-LOGS",
+            "canonicalName": "API Key in Logs",
+            "findingKind": "VULNERABILITY",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateAudio.js",
+            "startLine": 54,
+            "startColumn": 5,
+            "endLine": 54,
+            "endColumn": 55,
+            "detectorIds": [
+              "api-key-in-logs-js"
+            ],
+            "message": "API key or secret may be logged - remove sensitive data from logs immediately.",
+            "evidenceHash": "cd383b6844d38e15",
+            "remediationClass": "REMOVE_SECRETS_FROM_LOGS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-API-KEY-IN-LOGS",
+            "canonicalName": "API Key in Logs",
+            "findingKind": "VULNERABILITY",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateAudioOnly.ts",
+            "startLine": 17,
+            "startColumn": 5,
+            "endLine": 17,
+            "endColumn": 76,
+            "detectorIds": [
+              "api-key-in-logs-js"
+            ],
+            "message": "API key or secret may be logged - remove sensitive data from logs immediately.",
+            "evidenceHash": "8527f805ee372ab6",
+            "remediationClass": "REMOVE_SECRETS_FROM_LOGS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-API-KEY-IN-LOGS",
+            "canonicalName": "API Key in Logs",
+            "findingKind": "VULNERABILITY",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateAudioSimple.ts",
+            "startLine": 59,
+            "startColumn": 5,
+            "endLine": 59,
+            "endColumn": 55,
+            "detectorIds": [
+              "api-key-in-logs-js"
+            ],
+            "message": "API key or secret may be logged - remove sensitive data from logs immediately.",
+            "evidenceHash": "438e277466033c06",
+            "remediationClass": "REMOVE_SECRETS_FROM_LOGS",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "ai-demo-call/scripts/generateAudio.js",
+          "ai-demo-call/scripts/generateAudioOnly.ts",
+          "ai-demo-call/scripts/generateAudioSimple.ts",
+          "ai-demo-call/scripts/generateAutomatedDemo.ts",
+          "ai-demo-call/scripts/generateLiveDemo.ts"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00xhetue",
+        "securityCheckId": "SC-AI-RAG-POISONING",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "AI RAG Poisoning",
+        "remediationClass": "VALIDATE_RAG_INPUTS",
+        "instanceCount": 160,
+        "affectedFileCount": 106,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "ai-rag-poisoning"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-AI-RAG-POISONING",
+            "canonicalName": "AI RAG Poisoning",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateLiveDemo.ts",
+            "startLine": 512,
+            "startColumn": 11,
+            "endLine": 512,
+            "endColumn": 44,
+            "detectorIds": [
+              "ai-rag-poisoning"
+            ],
+            "message": "Documents added to vector store - validate for RAG poisoning",
+            "evidenceHash": "dc0357b8018d001b",
+            "remediationClass": "VALIDATE_RAG_INPUTS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-AI-RAG-POISONING",
+            "canonicalName": "AI RAG Poisoning",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateLiveDemo.ts",
+            "startLine": 515,
+            "startColumn": 11,
+            "endLine": 515,
+            "endColumn": 47,
+            "detectorIds": [
+              "ai-rag-poisoning"
+            ],
+            "message": "Documents added to vector store - validate for RAG poisoning",
+            "evidenceHash": "e20bba0876ead0c9",
+            "remediationClass": "VALIDATE_RAG_INPUTS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-AI-RAG-POISONING",
+            "canonicalName": "AI RAG Poisoning",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateMeetingDemo.ts",
+            "startLine": 535,
+            "startColumn": 13,
+            "endLine": 535,
+            "endColumn": 44,
+            "detectorIds": [
+              "ai-rag-poisoning"
+            ],
+            "message": "Documents added to vector store - validate for RAG poisoning",
+            "evidenceHash": "af1477a38849d1a1",
+            "remediationClass": "VALIDATE_RAG_INPUTS",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "ai-demo-call/scripts/generateLiveDemo.ts",
+          "ai-demo-call/scripts/generateMeetingDemo.ts",
+          "ai-demo-call/scripts/generateRealtimeDemo.ts",
+          "app/jobs/learning_pipeline.py",
+          "demand-engine/pdf_generator/report_generator.py"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00izfzxo",
+        "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "API Key in Error Messages",
+        "remediationClass": "SANITIZE_ERROR_MESSAGES",
+        "instanceCount": 865,
+        "affectedFileCount": 410,
+        "affectedDetectorCount": 2,
+        "affectedDetectors": [
+          "api-key-in-error-js",
+          "api-key-in-error-python"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+            "canonicalName": "API Key in Error Messages",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/aiDemoRecorder.ts",
+            "startLine": 234,
+            "startColumn": 9,
+            "endLine": 234,
+            "endColumn": 58,
+            "detectorIds": [
+              "api-key-in-error-js"
+            ],
+            "message": "API key may be exposed in error messages - sanitize error responses.",
+            "evidenceHash": "a555bc65e0ccc573",
+            "remediationClass": "SANITIZE_ERROR_MESSAGES",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+            "canonicalName": "API Key in Error Messages",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/dailyDialBot.ts",
+            "startLine": 57,
+            "startColumn": 7,
+            "endLine": 57,
+            "endColumn": 78,
+            "detectorIds": [
+              "api-key-in-error-js"
+            ],
+            "message": "API key may be exposed in error messages - sanitize error responses.",
+            "evidenceHash": "8713611a4c8ad7de",
+            "remediationClass": "SANITIZE_ERROR_MESSAGES",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+            "canonicalName": "API Key in Error Messages",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/dailyDialBot.ts",
+            "startLine": 154,
+            "startColumn": 7,
+            "endLine": 154,
+            "endColumn": 61,
+            "detectorIds": [
+              "api-key-in-error-js"
+            ],
+            "message": "API key may be exposed in error messages - sanitize error responses.",
+            "evidenceHash": "047c1b6897cc92b4",
+            "remediationClass": "SANITIZE_ERROR_MESSAGES",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "ai-demo-call/lib/aiDemoRecorder.ts",
+          "ai-demo-call/lib/dailyDialBot.ts",
+          "ai-demo-call/lib/dailyVideoRecorder.ts",
+          "ai-demo-call/lib/recordingManager.ts",
+          "ai-demo-call/scripts/generateSmartDemo.ts"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00ebbprn",
+        "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "AI Invocation — OpenAI SDK",
+        "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+        "instanceCount": 94,
+        "affectedFileCount": 43,
+        "affectedDetectorCount": 2,
+        "affectedDetectors": [
+          "ai-prompt-injection-openai",
+          "ai-prompt-injection-openai-js"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+            "canonicalName": "AI Invocation — OpenAI SDK",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/aiDemoRecorder.ts",
+            "startLine": 99,
+            "startColumn": 28,
+            "endLine": 106,
+            "endColumn": 7,
+            "detectorIds": [
+              "ai-prompt-injection-openai-js"
+            ],
+            "message": "User input may flow to AI prompt - review for prompt injection",
+            "evidenceHash": "247fd7534a62685a",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+            "canonicalName": "AI Invocation — OpenAI SDK",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/aiDemoRecorder.ts",
+            "startLine": 141,
+            "startColumn": 38,
+            "endLine": 148,
+            "endColumn": 9,
+            "detectorIds": [
+              "ai-prompt-injection-openai-js"
+            ],
+            "message": "User input may flow to AI prompt - review for prompt injection",
+            "evidenceHash": "35aee60dced729c7",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+            "canonicalName": "AI Invocation — OpenAI SDK",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/aiDemoRecorder.ts",
+            "startLine": 161,
+            "startColumn": 39,
+            "endLine": 168,
+            "endColumn": 9,
+            "detectorIds": [
+              "ai-prompt-injection-openai-js"
+            ],
+            "message": "User input may flow to AI prompt - review for prompt injection",
+            "evidenceHash": "3641dfd43e81ff21",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "ai-demo-call/lib/aiDemoRecorder.ts",
+          "ai-demo-call/lib/conversationEngine.ts",
+          "ai-demo-call/lib/dailyVideoRecorder.ts",
+          "ai-demo-call/scripts/generateLiveDemo.ts",
+          "ai-demo-call/scripts/generateRestaurantDemo.ts"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00vnrior",
+        "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "Unvalidated Vector Store",
+        "remediationClass": "VALIDATE_VECTOR_STORE_INPUTS",
+        "instanceCount": 81,
+        "affectedFileCount": 47,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "unvalidated-vector-store"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+            "canonicalName": "Unvalidated Vector Store",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "app/jobs/learning_pipeline.py",
+            "startLine": 709,
+            "startColumn": 13,
+            "endLine": 709,
+            "endColumn": 53,
+            "detectorIds": [
+              "unvalidated-vector-store"
+            ],
+            "message": "Vector store write without validation - implement content validation and embedding verification.",
+            "evidenceHash": "721715959fb2ee9c",
+            "remediationClass": "VALIDATE_VECTOR_STORE_INPUTS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+            "canonicalName": "Unvalidated Vector Store",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "demand-engine/pdf_generator/report_generator.py",
+            "startLine": 28,
+            "startColumn": 9,
+            "endLine": 36,
+            "endColumn": 11,
+            "detectorIds": [
+              "unvalidated-vector-store"
+            ],
+            "message": "Vector store write without validation - implement content validation and embedding verification.",
+            "evidenceHash": "4cd4d946626823ad",
+            "remediationClass": "VALIDATE_VECTOR_STORE_INPUTS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+            "canonicalName": "Unvalidated Vector Store",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "demand-engine/pdf_generator/report_generator.py",
+            "startLine": 39,
+            "startColumn": 9,
+            "endLine": 46,
+            "endColumn": 11,
+            "detectorIds": [
+              "unvalidated-vector-store"
+            ],
+            "message": "Vector store write without validation - implement content validation and embedding verification.",
+            "evidenceHash": "fc2df2c0a09cc607",
+            "remediationClass": "VALIDATE_VECTOR_STORE_INPUTS",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "app/jobs/learning_pipeline.py",
+          "demand-engine/pdf_generator/report_generator.py",
+          "demand-engine/routers/call_status_webhook.py",
+          "demand-engine/routers/daily_video.py",
+          "demand-engine/routers/twilio_provisioning.py"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00bn8l0d",
+        "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "AI Invocation — Anthropic SDK",
+        "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+        "instanceCount": 16,
+        "affectedFileCount": 10,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "ai-prompt-injection-anthropic"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+            "canonicalName": "AI Invocation — Anthropic SDK",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "demand-engine/services/twilio_provisioner.py",
+            "startLine": 289,
+            "startColumn": 27,
+            "endLine": 293,
+            "endColumn": 14,
+            "detectorIds": [
+              "ai-prompt-injection-anthropic"
+            ],
+            "message": "Anthropic Claude API call detected - review for prompt injection",
+            "evidenceHash": "1f3ddabda567fb8e",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+            "canonicalName": "AI Invocation — Anthropic SDK",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "demand-engine/services/twilio_provisioner.py",
+            "startLine": 289,
+            "startColumn": 13,
+            "endLine": 293,
+            "endColumn": 14,
+            "detectorIds": [
+              "ai-prompt-injection-anthropic"
+            ],
+            "message": "Anthropic Claude API call detected - review for prompt injection",
+            "evidenceHash": "dc97751e72be2429",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+            "canonicalName": "AI Invocation — Anthropic SDK",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "frontend/app/api/claim/send-otp/route.ts",
+            "startLine": 192,
+            "startColumn": 15,
+            "endLine": 196,
+            "endColumn": 11,
+            "detectorIds": [
+              "ai-prompt-injection-anthropic"
+            ],
+            "message": "Anthropic Claude API call detected - review for prompt injection",
+            "evidenceHash": "8793462a7b91448c",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "demand-engine/services/twilio_provisioner.py",
+          "frontend/Private/alertstream-engine/src/services/smsService.js",
+          "frontend/app/api/claim/send-otp/route.ts",
+          "frontend/app/api/notifications/sms/route.ts",
+          "frontend/app/api/public/actions/route.ts"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00jnn9ec",
+        "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "Dangerous Tool — Browser Automation",
+        "remediationClass": "RESTRICT_BROWSER_ACCESS",
+        "instanceCount": 8,
+        "affectedFileCount": 8,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "dangerous-tool-browser"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+            "canonicalName": "Dangerous Tool — Browser Automation",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/customerBot.ts",
+            "startLine": 123,
+            "startColumn": 26,
+            "endLine": 137,
+            "endColumn": 7,
+            "detectorIds": [
+              "dangerous-tool-browser"
+            ],
+            "message": "Browser automation tool available to AI agent - can navigate web and steal credentials.",
+            "evidenceHash": "588ad794f077a265",
+            "remediationClass": "RESTRICT_BROWSER_ACCESS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+            "canonicalName": "Dangerous Tool — Browser Automation",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/lib/presenterBot.ts",
+            "startLine": 77,
+            "startColumn": 26,
+            "endLine": 91,
+            "endColumn": 7,
+            "detectorIds": [
+              "dangerous-tool-browser"
+            ],
+            "message": "Browser automation tool available to AI agent - can navigate web and steal credentials.",
+            "evidenceHash": "6f4c12e5aa0fa6dc",
+            "remediationClass": "RESTRICT_BROWSER_ACCESS",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+            "canonicalName": "Dangerous Tool — Browser Automation",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateEnhancedDemo.ts",
+            "startLine": 101,
+            "startColumn": 21,
+            "endLine": 110,
+            "endColumn": 7,
+            "detectorIds": [
+              "dangerous-tool-browser"
+            ],
+            "message": "Browser automation tool available to AI agent - can navigate web and steal credentials.",
+            "evidenceHash": "d87569a63852e36c",
+            "remediationClass": "RESTRICT_BROWSER_ACCESS",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "ai-demo-call/lib/customerBot.ts",
+          "ai-demo-call/lib/presenterBot.ts",
+          "ai-demo-call/scripts/generateEnhancedDemo.ts",
+          "ai-demo-call/scripts/generateLiveDemo.ts",
+          "ai-demo-call/scripts/generateMeetingDemo.ts"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00ms5sh6",
+        "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "AI Invocation — HuggingFace",
+        "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+        "instanceCount": 1,
+        "affectedFileCount": 1,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "ai-prompt-injection-huggingface"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE",
+            "canonicalName": "AI Invocation — HuggingFace",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "demand-engine/utils/order_parser.py",
+            "startLine": 627,
+            "startColumn": 24,
+            "endLine": 627,
+            "endColumn": 63,
+            "detectorIds": [
+              "ai-prompt-injection-huggingface"
+            ],
+            "message": "User input flows to Hugging Face model - review for prompt injection",
+            "evidenceHash": "902277158a3b8599",
+            "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "demand-engine/utils/order_parser.py"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00y8txyq",
+        "securityCheckId": "SC-AI-MULTIMODAL-INPUT",
+        "findingKind": "RISK_SIGNAL",
+        "canonicalSeverity": "MEDIUM",
+        "defaultDisposition": "REVIEW",
+        "title": "AI Multimodal Input",
+        "remediationClass": "VALIDATE_MULTIMODAL_INPUTS",
+        "instanceCount": 1,
+        "affectedFileCount": 1,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "ai-multimodal-input-python"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-AI-MULTIMODAL-INPUT",
+            "canonicalName": "AI Multimodal Input",
+            "findingKind": "RISK_SIGNAL",
+            "canonicalSeverity": "MEDIUM",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "docs-archive/resize_logo.py",
+            "startLine": 29,
+            "startColumn": 9,
+            "endLine": 29,
+            "endColumn": 37,
+            "detectorIds": [
+              "ai-multimodal-input-python"
+            ],
+            "message": "User-provided image/file sent to AI model - validate and sanitize multimodal inputs.",
+            "evidenceHash": "3b01ca48c1ce7ab1",
+            "remediationClass": "VALIDATE_MULTIMODAL_INPUTS",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "docs-archive/resize_logo.py"
+        ],
+        "limitations": []
+      },
+      {
+        "concernId": "concern-00a1fauj",
+        "securityCheckId": "SC-MISSING-MAX-TOKENS",
+        "findingKind": "CONTROL_GAP",
+        "canonicalSeverity": "INFO",
+        "defaultDisposition": "REVIEW",
+        "title": "Missing max_tokens Argument",
+        "remediationClass": "ADD_MAX_TOKENS_ARGUMENT",
+        "instanceCount": 13,
+        "affectedFileCount": 11,
+        "affectedDetectorCount": 1,
+        "affectedDetectors": [
+          "missing-max-tokens-js"
+        ],
+        "representativeFindings": [
+          {
+            "securityCheckId": "SC-MISSING-MAX-TOKENS",
+            "canonicalName": "Missing max_tokens Argument",
+            "findingKind": "CONTROL_GAP",
+            "canonicalSeverity": "INFO",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateRestaurantDemo.ts",
+            "startLine": 134,
+            "startColumn": 30,
+            "endLine": 139,
+            "endColumn": 5,
+            "detectorIds": [
+              "missing-max-tokens-js"
+            ],
+            "message": "No max_tokens limit specified - add max_tokens parameter to prevent cost overruns.",
+            "evidenceHash": "007726ad26d06a4a",
+            "remediationClass": "ADD_MAX_TOKENS_ARGUMENT",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-MISSING-MAX-TOKENS",
+            "canonicalName": "Missing max_tokens Argument",
+            "findingKind": "CONTROL_GAP",
+            "canonicalSeverity": "INFO",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "ai-demo-call/scripts/generateRestaurantDemo.ts",
+            "startLine": 152,
+            "startColumn": 24,
+            "endLine": 157,
+            "endColumn": 7,
+            "detectorIds": [
+              "missing-max-tokens-js"
+            ],
+            "message": "No max_tokens limit specified - add max_tokens parameter to prevent cost overruns.",
+            "evidenceHash": "8749ace4ee365709",
+            "remediationClass": "ADD_MAX_TOKENS_ARGUMENT",
+            "scope": "PRODUCTION"
+          },
+          {
+            "securityCheckId": "SC-MISSING-MAX-TOKENS",
+            "canonicalName": "Missing max_tokens Argument",
+            "findingKind": "CONTROL_GAP",
+            "canonicalSeverity": "INFO",
+            "defaultDisposition": "REVIEW",
+            "relativePath": "frontend/app/api/ai-assistant/route.ts",
+            "startLine": 209,
+            "startColumn": 30,
+            "endLine": 225,
+            "endColumn": 7,
+            "detectorIds": [
+              "missing-max-tokens-js"
+            ],
+            "message": "No max_tokens limit specified - add max_tokens parameter to prevent cost overruns.",
+            "evidenceHash": "33a1b6461b7fefbf",
+            "remediationClass": "ADD_MAX_TOKENS_ARGUMENT",
+            "scope": "PRODUCTION"
+          }
+        ],
+        "representativePaths": [
+          "ai-demo-call/scripts/generateRestaurantDemo.ts",
+          "frontend/Private/alertstream-engine/src/services/smsService.js",
+          "frontend/app/api/ai-assistant/route.ts",
+          "frontend/app/api/claim/send-otp/route.ts",
+          "frontend/app/api/notifications/sms/route.ts"
+        ],
+        "limitations": []
+      }
+    ],
+    "responseBytes": 44375
+  },
+  "partialCause": {
+    "timeout": false,
+    "parseErrors": 103,
+    "manifestMismatch": false,
+    "completenessReasons": [
+      "103 parser error(s) occurred during scanning."
+    ],
+    "analysis": "103 parser error(s) — some files could not be parsed"
+  },
+  "distribution": {
+    "bySecurityCheck": {
+      "SC-API-KEY-IN-LOGS": 3,
+      "SC-MISSING-DATA-MINIMIZATION": 1,
+      "SC-MISSING-MAX-TOKENS": 3,
+      "SC-AI-INVOCATION-ANTHROPIC-SDK": 3,
+      "SC-AI-INVOCATION-HUGGINGFACE": 1,
+      "SC-AI-INVOCATION-OPENAI-SDK": 3,
+      "SC-AI-MULTIMODAL-INPUT": 1,
+      "SC-AI-RAG-POISONING": 3,
+      "SC-API-KEY-IN-ERROR-MESSAGES": 2,
+      "SC-AI-FUNCTION-CALLING": 1,
+      "SC-AI-INVOCATION-GENERIC-REST": 4,
+      "SC-AI-INVOCATION-OPENAI-REST": 5
+    },
+    "byDetector": {
+      "api-key-in-logs-js": 3,
+      "missing-data-minimization-js": 1,
+      "missing-max-tokens-js": 3,
+      "ai-prompt-injection-anthropic": 3,
+      "ai-prompt-injection-huggingface": 1,
+      "ai-prompt-injection-openai-js": 3,
+      "ai-multimodal-input-python": 1,
+      "ai-rag-poisoning": 3,
+      "api-key-in-error-js": 2,
+      "ai-function-calling-python": 1,
+      "ai-rest-generic": 4,
+      "ai-rest-openai-python": 1,
+      "ai-rest-openai-js": 4
+    },
+    "bySeverity": {
+      "MEDIUM": 16,
+      "INFO": 14
+    },
+    "byDisposition": {
+      "REVIEW": 20,
+      "INFORMATIONAL": 10
+    },
+    "byFindingKind": {
+      "VULNERABILITY": 3,
+      "CONTROL_GAP": 4,
+      "RISK_SIGNAL": 13,
+      "PRESENCE": 10
+    },
+    "byDirectory": {
+      "ai-demo-call/scripts": 8,
+      "frontend/hooks": 1,
+      "frontend/app": 3,
+      "demand-engine/services": 2,
+      "demand-engine/utils": 1,
+      "ai-demo-call/lib": 5,
+      "docs-archive/resize_logo.py": 1,
+      "hvac_agent/app": 3,
+      "demand-engine/scrapers": 2,
+      "frontend/lib": 4
+    },
+    "topChecks": [
+      {
+        "checkId": "SC-AI-INVOCATION-OPENAI-REST",
+        "count": 5,
+        "share": 0.16666666666666666
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-GENERIC-REST",
+        "count": 4,
+        "share": 0.13333333333333333
+      },
+      {
+        "checkId": "SC-API-KEY-IN-LOGS",
+        "count": 3,
+        "share": 0.1
+      },
+      {
+        "checkId": "SC-MISSING-MAX-TOKENS",
+        "count": 3,
+        "share": 0.1
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+        "count": 3,
+        "share": 0.1
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-OPENAI-SDK",
+        "count": 3,
+        "share": 0.1
+      },
+      {
+        "checkId": "SC-AI-RAG-POISONING",
+        "count": 3,
+        "share": 0.1
+      },
+      {
+        "checkId": "SC-API-KEY-IN-ERROR-MESSAGES",
+        "count": 2,
+        "share": 0.06666666666666667
+      },
+      {
+        "checkId": "SC-MISSING-DATA-MINIMIZATION",
+        "count": 1,
+        "share": 0.03333333333333333
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-HUGGINGFACE",
+        "count": 1,
+        "share": 0.03333333333333333
+      },
+      {
+        "checkId": "SC-AI-MULTIMODAL-INPUT",
+        "count": 1,
+        "share": 0.03333333333333333
+      },
+      {
+        "checkId": "SC-AI-FUNCTION-CALLING",
+        "count": 1,
+        "share": 0.03333333333333333
+      }
+    ],
+    "top5Share": 0.6,
+    "top10Share": 0.9333333333333333,
+    "maxInstancesOneCheck": 5,
+    "medianInstancesPerCheck": 3,
+    "uniqueSecurityChecks": 12,
+    "uniqueDetectors": 13,
+    "affectedFiles": 22
+  },
+  "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+  "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+  "semgrepVersion": "1.173.0"
+}

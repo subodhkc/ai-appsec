@@ -1,0 +1,56 @@
+{
+  "phase": "4C-A3",
+  "artifact": "RC6-FINAL-FIXTURE-QUALIFICATION",
+  "generatedAt": "2026-08-20T02:40:00Z",
+  "rulepackVersion": "0.1.0-rc.6.1-public-core",
+  "rulepackSHA256": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92",
+  "manifestSHA256": "sha256:c0de12875c92b85343a186bd1755ddb5fdf5edb18cbf0364aeac2c68017de163",
+  "changedDetectors": [
+    {
+      "detectorId": "api-key-in-error-js",
+      "revision": "rc.6.1",
+      "change": "Added camelCase variants (privatekey, accesskey) to metavariable-regex",
+      "reason": "privateKey and accessKey were INTENDED_POSITIVE but not detected because regex only had private_key/access_key with underscores"
+    },
+    {
+      "detectorId": "api-key-in-error-python",
+      "revision": "rc.6.1",
+      "change": "Same regex update as JS for consistency",
+      "reason": "Python code can also use camelCase variable names"
+    }
+  ],
+  "jsPositiveClassification": {
+    "totalCases": 12,
+    "intendedPositive": 12,
+    "intendedNegative": 0,
+    "outOfScope": 0,
+    "detected": 12,
+    "result": "PASS — 100% intended positive detection"
+  },
+  "jsNegativeClassification": {
+    "totalCases": 4,
+    "intendedNegative": 4,
+    "detected": 0,
+    "result": "PASS — 0 intended negative detection"
+  },
+  "pythonPositiveClassification": {
+    "totalCases": 12,
+    "intendedPositive": 12,
+    "intendedNegative": 0,
+    "outOfScope": 0,
+    "detected": 12,
+    "result": "PASS — 100% intended positive detection"
+  },
+  "pythonNegativeClassification": {
+    "totalCases": 4,
+    "intendedNegative": 4,
+    "detected": 0,
+    "result": "PASS — 0 intended negative detection"
+  },
+  "fixtureTestSuite": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0
+  },
+  "conclusion": "PASS — 100% intended positive detection, 0 intended negative detection for both api-key-in-error-js and api-key-in-error-python"
+}

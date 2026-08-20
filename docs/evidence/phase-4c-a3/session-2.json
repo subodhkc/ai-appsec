@@ -1,0 +1,42 @@
+{
+  "session": 2,
+  "timestamp": "2026-08-20T02:58:21.962Z",
+  "pid": 373320,
+  "durationMs": 67496,
+  "scanId": "scan-1787194634468-a6vb3c",
+  "verdict": "REVIEW",
+  "completeness": "PARTIAL",
+  "rawEngineMatches": 898,
+  "canonicalFindingInstances": 898,
+  "actionableFindingInstances": 833,
+  "observationInstances": 54,
+  "concernFamiliesFound": 13,
+  "filesAnalyzed": 2473,
+  "filesSkippedByEngine": 101,
+  "receipt": {
+    "findingSetDigest": "sha256:919f64a49bfa38552f1a7cb55ed8c543a3eafa804fe799c688b3e407fb30fcb4",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "targetedFileSetDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "analyzedFileSetDigest": "sha256:63edbf50c8d9f96f3c6399bb6ef1d9dcddfdf77e15493a584597f2c0879a80d5",
+    "intentionallyExcludedFileSetDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parseFailureFileSetDigest": "sha256:f51cde20b1b24c4b62fa1d253f4b02a0ab59713817e8b974a950fd7537f55040",
+    "unsupportedFileSetDigest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "coverageDigest": "sha256:373c015c021ccfe762e97d5a676bd9f8dee40d6370ca3b331dc5a82631d10355",
+    "evaluatedSecurityCheckSetDigest": "sha256:6b1bc822e6f8e5750e3806963b74d35d4c58d69a1eb73511f44872834de04ae7",
+    "evaluatedDetectorSetDigest": "sha256:77a6b7477dcff1826265f2e3aa3c1c209eb0700ee42c5568ddf84c345e83a941",
+    "semanticReceiptDigest": "sha256:9fcfb748e38ccb6ef5303b6783e38e30c5604f32fc5ca6f6e1254b1bdb617400",
+    "receiptDocumentDigest": "sha256:9a1e2e51ebc8b585f566027545a878681b5ae1499b9ce63fee127bbcdddefeca",
+    "scopeMode": "PRODUCTION",
+    "completeness": "PARTIAL",
+    "verdict": "REVIEW"
+  },
+  "evidenceEnvelope": {
+    "schemaVersion": "0.1.0",
+    "producerId": "HAIEC Static AI Security",
+    "evidenceDigest": "sha256:9fcfb748e38ccb6ef5303b6783e38e30c5604f32fc5ca6f6e1254b1bdb617400",
+    "semanticReceiptDigest": "sha256:9fcfb748e38ccb6ef5303b6783e38e30c5604f32fc5ca6f6e1254b1bdb617400"
+  },
+  "rulepackDigest": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92",
+  "manifestDigest": "sha256:c0de12875c92b85343a186bd1755ddb5fdf5edb18cbf0364aeac2c68017de163",
+  "semgrepVersion": "1.173.0"
+}

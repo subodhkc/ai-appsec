@@ -1,0 +1,66 @@
+# HAIEC Synthetic Test Rulepack — TEST ONLY
+#
+# This rulepack contains NO proprietary HAIEC production rule bodies.
+# It is used solely to exercise the scan_ai_security plumbing in tests/CI.
+#
+# TEST ONLY — NOT HAIEC PRODUCTION SECURITY COVERAGE.
+#
+# It exercises: PRESENCE, RISK_SIGNAL, CONTROL_GAP, VULNERABILITY
+# and normalization behavior.
+
+rules:
+  # PRESENCE: Detects import of a hypothetical AI SDK
+  - id: test-ai-sdk-presence
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: import testai
+      - pattern: from testai import ...
+      - pattern: require('testai')
+    message: "Test AI SDK detected (synthetic test rule — not production coverage)"
+    severity: INFO
+    metadata:
+      category: presence
+      cwe: "CWE-000"
+      rule_id: TEST-1
+
+  # RISK_SIGNAL: Detects missing max_tokens in test AI calls
+  - id: test-missing-max-tokens
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: testai.complete(...)
+      - pattern: testai.generate(...)
+    message: "Test AI call without max_tokens (synthetic test rule — not production coverage)"
+    severity: WARNING
+    metadata:
+      category: risk_signal
+      cwe: "CWE-400"
+      rule_id: TEST-2
+
+  # CONTROL_GAP: Detects missing error handling around test AI calls
+  - id: test-missing-error-handling
+    languages: [python]
+    pattern-either:
+      - pattern: testai.complete(...)
+    message: "Test AI call without error handling (synthetic test rule — not production coverage)"
+    severity: WARNING
+    metadata:
+      category: control_gap
+      cwe: "CWE-755"
+      rule_id: TEST-3
+
+  # VULNERABILITY: Detects AI output to eval (taint mode)
+  - id: test-ai-output-to-eval
+    languages: [python]
+    mode: taint
+    pattern-sources:
+      - pattern: testai.complete(...)
+      - pattern: testai.generate(...)
+    pattern-sinks:
+      - pattern: eval(...)
+      - pattern: exec(...)
+    message: "Test AI output to eval/exec (synthetic test rule — not production coverage)"
+    severity: ERROR
+    metadata:
+      category: vulnerability
+      cwe: "CWE-94"
+      rule_id: TEST-4

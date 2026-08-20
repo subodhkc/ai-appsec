@@ -1,0 +1,78 @@
+{
+  "phase": "4C-A2",
+  "artifact": "phase-4c-a2-evidence-index",
+  "generatedAt": "2026-08-20T02:28:06.318Z",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.11.1",
+    "semgrep": "1.173.0",
+    "target": "Kestrel 0f131ea63 (immutable worktree)"
+  },
+  "artifacts": [
+    {
+      "file": "cross-session-1.json",
+      "sizeBytes": 8628,
+      "sha256": "sha256:045125fb6edee2aee9a0af9f0dce3630b2e617405a5000982e7855fdd8395da5"
+    },
+    {
+      "file": "cross-session-2.json",
+      "sizeBytes": 8627,
+      "sha256": "sha256:6581e2f174bed61d733f505e95feb839221a7dedec283fe4fe55d60b76ed5bf4"
+    },
+    {
+      "file": "cross-session-3.json",
+      "sizeBytes": 8627,
+      "sha256": "sha256:a0cbf858ef105d8ee22838dd712e8ce5bc23bf90770f8c3d356b7e351f94683d"
+    },
+    {
+      "file": "cross-session-reproducibility.json",
+      "sizeBytes": 6181,
+      "sha256": "sha256:79e489ee482d8406d7997ca02e6b2aefd459577e72e878e4eb5116d089662e0f"
+    },
+    {
+      "file": "direct-vs-tarball-comparison.json",
+      "sizeBytes": 1674,
+      "sha256": "sha256:9a462e3b02b0f71fb95d393a49073cbc4fe4ff1e4d6e50c7177125f0f8f1ad1d"
+    },
+    {
+      "file": "EVIDENCE-INDEX-DAG.md",
+      "sizeBytes": 1336,
+      "sha256": "sha256:8c7383dd2e45fbd7c7b1f3004b6666220acee1ec540052c51669d20382898651"
+    },
+    {
+      "file": "independent-process-session-1.json",
+      "sizeBytes": 8270,
+      "sha256": "sha256:8bc5dd55a07ce352a30cd2d4004a4ffc3319190a3f93ec4e29daa79192109b8d"
+    },
+    {
+      "file": "independent-process-session-2.json",
+      "sizeBytes": 8270,
+      "sha256": "sha256:0eafbc0b4f0f2b5812aa5ed4f53b0dc06283555b1fc6c29d7cb8ac46f051e184"
+    },
+    {
+      "file": "independent-process-session-3.json",
+      "sizeBytes": 8270,
+      "sha256": "sha256:21e32f3e40bc19ff8996f5b6a62628b858199779ab7987ef07eeeaa401edaf6d"
+    },
+    {
+      "file": "PROVENANCE-TERMINOLOGY-CORRECTION.md",
+      "sizeBytes": 2974,
+      "sha256": "sha256:8827ab8b845b755c48eb1d1aaa9df9c5b82b35b82c2803323d19115cc2a66f91"
+    },
+    {
+      "file": "RC6-CHANGED-RULE-FIXTURE-QUALIFICATION.json",
+      "sizeBytes": 2416,
+      "sha256": "sha256:326f58ec9ec86cef4b233661bcf5ca78886ba6754259c2ad1d6a31331ace3716"
+    },
+    {
+      "file": "RELEASE-CANDIDATE-MANIFEST.json",
+      "sizeBytes": 4090,
+      "sha256": "sha256:29855cbb3c9edbc4f69aae7ec19e7f081bc8f8bfeea7840b747b567a1a01dcd5"
+    },
+    {
+      "file": "REMOTE-CI-HANDOFF.md",
+      "sizeBytes": 2895,
+      "sha256": "sha256:33acb632ff3acd14b24d4822b1dd42cd4b5def65802890cd8dee7b3b79560708"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "toolName": "scan_ai_security",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "schemaVersion": { "type": "string" },
+      "scanId": { "type": "string" },
+      "verdict": { "enum": ["PASS", "REVIEW", "BLOCK", "ERROR"] },
+      "completeness": { "enum": ["COMPLETE", "PARTIAL", "UNSUPPORTED", "ERROR"] },
+      "completenessReasons": { "type": "array", "items": { "type": "string" } },
+      "summary": {
+        "type": "object",
+        "properties": {
+          "filesAnalyzed": { "type": "number" },
+          "filesWithFindings": { "type": "number" },
+          "filesSkippedByEngine": { "type": "number" },
+          "filesUnscannedDueToTimeout": { "type": "number" },
+          "findingsExcludedByReportingScope": { "type": "number" },
+          "actionableTotal": { "type": "number" },
+          "vulnerabilityTotal": { "type": "number" },
+          "controlGapTotal": { "type": "number" },
+          "riskSignalTotal": { "type": "number" },
+          "presenceTotal": { "type": "number" },
+          "blockTotal": { "type": "number" },
+          "reviewTotal": { "type": "number" },
+          "informationalTotal": { "type": "number" },
+          "rawFindingCount": { "type": "number" }
+        }
+      },
+      "actionableFindings": { "type": "array", "maxItems": 20 },
+      "observations": { "type": "array", "maxItems": 10 },
+      "limitations": { "type": "array", "items": { "type": "string" } },
+      "versions": {
+        "type": "object",
+        "properties": {
+          "scanner": { "type": "string" },
+          "scannerVersion": { "type": "string" },
+          "rulepack": { "type": "string" },
+          "rulepackVersion": { "type": "string" },
+          "rulepackDigest": { "type": "string" },
+          "manifest": { "type": "string" },
+          "manifestVersion": { "type": "string" },
+          "manifestDigest": { "type": "string" },
+          "semgrep": { "type": "string" },
+          "semgrepVersion": { "type": "string" }
+        }
+      },
+      "truncation": {
+        "type": "object",
+        "properties": {
+          "actionableReturned": { "type": "number" },
+          "actionableTotal": { "type": "number" },
+          "observationsReturned": { "type": "number" },
+          "observationsTotal": { "type": "number" },
+          "truncated": { "type": "boolean" }
+        }
+      },
+      "errors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": { "type": "string" },
+            "message": { "type": "string" },
+            "recoverable": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": true,
+    "openWorldHint": false
+  },
+  "maxActionableFindings": 20,
+  "maxObservations": 10,
+  "maxResponseBytes": 49152
+}

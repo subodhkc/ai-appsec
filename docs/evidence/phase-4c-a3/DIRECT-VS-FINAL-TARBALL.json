@@ -1,0 +1,48 @@
+{
+  "phase": "4C-A3",
+  "artifact": "DIRECT-VS-FINAL-TARBALL",
+  "generatedAt": "2026-08-20T03:09:33.570Z",
+  "direct": {
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "rawEngineMatches": 898,
+    "actionableFindingInstances": 833,
+    "findingSetDigest": "sha256:919f64a49bfa38552f1a7cb55ed8c543a3eafa804fe799c688b3e407fb30fcb4",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "analyzedFileSetDigest": "sha256:63edbf50c8d9f96f3c6399bb6ef1d9dcddfdf77e15493a584597f2c0879a80d5",
+    "parseFailureFileSetDigest": "sha256:f51cde20b1b24c4b62fa1d253f4b02a0ab59713817e8b974a950fd7537f55040",
+    "coverageDigest": "sha256:373c015c021ccfe762e97d5a676bd9f8dee40d6370ca3b331dc5a82631d10355",
+    "evaluatedSecurityCheckSetDigest": "sha256:6b1bc822e6f8e5750e3806963b74d35d4c58d69a1eb73511f44872834de04ae7",
+    "evaluatedDetectorSetDigest": "sha256:77a6b7477dcff1826265f2e3aa3c1c209eb0700ee42c5568ddf84c345e83a941",
+    "semanticReceiptDigest": "sha256:b34252c0abe5ad6ece054d003d75b2d3521d517227c3c242dd8575c421b7dfd4"
+  },
+  "tarball": {
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "rawEngineMatches": 898,
+    "actionableFindingInstances": 833,
+    "findingSetDigest": "sha256:919f64a49bfa38552f1a7cb55ed8c543a3eafa804fe799c688b3e407fb30fcb4",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "analyzedFileSetDigest": "sha256:63edbf50c8d9f96f3c6399bb6ef1d9dcddfdf77e15493a584597f2c0879a80d5",
+    "parseFailureFileSetDigest": "sha256:f51cde20b1b24c4b62fa1d253f4b02a0ab59713817e8b974a950fd7537f55040",
+    "coverageDigest": "sha256:373c015c021ccfe762e97d5a676bd9f8dee40d6370ca3b331dc5a82631d10355",
+    "evaluatedSecurityCheckSetDigest": "sha256:6b1bc822e6f8e5750e3806963b74d35d4c58d69a1eb73511f44872834de04ae7",
+    "evaluatedDetectorSetDigest": "sha256:77a6b7477dcff1826265f2e3aa3c1c209eb0700ee42c5568ddf84c345e83a941",
+    "semanticReceiptDigest": "sha256:b34252c0abe5ad6ece054d003d75b2d3521d517227c3c242dd8575c421b7dfd4"
+  },
+  "comparison": {
+    "verdict": true,
+    "completeness": true,
+    "rawEngineMatches": true,
+    "actionableFindingInstances": true,
+    "findingSetDigest": true,
+    "concernFamilySetDigest": true,
+    "analyzedFileSetDigest": true,
+    "coverageDigest": true,
+    "evaluatedSecurityCheckSetDigest": true,
+    "evaluatedDetectorSetDigest": true,
+    "semanticReceiptDigest": true,
+    "EXACT_SEMANTIC_MATCH": true,
+    "semanticReceiptDigestMatch": true
+  }
+}

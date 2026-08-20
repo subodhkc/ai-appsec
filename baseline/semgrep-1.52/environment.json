@@ -1,0 +1,12 @@
+{
+  "os": "Linux (Docker container)",
+  "image": "returntocorp/semgrep:1.52.0",
+  "kernel": "Linux (Docker Desktop Linux engine)",
+  "python": "3.x (container default)",
+  "semgrep": "1.52.0",
+  "cpuArch": "x86_64",
+  "metrics": "off",
+  "semgrepSendMetrics": "off",
+  "registryRules": "none",
+  "config": "ai-security-rules-extracted.yaml (local file only)"
+}

@@ -1,0 +1,137 @@
+{
+  "target": "<KESTREL_EXPORT>",
+  "corpus": {
+    "commit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+    "exportMethod": "git worktree add --detach C:\\ks"
+  },
+  "tarball": {
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "rawEngineMatches": 898,
+    "detectorInstancesAccepted": 898,
+    "canonicalFindingInstances": 898,
+    "scopedFindingInstances": 887,
+    "actionableFindingInstances": 833,
+    "observationInstances": 54,
+    "concernFamiliesFound": 13,
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "evaluatedSecurityCheckSetDigest": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+    "evaluatedDetectorSetDigest": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifestDigest": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699",
+    "filesAnalyzed": 2473
+  },
+  "direct": {
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "rawEngineMatches": 898,
+    "detectorInstancesAccepted": 898,
+    "canonicalFindingInstances": 898,
+    "scopedFindingInstances": 887,
+    "actionableFindingInstances": 833,
+    "observationInstances": 54,
+    "concernFamiliesFound": 13,
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "evaluatedSecurityCheckSetDigest": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+    "evaluatedDetectorSetDigest": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifestDigest": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699",
+    "filesAnalyzed": 2473
+  },
+  "comparison": {
+    "allFieldsMatch": true,
+    "fieldResults": [
+      {
+        "name": "verdict",
+        "direct": "REVIEW",
+        "tarball": "REVIEW",
+        "match": true
+      },
+      {
+        "name": "completeness",
+        "direct": "PARTIAL",
+        "tarball": "PARTIAL",
+        "match": true
+      },
+      {
+        "name": "rawEngineMatches",
+        "direct": 898,
+        "tarball": 898,
+        "match": true
+      },
+      {
+        "name": "detectorInstancesAccepted",
+        "direct": 898,
+        "tarball": 898,
+        "match": true
+      },
+      {
+        "name": "canonicalFindingInstances",
+        "direct": 898,
+        "tarball": 898,
+        "match": true
+      },
+      {
+        "name": "scopedFindingInstances",
+        "direct": 887,
+        "tarball": 887,
+        "match": true
+      },
+      {
+        "name": "actionableFindingInstances",
+        "direct": 833,
+        "tarball": 833,
+        "match": true
+      },
+      {
+        "name": "observationInstances",
+        "direct": 54,
+        "tarball": 54,
+        "match": true
+      },
+      {
+        "name": "concernFamiliesFound",
+        "direct": 13,
+        "tarball": 13,
+        "match": true
+      },
+      {
+        "name": "concernFamilySetDigest",
+        "direct": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+        "tarball": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+        "match": true
+      },
+      {
+        "name": "evaluatedSecurityCheckSetDigest",
+        "direct": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+        "tarball": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+        "match": true
+      },
+      {
+        "name": "evaluatedDetectorSetDigest",
+        "direct": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+        "tarball": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+        "match": true
+      },
+      {
+        "name": "rulepackDigest",
+        "direct": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+        "tarball": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+        "match": true
+      },
+      {
+        "name": "manifestDigest",
+        "direct": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699",
+        "tarball": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699",
+        "match": true
+      },
+      {
+        "name": "filesAnalyzed",
+        "direct": 2473,
+        "tarball": 2473,
+        "match": true
+      }
+    ]
+  },
+  "conclusion": "EXACT_MATCH — direct scanner and actual installed npm tarball produce identical semantic output"
+}

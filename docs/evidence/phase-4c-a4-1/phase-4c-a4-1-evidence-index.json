@@ -1,0 +1,62 @@
+{
+  "phase": "4C-A4.1",
+  "artifact": "phase-4c-a4-1-evidence-index",
+  "generatedAt": "2026-08-20T05:18:28.443Z",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.11.1",
+    "semgrep": "1.173.0"
+  },
+  "artifacts": [
+    {
+      "file": "complete-session-1.json",
+      "sizeBytes": 2503,
+      "sha256": "sha256:c785cdbd378e88cc1afd054139c8e85b30f89ebced523d1a6cd0741e67456e31"
+    },
+    {
+      "file": "complete-session-2.json",
+      "sizeBytes": 2503,
+      "sha256": "sha256:ed488fef003ef46987dd0f506104185b7beaee7179ff9deb3f10a616e816d0a5"
+    },
+    {
+      "file": "complete-session-3.json",
+      "sizeBytes": 2503,
+      "sha256": "sha256:a6605e20b34f59c727be1a47048ffacfcd9f5a99ec093173f61ef478fb7799c3"
+    },
+    {
+      "file": "DIRECT-VS-FINAL-TARBALL.json",
+      "sizeBytes": 3199,
+      "sha256": "sha256:76ab4f13d0e6994c9d410bc412fc2bd91b2fb130ccbb7d036ab5248e4f637120"
+    },
+    {
+      "file": "HAIEC-COVERAGE-CONTRACT-V0.1.1.md",
+      "sizeBytes": 4847,
+      "sha256": "sha256:3848518f68eeddcf73d344ee56da692c65837d4db2265f20232fa48d99483952"
+    },
+    {
+      "file": "kestrel-session-1.json",
+      "sizeBytes": 2294,
+      "sha256": "sha256:e98102aa6c6662f0ff4dfea4b6890d9fd5a2e6136b9e63b6a245f40c0dd64e15"
+    },
+    {
+      "file": "kestrel-session-2.json",
+      "sizeBytes": 2293,
+      "sha256": "sha256:5a4a615c4bb99cf486bc09e6cb666c57f8b07b04749e0c3150664399812a3648"
+    },
+    {
+      "file": "kestrel-session-3.json",
+      "sizeBytes": 2293,
+      "sha256": "sha256:6037a9f3bb191cb0cf4d021a1bfce174be74ef61fbffcb206ea77d330958ba43"
+    },
+    {
+      "file": "RELEASE-CANDIDATE-MANIFEST.json",
+      "sizeBytes": 2921,
+      "sha256": "sha256:b19b2b5fd024160bac8a6060d305dd06d7f90b2108d6335ed21db086cb7c3a0a"
+    },
+    {
+      "file": "SEMGREP-PATH-SEMANTICS-QUALIFICATION.json",
+      "sizeBytes": 3415,
+      "sha256": "sha256:2b8caec274be55a5da144774aac5cf4cfd34f4b76167f6a98f87a96286823f17"
+    }
+  ]
+}

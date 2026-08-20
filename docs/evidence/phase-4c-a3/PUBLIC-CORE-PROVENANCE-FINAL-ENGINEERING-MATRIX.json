@@ -1,0 +1,39 @@
+{
+  "phase": "4C-A3",
+  "artifact": "PUBLIC-CORE-PROVENANCE-FINAL-ENGINEERING-MATRIX",
+  "generatedAt": "2026-08-20T03:10:00Z",
+  "evidenceSources": [
+    "Phase 2.5 — Git history: all detectors authored by Subodh (subodhkc, subodh@haiec.com), first commit 2026-01-04, latest 2026-08-01",
+    "Phase 2.5 — External similarity: 2228 external rules compared, 0 strong/exact matches, 3 generic similarity (expected for common security patterns), 118 no meaningful match",
+    "Phase 2.5 — Classification: STRONG_HAIEC_ORIGIN_EVIDENCE for all 121 detectors (now 122 after rc.6 split)"
+  ],
+  "distribution": {
+    "originEvidence": {
+      "STRONG": 122,
+      "MODERATE": 0,
+      "INCOMPLETE": 0
+    },
+    "licenseDisposition": {
+      "HAIEC_CAN_LICENSE": 122,
+      "ATTRIBUTION_REQUIRED": 0,
+      "REVIEW_REQUIRED": 0
+    },
+    "finalLegalDisposition": {
+      "PENDING_HUMAN_REVIEW": 122,
+      "APPROVED": 0,
+      "BLOCKED": 0
+    }
+  },
+  "rationale": {
+    "originEvidence_STRONG": "Git authorship records show all detectors were authored by Subodh. External similarity check against 2228 rules found 0 strong/exact matches. This constitutes STRONG evidence of HAIEC origin.",
+    "licenseDisposition_HAIEC_CAN_LICENSE": "No third-party copying found. All detectors are HAIEC-authored. HAIEC can license under the final package license.",
+    "finalLegalDisposition_PENDING_HUMAN_REVIEW": "Human/legal review remains a required gate before publication. STRONG origin evidence does NOT eliminate the need for human/legal approval. PENDING_HUMAN_REVIEW is compatible with STRONG origin evidence."
+  },
+  "importantClarification": "PENDING_HUMAN_REVIEW does NOT require originEvidence to be INCOMPLETE. A detector can have STRONG origin evidence AND still require human/legal review. The previous A2 run incorrectly set originEvidence=INCOMPLETE for all detectors, which discarded valid Phase 2.5 evidence. This A3 run restores the evidence-backed STRONG classification while keeping finalLegalDisposition=PENDING_HUMAN_REVIEW.",
+  "whatWeDoNOTClaim": [
+    "We do NOT claim human/legal review is complete",
+    "We do NOT claim PROVEN_HAIEC_ORIGINAL (that would require searching all private repos worldwide)",
+    "We do NOT infer legal authorship from similarity search alone (git history is the primary evidence)"
+  ],
+  "manifestDigest": "sha256:205ea6b336953a9cefdfe16800d8ad117ddbc4ab77495a8e51528b67d3fae85f"
+}

@@ -1,0 +1,2363 @@
+
+rules:
+  # R1: Prompt Injection - OpenAI Python (Enhanced patterns)
+  - id: ai-prompt-injection-openai
+    languages: [python]
+    pattern-either:
+      # Direct module calls
+      - pattern: openai.chat.completions.create(...)
+      - pattern: openai.ChatCompletion.create(...)
+      # Client instance calls
+      - pattern: $CLIENT.chat.completions.create(...)
+      - pattern: $CLIENT.completions.create(...)
+      # Assignment patterns (most common)
+      - pattern: $VAR = openai.ChatCompletion.create(...)
+      - pattern: $VAR = openai.chat.completions.create(...)
+      - pattern: $VAR = $CLIENT.chat.completions.create(...)
+      # Patterns with model parameter explicitly
+      - pattern: |
+          openai.ChatCompletion.create(
+            model=...,
+            ...
+          )
+      - pattern: |
+          $CLIENT.chat.completions.create(
+            model=...,
+            ...
+          )
+    message: "OpenAI API call detected - review for prompt injection vulnerabilities"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP", "GDPR", "HIPAA"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+      owasp_top_10: ["A03:2021-Injection"]
+
+  # R1-import: Detect OpenAI import (evidence of AI usage)
+  - id: ai-openai-import
+    languages: [python]
+    pattern-either:
+      - pattern: import openai
+      - pattern: from openai import $X
+    message: "OpenAI library imported - AI functionality detected"
+    severity: INFO
+    metadata:
+      category: ai_detection
+      rule_id: R1-import
+
+  # R1-anthropic-import: Detect Anthropic import
+  - id: ai-anthropic-import
+    languages: [python]
+    pattern-either:
+      - pattern: import anthropic
+      - pattern: from anthropic import $X
+    message: "Anthropic library imported - AI functionality detected"
+    severity: INFO
+    metadata:
+      category: ai_detection
+      rule_id: R1-anthropic-import
+
+  # R1b: Prompt Injection - OpenAI JavaScript
+  - id: ai-prompt-injection-openai-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: openai.chat.completions.create(...)
+      - pattern: $CLIENT.chat.completions.create(...)
+      - pattern: new OpenAI(...).chat.completions.create(...)
+    message: "User input may flow to AI prompt - review for prompt injection"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+
+  # R1c: Prompt Injection - Anthropic (Enhanced patterns)
+  - id: ai-prompt-injection-anthropic
+    languages: [python, javascript, typescript]
+    pattern-either:
+      # Direct calls
+      - pattern: anthropic.messages.create(...)
+      - pattern: $CLIENT.messages.create(...)
+      - pattern: Anthropic(...).messages.create(...)
+      # Assignment patterns
+      - pattern: $VAR = $CLIENT.messages.create(...)
+      - pattern: $VAR = anthropic.messages.create(...)
+    message: "Anthropic Claude API call detected - review for prompt injection"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+
+  # R1d: Prompt Injection - LangChain (Enhanced patterns)
+  - id: ai-prompt-injection-langchain
+    languages: [python, javascript, typescript]
+    pattern-either:
+      # Chain patterns - LangChain-specific class names
+      - pattern: LLMChain(...).run(...)
+      - pattern: LLMChain(...).invoke(...)
+      - pattern: ConversationChain(...).run(...)
+      - pattern: RetrievalQA.from_chain_type(...)
+      - pattern: ChatOpenAI(...)
+      - pattern: ChatAnthropic(...)
+      # LLM predict (LangChain-specific)
+      - pattern: $LLM.predict(...)
+      # LLMChain creation
+      - pattern: LLMChain(llm=..., ...)
+      - pattern: $VAR = LLMChain(...)
+      # Agent patterns
+      - pattern: AgentExecutor(...)
+      - pattern: initialize_agent(...)
+      # JS/TS LangChain patterns
+      - pattern: new ChatOpenAI(...)
+      - pattern: new ChatAnthropic(...)
+    message: "LangChain usage detected - review for prompt injection"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+
+  # R1d-langchain-import: Detect LangChain import
+  - id: ai-langchain-import
+    languages: [python]
+    pattern-either:
+      - pattern: from langchain import $X
+      - pattern: from langchain.llms import $X
+      - pattern: from langchain.chains import $X
+      - pattern: from langchain.agents import $X
+    message: "LangChain library imported - AI functionality detected"
+    severity: INFO
+    metadata:
+      category: ai_detection
+      rule_id: R1-langchain-import
+
+  # R1e: Prompt Injection - LlamaIndex
+  - id: ai-prompt-injection-llamaindex
+    languages: [python]
+    pattern-either:
+      - pattern: VectorStoreIndex.from_documents(...).as_query_engine().query(...)
+      - pattern: $INDEX.as_query_engine().query(...)
+      - pattern: $INDEX.as_query_engine(...)
+      - pattern: $INDEX.as_retriever(...)
+      - pattern: GPTVectorStoreIndex.from_documents(...)
+      - pattern: ServiceContext.from_defaults(...)
+      - pattern: StorageContext.from_defaults(...)
+    message: "User input flows through LlamaIndex - review for prompt injection"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+
+  # R1f: Prompt Injection - Hugging Face
+  - id: ai-prompt-injection-huggingface
+    languages: [python]
+    pattern-either:
+      - pattern: pipeline(...)(...)
+      - pattern: $MODEL.generate(...)
+      - pattern: AutoModelForCausalLM.from_pretrained(...).generate(...)
+    message: "User input flows to Hugging Face model - review for prompt injection"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+
+  # R1g: Prompt Injection - Google AI
+  - id: ai-prompt-injection-google
+    languages: [python]
+    pattern-either:
+      - pattern: $MODEL.generate_content(...)
+      - pattern: genai.GenerativeModel(...).generate_content(...)
+    message: "User input flows to Google AI - review for prompt injection"
+    severity: WARNING
+    metadata:
+      category: prompt_injection
+      cwe: "CWE-77"
+      rule_id: R1
+
+  # R2: Tool Abuse - Dangerous tools (Enhanced)
+  - id: ai-tool-abuse-dangerous
+    languages: [python]
+    pattern-either:
+      - pattern: PythonREPLTool(...)
+      - pattern: ShellTool(...)
+      - pattern: BashProcess(...)
+      # LangChain Tool with shell/command execution
+      - pattern: |
+          Tool(
+            ...,
+            func=lambda $X: os.popen($X).read(),
+            ...
+          )
+      - pattern: |
+          Tool(
+            name="Shell",
+            ...
+          )
+    message: "Dangerous tool that could allow code execution"
+    severity: ERROR
+    metadata:
+      category: tool_abuse
+      cwe: "CWE-94"
+      rule_id: R2
+
+  # R2b: Tool Abuse - AI Output flows to code/shell execution (Taint Tracking)
+  - id: ai-tool-abuse-output-exec
+    languages: [python]
+    mode: taint
+    pattern-sources:
+      - pattern: $LLM.invoke(...)
+      - pattern: $LLM.predict(...)
+      - pattern: openai.chat.completions.create(...)
+      - pattern: $CLIENT.chat.completions.create(...)
+      - pattern: anthropic.messages.create(...)
+      - pattern: $CLIENT.messages.create(...)
+      - pattern: $CHAIN.run(...)
+      - pattern: $CHAIN.invoke(...)
+    pattern-sinks:
+      - pattern: eval(...)
+      - pattern: exec(...)
+      - pattern: os.system(...)
+      - pattern: os.popen(...)
+    message: "AI output flows to code/shell execution - CRITICAL command injection risk. Sanitize AI output before execution."
+    severity: ERROR
+    metadata:
+      category: tool_abuse
+      cwe: "CWE-94"
+      rule_id: R2
+
+  # R2c: Dangerous lambda with shell execution
+  - id: ai-dangerous-lambda-shell
+    languages: [python]
+    pattern-either:
+      - pattern: 'lambda $X: os.popen($X).read()'
+      - pattern: 'lambda $X: os.system($X)'
+      - pattern: 'lambda $X: subprocess.run($X, ...)'
+    message: "Lambda with shell execution - dangerous if used with AI agents"
+    severity: ERROR
+    metadata:
+      category: tool_abuse
+      cwe: "CWE-94"
+      rule_id: R2
+
+  # R3: RAG Poisoning - Vector stores
+  - id: ai-rag-poisoning
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: $VECTORSTORE.add_documents(...)
+      - pattern: $VECTORSTORE.add_texts(...)
+      - pattern: Chroma.from_documents(...)
+      - pattern: FAISS.from_documents(...)
+      - pattern: pinecone.$INDEX.upsert(...)
+      - pattern: $INDEX.upsert(...)
+      - pattern: $COLLECTION.add(...)
+    message: "Documents added to vector store - validate for RAG poisoning"
+    severity: WARNING
+    metadata:
+      category: rag_poisoning
+      cwe: "CWE-20"
+      rule_id: R3
+
+  # R4: Model Extraction
+  - id: ai-model-extraction
+    languages: [python]
+    pattern-either:
+      - pattern: torch.save($MODEL, ...)
+      - pattern: $MODEL.save_pretrained(...)
+      - pattern: joblib.dump($MODEL, ...)
+      - pattern: pickle.dump($MODEL, ...)
+    message: "Model weights potentially exposed - risk of model extraction"
+    severity: WARNING
+    metadata:
+      category: model_extraction
+      cwe: "CWE-200"
+      rule_id: R4
+
+  # R5: Hardcoded API Keys - Python (Enhanced patterns)
+  - id: hardcoded-api-key-python
+    languages: [python]
+    patterns:
+      - pattern-either:
+          - pattern-regex: '(openai\.api_key|OPENAI_API_KEY|api_key|API_KEY|SECRET_KEY|HARDCODED_KEY)\s*=\s*["'']sk-[A-Za-z0-9_-]{20,}["'']'
+      - pattern-not-regex: 'sk-(your|xxx|placeholder|example|test|demo|sample)'
+    message: "Hardcoded API key detected - use environment variables instead"
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-798"
+      rule_id: R5
+
+  - id: hardcoded-api-key-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'const\s+apiKey\s*=\s*["'']sk-[A-Za-z0-9-]+'
+      - pattern-regex: 'OPENAI_API_KEY\s*=\s*["'']sk-[A-Za-z0-9-]+'
+    message: "Hardcoded API key in JavaScript/TypeScript"
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+
+  # R6.8: Memory/RAG Injection
+  - id: ai-memory-injection
+    languages: [python]
+    pattern-either:
+      - pattern: Memory(...)
+      - pattern: ConversationSummaryMemory(...)
+      - pattern: $MEMORY.save_context(...)
+      - pattern: $MEMORY.load_memory_variables(...)
+    message: "AI memory system detected - review for memory poisoning attacks"
+    severity: WARNING
+    metadata:
+      category: rag_security
+      cwe: "CWE-20"
+      rule_id: R6.8
+
+  # R5.2: Hardcoded Anthropic API Keys - Python
+  - id: hardcoded-anthropic-api-key-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'api_key\s*=\s*["'']sk-ant-[A-Za-z0-9-]+'
+      - pattern: ANTHROPIC_API_KEY = "sk-ant-..."
+      - pattern-regex: "(sk-ant-[A-Za-z0-9-]{95})"
+    message: "Hardcoded Anthropic API key detected - use environment variables or secrets manager instead."
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-798"
+      rule_id: R5.2
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.6", "CC6.7"]
+      gdpr_controls: ["Art32"]
+      hipaa_controls: ["164.312(a)(2)(iv)"]
+      iso27001_controls: ["A.9.4.3", "A.10.1.1"]
+      owasp_categories: ["A02:2021-Cryptographic Failures"]
+
+  # R5.2: Hardcoded Anthropic API Keys - JavaScript
+  - id: hardcoded-anthropic-api-key-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'const\s+apiKey\s*=\s*["'']sk-ant-[A-Za-z0-9-]+'
+      - pattern: const ANTHROPIC_API_KEY = "sk-ant-..."
+      - pattern-regex: "(sk-ant-[A-Za-z0-9-]{95})"
+    message: "Hardcoded Anthropic API key detected - use environment variables or secrets manager instead."
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-798"
+      rule_id: R5.2
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.6", "CC6.7"]
+      gdpr_controls: ["Art32"]
+      hipaa_controls: ["164.312(a)(2)(iv)"]
+      iso27001_controls: ["A.9.4.3", "A.10.1.1"]
+      owasp_categories: ["A02:2021-Cryptographic Failures"]
+
+  # R5.3: API Keys in Logs - Python (rc.4: fixed cosmetic metavariable FP)
+  - id: api-key-in-logs-python
+    languages: [python]
+    patterns:
+      - pattern-either:
+          - pattern: logging.debug(..., $KEY, ...)
+          - pattern: logging.info(..., $KEY, ...)
+          - pattern: logger.debug(..., $KEY, ...)
+          - pattern: logger.info(..., $KEY, ...)
+          - pattern: print(..., $KEY, ...)
+      - metavariable-regex:
+          metavariable: $KEY
+          regex: "(?i).*(api_key|apikey|api-key|secret|token|password|passwd|credential|private_key|access_key|auth_token).*"
+    message: "API key or secret may be logged - remove sensitive data from logs immediately."
+    severity: WARNING
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-532"
+      rule_id: R5.3
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001"]
+      soc2_controls: ["CC6.6", "CC7.2"]
+      gdpr_controls: ["Art32"]
+      hipaa_controls: ["164.312(a)(1)"]
+      iso27001_controls: ["A.9.4.1"]
+
+  # R5.3: API Keys in Logs - JavaScript/TypeScript (rc.4: fixed cosmetic metavariable FP)
+  - id: api-key-in-logs-js
+    languages: [javascript, typescript]
+    patterns:
+      - pattern-either:
+          - pattern: console.log(..., $KEY, ...)
+          - pattern: console.debug(..., $KEY, ...)
+          - pattern: console.error(..., $KEY, ...)
+          - pattern: console.warn(..., $KEY, ...)
+      - metavariable-regex:
+          metavariable: $KEY
+          regex: "(?i).*(api_key|apikey|api-key|secret|token|password|passwd|credential|private_key|access_key|auth_token).*"
+    message: "API key or secret may be logged - remove sensitive data from logs immediately."
+    severity: WARNING
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-532"
+      rule_id: R5.3
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001"]
+      soc2_controls: ["CC6.6", "CC7.2"]
+      gdpr_controls: ["Art32"]
+      hipaa_controls: ["164.312(a)(1)"]
+      iso27001_controls: ["A.9.4.1"]
+
+  # R5.4: API Keys in Error Messages - Python
+  - id: api-key-in-error-python
+    languages: [python]
+    patterns:
+      - pattern-either:
+          - pattern: raise Exception(..., $API_KEY, ...)
+          - pattern: raise ValueError(..., $API_KEY, ...)
+      - metavariable-regex:
+          metavariable: $API_KEY
+          regex: "(?i).*(api_key|apikey|api-key|secret|token|password|passwd|credential|private_key|privatekey|access_key|accesskey|auth_token).*"
+    message: "API key may be exposed in error messages - sanitize error responses."
+    severity: WARNING
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-209"
+      rule_id: R5.4
+      compliance_frameworks: ["SOC2", "GDPR", "ISO27001"]
+      soc2_controls: ["CC6.6", "CC7.2"]
+      gdpr_controls: ["Art32"]
+      iso27001_controls: ["A.9.4.1"]
+
+  # R5.4: API Keys in Error Messages - JavaScript
+  - id: api-key-in-error-js
+    languages: [javascript, typescript]
+    patterns:
+      - pattern-either:
+          - pattern: throw new Error(..., $API_KEY, ...)
+          - pattern: throw new Error($API_KEY)
+      - metavariable-regex:
+          metavariable: $API_KEY
+          regex: "(?i).*(api_key|apikey|api-key|secret|token|password|passwd|credential|private_key|privatekey|access_key|accesskey|auth_token).*"
+    message: "API key may be exposed in error messages - sanitize error responses."
+    severity: WARNING
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-209"
+      rule_id: R5.4
+      compliance_frameworks: ["SOC2", "GDPR", "ISO27001"]
+      soc2_controls: ["CC6.6", "CC7.2"]
+      gdpr_controls: ["Art32"]
+      iso27001_controls: ["A.9.4.1"]
+
+  # R5.5: API Keys in URLs - Python
+  - id: api-key-in-url-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'f["''].*\?api_key=\{[^}]+\}.*["'']'
+    message: "API key in URL parameter - use Authorization header instead to prevent exposure in logs."
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-598"
+      rule_id: R5.5
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.6", "CC6.7"]
+      iso27001_controls: ["A.9.4.3"]
+      owasp_categories: ["A02:2021-Cryptographic Failures"]
+
+  # R5.5: API Keys in URLs - JavaScript
+  - id: api-key-in-url-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: '`[^`]*\?api_key=\$\{[^}]+\}[^`]*`'
+      - pattern: |
+          $URL = "...?api_key=" + $KEY
+    message: "API key in URL parameter - use Authorization header instead to prevent exposure in logs."
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-598"
+      rule_id: R5.5
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.6", "CC6.7"]
+      iso27001_controls: ["A.9.4.3"]
+      owasp_categories: ["A02:2021-Cryptographic Failures"]
+
+  # ============================================
+  # DATA LEAKAGE & PRIVACY (Category 7 - R7.1-R7.6)
+  # ============================================
+
+  # R7.1: PII in LLM Prompts (Taint Tracking)
+  - id: pii-in-llm-prompt
+    languages: [python, javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $USER.email
+      - pattern: $USER.ssn
+      - pattern: $USER.phone
+      - pattern: $USER.credit_card
+      - pattern: $CUSTOMER.email
+      - pattern: $CUSTOMER.ssn
+    pattern-sinks:
+      - pattern: openai.chat.completions.create(...)
+      - pattern: anthropic.messages.create(...)
+      - pattern: $LLM.invoke(...)
+      - pattern: $LLM.predict(...)
+    message: "PII detected flowing to LLM prompt - implement data anonymization before sending to external APIs."
+    severity: ERROR
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.1
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC6.6"]
+      gdpr_controls: ["Art5", "Art25", "Art32"]
+      hipaa_controls: ["164.502(a)", "164.514(a)"]
+      iso27001_controls: ["A.8.2.3", "A.18.1.4"]
+
+  # R7.2: Sensitive Database Fields in Prompts - Python
+  - id: sensitive-db-fields-in-prompt-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $PROMPT = f"...{$ROW['password']}..."
+      - pattern: |
+          $PROMPT = f"...{$USER.ssn}..."
+      - pattern: |
+          $PROMPT = f"...{$USER.password}..."
+    message: "Sensitive database field sent to LLM - mask or exclude sensitive data before processing."
+    severity: WARNING
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.2
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC6.6"]
+      gdpr_controls: ["Art5", "Art32"]
+      hipaa_controls: ["164.514(a)"]
+      iso27001_controls: ["A.8.2.3"]
+
+  # R7.2: Sensitive Database Fields in Prompts - JavaScript
+  - id: sensitive-db-fields-in-prompt-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $PROMPT = `...${$USER.password}...`
+      - pattern: |
+          $PROMPT = `...${$ROW.ssn}...`
+    message: "Sensitive database field sent to LLM - mask or exclude sensitive data before processing."
+    severity: WARNING
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.2
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC6.6"]
+      gdpr_controls: ["Art5", "Art32"]
+      hipaa_controls: ["164.514(a)"]
+      iso27001_controls: ["A.8.2.3"]
+
+  # R7.3: Missing Data Minimization - Python
+  - id: missing-data-minimization-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $PROMPT = f"...{json.dumps($USER.__dict__)}..."
+      - pattern: |
+          $PROMPT = f"...{$USER.__dict__}..."
+      - pattern: |
+          $LLM.invoke(..., json.dumps($OBJ), ...)
+    message: "Entire object sent to LLM - implement data minimization by including only necessary fields."
+    severity: INFO
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.3
+      compliance_frameworks: ["GDPR", "SOC2"]
+      soc2_controls: ["CC6.1"]
+      gdpr_controls: ["Art5"]
+
+  # R7.3: Missing Data Minimization - JavaScript
+  - id: missing-data-minimization-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $PROMPT = `...${JSON.stringify($USER)}...`
+    message: "Entire object sent to LLM - implement data minimization by including only necessary fields."
+    severity: INFO
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.3
+      compliance_frameworks: ["GDPR", "SOC2"]
+      soc2_controls: ["CC6.1"]
+      gdpr_controls: ["Art5"]
+
+  # R7.4: LLM Response Not Scanned for PII
+  - id: llm-response-pii-not-filtered
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $RESPONSE = $LLM.predict(...)
+          ...
+          $DB.save($RESPONSE)
+      - pattern: |
+          $RESPONSE = $LLM.invoke(...)
+          ...
+          return $RESPONSE
+      - pattern: |
+          $RESPONSE = openai.chat.completions.create(...)
+          ...
+          database.insert($RESPONSE)
+    message: "LLM response not scanned for PII before storage/display - implement response filtering."
+    severity: WARNING
+    metadata:
+      category: data_leakage
+      cwe: "CWE-200"
+      rule_id: R7.4
+      compliance_frameworks: ["GDPR", "HIPAA", "SOC2"]
+      soc2_controls: ["CC6.1"]
+      gdpr_controls: ["Art5", "Art32"]
+      hipaa_controls: ["164.514(a)"]
+
+  # R7.5: Training Data Leakage
+  - id: training-data-leakage
+    languages: [python]
+    pattern-either:
+      - pattern: $MODEL.fit($SENSITIVE_DATA)
+      - pattern: $TRAINER.train($CUSTOMER_DATA)
+      - pattern: fine_tune(..., training_data=$SENSITIVE, ...)
+    message: "Model trained on sensitive data without privacy protections - implement differential privacy or data anonymization."
+    severity: INFO
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.5
+      compliance_frameworks: ["GDPR", "SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1"]
+      gdpr_controls: ["Art5", "Art25"]
+      iso27001_controls: ["A.8.2.3"]
+
+  # R7.6: Embeddings Contain Sensitive Data (Taint Tracking)
+  - id: embeddings-sensitive-data
+    languages: [python, javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $USER.ssn
+      - pattern: $USER.email
+      - pattern: $CUSTOMER.credit_card
+      - pattern: $PATIENT.medical_record
+    pattern-sinks:
+      - pattern: $EMBEDDINGS.embed_documents(...)
+      - pattern: OpenAIEmbeddings().embed_query(...)
+      - pattern: $EMBEDDINGS.embed_query(...)
+    message: "Sensitive data in embeddings - anonymize data before creating embeddings to prevent information leakage."
+    severity: WARNING
+    metadata:
+      category: data_leakage
+      cwe: "CWE-359"
+      rule_id: R7.6
+      compliance_frameworks: ["GDPR", "HIPAA", "SOC2"]
+      soc2_controls: ["CC6.1", "CC6.6"]
+      gdpr_controls: ["Art5", "Art32"]
+      hipaa_controls: ["164.514(a)"]
+
+  # ============================================
+  # RAG & VECTOR STORE SECURITY (Category 8 - R8.1-R8.6)
+  # ============================================
+
+  # R8.1: Unvalidated Vector Store Operations
+  - id: unvalidated-vector-store
+    languages: [python]
+    pattern-either:
+      - pattern: $VECTORSTORE.add_documents(...)
+      - pattern: $CHROMA.add_texts(...)
+      - pattern: $PINECONE.upsert(...)
+      - pattern: $QDRANT.add(...)
+      - pattern: $WEAVIATE.add_data_object(...)
+    message: "Vector store write without validation - implement content validation and embedding verification."
+    severity: WARNING
+    metadata:
+      category: rag_security
+      cwe: "CWE-20"
+      rule_id: R8.1
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      owasp_categories: ["LLM03:2023-Training Data Poisoning"]
+
+  # R8.2: User-Controlled Embedding Source (Taint Tracking)
+  - id: user-controlled-embedding
+    languages: [python, javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $REQUEST.json()
+      - pattern: $REQUEST.form
+      - pattern: request.args.get(...)
+      - pattern: request.POST.get(...)
+    pattern-sinks:
+      - pattern: $VECTORSTORE.add_documents(...)
+      - pattern: $EMBEDDINGS.embed_documents(...)
+      - pattern: $VECTORSTORE.add_texts(...)
+    message: "User input directly embedded without validation - implement content filtering and sanitization."
+    severity: WARNING
+    metadata:
+      category: rag_security
+      cwe: "CWE-20"
+      rule_id: R8.2
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      owasp_categories: ["LLM03:2023-Training Data Poisoning"]
+
+  # R8.3: Missing Vector Store Authentication
+  - id: missing-vectorstore-auth
+    languages: [python]
+    pattern-either:
+      - pattern: Pinecone(api_key="", ...)
+      - pattern: Chroma(...)
+      - pattern: Qdrant(url="http://localhost", ...)
+      - pattern: Weaviate(url="http://localhost", ...)
+    message: "Vector store without authentication - implement proper access controls and API key management."
+    severity: INFO
+    metadata:
+      category: rag_security
+      cwe: "CWE-306"
+      rule_id: R8.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC6.2"]
+      iso27001_controls: ["A.9.2.1"]
+
+  # R8.4: Metadata Injection in RAG (Taint Tracking)
+  - id: rag-metadata-injection
+    languages: [python, javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $USER_INPUT
+      - pattern: request.json()
+      - pattern: $REQUEST.form
+    pattern-sinks:
+      - pattern: Document(..., metadata=$SINK)
+    message: "User input in document metadata - validate and sanitize metadata fields to prevent injection."
+    severity: INFO
+    metadata:
+      category: rag_security
+      cwe: "CWE-20"
+      rule_id: R8.4
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["LLM03:2023-Training Data Poisoning"]
+
+  # R8.5: Unrestricted Similarity Search
+  - id: unrestricted-similarity-search
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $VECTORSTORE.similarity_search($QUERY, k=...)
+      - pattern: |
+          $VECTORSTORE.similarity_search_with_score($QUERY)
+      - pattern: |
+          $VECTORSTORE.max_marginal_relevance_search($QUERY)
+    message: "Unrestricted similarity search - add rate limiting, authentication, and result filtering."
+    severity: INFO
+    metadata:
+      category: rag_security
+      cwe: "CWE-770"
+      rule_id: R8.5
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # R8.6: Missing Retrieved Context Validation (Taint Tracking)
+  - id: missing-retrieved-context-validation
+    languages: [python]
+    mode: taint
+    pattern-sources:
+      - pattern: $VECTORSTORE.similarity_search(...)
+      - pattern: $VECTORSTORE.similarity_search_with_score(...)
+      - pattern: $VECTORSTORE.max_marginal_relevance_search(...)
+    pattern-sinks:
+      - pattern: openai.chat.completions.create(...)
+      - pattern: $CLIENT.chat.completions.create(...)
+      - pattern: anthropic.messages.create(...)
+      - pattern: $LLM.invoke(...)
+      - pattern: $LLM.predict(...)
+    message: "Retrieved documents sent to LLM without validation - implement content verification and sanitization before passing to model."
+    severity: INFO
+    metadata:
+      category: rag_security
+      cwe: "CWE-20"
+      rule_id: R8.6
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["LLM03:2023-Training Data Poisoning"]
+
+  # ============================================
+  # CONFIGURATION & OPERATIONAL ISSUES (Category 9 - R9.1-R9.9)
+  # ============================================
+
+  # R9.1: Missing Rate Limiting on LLM Endpoint - Python
+  - id: missing-llm-rate-limit-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          @app.route(..., methods=[...])
+          def $FUNC(...):
+            ...
+            openai.chat.completions.create(...)
+    message: "LLM endpoint without rate limiting - implement rate limiting to prevent abuse and cost overruns."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-770"
+      rule_id: R9.1
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["A04:2021-Insecure Design"]
+
+  # R9.1: Missing Rate Limiting on LLM Endpoint - JavaScript
+  - id: missing-llm-rate-limit-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          app.post(..., async (...) => {
+            ...
+            openai.chat.completions.create(...)
+          })
+    message: "LLM endpoint without rate limiting - implement rate limiting to prevent abuse and cost overruns."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-770"
+      rule_id: R9.1
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["A04:2021-Insecure Design"]
+
+  # R9.2: Missing max_tokens Limit
+  - id: missing-max-tokens
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          openai.chat.completions.create(model=..., messages=...)
+      - pattern: |
+          anthropic.messages.create(model=..., messages=...)
+    message: "No max_tokens limit specified - add max_tokens parameter to prevent cost overruns."
+    severity: INFO
+    metadata:
+      category: operational
+      cwe: "CWE-770"
+      rule_id: R9.2
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # R9.2: Missing max_tokens Limit - JavaScript/TypeScript
+  - id: missing-max-tokens-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: openai.chat.completions.create({...})
+      - pattern: $CLIENT.messages.create({...})
+    message: "No max_tokens limit specified - add max_tokens parameter to prevent cost overruns."
+    severity: INFO
+    metadata:
+      category: operational
+      cwe: "CWE-770"
+      rule_id: R9.2
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # R9.3: Missing Cost Tracking
+  - id: missing-cost-tracking
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $RESPONSE = openai.chat.completions.create(...)
+          return $RESPONSE
+      - pattern: |
+          $RESPONSE = anthropic.messages.create(...)
+          return $RESPONSE
+    message: "No usage/cost tracking detected - implement usage monitoring for cost control and compliance."
+    severity: INFO
+    metadata:
+      category: operational
+      cwe: "CWE-778"
+      rule_id: R9.3
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+
+  # R9.3: Missing Cost Tracking - JavaScript/TypeScript
+  - id: missing-cost-tracking-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $RESPONSE = openai.chat.completions.create(...)
+          return $RESPONSE
+    message: "No usage/cost tracking detected - implement usage monitoring for cost control and compliance."
+    severity: INFO
+    metadata:
+      category: operational
+      cwe: "CWE-778"
+      rule_id: R9.3
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+
+  # R9.4: Missing Authentication on AI Endpoints - Python
+  - id: missing-ai-auth-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          @app.route(...)
+          def $FUNC(...):
+            ...
+            openai.chat.completions.create(...)
+    message: "AI endpoint without authentication - implement proper authentication and authorization."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-306"
+      rule_id: R9.4
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC6.2"]
+      iso27001_controls: ["A.9.2.1"]
+      owasp_categories: ["A01:2021-Broken Access Control"]
+
+  # R9.4: Missing Authentication on AI Endpoints - JavaScript
+  - id: missing-ai-auth-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          app.post(..., (...) => {
+            ...
+            openai.chat.completions.create(...)
+          })
+    message: "AI endpoint without authentication - implement authentication middleware to prevent unauthorized access."
+    severity: ERROR
+    metadata:
+      category: operational
+      cwe: "CWE-306"
+      rule_id: R9.4
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC6.2"]
+      iso27001_controls: ["A.9.2.1"]
+      owasp_categories: ["A01:2021-Broken Access Control"]
+
+  # R9.5: CORS Misconfiguration on AI Endpoints - Python
+  - id: cors-misconfiguration-ai-python
+    languages: [python]
+    pattern-either:
+      - pattern: CORS($APP, origins="*")
+      - pattern: CORS($APP, resources=..., origins="*")
+    message: "Permissive CORS allows any origin - restrict to specific domains to prevent unauthorized access."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-346"
+      rule_id: R9.5
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["A05:2021-Security Misconfiguration"]
+
+  # R9.5: CORS Misconfiguration on AI Endpoints - JavaScript/TypeScript
+  - id: cors-misconfiguration-ai-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: 'cors({origin: "*"})'
+      - pattern: 'cors({origin: true})'
+      - pattern: '$RES.setHeader("Access-Control-Allow-Origin", "*")'
+      - pattern: '$RES.header("Access-Control-Allow-Origin", "*")'
+    message: "Permissive CORS allows any origin - restrict to specific domains to prevent unauthorized access."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-346"
+      rule_id: R9.5
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["A05:2021-Security Misconfiguration"]
+
+  # R9.6: Missing Input Validation - Python
+  - id: missing-input-validation-ai-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $INPUT = request.json[...]
+          ...
+          openai.chat.completions.create(..., $INPUT, ...)
+    message: "No input validation detected - implement schema validation with Pydantic/Joi/Zod."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-20"
+      rule_id: R9.6
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R9.6: Missing Input Validation - JavaScript/TypeScript
+  - id: missing-input-validation-ai-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $INPUT = req.body.$FIELD
+          ...
+          openai.chat.completions.create(..., $INPUT, ...)
+    message: "No input validation detected - implement schema validation with Pydantic/Joi/Zod."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-20"
+      rule_id: R9.6
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R9.7: Debug Mode in Production - Python
+  - id: debug-mode-production-python
+    languages: [python]
+    pattern-either:
+      - pattern: app.run(debug=True)
+      - pattern: app.config['DEBUG'] = True
+    message: "Debug mode enabled - disable in production to prevent information leakage."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-489"
+      rule_id: R9.7
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["A05:2021-Security Misconfiguration"]
+
+  # R9.7: Debug Mode in Production - JavaScript/TypeScript
+  - id: debug-mode-production-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: DEBUG = true
+    message: "Debug mode enabled - disable in production to prevent information leakage."
+    severity: WARNING
+    metadata:
+      category: operational
+      cwe: "CWE-489"
+      rule_id: R9.7
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["A05:2021-Security Misconfiguration"]
+
+  # R9.8: Missing Error Logging - Python
+  - id: missing-error-logging-ai-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          try:
+            ...
+            openai.chat.completions.create(...)
+          except $E:
+            pass
+    message: "Exceptions not logged - implement error logging for debugging and audit trail."
+    severity: INFO
+    metadata:
+      category: operational
+      cwe: "CWE-778"
+      rule_id: R9.8
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+
+  # R9.8: Missing Error Logging - JavaScript
+  - id: missing-error-logging-ai-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          try {
+            ...
+            openai.chat.completions.create(...)
+          } catch ($E) {}
+    message: "Exceptions not logged - implement error logging for debugging and audit trail."
+    severity: INFO
+    metadata:
+      category: operational
+      cwe: "CWE-778"
+      rule_id: R9.8
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+
+  # R12.4: Overly Verbose Error Messages - Python
+  - id: verbose-error-messages-python
+    languages: [python]
+    pattern-either:
+      - pattern: traceback.format_exc()
+      - pattern: traceback.print_exc()
+    message: "Verbose error message exposes internals - return generic error to user, log details internally."
+    severity: INFO
+    metadata:
+      category: multimodal_misc
+      cwe: "CWE-209"
+      rule_id: R12.4
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["A05:2021-Security Misconfiguration"]
+
+  # R12.4: Overly Verbose Error Messages - JavaScript
+  - id: verbose-error-messages-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          catch ($ERR) {
+            return {..., error: $ERR.message, stack: $ERR.stack, ...}
+          }
+    message: "Verbose error message exposes internals - return generic error to user, log details internally."
+    severity: INFO
+    metadata:
+      category: multimodal_misc
+      cwe: "CWE-209"
+      rule_id: R12.4
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC6.1"]
+      owasp_categories: ["A05:2021-Security Misconfiguration"]
+
+  # ============================================
+  # MODEL SECURITY (Category 10 - R10.1-R10.4) - FINAL RULES
+  # ============================================
+
+  # R10.1: Unverified Model Loading
+  - id: unverified-model-loading
+    languages: [python]
+    pattern-either:
+      - pattern: $MODEL = AutoModelForCausalLM.from_pretrained($USER_MODEL)
+      - pattern: $MODEL = torch.load($USER_PATH)
+      - pattern: $MODEL = pickle.load($USER_FILE)
+      - pattern: $MODEL = joblib.load($USER_PATH)
+    message: "Loading models from unverified sources - verify model provenance and integrity before loading."
+    severity: ERROR
+    metadata:
+      category: model_security
+      cwe: "CWE-494"
+      rule_id: R10.1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A08:2021-Software and Data Integrity Failures"]
+
+  # R10.2: Model Poisoning Risk
+  - id: model-poisoning-risk
+    languages: [python]
+    pattern-either:
+      - pattern: $TRAINER.train(dataset=$UNTRUSTED_DATA)
+      - pattern: $MODEL.fit($UNTRUSTED_DATA)
+      - pattern: fine_tune(..., training_data=$USER_DATA, ...)
+    message: "Training on untrusted data - implement data validation, monitoring, and provenance tracking."
+    severity: WARNING
+    metadata:
+      category: model_security
+      cwe: "CWE-829"
+      rule_id: R10.2
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R10.3: Missing Model Integrity Check
+  - id: missing-model-integrity
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $MODEL = load_model($PATH)
+      - pattern: |
+          $MODEL = torch.load($PATH)
+      - pattern: |
+          $MODEL = AutoModelForCausalLM.from_pretrained($PATH)
+    message: "No model integrity verification detected - verify checksums/signatures before loading models."
+    severity: INFO
+    metadata:
+      category: model_security
+      cwe: "CWE-494"
+      rule_id: R10.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R10.4: Model Extraction Risk
+  - id: model-extraction-risk
+    languages: [python]
+    pattern-either:
+      - pattern: torch.save($MODEL, $PATH)
+      - pattern: $MODEL.save_pretrained($PATH)
+      - pattern: pickle.dump($MODEL, $FILE)
+      - pattern: joblib.dump($MODEL, $PATH)
+    message: "Model weights being saved - ensure proper access controls and encryption for model files."
+    severity: INFO
+    metadata:
+      category: model_security
+      cwe: "CWE-200"
+      rule_id: R10.4
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC6.6"]
+      iso27001_controls: ["A.9.4.1", "A.13.2.1"]
+
+  # ============================================
+  # REST API DETECTION (Category 2 - R2.1-R2.8)
+  # ============================================
+
+  # R2.1: OpenAI REST API Usage - Python
+  - id: ai-rest-openai-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'https://api\.openai\.com'
+      - pattern: requests.post("https://api.openai.com/...", ...)
+      - pattern: $HTTP.post("https://api.openai.com/...", ...)
+    message: "Direct OpenAI REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R2.1: OpenAI REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-openai-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'https://api\.openai\.com'
+      - pattern: fetch("https://api.openai.com/...", ...)
+      - pattern: axios.post("https://api.openai.com/...", ...)
+      - pattern: $HTTP.post("https://api.openai.com/...", ...)
+    message: "Direct OpenAI REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R2.2: Anthropic REST API Usage - Python
+  - id: ai-rest-anthropic-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'https://api\.anthropic\.com'
+      - pattern: requests.post("https://api.anthropic.com/...", ...)
+    message: "Direct Anthropic REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.2
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R2.2: Anthropic REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-anthropic-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'https://api\.anthropic\.com'
+      - pattern: fetch("https://api.anthropic.com/...", ...)
+      - pattern: axios.post("https://api.anthropic.com/...", ...)
+    message: "Direct Anthropic REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.2
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R2.3: Google AI REST API Usage - Python
+  - id: ai-rest-google-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'https://generativelanguage\.googleapis\.com'
+      - pattern-regex: 'https://[a-z]+-aiplatform\.googleapis\.com'
+      - pattern: requests.post("https://generativelanguage.googleapis.com/...", ...)
+    message: "Direct Google AI REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.3
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R2.3: Google AI REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-google-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'https://generativelanguage\.googleapis\.com'
+      - pattern-regex: 'https://[a-z]+-aiplatform\.googleapis\.com'
+      - pattern: fetch("https://generativelanguage.googleapis.com/...", ...)
+    message: "Direct Google AI REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.3
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R2.4: Cohere REST API Usage - Python
+  - id: ai-rest-cohere-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'https://api\.cohere\.(ai|com)'
+      - pattern: requests.post("https://api.cohere.ai/...", ...)
+    message: "Direct Cohere REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.4
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.4: Cohere REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-cohere-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'https://api\.cohere\.(ai|com)'
+      - pattern: fetch("https://api.cohere.ai/...", ...)
+    message: "Direct Cohere REST API call detected - use official SDK for better error handling and security."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.4
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.5: HuggingFace REST API Usage - Python
+  - id: ai-rest-huggingface-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'https://api-inference\.huggingface\.co'
+      - pattern: requests.post("https://api-inference.huggingface.co/...", ...)
+    message: "Direct HuggingFace Inference API call detected - use official SDK for better error handling."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.5
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.5: HuggingFace REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-huggingface-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'https://api-inference\.huggingface\.co'
+      - pattern: fetch("https://api-inference.huggingface.co/...", ...)
+    message: "Direct HuggingFace Inference API call detected - use official SDK for better error handling."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.5
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.6: AWS Bedrock REST API Usage - Python
+  - id: ai-rest-aws-bedrock-python
+    languages: [python]
+    pattern-either:
+      - pattern: boto3.client("bedrock-runtime", ...)
+      - pattern: boto3.client("bedrock", ...)
+      - pattern: $CLIENT.invoke_model(...)
+      - pattern: $CLIENT.invoke_model_with_response_stream(...)
+      - pattern-regex: 'bedrock-runtime\.[a-z0-9-]+\.amazonaws\.com'
+    message: "AWS Bedrock API usage detected - ensure IAM policies restrict model access appropriately."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.6
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.6: AWS Bedrock REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-aws-bedrock-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: $CLIENT.invoke_model(...)
+      - pattern: $CLIENT.invokeModel(...)
+      - pattern-regex: 'bedrock-runtime\.[a-z0-9-]+\.amazonaws\.com'
+    message: "AWS Bedrock API usage detected - ensure IAM policies restrict model access appropriately."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.6
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.7: Azure OpenAI REST API Usage - Python
+  - id: ai-rest-azure-openai-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'https://[a-z0-9-]+\.openai\.azure\.com'
+      - pattern: requests.post("https://$RESOURCE.openai.azure.com/...", ...)
+      - pattern: AzureOpenAI(...)
+    message: "Azure OpenAI API usage detected - ensure managed identity and network restrictions are configured."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.7
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.7: Azure OpenAI REST API Usage - JavaScript/TypeScript
+  - id: ai-rest-azure-openai-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'https://[a-z0-9-]+\.openai\.azure\.com'
+      - pattern: fetch("https://$RESOURCE.openai.azure.com/...", ...)
+      - pattern: AzureOpenAI(...)
+    message: "Azure OpenAI API usage detected - ensure managed identity and network restrictions are configured."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.7
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R2.8: Generic AI REST API Usage
+  - id: ai-rest-generic
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern-regex: "/v1/chat/completions"
+      - pattern-regex: "/v1/completions"
+      - pattern-regex: "/v1/embeddings"
+      - pattern-regex: "/v1/models"
+    message: "Generic AI API endpoint pattern detected - ensure proper authentication and rate limiting."
+    severity: INFO
+    metadata:
+      category: rest_api_detection
+      cwe: "CWE-319"
+      rule_id: R2.8
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # ============================================
+  # SDK DETECTION (Category 3 - R3.1-R3.5)
+  # ============================================
+
+  # R3.1: Cohere SDK Usage - Python
+  - id: ai-sdk-cohere-python
+    languages: [python]
+    pattern-either:
+      - pattern: import cohere
+      - pattern: from cohere import $X
+      - pattern: cohere.Client(...)
+    message: "Cohere SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.1
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.1: Cohere SDK Usage - JavaScript/TypeScript
+  - id: ai-sdk-cohere-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: require("cohere-ai")
+      - pattern: import { $X } from "cohere-ai"
+      - pattern: $COHERE.generate(...)
+    message: "Cohere SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.1
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.2: Mistral SDK Usage - Python
+  - id: ai-sdk-mistral-python
+    languages: [python]
+    pattern-either:
+      - pattern: import mistralai
+      - pattern: from mistralai import $X
+      - pattern: from mistralai.client import $X
+      - pattern: MistralClient(...)
+    message: "Mistral SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.2
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.2: Mistral SDK Usage - JavaScript/TypeScript
+  - id: ai-sdk-mistral-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: require("@mistralai/mistralai")
+      - pattern: import { $X } from "@mistralai/mistralai"
+      - pattern: MistralClient(...)
+    message: "Mistral SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.2
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.3: Ollama SDK Usage - Python
+  - id: ai-sdk-ollama-python
+    languages: [python]
+    pattern-either:
+      - pattern: import ollama
+      - pattern: from ollama import $X
+      - pattern: ollama.chat(...)
+      - pattern: ollama.generate(...)
+    message: "Ollama SDK detected - local AI model usage present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.3: Ollama SDK Usage - JavaScript/TypeScript
+  - id: ai-sdk-ollama-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: require("ollama")
+      - pattern: import { $X } from "ollama"
+      - pattern: $OLLAMA.chat(...)
+      - pattern: $OLLAMA.generate(...)
+    message: "Ollama SDK detected - local AI model usage present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.4: Replicate SDK Usage - Python
+  - id: ai-sdk-replicate-python
+    languages: [python]
+    pattern-either:
+      - pattern: import replicate
+      - pattern: from replicate import $X
+      - pattern: replicate.run(...)
+    message: "Replicate SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.4
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.4: Replicate SDK Usage - JavaScript/TypeScript
+  - id: ai-sdk-replicate-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: require("replicate")
+      - pattern: import Replicate from "replicate"
+      - pattern: $REPLICATE.run(...)
+    message: "Replicate SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.4
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.5: Together AI SDK Usage - Python
+  - id: ai-sdk-together-python
+    languages: [python]
+    pattern-either:
+      - pattern: import together
+      - pattern: from together import $X
+      - pattern: Together(...)
+    message: "Together AI SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.5
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # R3.5: Together AI SDK Usage - JavaScript/TypeScript
+  - id: ai-sdk-together-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: require("together-ai")
+      - pattern: import Together from "together-ai"
+      - pattern: Together(...)
+    message: "Together AI SDK detected - AI functionality present, review for security controls."
+    severity: INFO
+    metadata:
+      category: sdk_detection
+      cwe: "CWE-20"
+      rule_id: R3.5
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2", "CC8.1"]
+      iso27001_controls: ["A.12.6.1", "A.14.2.1"]
+
+  # ============================================
+  # DANGEROUS TOOL DETECTION (Category 4 - R4.1-R4.7)
+  # ============================================
+
+  # R4.1: Dangerous Tool - Python REPL
+  - id: dangerous-tool-python-repl
+    languages: [python]
+    pattern-either:
+      - pattern: PythonREPLTool(...)
+      - pattern: PythonREPL(...)
+      - pattern: |
+          Tool(
+            ...,
+            func=lambda $X: exec($X),
+            ...
+          )
+    message: "Python REPL tool available to AI agent - can execute arbitrary code. Restrict or sandbox."
+    severity: ERROR
+    metadata:
+      category: dangerous_tools
+      cwe: "CWE-94"
+      rule_id: R4.1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R4.2: Dangerous Tool - Shell Execution
+  - id: dangerous-tool-shell
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: ShellTool(...)
+      - pattern: BashProcess(...)
+      - pattern: |
+          Tool(
+            name="Shell",
+            ...
+          )
+      - pattern: |
+          Tool(
+            name="Bash",
+            ...
+          )
+    message: "Shell execution tool available to AI agent - can run system commands. Restrict or remove."
+    severity: ERROR
+    metadata:
+      category: dangerous_tools
+      cwe: "CWE-78"
+      rule_id: R4.2
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R4.3: Dangerous Tool - Filesystem Write
+  - id: dangerous-tool-filesystem-write
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: FileManagementToolkit(...)
+      - pattern: WriteFileTool(...)
+      - pattern: |
+          Tool(
+            name="write_file",
+            ...
+          )
+    message: "Filesystem write tool available to AI agent - can modify or create files. Restrict paths."
+    severity: WARNING
+    metadata:
+      category: dangerous_tools
+      cwe: "CWE-73"
+      rule_id: R4.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R4.4: Dangerous Tool - SQL Execution
+  - id: dangerous-tool-sql
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: SQLDatabaseToolkit(...)
+      - pattern: QuerySQLDataBaseTool(...)
+      - pattern: |
+          Tool(
+            name="sql",
+            ...
+          )
+      - pattern: |
+          Tool(
+            name="database",
+            ...
+          )
+    message: "SQL execution tool available to AI agent - can query or modify database. Use read-only access."
+    severity: WARNING
+    metadata:
+      category: dangerous_tools
+      cwe: "CWE-89"
+      rule_id: R4.4
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R4.5: Dangerous Tool - Browser Automation
+  - id: dangerous-tool-browser
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: PlayWrightBrowserToolkit(...)
+      - pattern: SeleniumURLLoader(...)
+      - pattern: |
+          Tool(
+            name="browser",
+            ...
+          )
+      - pattern: puppeteer.launch(...)
+      - pattern: playwright.chromium.launch(...)
+    message: "Browser automation tool available to AI agent - can navigate web and steal credentials."
+    severity: WARNING
+    metadata:
+      category: dangerous_tools
+      cwe: "CWE-918"
+      rule_id: R4.5
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R4.6: Dangerous Tool - API Requests
+  - id: dangerous-tool-api-requests
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: RequestsGetTool(...)
+      - pattern: RequestsPostTool(...)
+      - pattern: |
+          Tool(
+            name="http_request",
+            ...
+          )
+      - pattern: |
+          Tool(
+            name="api_call",
+            ...
+          )
+    message: "HTTP request tool available to AI agent - can make arbitrary API calls. Restrict allowed URLs."
+    severity: WARNING
+    metadata:
+      category: dangerous_tools
+      cwe: "CWE-918"
+      rule_id: R4.6
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R4.7: Dangerous - Eval/Exec on AI Output (rc.4: fixed cosmetic metavariable FP with taint mode)
+  - id: dangerous-eval-exec-ai-output-python
+    languages: [python]
+    mode: taint
+    pattern-sources:
+      - pattern: $LLM.invoke(...)
+      - pattern: $LLM.predict(...)
+      - pattern: $LLM.generate(...)
+      - pattern: openai.chat.completions.create(...)
+      - pattern: $CLIENT.chat.completions.create(...)
+      - pattern: openai.ChatCompletion.create(...)
+      - pattern: anthropic.messages.create(...)
+      - pattern: $CLIENT.messages.create(...)
+      - pattern: $CHAIN.run(...)
+      - pattern: $CHAIN.invoke(...)
+      - pattern: $RESPONSE = $LLM.invoke(...)
+      - pattern: $RESPONSE = openai.chat.completions.create(...)
+      - pattern: $RESPONSE = $CLIENT.chat.completions.create(...)
+      - pattern: $RESPONSE = anthropic.messages.create(...)
+    pattern-sinks:
+      - pattern: eval(...)
+      - pattern: exec(...)
+    message: "AI/LLM output passed to eval/exec — command injection risk. Sanitize AI output before execution."
+    severity: ERROR
+    metadata:
+      category: tool_abuse
+      cwe: "CWE-94"
+      rule_id: R2
+      security_check_id: SC-EVAL-EXEC
+
+  - id: dangerous-eval-exec-ai-output-js
+    languages: [javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $LLM.invoke(...)
+      - pattern: $OPENAI.chat.completions.create(...)
+      - pattern: $ANTHROPIC.messages.create(...)
+      - pattern: $CHAIN.run(...)
+      - pattern: $CHAIN.invoke(...)
+      - pattern: $RESPONSE = $OPENAI.chat.completions.create(...)
+      - pattern: $RESPONSE = $ANTHROPIC.messages.create(...)
+    pattern-sinks:
+      - pattern: eval(...)
+      - pattern: new Function(...)
+    message: "AI/LLM output passed to eval/new Function — command injection risk. Sanitize AI output before execution."
+    severity: ERROR
+    metadata:
+      category: tool_abuse
+      cwe: "CWE-94"
+      rule_id: R2
+      security_check_id: SC-EVAL-EXEC
+
+  # ============================================
+  # API KEY & SECRETS (Category 5 - R5.1)
+  # ============================================
+
+  # R5.1: Hardcoded OpenAI API Key
+  - id: hardcoded-openai-api-key
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'sk-[A-Za-z0-9-]{20,}'
+      - pattern-regex: 'openai\.api_key\s*=\s*["'']sk-[A-Za-z0-9-]+'
+      - pattern-regex: 'const\s+apiKey\s*=\s*["'']sk-[A-Za-z0-9-]+'
+      - pattern-regex: 'OPENAI_API_KEY\s*=\s*["'']sk-[A-Za-z0-9-]+'
+    message: "Hardcoded OpenAI API key detected - use environment variables or secrets manager."
+    severity: ERROR
+    metadata:
+      category: secrets_exposure
+      cwe: "CWE-798"
+      rule_id: R5.1
+      compliance_frameworks: ["SOC2", "GDPR", "HIPAA", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.6", "CC6.7"]
+      gdpr_controls: ["Art32"]
+      hipaa_controls: ["164.312(a)(2)(iv)"]
+      iso27001_controls: ["A.9.4.3", "A.10.1.1"]
+      owasp_categories: ["A02:2021-Cryptographic Failures"]
+
+  # ============================================
+  # AGENT & ADVANCED RULES (Category 6 - R6.1-R6.6, R6.8, R6.10)
+  # ============================================
+
+  # R6.1: Agent Loop Without Max Iterations (Python — while True is Python-only syntax)
+  - id: ai-agent-loop-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          while True:
+            ...
+            $LLM.invoke(...)
+      - pattern: |
+          while True:
+            ...
+            $LLM.predict(...)
+      - pattern: AgentExecutor(..., max_iterations=None, ...)
+      - pattern: AgentExecutor(..., max_iterations=0, ...)
+    message: "Agent loop without max iterations - risk of infinite execution and cost overruns."
+    severity: WARNING
+    metadata:
+      category: agent_safety
+      cwe: "CWE-835"
+      rule_id: R6.1
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.1", "CC7.2"]
+      iso27001_controls: ["A.12.1.3"]
+
+  # R6.1: Agent Loop Without Max Iterations (JS/TS — cross-language safe patterns)
+  - id: ai-agent-loop-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: AgentExecutor(..., max_iterations=None, ...)
+      - pattern: AgentExecutor(..., max_iterations=0, ...)
+    message: "Agent loop without max iterations - risk of infinite execution and cost overruns."
+    severity: WARNING
+    metadata:
+      category: agent_safety
+      cwe: "CWE-835"
+      rule_id: R6.1
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.1", "CC7.2"]
+      iso27001_controls: ["A.12.1.3"]
+
+  # R6.2: Recursive Agent Without Depth Limit (Python — def syntax)
+  - id: ai-agent-recursive-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          def $FUNC(...):
+            ...
+            $AGENT.run(...)
+            ...
+            $FUNC(...)
+    message: "Recursive agent calls without depth limit - risk of stack overflow and cost explosion."
+    severity: WARNING
+    metadata:
+      category: agent_safety
+      cwe: "CWE-674"
+      rule_id: R6.2
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.1", "CC7.2"]
+      iso27001_controls: ["A.12.1.3"]
+
+  # R6.2: Recursive Agent Without Depth Limit (JS/TS — async function syntax)
+  - id: ai-agent-recursive-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          async function $FUNC(...) {
+            ...
+            await $AGENT.invoke(...)
+            ...
+            await $FUNC(...)
+          }
+    message: "Recursive agent calls without depth limit - risk of stack overflow and cost explosion."
+    severity: WARNING
+    metadata:
+      category: agent_safety
+      cwe: "CWE-674"
+      rule_id: R6.2
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.1", "CC7.2"]
+      iso27001_controls: ["A.12.1.3"]
+
+  # R6.3: Agent Missing Safety Guardrails - Python
+  - id: ai-agent-safety-python
+    languages: [python]
+    pattern-either:
+      - pattern: AgentExecutor(..., handle_parsing_errors=True, ...)
+      - pattern: initialize_agent(..., handle_parsing_errors=True, ...)
+      - pattern: create_react_agent(...)
+    message: "AI agent detected - verify safety guardrails, max iterations, and human-in-the-loop controls."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-754"
+      rule_id: R6.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.1", "CC7.2"]
+      iso27001_controls: ["A.12.1.3"]
+
+  # R6.3: Agent Missing Safety Guardrails - JavaScript/TypeScript
+  - id: ai-agent-safety-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: AgentExecutor(...)
+      - pattern: create_react_agent(...)
+    message: "AI agent detected - verify safety guardrails, max iterations, and human-in-the-loop controls."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-754"
+      rule_id: R6.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.1", "CC7.2"]
+      iso27001_controls: ["A.12.1.3"]
+
+  # R6.4: Context Window Overflow Risk - Python
+  - id: ai-context-overflow-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $MESSAGES.append({"role": "user", "content": $USER_INPUT})
+    message: "User input appended to messages without length validation - context window overflow risk."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-400"
+      rule_id: R6.4
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # R6.4: Context Window Overflow Risk - JavaScript/TypeScript
+  - id: ai-context-overflow-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          messages.push({role: "user", content: $USER_INPUT})
+    message: "User input appended to messages without length validation - context window overflow risk."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-400"
+      rule_id: R6.4
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # R6.5: Chain-of-Thought Exposure
+  - id: ai-cot-exposure
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $RESPONSE = $LLM.invoke(...)
+          ...
+          return $RESPONSE
+      - pattern: |
+          $RESPONSE = $CHAIN.run(...)
+          ...
+          return $RESPONSE
+    message: "LLM response returned directly - may expose chain-of-thought reasoning to end users."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-200"
+      rule_id: R6.5
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC6.1"]
+
+  # R6.6: Function Calling Without Schema Validation - Python
+  - id: ai-function-calling-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          functions=[{..., "parameters": {...}, ...}]
+      - pattern: |
+          tools=[{"type": "function", ...}]
+      - pattern: |
+          tool_choice="auto"
+    message: "Function calling detected - ensure schema validation on function arguments from AI."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-20"
+      rule_id: R6.6
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R6.6: Function Calling Without Schema Validation - JavaScript/TypeScript
+  - id: ai-function-calling-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: 'tool_choice\\s*:\\s*[\"\\x27]auto[\"\\x27]'
+      - pattern-regex: 'functions\s*:\s*\['
+    message: "Function calling detected - ensure schema validation on function arguments from AI."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-20"
+      rule_id: R6.6
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+
+  # R6.8: Tool Output Injection - Python
+  - id: ai-tool-output-injection-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $TOOL_RESULT = $TOOL.run(...)
+          ...
+          $MESSAGES.append({"role": "tool", "content": $TOOL_RESULT})
+    message: "Tool output injected into prompt without sanitization - risk of indirect prompt injection."
+    severity: WARNING
+    metadata:
+      category: agent_safety
+      cwe: "CWE-74"
+      rule_id: R6.8
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R6.8: Tool Output Injection - JavaScript/TypeScript
+  - id: ai-tool-output-injection-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          $TOOL_RESULT = await $TOOL(...)
+          ...
+          messages.push({role: "tool", content: $TOOL_RESULT})
+    message: "Tool output injected into prompt without sanitization - risk of indirect prompt injection."
+    severity: WARNING
+    metadata:
+      category: agent_safety
+      cwe: "CWE-74"
+      rule_id: R6.8
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R6.10: Streaming Response Without Timeout - Python
+  - id: ai-streaming-response-python
+    languages: [python]
+    pattern-either:
+      - pattern: openai.chat.completions.create(..., stream=True, ...)
+      - pattern: anthropic.messages.stream(...)
+    message: "Streaming AI response detected - ensure timeout and max token limits are configured."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-400"
+      rule_id: R6.10
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # R6.10: Streaming Response Without Timeout - JavaScript/TypeScript
+  - id: ai-streaming-response-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: '$CLIENT.chat.completions.create({..., stream: true, ...})'
+      - pattern: $CLIENT.messages.stream(...)
+    message: "Streaming AI response detected - ensure timeout and max token limits are configured."
+    severity: INFO
+    metadata:
+      category: agent_safety
+      cwe: "CWE-400"
+      rule_id: R6.10
+      compliance_frameworks: ["SOC2"]
+      soc2_controls: ["CC7.2"]
+
+  # ============================================
+  # INJECTION & XSS (Category 11 - R11.1-R11.3)
+  # ============================================
+
+  # R11.1: AI Output XSS (JS/TS — rc.5: fixed cosmetic metavariable FP with taint mode)
+  - id: ai-xss-js
+    languages: [javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $OPENAI.chat.completions.create(...)
+      - pattern: $ANTHROPIC.messages.create(...)
+      - pattern: $LLM.invoke(...)
+      - pattern: $CHAIN.run(...)
+      - pattern: $CHAIN.invoke(...)
+      - pattern: $RESPONSE = $OPENAI.chat.completions.create(...)
+      - pattern: $RESPONSE = $ANTHROPIC.messages.create(...)
+    pattern-sinks:
+      - pattern: $EL.innerHTML = $X
+      - pattern: document.write($X)
+      - pattern: $EL.dangerouslySetInnerHTML = $X
+    message: "AI output rendered as HTML without sanitization - XSS vulnerability. Sanitize before rendering."
+    severity: ERROR
+    metadata:
+      category: injection
+      cwe: "CWE-79"
+      rule_id: R11.1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R11.1: AI Output XSS (Python — render_template_string is Flask-specific)
+  - id: ai-xss-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $RESPONSE = $LLM.invoke(...)
+          ...
+          render_template_string($RESPONSE)
+    message: "AI output rendered as HTML without sanitization - XSS vulnerability. Sanitize before rendering."
+    severity: ERROR
+    metadata:
+      category: injection
+      cwe: "CWE-79"
+      rule_id: R11.1
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R11.2: AI Output SQL Injection (Python — f-strings and cursor.execute are Python-only)
+  - id: ai-sql-injection-python
+    languages: [python]
+    pattern-either:
+      - pattern-regex: 'f["'']SELECT.*\{[^}]+\}.*["'']'
+      - pattern-regex: '"SELECT.*"\s*\+\s*\$[A-Za-z_]+"'
+      - pattern: |
+          cursor.execute(f"... {$LLM_RESPONSE} ...")
+    message: "AI output used in SQL query without parameterization - SQL injection risk. Use parameterized queries."
+    severity: ERROR
+    metadata:
+      category: injection
+      cwe: "CWE-89"
+      rule_id: R11.2
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R11.2: AI Output SQL Injection (JS/TS — template literals and string concat)
+  - id: ai-sql-injection-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern-regex: '"SELECT.*"\s*\+\s*\$[A-Za-z_]+"'
+      - pattern: |
+          $DB.query(`... ${$AI_OUTPUT} ...`)
+    message: "AI output used in SQL query without parameterization - SQL injection risk. Use parameterized queries."
+    severity: ERROR
+    metadata:
+      category: injection
+      cwe: "CWE-89"
+      rule_id: R11.2
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A03:2021-Injection"]
+
+  # R11.3: AI Output SSRF (Python — requests.get and urllib are Python-only)
+  - id: ai-ssrf-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          $URL = $LLM.invoke(...)
+          ...
+          requests.get($URL)
+      - pattern: |
+          $URL = $RESPONSE.content
+          ...
+          urllib.request.urlopen($URL)
+    message: "AI-generated URL used in server-side request - SSRF risk. Validate and allowlist URLs."
+    severity: ERROR
+    metadata:
+      category: injection
+      cwe: "CWE-918"
+      rule_id: R11.3
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A10:2021-Server-Side Request Forgery"]
+
+  # R11.3: AI Output SSRF (JS/TS — fetch is JS-only)
+  # R11.3: AI Output SSRF (JS/TS — rc.5: fixed cosmetic metavariable FP with taint mode)
+  - id: ai-ssrf-js
+    languages: [javascript, typescript]
+    mode: taint
+    pattern-sources:
+      - pattern: $OPENAI.chat.completions.create(...)
+      - pattern: $ANTHROPIC.messages.create(...)
+      - pattern: $LLM.invoke(...)
+      - pattern: $CHAIN.run(...)
+      - pattern: $CHAIN.invoke(...)
+      - pattern: $RESPONSE = $OPENAI.chat.completions.create(...)
+      - pattern: $RESPONSE = $ANTHROPIC.messages.create(...)
+    pattern-sinks:
+      - pattern: fetch($URL)
+      - pattern: axios.get($URL)
+      - pattern: axios.post($URL)
+      - pattern: $HTTP.request($URL)
+    message: "AI-generated URL used in server-side request - SSRF risk. Validate and allowlist URLs."
+    severity: ERROR
+    metadata:
+      category: injection
+      cwe: "CWE-918"
+      rule_id: R11.3
+      compliance_frameworks: ["SOC2", "ISO27001", "OWASP"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]
+      owasp_categories: ["A10:2021-Server-Side Request Forgery"]
+
+  # ============================================
+  # MULTIMODAL & MISC (Category 12 - R12.1-R12.3)
+  # ============================================
+
+  # R12.1: Multimodal Input Injection - Python
+  - id: ai-multimodal-input-python
+    languages: [python]
+    pattern-either:
+      - pattern: |
+          {"type": "image_url", "image_url": {"url": $USER_URL}}
+      - pattern: |
+          $IMAGE = Image.open($USER_FILE)
+    message: "User-provided image/file sent to AI model - validate and sanitize multimodal inputs."
+    severity: WARNING
+    metadata:
+      category: multimodal
+      cwe: "CWE-20"
+      rule_id: R12.1
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R12.1: Multimodal Input Injection - JavaScript/TypeScript
+  - id: ai-multimodal-input-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: |
+          {type: "image_url", image_url: {url: $USER_URL}}
+    message: "User-provided image/file sent to AI model - validate and sanitize multimodal inputs."
+    severity: WARNING
+    metadata:
+      category: multimodal
+      cwe: "CWE-20"
+      rule_id: R12.1
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R12.2: Audio/Video Input Injection - Python
+  - id: ai-multimodal-av-python
+    languages: [python]
+    pattern-either:
+      - pattern: whisper.transcribe(...)
+      - pattern: $MODEL.transcribe($USER_AUDIO)
+      - pattern: speech_recognition.Recognizer().recognize_google(...)
+      - pattern: openai.audio.transcriptions.create(...)
+    message: "Audio/video input to AI model - validate and sanitize media inputs before processing."
+    severity: WARNING
+    metadata:
+      category: multimodal
+      cwe: "CWE-20"
+      rule_id: R12.2
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R12.2: Audio/Video Input Injection - JavaScript/TypeScript
+  - id: ai-multimodal-av-js
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: $MODEL.transcribe($USER_AUDIO)
+      - pattern: openai.audio.transcriptions.create(...)
+    message: "Audio/video input to AI model - validate and sanitize media inputs before processing."
+    severity: WARNING
+    metadata:
+      category: multimodal
+      cwe: "CWE-20"
+      rule_id: R12.2
+      compliance_frameworks: ["SOC2", "OWASP"]
+      soc2_controls: ["CC7.2"]
+      owasp_categories: ["LLM01:2023-Prompt Injection"]
+
+  # R12.3: AI Filesystem Access
+  - id: ai-filesystem-access
+    languages: [python, javascript, typescript]
+    pattern-either:
+      - pattern: FileSystemToolkit(...)
+      - pattern: ReadFileTool(...)
+      - pattern: ListDirectoryTool(...)
+      - pattern: |
+          Tool(
+            name="read_file",
+            ...
+          )
+    message: "AI agent has filesystem access - restrict to specific directories and read-only where possible."
+    severity: WARNING
+    metadata:
+      category: multimodal
+      cwe: "CWE-22"
+      rule_id: R12.3
+      compliance_frameworks: ["SOC2", "ISO27001"]
+      soc2_controls: ["CC6.1", "CC7.2"]
+      iso27001_controls: ["A.12.6.1"]

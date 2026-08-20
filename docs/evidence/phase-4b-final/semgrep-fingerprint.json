@@ -1,0 +1,14 @@
+{
+  "semgrepVersion": "1.173.0",
+  "executablePath": "<HAIEC_HOME>\\AppData\\Local\\haiec\\semgrep\\Scripts\\semgrep.exe",
+  "status": "AVAILABLE_SUPPORTED_VERSION",
+  "readiness": "READY",
+  "requiredVersion": "1.173.0",
+  "platform": "win32",
+  "nodeVersion": "v24.11.1",
+  "executableSha256": "sha256:ce1c79aff9eed4d79163e73450d621eb5a5e829af920425efe43f9796a7e7ed0",
+  "pipPackageMetadata": "NOT_AVAILABLE (not a pip install or pip not on PATH)",
+  "pythonVersion": "Python 3.12.10",
+  "installationMechanism": "HAIEC-managed (setup script)",
+  "supplyChainDisclaimer": "Executable SHA-256 provides tamper detection for the local installation. This is NOT a full supply-chain verification. Full verification requires reproducible builds from the Semgrep release pipeline."
+}

@@ -8,3 +8,5 @@ Thumbs.db
 
 # NEVER COMMIT — PRIVATE RULE MIGRATION STAGING
 .private-rule-staging/
+*.tgz
+

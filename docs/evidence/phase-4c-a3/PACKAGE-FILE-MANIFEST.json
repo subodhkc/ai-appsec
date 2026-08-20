@@ -1,0 +1,727 @@
+{
+  "phase": "4C-A3",
+  "artifact": "PACKAGE-FILE-MANIFEST",
+  "generatedAt": "2026-08-20T03:06:43.944Z",
+  "packageVersion": "0.1.0",
+  "tarballFilename": "haiec-agent-security-0.1.0.tgz",
+  "tarballSHA256": "sha256:df9b24e5c5e63cb7eb6cf47613bcc98228f89a142f117a3c89a163d648630151",
+  "tarballSizeBytes": 106146,
+  "fileCount": 143,
+  "files": [
+    {
+      "path": "LICENSE",
+      "size": 1062,
+      "sha256": "sha256:951e57998d3f95c5f69c43dd8045b49dbb4633576c83900d4cddae292df86eb4"
+    },
+    {
+      "path": "README.md",
+      "size": 6298,
+      "sha256": "sha256:d4e217b70e3522a45870e9f5a0aee34b145acf5dac0d50c6e05fe73e0d1db86d"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "size": 1559,
+      "sha256": "sha256:9bcd5a898ea49db25d6587dcefaa66d6c20e49711c02391d9c8bcb91e76dd24e"
+    },
+    {
+      "path": "TRADEMARKS.md",
+      "size": 401,
+      "sha256": "sha256:3f329f88779f8664c3ffb3bbf2b69b4029a97723536a8597aeb4a8accf2ff586"
+    },
+    {
+      "path": "dist/cli/doctor.d.ts",
+      "size": 895,
+      "sha256": "sha256:dda1640de3f915dadfd49c3c5374639efaa82892852bd7e794adb5bc59d65455"
+    },
+    {
+      "path": "dist/cli/doctor.d.ts.map",
+      "size": 925,
+      "sha256": "sha256:c8ad98ebad68da3c3cde55f839c4a4be8703e050af225a0ae79f82f3c5c54c98"
+    },
+    {
+      "path": "dist/cli/doctor.js",
+      "size": 3065,
+      "sha256": "sha256:3fefc94b04fa44867ac46d9f6ff7c47a0fadd446a7797ce8921f17ec2694343a"
+    },
+    {
+      "path": "dist/cli/doctor.js.map",
+      "size": 2433,
+      "sha256": "sha256:bb9f74d2fc5d9a5200d335b861514c9334b877d6022333284bf2e5ffab161371"
+    },
+    {
+      "path": "dist/cli/setup.d.ts",
+      "size": 561,
+      "sha256": "sha256:cd93bb005270c2c5657cb0c7730d3852b734a56f3c62eec9a45344f28b3f61ad"
+    },
+    {
+      "path": "dist/cli/setup.d.ts.map",
+      "size": 620,
+      "sha256": "sha256:8483fa5d81b5a0d13e2a479318b050a841847357b7923b1a4e5b83c92bde3f3a"
+    },
+    {
+      "path": "dist/cli/setup.js",
+      "size": 10208,
+      "sha256": "sha256:22c856f3827b7aa01200981f0b163a128053098ad1234a91911cfef665f2cc6f"
+    },
+    {
+      "path": "dist/cli/setup.js.map",
+      "size": 8249,
+      "sha256": "sha256:ce6d9c6ae3d9a2070a689dad19e003cc96500d0a8dc9c69561b796413fcb7fcb"
+    },
+    {
+      "path": "dist/contracts/artifact.d.ts",
+      "size": 573,
+      "sha256": "sha256:b67d16df5d4dfadefcdd691ccf5cd72e5171b55b974c9bfd2656b2964e6b743c"
+    },
+    {
+      "path": "dist/contracts/artifact.d.ts.map",
+      "size": 402,
+      "sha256": "sha256:428000a9e5c1b8ce4be1719aade8b315bfd1db225490113592b4040032f5d070"
+    },
+    {
+      "path": "dist/contracts/artifact.js",
+      "size": 47,
+      "sha256": "sha256:2315c7d55494e26396befae71761f4840302405e268630b993817e5a00146c33"
+    },
+    {
+      "path": "dist/contracts/artifact.js.map",
+      "size": 121,
+      "sha256": "sha256:baa35bf3b47dfb314e8369b64ded0d6714ebc470031f567a051adf15ec6b964c"
+    },
+    {
+      "path": "dist/contracts/engine.d.ts",
+      "size": 513,
+      "sha256": "sha256:dcb505bef9dbed4201d3808bb9b65eaa9845f65fd995742e7823594c7e572563"
+    },
+    {
+      "path": "dist/contracts/engine.d.ts.map",
+      "size": 461,
+      "sha256": "sha256:fee91531f7d07d8bf06fb98aae44c340036fba04b598258131c4d5f4296a98f9"
+    },
+    {
+      "path": "dist/contracts/engine.js",
+      "size": 641,
+      "sha256": "sha256:0a9a898f48455e676aef9778bf6de015a2484f5a61560e363b6103eb2be7ac6b"
+    },
+    {
+      "path": "dist/contracts/engine.js.map",
+      "size": 590,
+      "sha256": "sha256:94de99a45f69ae90614d692b5b5d8adc6461ec4f083c166ab765629c1a296e52"
+    },
+    {
+      "path": "dist/contracts/errors.d.ts",
+      "size": 956,
+      "sha256": "sha256:e3b461e694bba6da251a0fae6b4c4855b24645ddede918a76369c22877ad3a5b"
+    },
+    {
+      "path": "dist/contracts/errors.d.ts.map",
+      "size": 748,
+      "sha256": "sha256:3e7c086cf5ec288d18a0c87fa81e5cf3273015f8283f1b71c097866812e734c6"
+    },
+    {
+      "path": "dist/contracts/errors.js",
+      "size": 231,
+      "sha256": "sha256:43e118fb2b17fc61ef009495c9672a40bfafce566af86801eb0fe9ae7ff9f8cb"
+    },
+    {
+      "path": "dist/contracts/errors.js.map",
+      "size": 286,
+      "sha256": "sha256:801b4bc55b0886bcb988467488b309b5abebd46805610e63c73686123c5edd2f"
+    },
+    {
+      "path": "dist/contracts/finding.d.ts",
+      "size": 2129,
+      "sha256": "sha256:d289bef99737821173d2f69d246e86cf2342fcf68b2aae9484c1fbce614d9043"
+    },
+    {
+      "path": "dist/contracts/finding.d.ts.map",
+      "size": 1611,
+      "sha256": "sha256:802c62b4fd0b6ecac4cebbe281109145128c8b712b80dfaf006fa4dee9679ffe"
+    },
+    {
+      "path": "dist/contracts/finding.js",
+      "size": 477,
+      "sha256": "sha256:83909dac456c9b9e898c8919eacce9e86441751df4f1e17f35207e794bddb34e"
+    },
+    {
+      "path": "dist/contracts/finding.js.map",
+      "size": 180,
+      "sha256": "sha256:67fb69e30326892afd1af4327a93f1a2b075d37032af4cf0657d2648bf449a2f"
+    },
+    {
+      "path": "dist/contracts/index.d.ts",
+      "size": 310,
+      "sha256": "sha256:eb37962baa9f5229f3b36d6567efc6890a3f8a8522203344e6492b236833194f"
+    },
+    {
+      "path": "dist/contracts/index.d.ts.map",
+      "size": 273,
+      "sha256": "sha256:ba6ccde48bb40e3b82aa4c4e4d59d4483aa7c57bd1754b8706dccd703e850fbd"
+    },
+    {
+      "path": "dist/contracts/index.js",
+      "size": 308,
+      "sha256": "sha256:81d6d0ea0f1b83a962e0017da8aa97841497ea6e8712459b24da28b277ccd922"
+    },
+    {
+      "path": "dist/contracts/index.js.map",
+      "size": 271,
+      "sha256": "sha256:c3ae7c65f64a616c4684a586dfb04050b392d80b14468c0a25c70ce3129cc413"
+    },
+    {
+      "path": "dist/contracts/result.d.ts",
+      "size": 1361,
+      "sha256": "sha256:3db163c963745f30611c26b4adc2f6bf13556721532610479b0c536a175475d7"
+    },
+    {
+      "path": "dist/contracts/result.d.ts.map",
+      "size": 1100,
+      "sha256": "sha256:d23bdf3eb36f3303dbfe48ebcbd338aab03a42917f0ce4160207e050623a6dc6"
+    },
+    {
+      "path": "dist/contracts/result.js",
+      "size": 45,
+      "sha256": "sha256:10223ee8f4afabc68031ed705a6ab15fe1328c0bce3bd537e4961873119478f6"
+    },
+    {
+      "path": "dist/contracts/result.js.map",
+      "size": 117,
+      "sha256": "sha256:516a7ca8f10bd74fee3be1e50bb453f9b163ab0d86bfb1b28dd8c3e66a7004d8"
+    },
+    {
+      "path": "dist/contracts/tool.d.ts",
+      "size": 1647,
+      "sha256": "sha256:3d448b59c16c389002455855860ff024afc235157101f361e90a1236873fac61"
+    },
+    {
+      "path": "dist/contracts/tool.d.ts.map",
+      "size": 964,
+      "sha256": "sha256:f3633840bd768a8383da14ca73f8e74457bde8a848dd553713dd292d2b737660"
+    },
+    {
+      "path": "dist/contracts/tool.js",
+      "size": 5370,
+      "sha256": "sha256:595ffb178528a25d8c3c91aaa6d86a4bc0a10d287aac55c84c7c6ea624bffbea"
+    },
+    {
+      "path": "dist/contracts/tool.js.map",
+      "size": 2338,
+      "sha256": "sha256:a21e88e9eb0b3a309e5468289955afb91056105257380a6012067fc71f656282"
+    },
+    {
+      "path": "dist/contracts/verdict.d.ts",
+      "size": 1258,
+      "sha256": "sha256:6b0420f0e3be0811b50e0ee3b7b31fcc2dd436a34a5439e8cb84b26eb0a1cb5d"
+    },
+    {
+      "path": "dist/contracts/verdict.d.ts.map",
+      "size": 623,
+      "sha256": "sha256:e44446c6351b2b877aaa2028dddac2cffb19ffae6fac7615e065c9ba661ef42f"
+    },
+    {
+      "path": "dist/contracts/verdict.js",
+      "size": 46,
+      "sha256": "sha256:fdc5d8d572e59d624427d04c255c0104996bcd85ac4957a64df477461a93685c"
+    },
+    {
+      "path": "dist/contracts/verdict.js.map",
+      "size": 119,
+      "sha256": "sha256:ba85ae133da2857ccdb6c8218239a042049c414a74aad9bf786de07a145ad023"
+    },
+    {
+      "path": "dist/engines/ai-security/concern-priority.d.ts",
+      "size": 1220,
+      "sha256": "sha256:d9ce0fc52837411bddb39f15cbadd514073dca6b71fcc634fc6f2ccf9f41ba49"
+    },
+    {
+      "path": "dist/engines/ai-security/concern-priority.d.ts.map",
+      "size": 361,
+      "sha256": "sha256:dc13524410044404933c8d2d897a0305a9e1e5b3fa4b605b6a989f2e813eec81"
+    },
+    {
+      "path": "dist/engines/ai-security/concern-priority.js",
+      "size": 2917,
+      "sha256": "sha256:b9494ac10bd1223fb9d5c074f91c4ac5f2c0cbecd21c3f56c1c0ac41f7e6636c"
+    },
+    {
+      "path": "dist/engines/ai-security/concern-priority.js.map",
+      "size": 2255,
+      "sha256": "sha256:6ba3a1fb91b889f51f94ff77fe33a4c7670a5e2f63f4daa862718ac336c4af2a"
+    },
+    {
+      "path": "dist/engines/ai-security/evidence-envelope.d.ts",
+      "size": 2012,
+      "sha256": "sha256:ec94589f61fa87172df1470cdd5e784946a407e6db15a63647384d55bfa9730f"
+    },
+    {
+      "path": "dist/engines/ai-security/evidence-envelope.d.ts.map",
+      "size": 1204,
+      "sha256": "sha256:814d3ee332fcd7044dbf8216953940dc0b74088515ea390255351786482ad082"
+    },
+    {
+      "path": "dist/engines/ai-security/evidence-envelope.js",
+      "size": 1124,
+      "sha256": "sha256:67fec753dba87306f7d83166146c678e18aa778a036ceb8b313fe8609065947a"
+    },
+    {
+      "path": "dist/engines/ai-security/evidence-envelope.js.map",
+      "size": 800,
+      "sha256": "sha256:6a17459cb9a16d600bfad8c420909e41ee014e2abf34956acbc7851cc9e6bd16"
+    },
+    {
+      "path": "dist/engines/ai-security/finding-adapter.d.ts",
+      "size": 880,
+      "sha256": "sha256:2a5454547fae756925c7808871db7858ad66b68535322e49508b07a5a390032d"
+    },
+    {
+      "path": "dist/engines/ai-security/finding-adapter.d.ts.map",
+      "size": 571,
+      "sha256": "sha256:221d07232e3e35ac50a0d1d9dc1968cce7fc362e699f00ea93ec6c264cc84d83"
+    },
+    {
+      "path": "dist/engines/ai-security/finding-adapter.js",
+      "size": 6809,
+      "sha256": "sha256:02cd69d0c0756ecdfb354b4a7e74a72d22cdf5467b4ea6b53aae45cfb8d64db0"
+    },
+    {
+      "path": "dist/engines/ai-security/finding-adapter.js.map",
+      "size": 4530,
+      "sha256": "sha256:bf78c447bcaf938875d7e5497c4f7537262228c181c723616ed900b780b6b169"
+    },
+    {
+      "path": "dist/engines/ai-security/index.d.ts",
+      "size": 414,
+      "sha256": "sha256:1eb08f60d9fb7e730f6ef9750b478113b89724eb59a33551093051a5e451b5ba"
+    },
+    {
+      "path": "dist/engines/ai-security/index.d.ts.map",
+      "size": 340,
+      "sha256": "sha256:35f2bacd1aecaf3b639563245fdf79a3911831353dad4e58aa835b6ff5a66a9a"
+    },
+    {
+      "path": "dist/engines/ai-security/index.js",
+      "size": 412,
+      "sha256": "sha256:5124d30bc0867aacd0c83b9d81dbad916e19aa9844fbd792d1e5c6e18880570e"
+    },
+    {
+      "path": "dist/engines/ai-security/index.js.map",
+      "size": 338,
+      "sha256": "sha256:a102e3fe04d5d891ad8b1211e44e0a0dbdf10b706d24cf8f9efe1946f590f19d"
+    },
+    {
+      "path": "dist/engines/ai-security/normalizer.d.ts",
+      "size": 1365,
+      "sha256": "sha256:4a01a247960df630eb18d10e07d09a190f00d7c673db9323d58e701efb8f1b18"
+    },
+    {
+      "path": "dist/engines/ai-security/normalizer.d.ts.map",
+      "size": 485,
+      "sha256": "sha256:868ff97e48e1e140b31c3d13572fb3284318027df693942cde980c7370a0c73d"
+    },
+    {
+      "path": "dist/engines/ai-security/normalizer.js",
+      "size": 1195,
+      "sha256": "sha256:71a393e055d3847180c7b802a78a7ecad1d5cf019e791860e24b17a697875430"
+    },
+    {
+      "path": "dist/engines/ai-security/normalizer.js.map",
+      "size": 1013,
+      "sha256": "sha256:1ea74ca586dced8750a2c6b4d4d727120af0cc0b596e3f09010fc91c565a0052"
+    },
+    {
+      "path": "dist/engines/ai-security/prioritizer.d.ts",
+      "size": 1952,
+      "sha256": "sha256:f1bf97ad79e360ae27e4e42c9dc7746e31d887a4a7b39c8d7686114f33455df8"
+    },
+    {
+      "path": "dist/engines/ai-security/prioritizer.d.ts.map",
+      "size": 751,
+      "sha256": "sha256:89b0ed29b4138598ef2c228bfe75630999a1fce71d9129abbfd140c895a62821"
+    },
+    {
+      "path": "dist/engines/ai-security/prioritizer.js",
+      "size": 3782,
+      "sha256": "sha256:9a52f8cde222abbb267fdbba159c1f33253b63f643ddd2b323104ae8df5f86ce"
+    },
+    {
+      "path": "dist/engines/ai-security/prioritizer.js.map",
+      "size": 3273,
+      "sha256": "sha256:7446e14c4241559805354a09bbcdd666003140b467dc56ef2cd572014d1509d0"
+    },
+    {
+      "path": "dist/engines/ai-security/proof-of-fix.d.ts",
+      "size": 3160,
+      "sha256": "sha256:bd52111a6a4bc288270d790e9084727e83420af194e08ea0dd3fb32f80019514"
+    },
+    {
+      "path": "dist/engines/ai-security/proof-of-fix.d.ts.map",
+      "size": 1786,
+      "sha256": "sha256:d816653effc6b2792da72daa2e98ecb09c1ad344bf0147867958ffaac24ebdda"
+    },
+    {
+      "path": "dist/engines/ai-security/proof-of-fix.js",
+      "size": 7931,
+      "sha256": "sha256:dd74aef073961a1b3ba3ea1d6c3d7c1508fa096d68a78276b98f281a34cb84a6"
+    },
+    {
+      "path": "dist/engines/ai-security/proof-of-fix.js.map",
+      "size": 4292,
+      "sha256": "sha256:ec3cc67fa9565a482080607836fa9636e4dcaea2401cfba93f5e51e1c46d9019"
+    },
+    {
+      "path": "dist/engines/ai-security/rulepack-provider.d.ts",
+      "size": 3089,
+      "sha256": "sha256:a0e07a2db4a28ac94e1d5123665b32616621c48df1c7be7346ca47fe6885941c"
+    },
+    {
+      "path": "dist/engines/ai-security/rulepack-provider.d.ts.map",
+      "size": 1324,
+      "sha256": "sha256:914167e1f2860859e495cceba6a1c503626ee334d92a2272121b3dd58d1bc12c"
+    },
+    {
+      "path": "dist/engines/ai-security/rulepack-provider.js",
+      "size": 8796,
+      "sha256": "sha256:d6449966df358d5a45e62bf4704ca30b71216ad2b3ab2681054a8bb3aff3acfc"
+    },
+    {
+      "path": "dist/engines/ai-security/rulepack-provider.js.map",
+      "size": 5297,
+      "sha256": "sha256:8b3c8196dfcd57dff4ddfe4e8394a29ee7f65ec32a0c1bb2cb830198de59fa51"
+    },
+    {
+      "path": "dist/engines/ai-security/scan-receipt.d.ts",
+      "size": 8562,
+      "sha256": "sha256:a8f9b19706ef61516e3f4a0c008d0e19bd858accaf1a6c129a7dfb20408652cb"
+    },
+    {
+      "path": "dist/engines/ai-security/scan-receipt.d.ts.map",
+      "size": 3994,
+      "sha256": "sha256:4c9b7ac5cbd095a7bb86d636a6edb02cdd693b0b40cdcdc60eec3468ed237f12"
+    },
+    {
+      "path": "dist/engines/ai-security/scan-receipt.js",
+      "size": 12479,
+      "sha256": "sha256:2855d35a607e8da73f46a52c15091a0a0601e4a68b73d5232c01c08b272c071e"
+    },
+    {
+      "path": "dist/engines/ai-security/scan-receipt.js.map",
+      "size": 7716,
+      "sha256": "sha256:6419bc2abb033f92528fb8182714a82d5afeed7b24962068149d53b9c833148e"
+    },
+    {
+      "path": "dist/engines/ai-security/scanner.d.ts",
+      "size": 5767,
+      "sha256": "sha256:5f54eff06bd80c1e7d4c88a3a997d64f0a524943ac6b62274911d4fc6a0c253c"
+    },
+    {
+      "path": "dist/engines/ai-security/scanner.d.ts.map",
+      "size": 3565,
+      "sha256": "sha256:cf7a2649f2f535b553daa2917ccbb0a0c8308736bfd8ea0119e7e36abb6ed537"
+    },
+    {
+      "path": "dist/engines/ai-security/scanner.js",
+      "size": 21050,
+      "sha256": "sha256:a93c66b7fbbed525a1facaa33f1d9b4356af022e637eb0b5cfb2836fe05a5008"
+    },
+    {
+      "path": "dist/engines/ai-security/scanner.js.map",
+      "size": 14838,
+      "sha256": "sha256:ed545047c815e28f85ab6eb141bd5b24323b7070f5fc820ce9bc94a07acb789d"
+    },
+    {
+      "path": "dist/engines/ai-security/scope.d.ts",
+      "size": 2286,
+      "sha256": "sha256:da4e8c9cf786a68d7b5657b2c51e8d76900de4eceb85ae8b6911377036c2cab9"
+    },
+    {
+      "path": "dist/engines/ai-security/scope.d.ts.map",
+      "size": 788,
+      "sha256": "sha256:28aa20a87a53a2f14ee6ea4ec6b1b632baba45b11ec5cd96795140562c915644"
+    },
+    {
+      "path": "dist/engines/ai-security/scope.js",
+      "size": 4561,
+      "sha256": "sha256:7af874e5fb80a619c9468d4225a767fbf1724023d7abc1e7eaa62d37c02dc18e"
+    },
+    {
+      "path": "dist/engines/ai-security/scope.js.map",
+      "size": 2618,
+      "sha256": "sha256:bc525a7ac3ba6bc35f1d40728c0eacc30dcc3bd9653219eec8ace901d1bebc34"
+    },
+    {
+      "path": "dist/engines/ai-security/security-concern.d.ts",
+      "size": 2608,
+      "sha256": "sha256:2f69cffcfc62f82971476a4637479be7b82c47a132bd2fd39a6b3b8615b954ea"
+    },
+    {
+      "path": "dist/engines/ai-security/security-concern.d.ts.map",
+      "size": 1293,
+      "sha256": "sha256:9c4a68b71567e26ae51e814b3795ee483449cbcbb4afabcfcc9fee91403b36c5"
+    },
+    {
+      "path": "dist/engines/ai-security/security-concern.js",
+      "size": 5411,
+      "sha256": "sha256:8a5a27e83f0fabb390be003db8751e295cbf8981609f0ae3f718919a5a81f4c7"
+    },
+    {
+      "path": "dist/engines/ai-security/security-concern.js.map",
+      "size": 3184,
+      "sha256": "sha256:015b12f41e1d2e804d053f6ef5a8d52c46d0ec123d82af10a0de2eb6f5389e36"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-resolver.d.ts",
+      "size": 2831,
+      "sha256": "sha256:104fc85c4604fd27f1d2cf74ffe009eb49ccdc120f4dc8daa811831572c03f7a"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-resolver.d.ts.map",
+      "size": 1642,
+      "sha256": "sha256:0b095ceece7d95ffaa2f4c9adc02d434588e952438ee74ceba503789fe3270cc"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-resolver.js",
+      "size": 8575,
+      "sha256": "sha256:e118b7395adeafcd9840f1f2550101e6ab454642f9fa9d1febe7593639c7aaca"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-resolver.js.map",
+      "size": 5613,
+      "sha256": "sha256:2004c7b63c0e50869d0ff16f61345c6d0322f5b165be1a418dcebbaac805427f"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-runner.d.ts",
+      "size": 1431,
+      "sha256": "sha256:8eda2917d2c64078ba31ddf6b4550920a039f9a2b865e568267bddedc6d38801"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-runner.d.ts.map",
+      "size": 1029,
+      "sha256": "sha256:b16345b6824a84287454dbc5794ead91e40f0559086fa40908d80fd9713a87cc"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-runner.js",
+      "size": 7473,
+      "sha256": "sha256:a81326ceef838fdb7a04246a08913a07606d8d74a98c78a8338168f0bb011026"
+    },
+    {
+      "path": "dist/engines/ai-security/semgrep-runner.js.map",
+      "size": 4759,
+      "sha256": "sha256:6b8a697145916b286de44cd839e9e9a32a18e3056779485c599ef6ea74b6d030"
+    },
+    {
+      "path": "dist/engines/ai-security/types.d.ts",
+      "size": 6259,
+      "sha256": "sha256:2dcbf407e85e778ba4229c7dd0ef67204bf0346bc3d73332a41e976303d612ba"
+    },
+    {
+      "path": "dist/engines/ai-security/types.d.ts.map",
+      "size": 5125,
+      "sha256": "sha256:a843e4996697cab224f8ae6487c42e6972d3d8ef79071e201696cf1bc22edc75"
+    },
+    {
+      "path": "dist/engines/ai-security/types.js",
+      "size": 283,
+      "sha256": "sha256:2dae9459dcc89585b593b87c8ea5032a1e934b4be22557b8533d441406929081"
+    },
+    {
+      "path": "dist/engines/ai-security/types.js.map",
+      "size": 141,
+      "sha256": "sha256:df6e3fef20524939fa83eccd250036d452aa1361424e4c1609ab264b5b34e151"
+    },
+    {
+      "path": "dist/mcp/index.d.ts",
+      "size": 66,
+      "sha256": "sha256:28f6febb9b51e593316bd49c125cf3170875188867bb71d4d4a43f01b274b964"
+    },
+    {
+      "path": "dist/mcp/index.d.ts.map",
+      "size": 111,
+      "sha256": "sha256:bf0dd55ce2570df7e7f2684145bd623d3bab56b14e3c18e5ddb437c0fd151efb"
+    },
+    {
+      "path": "dist/mcp/index.js",
+      "size": 3737,
+      "sha256": "sha256:895ff658d74191227238102ee5a1e8218d35a575538116536a985572028c9a8b"
+    },
+    {
+      "path": "dist/mcp/index.js.map",
+      "size": 2569,
+      "sha256": "sha256:041fc7392a0404e5a768d3a739c8cc31f27dbff0f744ef6ad90c8a7819753614"
+    },
+    {
+      "path": "dist/mcp/protocol.d.ts",
+      "size": 529,
+      "sha256": "sha256:2ba8acb72bf10e5bff872dd5cafcc1ceee16ac7dfc852badfb2b07755f665d55"
+    },
+    {
+      "path": "dist/mcp/protocol.d.ts.map",
+      "size": 281,
+      "sha256": "sha256:59139fbac4f2088c0b6a5f8759363d6b787b6e61be4159997bf588026c9a5bf4"
+    },
+    {
+      "path": "dist/mcp/protocol.js",
+      "size": 542,
+      "sha256": "sha256:e713aa53db10eefd7be98d381b6fa1200dbca23ff54534fca5350a0a30ac1dbc"
+    },
+    {
+      "path": "dist/mcp/protocol.js.map",
+      "size": 348,
+      "sha256": "sha256:909f6a5a55162ca3bd8fdddb100bc0a2fd23a46c8c2a436391a6d81a3942cfe6"
+    },
+    {
+      "path": "dist/mcp/server-factory.d.ts",
+      "size": 883,
+      "sha256": "sha256:dac7ac916218c918f21a00c29e012492985c0ba52caea8a875a4ae47176fccbb"
+    },
+    {
+      "path": "dist/mcp/server-factory.d.ts.map",
+      "size": 312,
+      "sha256": "sha256:9c709cbb8b8064f24a7942d9d9e9dc4f9f94d4870ad1ff325a48eb218578e129"
+    },
+    {
+      "path": "dist/mcp/server-factory.js",
+      "size": 16915,
+      "sha256": "sha256:3099c00b81fbaf45986309329f90d6e02392b395a411c1f7fc7480e7e1480416"
+    },
+    {
+      "path": "dist/mcp/server-factory.js.map",
+      "size": 12885,
+      "sha256": "sha256:42b4b20b34d55162c5e7765f9d24dde1807b92d31846f911f6e93a001d496cee"
+    },
+    {
+      "path": "dist/mcp/tool-definitions.d.ts",
+      "size": 595,
+      "sha256": "sha256:2c196ba6c56b725d04c84cad7cb79dc8bb70b9d78e55ff5fea39432921c7361c"
+    },
+    {
+      "path": "dist/mcp/tool-definitions.d.ts.map",
+      "size": 441,
+      "sha256": "sha256:8bb25ae364b27075f6a1cb4d4185fb94c36dc297868069668130ea4a5605e5ed"
+    },
+    {
+      "path": "dist/mcp/tool-definitions.js",
+      "size": 821,
+      "sha256": "sha256:e390e80b6348ae5be4eb307ec51016785859b509ede93f42a6fa2e8c39b13451"
+    },
+    {
+      "path": "dist/mcp/tool-definitions.js.map",
+      "size": 504,
+      "sha256": "sha256:778941a41a1a82b2bb56b196133992cf29db6ebc3f6e2403b7e87b44416a842e"
+    },
+    {
+      "path": "dist/provenance/canonicalize.d.ts",
+      "size": 254,
+      "sha256": "sha256:6d2d6478c2ac8ded8afceb48c79200663ed9a005bc42a71b0273fb98ccbdc6f7"
+    },
+    {
+      "path": "dist/provenance/canonicalize.d.ts.map",
+      "size": 198,
+      "sha256": "sha256:4810c56e3c4bdd6ae1b78c42eda028455b7196611fa351ed0a27d5f4c9918dfa"
+    },
+    {
+      "path": "dist/provenance/canonicalize.js",
+      "size": 807,
+      "sha256": "sha256:c115538bdcaae893881b585d79a62539ac27942a3e482e6134f9142ce932151b"
+    },
+    {
+      "path": "dist/provenance/canonicalize.js.map",
+      "size": 388,
+      "sha256": "sha256:84285574169d7c1a84d09c1bc6d246142e068f4a8655400d17d3aef3f8b2e951"
+    },
+    {
+      "path": "dist/provenance/digest.d.ts",
+      "size": 527,
+      "sha256": "sha256:b30d31e5f4c626d3fb00ae3c00f7f024f7d0705e953425e16f3bade4d05eb369"
+    },
+    {
+      "path": "dist/provenance/digest.d.ts.map",
+      "size": 334,
+      "sha256": "sha256:5d93c8fd11a0a3c40f1d691c8713f30ee1080ed19d825b920d124466e56ec1e5"
+    },
+    {
+      "path": "dist/provenance/digest.js",
+      "size": 1070,
+      "sha256": "sha256:ae8403186ea8581b78b9095ba54935c9b62aa219992ca79b1a559cfaf6f6c26f"
+    },
+    {
+      "path": "dist/provenance/digest.js.map",
+      "size": 705,
+      "sha256": "sha256:8d371f2d673acfafde57e21d908a4bce90119dab89d4710eec837770d0aae65c"
+    },
+    {
+      "path": "dist/security/output-sanitizer.d.ts",
+      "size": 1555,
+      "sha256": "sha256:4cb26e14e57c6ebb7c3fb758d7bc8d16637a4762c92b81598b8247389ba0ee47"
+    },
+    {
+      "path": "dist/security/output-sanitizer.d.ts.map",
+      "size": 812,
+      "sha256": "sha256:c3bf1d5628d7175815f3f4a7a3bfdd1ba1b546a4fce015b9a6417531dd6d3c36"
+    },
+    {
+      "path": "dist/security/output-sanitizer.js",
+      "size": 2910,
+      "sha256": "sha256:b5035829ea3189d6fc38d121437f0b6d325ec847ffa615b942e1065fe8377001"
+    },
+    {
+      "path": "dist/security/output-sanitizer.js.map",
+      "size": 2065,
+      "sha256": "sha256:0c6079f407b191b97c53a582c668c4b5a52201a2798cc07a8fb182b53bae064b"
+    },
+    {
+      "path": "dist/security/path-boundary.d.ts",
+      "size": 1247,
+      "sha256": "sha256:1fc1e36c037d1862381e2105463be4a1106711b198412d2f522630afaab296c4"
+    },
+    {
+      "path": "dist/security/path-boundary.d.ts.map",
+      "size": 781,
+      "sha256": "sha256:954ef2da92874f70f19c8f8470eb5b6e71776d9d6f38f6fb362197e12304f936"
+    },
+    {
+      "path": "dist/security/path-boundary.js",
+      "size": 4947,
+      "sha256": "sha256:58ab4595851905413269345cbdc286650706d1f32ee858222795815458847687"
+    },
+    {
+      "path": "dist/security/path-boundary.js.map",
+      "size": 3676,
+      "sha256": "sha256:b998270fac20bb02d48cb979a996e524d66dbdff15ff3ff6cbc4bd6d7ecdb5fa"
+    },
+    {
+      "path": "dist/security/secret-redaction.d.ts",
+      "size": 660,
+      "sha256": "sha256:72bd80f81bb7404c962ef2cb7be7158f2d57c0fcb1d52fd0dae9dd400c47705b"
+    },
+    {
+      "path": "dist/security/secret-redaction.d.ts.map",
+      "size": 380,
+      "sha256": "sha256:30cdb3b553ccae4bd2f5060f115a2487359e60ea66eb06d7652c2576949de109"
+    },
+    {
+      "path": "dist/security/secret-redaction.js",
+      "size": 2577,
+      "sha256": "sha256:7404eada5fe80c4f2fee3786be7672ddba0ba9f59949a8beb1b3c7b5d8d3a05f"
+    },
+    {
+      "path": "dist/security/secret-redaction.js.map",
+      "size": 1604,
+      "sha256": "sha256:3bcb9e20cab17dcb80f005f5f2d7bb09b878bc89aa9a050e2b93b276769262f6"
+    },
+    {
+      "path": "package.json",
+      "size": 1494,
+      "sha256": "sha256:aaafbe93934c7f58bc21270550c28473f30c41360a76e40d89f7656b4587e75d"
+    },
+    {
+      "path": "rules/public-core/haiec-ai-security.yml",
+      "size": 83813,
+      "sha256": "sha256:23338e814d3efad9f2c70f0eac2ac17028a7ee7dd27b741e1ed10b86bed0ac92"
+    },
+    {
+      "path": "rules/public-core/manifest.json",
+      "size": 131163,
+      "sha256": "sha256:205ea6b336953a9cefdfe16800d8ad117ddbc4ab77495a8e51528b67d3fae85f"
+    }
+  ]
+}
