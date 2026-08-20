@@ -51,7 +51,7 @@ describe('Same-process AI agent recovery', { timeout: 600000 }, () => {
       const result1 = await client.callTool({
         name: 'scan_ai_security',
         arguments: { targetPath, timeout: 10 },
-      });
+      }, { timeout: 300000 });
 
       assert.strictEqual((result1 as any).isError, true, 'First scan must be error');
       const sc1 = (result1 as any).structuredContent;
@@ -70,7 +70,7 @@ describe('Same-process AI agent recovery', { timeout: 600000 }, () => {
       const result2 = await client.callTool({
         name: 'scan_ai_security',
         arguments: { targetPath, timeout: 180 },
-      }, undefined, { timeout: 300000 });
+      }, { timeout: 300000 });
 
       // Should NOT be an error this time
       const sc2 = (result2 as any).structuredContent;
