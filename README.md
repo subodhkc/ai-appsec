@@ -25,8 +25,8 @@ Key properties:
 ## Quick Start
 
 ```bash
-# Install
-npm install -g ai-appsec
+# Install (prerelease — use @next until stable 0.1.0 is released)
+npm install -g ai-appsec@next
 
 # Check Semgrep status
 ai-appsec doctor
@@ -41,8 +41,8 @@ ai-appsec
 Or use via npx without global install:
 
 ```bash
-npx ai-appsec doctor
-npx ai-appsec setup
+npx ai-appsec@next doctor
+npx ai-appsec@next setup
 ```
 
 ## When to Use It

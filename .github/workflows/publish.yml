@@ -1,0 +1,69 @@
+name: AI AppSec Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      tarball_artifact:
+        description: 'Canonical tarball artifact name from qualification workflow'
+        required: true
+        type: string
+      version:
+        description: 'Version to publish (e.g. 0.1.0-rc.2)'
+        required: true
+        type: string
+      dist_tag:
+        description: 'npm dist-tag (e.g. next)'
+        required: true
+        type: string
+        default: 'next'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish to npm via OIDC
+    runs-on: ubuntu-latest
+    environment: npm-release
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Download canonical tarball
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.tarball_artifact }}
+          path: ./tarball
+
+      - name: Verify tarball exists
+        run: |
+          ls -la ./tarball/*.tgz
+          TARBALL=$(ls ./tarball/*.tgz | head -1)
+          echo "TARBALL=$TARBALL" >> $GITHUB_ENV
+
+      - name: Compute SHA-256
+        run: |
+          sha256sum "$TARBALL"
+          echo "SHA256=$(sha256sum "$TARBALL" | awk '{print $1}')" >> $GITHUB_ENV
+
+      - name: Publish to npm with OIDC (Trusted Publishing)
+        run: |
+          npm publish "$TARBALL" --tag "$DIST_TAG" --provenance --access public
+        env:
+          DIST_TAG: ${{ inputs.dist_tag }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify publication
+        run: |
+          sleep 5
+          npm view ai-appsec@${{ inputs.version }} dist.integrity
+          npm view ai-appsec dist-tags --json

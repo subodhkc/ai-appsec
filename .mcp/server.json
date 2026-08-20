@@ -1,20 +1,20 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.subodhkc/ai-appsec",
-  "description": "Audit AI applications and agents for security risks before commit, PR, merge, or deployment. Deterministic findings with coverage and evidence receipts.",
+  "description": "Evidence-backed AppSec for AI applications and agents. Powered by HAIEC.",
   "title": "AI AppSec",
   "websiteUrl": "https://github.com/subodhkc/ai-appsec",
   "repository": {
     "url": "https://github.com/subodhkc/ai-appsec",
     "source": "github"
   },
-  "version": "0.1.0-rc.1",
+  "version": "0.1.0-rc.2",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "ai-appsec",
-      "version": "0.1.0-rc.1",
+      "version": "0.1.0-rc.2",
       "transport": {
         "type": "stdio"
       }
@@ -23,7 +23,7 @@
   "_meta": {
     "io.modelcontextprotocol.registry/publisher-provided": {
       "tool": "manual",
-      "version": "0.1.0-rc.1"
+      "version": "0.1.0-rc.2"
     }
   }
 }
