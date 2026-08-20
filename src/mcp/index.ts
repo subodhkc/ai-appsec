@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * HAIEC Agent Security MCP Server — stdio entrypoint.
+ * AI AppSec MCP Server — stdio entrypoint.
  *
  * This is the bin entry point for the npm package.
  *
@@ -60,15 +60,16 @@ async function main(): Promise<void> {
 
     if (cmd === '--help' || cmd === '-h') {
       process.stdout.write([
-        'HAIEC Agent Security — AI/LLM source code security scanning via MCP',
+        'AI AppSec — Evidence-backed AppSec for AI applications and agents',
+        'Powered by HAIEC',
         '',
         'Usage:',
-        '  haiec-agent-security             Start MCP server (stdio transport)',
-        '  haiec-agent-security doctor       Run diagnostic check (read-only, offline)',
-        '  haiec-agent-security doctor --json  JSON output',
-        '  haiec-agent-security setup        Install Semgrep engine (network allowed)',
-        '  haiec-agent-security setup --json   JSON output',
-        '  haiec-agent-security --help       Show this help',
+        '  ai-appsec             Start MCP server (stdio transport)',
+        '  ai-appsec doctor       Run diagnostic check (read-only, offline)',
+        '  ai-appsec doctor --json  JSON output',
+        '  ai-appsec setup        Install Semgrep engine (network allowed)',
+        '  ai-appsec setup --json   JSON output',
+        '  ai-appsec --help       Show this help',
         '',
         'Semgrep 1.173.0 is required for scanning.',
         'Run "doctor" to check status, "setup" to install.',
@@ -88,7 +89,7 @@ async function main(): Promise<void> {
   const transport = new StdioServerTransport();
   await server.connect(transport);
   // Server is now running on stdio — do NOT write to stdout
-  writeDiagnostic('HAIEC Agent Security MCP server started (stdio)');
+  writeDiagnostic('AI AppSec MCP server started (stdio)');
 }
 
 main().catch((err) => {

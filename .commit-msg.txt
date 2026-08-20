@@ -1,0 +1,53 @@
+release: AI AppSec v0.1.0-rc.1 — identity migration + public contract freeze
+
+Repository identity migration:
+- haiec-ai-agent-security-free-mcp to ai-appsec (GitHub rename)
+- Package: haiec-agent-security to ai-appsec
+- CLI: haiec-agent-security to ai-appsec
+- MCP server name: haiec-agent-security to ai-appsec
+- MCP Registry: io.github.subodhkc/ai-appsec
+- Version: 0.1.0-rc.1 (prerelease)
+
+Fixed product decisions:
+- Package license: MIT
+- Public Core license: MIT
+- Copyright: Copyright (c) 2026 HAIEC
+- Product name: AI AppSec
+- Category: AI Application Security
+- Brand: Powered by HAIEC
+
+Public contract changes:
+- package.json: name, version, description, license, repository, homepage,
+  bugs, keywords, bin (ai-appsec)
+- README.md: full rebuild for public user (AI AppSec positioning)
+- SECURITY.md: updated for ai-appsec prerelease
+- THIRD_PARTY_NOTICES.md: reconciled (HAIEC-owned vs third-party vs Semgrep)
+- TRADEMARKS.md: updated for AI AppSec
+- .mcp/server.json: MCP Registry metadata (NOT published)
+- src/mcp/protocol.ts: SERVER_NAME, SERVER_VERSION, diagnostic prefix
+- src/mcp/index.ts: CLI help text, diagnostic messages
+- src/mcp/server-factory.ts: tool description for natural-language selection
+- src/engines/ai-security/semgrep-resolver.ts: env vars, paths, remediation codes
+- src/cli/doctor.ts, setup.ts: branding updates
+- tests: all references updated, MCP client timeout fix for Semgrep scans
+- .github/workflows/phase-4c-cross-platform.yml: branch + package name
+
+Local qualification:
+- typecheck: PASS
+- tests: 276/276 PASS
+- npm audit: 0 vulnerabilities
+- npm pack: ai-appsec-0.1.0-rc.1.tgz (147 files, 601.6 kB)
+- SHA-256: 9b2faf7e0c6a06b0ff2ba27ec469030207bea800a8d62e3fec3f4400ec955575
+- Supply-chain: no secrets, no private content, no absolute paths
+
+npm name availability: ai-appsec available (404)
+npm auth: kingcaliber (authenticated)
+
+Historical preservation:
+- Phase 4C-B evidence preserved as historical
+- Old tarball SHA preserved as historical
+- Old package identity preserved in historical evidence docs
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

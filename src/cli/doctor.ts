@@ -1,5 +1,5 @@
 /**
- * HAIEC Agent Security CLI — doctor command.
+ * AI AppSec CLI — doctor command.
  *
  * Read-only diagnostic that checks:
  * - OS/architecture
@@ -86,7 +86,7 @@ export async function runDoctor(): Promise<DoctorResult> {
 
 export function formatDoctorText(result: DoctorResult): string {
   const lines: string[] = [
-    'HAIEC Agent Security — doctor',
+    'AI AppSec — doctor',
     '',
     `Platform: ${result.platform} (${result.arch})`,
     `Node: ${result.nodeVersion} (required: ${result.requiredNodeVersion})`,
@@ -96,14 +96,14 @@ export function formatDoctorText(result: DoctorResult): string {
     `  Required version: ${result.semgrep.requiredVersion}`,
     `  Detected version: ${result.semgrep.detectedVersion ?? 'not found'}`,
     `  Readiness: ${result.semgrep.readiness}`,
-    `  HAIEC-managed path: ${result.semgrep.managedPath}`,
-    `  HAIEC-managed exists: ${result.semgrep.managedExists ? 'YES' : 'NO'}`,
+    `  AI AppSec-managed path: ${result.semgrep.managedPath}`,
+    `  AI AppSec-managed exists: ${result.semgrep.managedExists ? 'YES' : 'NO'}`,
     `  Executable: ${result.semgrep.executablePath ?? 'none'}`,
     `  Setup available: ${result.semgrep.setupAvailable ? 'YES' : 'NO'}`,
     `  Remediation: ${result.semgrep.remediationCode}`,
     result.semgrep.recommendedCommand ? `  Recommended: ${result.semgrep.recommendedCommand}` : '',
     '',
-    `HAIEC home: ${result.haiecHome}`,
+    `AI AppSec home: ${result.haiecHome}`,
   ];
   return lines.filter((l) => l !== '').join('\n');
 }

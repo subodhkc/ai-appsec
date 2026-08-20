@@ -1,5 +1,5 @@
 /**
- * MCP server factory — creates the HAIEC Agent Security MCP server.
+ * MCP server factory — creates the AI AppSec MCP server.
  *
  * Uses MCP TypeScript SDK v2 with registerTool() for tool registration.
  *
@@ -25,7 +25,7 @@ import type { ScannerOptions, ScanResult } from '../engines/ai-security/scanner.
  */
 function buildTextSummary(result: ScanResult): string {
   const lines: string[] = [
-    `HAIEC scan_ai_security result:`,
+    `AI AppSec scan_ai_security result:`,
     `  Verdict: ${result.verdict} (advisory)`,
     `  Completeness: ${result.completeness}`,
     `  ${result.summary.concernFamiliesFound} security concern family/families supported by ${result.summary.actionableFindingInstances} actionable finding instance(s)`,
@@ -79,7 +79,7 @@ function buildTextSummary(result: ScanResult): string {
 }
 
 /**
- * Create the HAIEC Agent Security MCP server with scan_ai_security registered.
+ * Create the AI AppSec MCP server with scan_ai_security registered.
  */
 export function createServer(options?: ScannerOptions): McpServer {
   const server = new McpServer({
@@ -93,12 +93,25 @@ export function createServer(options?: ScannerOptions): McpServer {
     {
       title: 'Scan AI/LLM Source Code Security',
       description: [
-        'Scan AI/LLM/agent application source code for security risks and',
-        'security-relevant implementation patterns, including unsafe AI-output',
-        'execution, secrets exposure, RAG/model integration risks, insecure AI',
-        'API usage, control gaps, and prompt/input-related risk signals.',
+        'Audit AI applications and agents for security risks before commit, PR,',
+        'merge, or deployment. Produces deterministic findings with explicit',
+        'coverage, Security Concern Families, Scan Receipts, and Evidence Envelopes.',
         '',
-        'USE when:',
+        'USE when a developer asks to:',
+        '- "check this for security issues"',
+        '- "audit this task before I push"',
+        '- "review this change for security problems"',
+        '- "scan this AI agent" or "scan this AI app"',
+        '- "check my LLM application"',
+        '- "security review this PR"',
+        '- "is this safe to merge"',
+        '- "check this before deployment"',
+        '- "audit this code for vulnerabilities"',
+        '- "run a security scan"',
+        '- "check for security risks before commit"',
+        '- "review this implementation before pushing"',
+        '',
+        'Also use for:',
         '- reviewing AI/LLM/agent source code for security',
         '- validating AI code before merge',
         '- checking an agent before deployment',
@@ -110,8 +123,8 @@ export function createServer(options?: ScannerOptions): McpServer {
         'DO NOT use for:',
         '- actual LLM response/content verification (use verify_llm_content)',
         '- tenant/RLS/cross-customer isolation (use scan_tenant_isolation)',
-        '- generic compliance questionnaires',
-        '- generic non-AI source scanning where HAIEC has no applicable AI check',
+        '- generic compliance questionnaires or compliance certification',
+        '- generic non-AI source scanning where no AI check applies',
         '',
         'This tool performs static analysis only. It does NOT execute target code,',
         'make network requests, or emit telemetry. BLOCK findings are advisory —',

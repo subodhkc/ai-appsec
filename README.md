@@ -1,57 +1,17 @@
-# HAIEC Agent Security
+# AI AppSec
 
-HAIEC MCP produces deterministic static-analysis findings with explicit
-coverage and tamper-evident evidence receipts.
+Evidence-backed AppSec for AI applications and agents.
 
-Qualified COMPLETE supported scans have demonstrated cross-process semantic
-Receipt reproducibility.
+Powered by HAIEC.
 
-PARTIAL scans preserve run-specific coverage differences instead of hiding
-them.
+Audit AI code for security risks before you commit, push, merge, or deploy.
 
-## Status
+## What AI AppSec Does
 
-**PRE-RELEASE — RELEASE CANDIDATE QUALIFICATION (Phase 4C-A4.1)**
-
-This project is in release-candidate qualification. The `scan_ai_security`
-engine is implemented and locally qualified. The package is not yet published
-to npm.
-
-## What This Project Is
-
-HAIEC Agent Security is a control surface for AI agent security. It defines
-four independent security checks that an AI coding agent can invoke when the
-situation calls for them:
-
-| Check | Purpose | Status |
-|-------|---------|--------|
-| `scan_ai_security` | Source-code security scanning for AI/LLM applications | **Implemented** (Public Core rc.6, 122 detectors) |
-| `scan_tenant_isolation` | Cross-tenant boundary checks | Not yet integrated |
-| `verify_llm_content` | LLM input/output verification | Not yet integrated |
-| `check_deploy_security` | Release/deploy gate | Not yet integrated |
-
-## One Workflow, Four Independent Checks
-
-```
-SCAN AI CODE            → scan_ai_security
-CHECK TENANT BOUNDARIES → scan_tenant_isolation
-CHECK MODEL INTERACTIONS → verify_llm_content
-GATE THE RELEASE        → check_deploy_security
-```
-
-These checks are **independent**. HAIEC does not automatically cascade every
-engine. Each check is selected on its own semantic merit:
-
-- Source-code security → `scan_ai_security`
-- Cross-tenant boundaries → `scan_tenant_isolation`
-- Actual LLM input/output → `verify_llm_content`
-- Merge/release/deploy → `check_deploy_security`
-
-## What `scan_ai_security` Does
-
-HAIEC MCP produces deterministic, reproducible static security evidence for
-AI-agent code. It uses Semgrep 1.173.0 as its execution engine with a bundled
-Public Core rulepack (122 detectors, 79 security checks).
+AI AppSec produces deterministic, reproducible static security evidence for
+AI-agent and AI-application source code. It uses Semgrep 1.173.0 as its
+execution engine with a bundled Public Core rulepack (122 detectors, 79
+security checks).
 
 Key properties:
 
@@ -62,7 +22,59 @@ Key properties:
 - **Fail-closed digests** — rulepack/manifest verified at runtime
 - **Proof-of-fix** — rescan comparison with check-evaluation safety
 
-## What `scan_ai_security` Does NOT Do
+## Quick Start
+
+```bash
+# Install
+npm install -g ai-appsec
+
+# Check Semgrep status
+ai-appsec doctor
+
+# Install Semgrep engine (requires network)
+ai-appsec setup
+
+# Start MCP server (stdio transport)
+ai-appsec
+```
+
+Or use via npx without global install:
+
+```bash
+npx ai-appsec doctor
+npx ai-appsec setup
+```
+
+## When to Use It
+
+Use `scan_ai_security` when a developer asks to:
+
+- "check this for security issues"
+- "audit this task before I push"
+- "review this change for security problems"
+- "scan this AI agent" or "scan this AI app"
+- "check my LLM application"
+- "security review this PR"
+- "is this safe to merge"
+- "check this before deployment"
+- "audit this code for vulnerabilities"
+- "run a security scan"
+- "check for security risks before commit"
+
+## scan_ai_security
+
+The MCP tool `scan_ai_security` is the only tool implemented in v0.1.
+
+It scans AI/LLM/agent application source code for security risks including:
+
+- Unsafe AI-output execution
+- Secrets exposure
+- RAG/model integration risks
+- Insecure AI API usage
+- Control gaps
+- Prompt/input-related risk signals
+
+### What scan_ai_security Does NOT Do
 
 - Does not provide complete AI system assurance
 - Does not provide runtime behavioral assurance
@@ -70,6 +82,15 @@ Key properties:
 - Does not guarantee zero false positives
 - Does not prove root causes for concern families
 - Does not execute target code, install dependencies, or run package managers
+- Does not perform compliance assessment (compliance requires additional HAIEC evidence)
+
+## Findings
+
+Findings are classified by:
+
+- **Finding kind**: PRESENCE, RISK_SIGNAL, CONTROL_GAP, VULNERABILITY
+- **Severity**: CRITICAL, HIGH, MEDIUM, LOW, INFO
+- **Disposition**: INFORMATIONAL, REVIEW, BLOCK
 
 ## Security Concern Families
 
@@ -81,78 +102,136 @@ cause. Underlying finding instances remain auditable.
 Concern family count is not a vulnerability count. Top 20 / Top 50 are
 presentation limits, not evidence limits.
 
-## PARTIAL Scans
+## COMPLETE / PARTIAL / ERROR
 
-A PARTIAL scan means HAIEC could not fully analyze the declared supported
-scope. This can happen due to parser failures on supported file types. PARTIAL
-scans cannot prove absence of findings. Missing evidence is never interpreted
-as PASS.
+- **COMPLETE**: All supported files in scope were successfully analyzed.
+- **PARTIAL**: Some supported files could not be analyzed (e.g., parser failures).
+  PARTIAL scans cannot prove absence of findings. Missing evidence is never
+  interpreted as PASS.
+- **ERROR**: The scan could not complete due to an engine error.
 
-## Architecture
+## Coverage
 
-```
-haiec-ai-agent-security-free-mcp/
-├── src/
-│   ├── contracts/          # Shared types: findings, results, tools, verdicts
-│   ├── mcp/                # MCP server factory and tool definitions
-│   ├── security/           # Output sanitization, path boundaries, secret redaction
-│   ├── provenance/         # Canonicalization and digest utilities
-│   ├── engines/
-│   │   ├── ai-security/        # AI source-code security engine (IMPLEMENTED)
-│   │   ├── tenant-isolation/   # Tenant isolation engine (not yet integrated)
-│   │   └── llmverify/          # LLM content verification engine (not yet integrated)
-│   └── orchestration/
-│       └── deploy-security/    # Release gate orchestration (not yet integrated)
-├── tests/                  # Unit and architecture tests (239 tests)
-├── evals/                  # AI tool-selection evaluations
-└── rules/                  # Public Core rulepack (rc.6, 122 detectors)
-```
+AI AppSec provides explicit coverage accounting:
 
-## Engine Independence
+- **DISCOVERED**: all files found beneath the target
+- **INTENTIONALLY_EXCLUDED**: files excluded by scope policy
+- **UNSUPPORTED**: files outside supported extensions (.py, .js, .jsx, .ts, .tsx)
+- **TARGETED**: supported files intended for analysis
+- **ENGINE_REPORTED_SCANNED**: files Semgrep reports as scanned
+- **PARSE_FAILED**: files with parse errors
+- **SUCCESSFULLY_ANALYZED**: scanned minus parse failures
 
-Each engine is an independent product with its own execution path:
+## Scan Receipt
 
-- `scan_ai_security` does NOT invoke LLMVerify or Tenant Isolation.
-- `scan_tenant_isolation` does NOT invoke LLMVerify or AI security scanning.
-- `verify_llm_content` does NOT invoke source scanning or tenant scanning.
-- Only `check_deploy_security` may intentionally compose engines, and it must
-  disclose which engines ran, which did not, and why.
+Every scan produces a tamper-evident Scan Receipt with SHA-256 digests for:
 
-## Installation
+- Finding set
+- Concern family set
+- Coverage file sets
+- Evaluated security checks and detectors
+- Semantic receipt identity
 
-This package is not yet published to npm. It is intended for local development
-only at this stage.
+COMPLETE scans produce reproducible receipts across processes and operating
+systems. PARTIAL scans preserve run-specific coverage differences.
 
-```bash
-git clone https://github.com/subodhkc/haiec-ai-agent-security-free-mcp.git
-cd haiec-ai-agent-security-free-mcp
-npm ci
-npm run build
-npm test
-```
+## Evidence Envelope
 
-## Semgrep Setup
+Each scan produces an Evidence Envelope that binds the receipt to the scan
+execution context, including:
 
-`scan_ai_security` requires Semgrep 1.173.0 (exact version match). The package
-can discover a managed Semgrep installation or use an existing one on PATH.
+- Producer identity
+- Target identity (scan input digest, git commit, dirty state)
+- Execution status and completeness
+- Semantic receipt digest
+- Envelope digest
+
+## Proof-of-fix
+
+Rescan a target after a fix to compare receipts. The proof-of-fix comparison
+is safe: it verifies that a specific security check's findings were resolved
+without requiring the entire scan to be identical.
+
+## Offline / Local Operation
+
+Normal scanning operates fully offline after prerequisites are installed:
+
+- No HAIEC cloud access required
+- No account or API key required
+- No rule download during scanning
+- No telemetry emitted (Semgrep invoked with `--metrics off`)
+
+Semgrep setup (`ai-appsec setup`) may require network access to install the
+engine. Once installed, all scanning is local.
+
+## Semgrep Prerequisite
+
+`scan_ai_security` requires Semgrep 1.173.0 (exact version match).
 
 ```bash
 # Check Semgrep status
-npx haiec-agent-security doctor
+ai-appsec doctor
 
 # Install managed Semgrep (requires network)
-npx haiec-agent-security setup
+ai-appsec setup
 ```
+
+Semgrep is NOT bundled with this package. It is an external engine installed
+separately. See THIRD_PARTY_NOTICES.md for details.
+
+## Limitations
+
+- Only `scan_ai_security` is implemented in v0.1
+- Static analysis only — no runtime behavioral evidence
+- No compliance certification or assessment
+- No tenant isolation checking (roadmap)
+- No LLM content verification (roadmap)
+- No deploy security gating (roadmap)
 
 ## License
 
-License decision pending. Until a license is added, this repository should not
-be described as open source. The final license remains a founder/IP decision.
+MIT License
 
-## Contributing
+Copyright (c) 2026 HAIEC
 
-This project is in pre-release development. Contributions are not yet solicited
-until the foundation stabilizes and a license is selected.
+See [LICENSE](LICENSE) for the full license text.
+
+## Security Reporting
+
+If you believe you have found a security vulnerability:
+
+1. **Do not disclose it publicly** before review.
+2. Report via [GitHub private vulnerability reporting](https://github.com/subodhkc/ai-appsec/security/advisories/new).
+3. For non-sensitive bugs, use [GitHub Issues](https://github.com/subodhkc/ai-appsec/issues).
+
+No bug bounty program exists at this time. This project is maintained by a
+small team. We appreciate responsible disclosure and patience.
+
+## Roadmap
+
+Future HAIEC capabilities (not yet implemented in this package):
+
+- Tenant isolation checking (`scan_tenant_isolation`)
+- LLM/runtime content verification (`verify_llm_content`)
+- Deploy security gating (`check_deploy_security`)
+- Native deterministic dataflow analysis
+- Runtime evidence
+- Inventory evidence
+- Regulatory evidence
+- Compliance/assurance integration
+- Compliance Twin
+
+These will remain independent products/engines. See the HAIEC architecture
+principle: one workflow, four independent checks.
+
+## HAIEC
+
+AI AppSec is powered by HAIEC. HAIEC is the broader assurance platform that
+may combine ai-appsec evidence with runtime, inventory, regulatory, and
+external evidence for broader compliance and assurance in the future.
+
+Founder-led development with HAIEC acting as the release gatekeeper for
+provenance, licensing, and publication.
 
 ## Related Projects
 

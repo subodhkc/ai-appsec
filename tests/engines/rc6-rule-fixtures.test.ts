@@ -46,7 +46,7 @@ function matchesDetectorId(checkId: string, detectorId: string): boolean {
 }
 
 async function runSemgrepOnFile(targetPath: string): Promise<SemgrepResult> {
-  const semgrepCmd = process.env.HAIEC_SEMGREP_PATH || 'semgrep';
+  const semgrepCmd = process.env.AI_APPSEC_SEMGREP_PATH || 'semgrep';
   const { stdout } = await execFileAsync(semgrepCmd, [
     'scan',
     '--config', RULEPACK_PATH,
@@ -63,7 +63,7 @@ async function runSemgrepOnFile(targetPath: string): Promise<SemgrepResult> {
 }
 
 async function runSemgrepOnDir(targetDir: string): Promise<SemgrepResult> {
-  const semgrepCmd = process.env.HAIEC_SEMGREP_PATH || 'semgrep';
+  const semgrepCmd = process.env.AI_APPSEC_SEMGREP_PATH || 'semgrep';
   const { stdout } = await execFileAsync(semgrepCmd, [
     'scan',
     '--config', RULEPACK_PATH,
@@ -82,7 +82,7 @@ async function runSemgrepOnDir(targetDir: string): Promise<SemgrepResult> {
 let semgrepAvailable = false;
 before(async () => {
   try {
-    const semgrepCmd = process.env.HAIEC_SEMGREP_PATH || 'semgrep';
+    const semgrepCmd = process.env.AI_APPSEC_SEMGREP_PATH || 'semgrep';
     await execFileAsync(semgrepCmd, ['--version'], {
       timeout: 15000,
       shell: false,

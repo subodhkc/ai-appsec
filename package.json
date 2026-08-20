@@ -1,24 +1,48 @@
 {
-  "name": "haiec-agent-security",
-  "version": "0.1.0",
-  "description": "Agent-native AI security orchestration layer for MCP-compatible coding agents",
+  "name": "ai-appsec",
+  "version": "0.1.0-rc.1",
+  "description": "Audit AI applications and agents for security risks before commit, PR, merge, or deployment. Deterministic findings with coverage and evidence receipts.",
   "type": "module",
   "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subodhkc/ai-appsec.git"
+  },
+  "homepage": "https://github.com/subodhkc/ai-appsec#readme",
+  "bugs": {
+    "url": "https://github.com/subodhkc/ai-appsec/issues"
+  },
   "engines": {
     "node": ">=22"
   },
   "bin": {
-    "haiec-agent-security": "dist/mcp/index.js"
+    "ai-appsec": "dist/mcp/index.js"
   },
   "keywords": [
-    "mcp",
     "ai-security",
+    "ai-appsec",
+    "application-security",
+    "ai-application-security",
+    "ai-agent-security",
     "agent-security",
+    "ai-code-security",
+    "ai-security-scanner",
+    "security-audit",
+    "security-scan",
+    "security-scanner",
+    "security-review",
+    "code-security",
+    "sast",
     "llm-security",
-    "prompt-injection",
-    "tenant-isolation",
-    "static-analysis",
-    "model-context-protocol"
+    "mcp",
+    "mcp-security",
+    "devsecops",
+    "pre-commit-security",
+    "pre-push-security",
+    "pr-security",
+    "security-evidence",
+    "prompt-injection"
   ],
   "files": [
     "dist",

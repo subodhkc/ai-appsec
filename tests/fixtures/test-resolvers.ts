@@ -19,10 +19,10 @@ export class AbsentSemgrepResolver extends SemgrepResolver {
       executablePath: null,
       version: null,
       requiredVersion: '1.173.0',
-      message: 'Semgrep 1.173.0 not found. Run haiec-agent-security setup to install it.',
-      remediationCode: 'RUN_HAIEC_SETUP',
+      message: 'Semgrep 1.173.0 not found. Run ai-appsec setup to install it.',
+      remediationCode: 'RUN_AI_APPSEC_SETUP',
       setupAvailable: true,
-      recommendedCommand: 'haiec-agent-security setup',
+      recommendedCommand: 'ai-appsec setup',
     };
   }
 }
@@ -50,10 +50,10 @@ export class RecoverableSemgrepResolver extends SemgrepResolver {
         executablePath: null,
         version: null,
         requiredVersion: '1.173.0',
-        message: 'Semgrep 1.173.0 not found. Run haiec-agent-security setup to install it.',
-        remediationCode: 'RUN_HAIEC_SETUP',
+        message: 'Semgrep 1.173.0 not found. Run ai-appsec setup to install it.',
+        remediationCode: 'RUN_AI_APPSEC_SETUP',
         setupAvailable: true,
-        recommendedCommand: 'haiec-agent-security setup',
+        recommendedCommand: 'ai-appsec setup',
       };
     }
     return this.realResolver.resolve();

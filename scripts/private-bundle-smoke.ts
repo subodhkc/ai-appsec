@@ -15,7 +15,7 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 async function runSmoke() {
   const rulepackPath = process.env.HAIEC_RULEPACK_PATH;
   const manifestPath = process.env.HAIEC_MANIFEST_PATH;
-  const semgrepPath = process.env.HAIEC_SEMGREP_PATH;
+  const semgrepPath = process.env.AI_APPSEC_SEMGREP_PATH;
 
   if (!rulepackPath || !manifestPath) {
     console.error('Set HAIEC_RULEPACK_PATH and HAIEC_MANIFEST_PATH');

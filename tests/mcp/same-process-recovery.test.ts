@@ -1,7 +1,7 @@
 /**
  * Same-process AI agent recovery E2E test.
  *
- * 1. Start MCP server with isolated HAIEC_HOME (no Semgrep)
+ * 1. Start MCP server with isolated AI_APPSEC_HOME (no Semgrep)
  * 2. initialize + tools/list
  * 3. Call scan_ai_security → setup-required error with remediation
  * 4. Run setup programmatically (same process, no MCP restart)
@@ -59,7 +59,7 @@ describe('Same-process AI agent recovery', { timeout: 600000 }, () => {
       assert.strictEqual(sc1.completeness, 'ERROR');
       const err1 = sc1.errors[0];
       assert.ok(err1.remediation, 'Must have remediation metadata');
-      assert.strictEqual(err1.remediation.remediationCode, 'RUN_HAIEC_SETUP');
+      assert.strictEqual(err1.remediation.remediationCode, 'RUN_AI_APPSEC_SETUP');
 
       // 4. Simulate setup recovery — the RecoverableSemgrepResolver
       // will now delegate to the real resolver on the next call.
@@ -70,7 +70,7 @@ describe('Same-process AI agent recovery', { timeout: 600000 }, () => {
       const result2 = await client.callTool({
         name: 'scan_ai_security',
         arguments: { targetPath, timeout: 180 },
-      });
+      }, undefined, { timeout: 300000 });
 
       // Should NOT be an error this time
       const sc2 = (result2 as any).structuredContent;

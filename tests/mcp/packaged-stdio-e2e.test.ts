@@ -43,7 +43,7 @@ describe('Real packaged stdio E2E', { timeout: 120000 }, () => {
     execSync(`npm install "${tarballPath}"`, { cwd: installDir, timeout: 60000 });
 
     // Verify files exist
-    const installedPath = path.join(installDir, 'node_modules', 'haiec-agent-security');
+    const installedPath = path.join(installDir, 'node_modules', 'ai-appsec');
     assert.ok(fs.existsSync(path.join(installedPath, 'dist', 'mcp', 'index.js')),
       'MCP entry point must exist');
     assert.ok(fs.existsSync(path.join(installedPath, 'rules', 'public-core', 'haiec-ai-security.yml')),
@@ -58,7 +58,7 @@ describe('Real packaged stdio E2E', { timeout: 120000 }, () => {
     // doctor exits 1 when setup required, 0 when ready — execSync throws on non-zero
     let result: string;
     try {
-      result = execSync('npx haiec-agent-security doctor --json', {
+      result = execSync('npx ai-appsec doctor --json', {
         cwd: installDir,
         timeout: 30000,
         encoding: 'utf-8',
@@ -77,7 +77,7 @@ describe('Real packaged stdio E2E', { timeout: 120000 }, () => {
 
   it('MCP server starts on stdio from clean install', { timeout: 30000 }, () => {
     // Spawn the server and send an initialize request
-    const serverPath = path.join(installDir, 'node_modules', 'haiec-agent-security', 'dist', 'mcp', 'index.js');
+    const serverPath = path.join(installDir, 'node_modules', 'ai-appsec', 'dist', 'mcp', 'index.js');
     const child = spawn('node', [serverPath], {
       stdio: ['pipe', 'pipe', 'pipe'],
       cwd: installDir,

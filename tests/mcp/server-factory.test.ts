@@ -12,11 +12,11 @@ describe('MCP server factory', () => {
   });
 
   it('uses the correct server name constant', () => {
-    assert.equal(SERVER_NAME, 'haiec-agent-security');
+    assert.equal(SERVER_NAME, 'ai-appsec');
   });
 
   it('uses the correct server version constant', () => {
-    assert.equal(SERVER_VERSION, '0.0.0');
+    assert.equal(SERVER_VERSION, '0.1.0-rc.1');
   });
 
   it('does not register tool handlers in Phase 0', () => {

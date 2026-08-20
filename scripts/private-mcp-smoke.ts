@@ -16,12 +16,12 @@ import * as url from 'node:url';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
-const SEMGREP_PATH = process.env.HAIEC_SEMGREP_PATH;
+const SEMGREP_PATH = process.env.AI_APPSEC_SEMGREP_PATH;
 const RULEPACK_PATH = process.env.HAIEC_RULEPACK_PATH;
 const MANIFEST_PATH = process.env.HAIEC_MANIFEST_PATH;
 
 if (!RULEPACK_PATH || !MANIFEST_PATH || !SEMGREP_PATH) {
-  console.error('Usage: HAIEC_RULEPACK_PATH=... HAIEC_MANIFEST_PATH=... HAIEC_SEMGREP_PATH=... npx tsx scripts/private-mcp-smoke.ts <repo-path>');
+  console.error('Usage: HAIEC_RULEPACK_PATH=... HAIEC_MANIFEST_PATH=... AI_APPSEC_SEMGREP_PATH=... npx tsx scripts/private-mcp-smoke.ts <repo-path>');
   process.exit(1);
 }
 

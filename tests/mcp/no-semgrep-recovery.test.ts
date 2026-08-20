@@ -4,7 +4,7 @@
  * Verifies:
  * 1. MCP server starts and tools/list works without Semgrep
  * 2. scan_ai_security returns structured error with remediation metadata
- * 3. remediationCode is RUN_HAIEC_SETUP (or INSTALL_SEMGREP_1_173_0)
+ * 3. remediationCode is RUN_AI_APPSEC_SETUP (or INSTALL_SEMGREP_1_173_0)
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
@@ -73,8 +73,8 @@ describe('MCP without Semgrep (self-recovery)', () => {
     assert.ok(error.remediation.dependency, 'Remediation must have dependency');
     assert.ok(error.remediation.requiredVersion, 'Remediation must have requiredVersion');
     assert.ok(error.remediation.remediationCode, 'Remediation must have remediationCode');
-    assert.ok(['RUN_HAIEC_SETUP', 'INSTALL_SEMGREP_1_173_0'].includes(error.remediation.remediationCode),
-      `remediationCode should be RUN_HAIEC_SETUP or INSTALL_SEMGREP_1_173_0, got: ${error.remediation.remediationCode}`);
+    assert.ok(['RUN_AI_APPSEC_SETUP', 'INSTALL_SEMGREP_1_173_0'].includes(error.remediation.remediationCode),
+      `remediationCode should be RUN_AI_APPSEC_SETUP or INSTALL_SEMGREP_1_173_0, got: ${error.remediation.remediationCode}`);
 
     await client.close();
   });

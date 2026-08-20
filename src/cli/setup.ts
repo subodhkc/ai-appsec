@@ -1,5 +1,5 @@
 /**
- * HAIEC Agent Security CLI — setup command.
+ * AI AppSec CLI — setup command.
  *
  * Explicitly installs an isolated HAIEC-managed Semgrep environment.
  *
@@ -262,7 +262,7 @@ export async function runSetup(): Promise<SetupResult> {
 
 export function formatSetupText(result: SetupResult): string {
   const lines: string[] = [
-    'HAIEC Agent Security — setup',
+    'AI AppSec — setup',
     '',
     `Action: ${result.action}`,
     `Tool used: ${result.toolUsed ?? 'none'}`,

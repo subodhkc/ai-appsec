@@ -28,7 +28,7 @@ async function scan(targetPath: string, timeout: number = 60) {
   const result = await client.callTool({
     name: 'scan_ai_security',
     arguments: { targetPath, timeout },
-  });
+  }, undefined, { timeout: 300000 });
 
   await client.close();
   await server.close();

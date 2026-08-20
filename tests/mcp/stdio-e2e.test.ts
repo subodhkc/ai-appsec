@@ -20,6 +20,7 @@ import { Client } from '@modelcontextprotocol/client';
 import { InMemoryTransport } from '@modelcontextprotocol/server';
 import { createServer } from '../../src/mcp/server-factory.js';
 import { SyntheticTestRulepackProvider } from '../../src/engines/ai-security/rulepack-provider.js';
+import { AbsentSemgrepResolver } from '../fixtures/test-resolvers.js';
 import * as path from 'node:path';
 import * as url from 'node:url';
 import * as fs from 'node:fs';
@@ -61,7 +62,7 @@ describe('MCP stdio E2E (protocol validation)', () => {
       'Description must NOT contain "prompt-injection exposure" overstatement');
 
     // Verify description contains USE and DO NOT USE semantics
-    assert.ok(scanTool.description!.includes('USE when:'), 'Description must have USE section');
+    assert.ok(scanTool.description!.includes('USE when'), 'Description must have USE section');
     assert.ok(scanTool.description!.includes('DO NOT use for:'), 'Description must have DO NOT USE section');
 
     // Verify annotations
@@ -87,7 +88,7 @@ describe('MCP stdio E2E (protocol validation)', () => {
       path.join(fixtureDir, 'test-rules.yml'),
       path.join(fixtureDir, 'test-manifest.json'),
     );
-    const server = createServer({ rulepackProvider: provider });
+    const server = createServer({ rulepackProvider: provider, semgrepResolver: new AbsentSemgrepResolver() });
 
     const client = new Client(
       { name: 'test-client', version: '1.0.0' },
@@ -121,7 +122,7 @@ describe('MCP stdio E2E (protocol validation)', () => {
     assert.ok(textContent, 'Text content must be present');
     assert.ok((textContent as any).text, 'Text content must have text');
     const text = (textContent as any).text as string;
-    assert.ok(text.includes('HAIEC scan_ai_security result'), 'Text must identify as HAIEC result');
+    assert.ok(text.includes('scan_ai_security result'), 'Text must identify as scan_ai_security result');
     assert.ok(text.includes('Verdict: ERROR'), 'Text must show ERROR verdict');
     assert.ok(text.includes('Completeness: ERROR'), 'Text must show ERROR completeness');
 
@@ -147,7 +148,7 @@ describe('MCP stdio E2E (protocol validation)', () => {
       path.join(fixtureDir, 'test-rules.yml'),
       path.join(fixtureDir, 'test-manifest.json'),
     );
-    const server = createServer({ rulepackProvider: provider });
+    const server = createServer({ rulepackProvider: provider, semgrepResolver: new AbsentSemgrepResolver() });
 
     const client = new Client(
       { name: 'test-client', version: '1.0.0' },

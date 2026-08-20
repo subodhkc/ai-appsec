@@ -2,8 +2,8 @@
  * Semgrep dependency resolver — locates and verifies the Semgrep executable.
  *
  * Resolution order:
- * 1. HAIEC-managed Semgrep (installed by `haiec-agent-security setup`)
- * 2. Explicitly configured executable path (HAIEC_SEMGREP_PATH env var)
+ * 1. AI AppSec-managed Semgrep (installed by `ai-appsec setup`)
+ * 2. Explicitly configured executable path (AI_APPSEC_SEMGREP_PATH env var)
  * 3. Semgrep executable available on PATH
  * 4. MISSING (setup required)
  *
@@ -17,7 +17,7 @@
  * - Changes PATH
  * - Modifies the user's environment
  *
- * The resolver knows the HAIEC-managed location without requiring PATH modification.
+ * The resolver knows the AI AppSec-managed location without requiring PATH modification.
  */
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -47,7 +47,7 @@ export type EngineReadiness =
  */
 export type RemediationCode =
   | 'READY'
-  | 'RUN_HAIEC_SETUP'
+  | 'RUN_AI_APPSEC_SETUP'
   | 'INSTALL_SEMGREP_1_173_0'
   | 'SETUP_UNAVAILABLE_PLATFORM'
   | 'NONE';
@@ -78,31 +78,31 @@ export interface SemgrepResolverOptions {
   readonly configuredPath?: string;
   /** Override the required version (for testing). */
   readonly requiredVersion?: string;
-  /** Override HAIEC_HOME (for testing). */
+  /** Override AI_APPSEC_HOME (for testing). */
   readonly haiecHome?: string;
 }
 
 /**
- * Get the HAIEC home directory.
- * Priority: HAIEC_HOME env var > OS-appropriate app data location.
+ * Get the AI AppSec home directory.
+ * Priority: AI_APPSEC_HOME env var > OS-appropriate app data location.
  */
 export function getHaiecHome(override?: string): string {
   if (override) return path.resolve(override);
-  const envHome = process.env.HAIEC_HOME;
+  const envHome = process.env.AI_APPSEC_HOME;
   if (envHome) return path.resolve(envHome);
 
   const home = os.homedir();
   if (process.platform === 'win32') {
-    return path.join(home, 'AppData', 'Local', 'haiec');
+    return path.join(home, 'AppData', 'Local', 'ai-appsec');
   } else if (process.platform === 'darwin') {
-    return path.join(home, 'Library', 'Application Support', 'haiec');
+    return path.join(home, 'Library', 'Application Support', 'ai-appsec');
   } else {
-    return path.join(home, '.local', 'share', 'haiec');
+    return path.join(home, '.local', 'share', 'ai-appsec');
   }
 }
 
 /**
- * Get the path to the HAIEC-managed Semgrep executable.
+ * Get the path to the AI AppSec-managed Semgrep executable.
  */
 export function getManagedSemgrepPath(haiecHome?: string): string {
   const home = getHaiecHome(haiecHome);
@@ -114,7 +114,7 @@ export function getManagedSemgrepPath(haiecHome?: string): string {
 }
 
 /**
- * Check if the HAIEC-managed Semgrep exists.
+ * Check if the AI AppSec-managed Semgrep exists.
  */
 export async function managedSemgrepExists(haiecHome?: string): Promise<boolean> {
   try {
@@ -173,7 +173,7 @@ export class SemgrepResolver {
    * Does NOT install, download, or modify the environment.
    */
   async resolve(): Promise<SemgrepResolution> {
-    // 1. Try HAIEC-managed Semgrep first
+    // 1. Try AI AppSec-managed Semgrep first
     const managedPath = getManagedSemgrepPath(this.haiecHome);
     const managedResult = await this.tryExecutable(managedPath);
     if (managedResult) return managedResult;
@@ -197,10 +197,10 @@ export class SemgrepResolver {
         executablePath: null,
         version: null,
         requiredVersion: this.requiredVersion,
-        message: `Semgrep ${this.requiredVersion} not found. Run 'haiec-agent-security setup' to install it.`,
-        remediationCode: 'RUN_HAIEC_SETUP',
+        message: `Semgrep ${this.requiredVersion} not found. Run 'ai-appsec setup' to install it.`,
+        remediationCode: 'RUN_AI_APPSEC_SETUP',
         setupAvailable: true,
-        recommendedCommand: 'haiec-agent-security setup',
+        recommendedCommand: 'ai-appsec setup',
       };
     }
 
@@ -246,10 +246,10 @@ export class SemgrepResolver {
           executablePath: executable,
           version,
           requiredVersion: this.requiredVersion,
-          message: `Semgrep ${version} found, but version ${this.requiredVersion} is required. Run 'haiec-agent-security setup' to install the correct version.`,
-          remediationCode: 'RUN_HAIEC_SETUP',
+          message: `Semgrep ${version} found, but version ${this.requiredVersion} is required. Run 'ai-appsec setup' to install the correct version.`,
+          remediationCode: 'RUN_AI_APPSEC_SETUP',
           setupAvailable: true,
-          recommendedCommand: 'haiec-agent-security setup',
+          recommendedCommand: 'ai-appsec setup',
         };
       } catch (e) {
         const err = e as Error;
@@ -269,9 +269,9 @@ export class SemgrepResolver {
             version: null,
             requiredVersion: this.requiredVersion,
             message: `Semgrep found at ${executable} but could not be executed: ${err.message}`,
-            remediationCode: 'RUN_HAIEC_SETUP',
+            remediationCode: 'RUN_AI_APPSEC_SETUP',
             setupAvailable: true,
-            recommendedCommand: 'haiec-agent-security setup',
+            recommendedCommand: 'ai-appsec setup',
           };
         } catch {
           // File doesn't exist — try next source
