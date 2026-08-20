@@ -569,13 +569,14 @@ jobs:
   package-name-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check npm registry for ai-appsec
+      - name: Check npm registry for ai-appsec RC2 availability
         run: |
-          RESULT=$(npm view ai-appsec version 2>&1 || echo "NOT_FOUND")
+          # Package now exists (RC1 published). Check that RC2 does NOT exist yet.
+          RESULT=$(npm view ai-appsec@0.1.0-rc.2 version 2>&1 || echo "NOT_FOUND")
           echo "Registry result: $RESULT"
           if echo "$RESULT" | grep -q "NOT_FOUND\|E404"; then
-            echo "PACKAGE_NAME_AVAILABLE"
+            echo "RC2_VERSION_AVAILABLE — safe to publish"
           else
-            echo "PACKAGE_NAME_CONFLICT — version exists: $RESULT"
+            echo "RC2_VERSION_CONFLICT — version already exists: $RESULT"
             exit 1
           fi
