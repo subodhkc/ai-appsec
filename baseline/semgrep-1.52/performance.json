@@ -1,0 +1,7 @@
+{
+  "semgrepVersion": "1.52.0",
+  "totalFindings": 165,
+  "totalErrors": 1,
+  "filesScanned": 83,
+  "note": "Wall-clock timing not available in Semgrep 1.52 JSON output. Use external timing for modernization comparison."
+}

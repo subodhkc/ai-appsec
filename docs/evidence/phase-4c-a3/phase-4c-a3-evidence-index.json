@@ -1,0 +1,73 @@
+{
+  "phase": "4C-A3",
+  "artifact": "phase-4c-a3-evidence-index",
+  "generatedAt": "2026-08-20T03:14:02.971Z",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.11.1",
+    "semgrep": "1.173.0",
+    "target": "Kestrel 0f131ea63 (immutable worktree)"
+  },
+  "artifacts": [
+    {
+      "file": "CROSS-SESSION-RECEIPT-REPRODUCIBILITY.json",
+      "sizeBytes": 7041,
+      "sha256": "sha256:aa5f1ba9f64e4ffde836126eb8e9d649cb6955e8100fd8bab55c7fdfafb75217"
+    },
+    {
+      "file": "DIRECT-VS-FINAL-TARBALL.json",
+      "sizeBytes": 2535,
+      "sha256": "sha256:c0ce2c8380d426edaa234641eeb93eb4ca21d8c3867169e0a69aa4040d6c25d6"
+    },
+    {
+      "file": "HISTORICAL-859-798-RECONCILIATION.json",
+      "sizeBytes": 3067,
+      "sha256": "sha256:447f00ce84fcc6678bdf337e20b755acfb30ca279d82c6c57d37e982903a2c40"
+    },
+    {
+      "file": "PACKAGE-FILE-MANIFEST.json",
+      "sizeBytes": 25271,
+      "sha256": "sha256:c6acf892e399262f8250af7da769f1d55e32f4e8f6bd0c714ebce59c6dff861d"
+    },
+    {
+      "file": "PUBLIC-CORE-PROVENANCE-FINAL-ENGINEERING-MATRIX.json",
+      "sizeBytes": 2431,
+      "sha256": "sha256:f04e313aed944b5df9312c57809432a643048a1ce86c649aac33322f666742d3"
+    },
+    {
+      "file": "RC6-FINAL-FIXTURE-QUALIFICATION.json",
+      "sizeBytes": 1890,
+      "sha256": "sha256:43ebfb8ce63bb15fa1b343a4cd0ac4952a7d2d1f01e251e9f9331ca99d9e905f"
+    },
+    {
+      "file": "RELEASE-CANDIDATE-MANIFEST.json",
+      "sizeBytes": 3016,
+      "sha256": "sha256:61317cbeaf4c0a52d9b4a27bf8e43662ebd24f44d1fcf728f279a4702de9a9bb"
+    },
+    {
+      "file": "REMOTE-CI-HANDOFF.md",
+      "sizeBytes": 2261,
+      "sha256": "sha256:c259869e868dcc5315774f637ffb29936a7bb2732982ea6c52ea570e8dc26e24"
+    },
+    {
+      "file": "session-1.json",
+      "sizeBytes": 2315,
+      "sha256": "sha256:f71c6d4e0f95a3e18ff03459e30f0c8fa08963cecd095f22e665a0ff059b9302"
+    },
+    {
+      "file": "session-2.json",
+      "sizeBytes": 2314,
+      "sha256": "sha256:b9980ab8452fc2a63bd529a925d2c5681fdfd583b2b4c529c3f2f878b5875f98"
+    },
+    {
+      "file": "session-3.json",
+      "sizeBytes": 2314,
+      "sha256": "sha256:30af1e2646dc609154a9e1877a991a9d84df734b0b32e5e7ae6c24648917ba70"
+    },
+    {
+      "file": "TEST-ISOLATION-QUALIFICATION.json",
+      "sizeBytes": 1133,
+      "sha256": "sha256:de7b41fe6cee4ca9d9241766cdbbc6e020ad677238f370b7255c44394aa401f4"
+    }
+  ]
+}

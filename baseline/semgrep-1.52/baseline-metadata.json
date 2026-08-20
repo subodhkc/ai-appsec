@@ -1,0 +1,40 @@
+{
+  "baselineId": "haiec-ai-security-semgrep152-baseline-v1",
+  "baselineVersion": "0.1.0-candidate.2",
+  "semgrepVersion": "1.52.0",
+  "sourceCommit": "d0ed945d",
+  "sourceRulepackHash": "9c148cce0b4eaf9dc9e8ad72722ff000de4e91380b26ad56ff6ace8330b12194",
+  "manifestHash": "363fff2aaa5fa7058a9cdbc486da73687dc4aa70c700484644ba122d4716a38e",
+  "detectorCount": 121,
+  "logicalCheckCount": 80,
+  "fixtureCount": 107,
+  "positiveCoverage": 23,
+  "totalChecks": 80,
+  "scanResultCount": 165,
+  "scanErrorCount": 1,
+  "patternErrorCount": 1,
+  "firedDetectorCount": 34,
+  "parityStatus": "EXACT",
+  "findingKindBreakdown": {
+    "VULNERABILITY": 25,
+    "PRESENCE": 44,
+    "RISK_SIGNAL": 26,
+    "CONTROL_GAP": 26
+  },
+  "dispositionBreakdown": {
+    "REVIEW": 78,
+    "INFORMATIONAL": 43
+  },
+  "metadataPublicationBreakdown": {
+    "METADATA_APPROVED": 121
+  },
+  "ruleBodyPublicationBreakdown": {
+    "REDESIGN_REQUIRED": 33,
+    "QUALIFIED_CANDIDATE": 88
+  },
+  "blockClassificationBreakdown": {
+    "REDESIGN_REQUIRED": 24,
+    "CONFIRMED": 88,
+    "REDESIGN_BEFORE_BLOCK": 9
+  }
+}

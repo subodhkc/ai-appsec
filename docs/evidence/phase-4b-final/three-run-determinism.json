@@ -1,0 +1,112 @@
+{
+  "target": "<HAIEC_HOME>\\Desktop\\App Building\\Github\\HAIEC-workspace\\haiec-ai-agent-security-free-mcp",
+  "runs": [
+    {
+      "run": 1,
+      "verdict": "REVIEW",
+      "completeness": "COMPLETE",
+      "detectorInstancesFound": 12,
+      "canonicalFindingsFound": 12,
+      "materialConcernsFound": 2,
+      "observationsFound": 0,
+      "filesAnalyzed": 39,
+      "securityConcernCount": 2,
+      "concernDigest": "sha256:7e68e64a23305f584e4747ae984249f9355fa43b8e04cf2adc35fc364b7e180c",
+      "concernIds": [
+        "concern-00izfzxo",
+        "concern-00xhetue"
+      ],
+      "concernInstanceCounts": {
+        "concern-00izfzxo": 8,
+        "concern-00xhetue": 4
+      },
+      "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+      "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+      "semgrepVersion": "1.173.0",
+      "durationMs": 26933,
+      "scanId": "scan-1787142864198-yspsnl"
+    },
+    {
+      "run": 2,
+      "verdict": "REVIEW",
+      "completeness": "COMPLETE",
+      "detectorInstancesFound": 12,
+      "canonicalFindingsFound": 12,
+      "materialConcernsFound": 2,
+      "observationsFound": 0,
+      "filesAnalyzed": 39,
+      "securityConcernCount": 2,
+      "concernDigest": "sha256:7e68e64a23305f584e4747ae984249f9355fa43b8e04cf2adc35fc364b7e180c",
+      "concernIds": [
+        "concern-00izfzxo",
+        "concern-00xhetue"
+      ],
+      "concernInstanceCounts": {
+        "concern-00izfzxo": 8,
+        "concern-00xhetue": 4
+      },
+      "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+      "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+      "semgrepVersion": "1.173.0",
+      "durationMs": 23356,
+      "scanId": "scan-1787142891138-sly74p"
+    },
+    {
+      "run": 3,
+      "verdict": "REVIEW",
+      "completeness": "COMPLETE",
+      "detectorInstancesFound": 12,
+      "canonicalFindingsFound": 12,
+      "materialConcernsFound": 2,
+      "observationsFound": 0,
+      "filesAnalyzed": 39,
+      "securityConcernCount": 2,
+      "concernDigest": "sha256:7e68e64a23305f584e4747ae984249f9355fa43b8e04cf2adc35fc364b7e180c",
+      "concernIds": [
+        "concern-00izfzxo",
+        "concern-00xhetue"
+      ],
+      "concernInstanceCounts": {
+        "concern-00izfzxo": 8,
+        "concern-00xhetue": 4
+      },
+      "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+      "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+      "semgrepVersion": "1.173.0",
+      "durationMs": 22196,
+      "scanId": "scan-1787142914505-w1e3px"
+    }
+  ],
+  "determinism": {
+    "verdictMatch": true,
+    "completenessMatch": true,
+    "instancesMatch": true,
+    "canonicalMatch": true,
+    "concernsMatch": true,
+    "observationsMatch": true,
+    "filesMatch": true,
+    "concernCountMatch": true,
+    "concernDigestMatch": true,
+    "concernIdsMatch": true,
+    "concernInstanceMatch": true,
+    "rulepackMatch": true,
+    "manifestMatch": true,
+    "semgrepMatch": true,
+    "allDeterministicMatch": true
+  },
+  "operationalMetadata": {
+    "durations": [
+      26933,
+      23356,
+      22196
+    ],
+    "scanIds": [
+      "scan-1787142864198-yspsnl",
+      "scan-1787142891138-sly74p",
+      "scan-1787142914505-w1e3px"
+    ],
+    "durationsDiffer": true,
+    "scanIdsDiffer": true
+  },
+  "conclusion": "PASS — all deterministic fields match across 3 runs; operational metadata differs as expected"
+}

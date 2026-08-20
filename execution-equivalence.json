@@ -1,0 +1,39 @@
+{
+  "method": "MCP protocol path (Client → InMemoryTransport → McpServer → scanner → Semgrep)",
+  "repositories": [
+    {
+      "name": "anthropic-sdk-python",
+      "size": "medium",
+      "rawFindings": 489,
+      "actionableTotal": 379,
+      "observationsTotal": 20,
+      "completeness": "COMPLETE",
+      "verdict": "REVIEW",
+      "duration": "25.6s",
+      "structuredBytes": 16429,
+      "textBytes": 753,
+      "totalBytes": 17182,
+      "isError": false
+    },
+    {
+      "name": "anthropic-sdk-typescript",
+      "size": "medium",
+      "rawFindings": 146,
+      "actionableTotal": 90,
+      "observationsTotal": 12,
+      "completeness": "PARTIAL",
+      "completenessReasons": ["2 parser error(s) occurred during scanning."],
+      "verdict": "REVIEW",
+      "duration": "16.9s",
+      "structuredBytes": 16024,
+      "textBytes": 875,
+      "totalBytes": 16899,
+      "isError": false
+    }
+  ],
+  "directVsMcpEquivalence": "EQUIVALENT — same scanAiSecurity() function, same results",
+  "nativeVsDocker": {
+    "small": "EQUIVALENT (312=312 findings, Phase 4A)",
+    "medium": "COUNT_MATCH (Phase 4A), normalized digest comparison deferred"
+  }
+}

@@ -39,9 +39,10 @@ export const SCAN_AI_SECURITY: ToolDescriptor = {
   name: 'scan_ai_security',
   title: 'Scan AI/LLM Source Code Security',
   description: [
-    'Scan AI/LLM/agent application source code for AI-specific security risks',
-    'such as unsafe tool execution, prompt-injection exposure, secrets, RAG risks,',
-    'insecure AI APIs, and production security patterns.',
+    'Scan AI/LLM/agent application source code for security risks and',
+    'security-relevant implementation patterns, including unsafe AI-output',
+    'execution, secrets exposure, RAG/model integration risks, insecure AI',
+    'API usage, control gaps, and prompt/input-related risk signals.',
     '',
     'Use for: security review of AI source code, AI-generated code, changed AI code,',
     'repository AI security, RAG/agent/tool security.',
@@ -67,7 +68,7 @@ export const SCAN_AI_SECURITY: ToolDescriptor = {
   readOnly: true,
   destructive: false,
   openWorld: false,
-  implemented: false,
+  implemented: true,
 };
 
 export const SCAN_TENANT_ISOLATION: ToolDescriptor = {

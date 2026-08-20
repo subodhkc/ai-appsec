@@ -1,0 +1,34 @@
+{
+  "scopeModes": {
+    "DEFAULT_PRODUCTION": {
+      "description": "Scans application source, server code, API routes, agent/tool/RAG code, config. Excludes tests, docs, examples, generated, vendor. VULNERABILITY findings from non-production paths are included.",
+      "semgrepExcludes": ["node_modules", ".git", "dist", "build", ".next", "__pycache__", ".cache", "vendor", "third_party"],
+      "postProcessingFilter": "shouldIncludeFinding filters non-production paths (except VULNERABILITY)"
+    },
+    "EXTENDED_SECURITY": {
+      "description": "Scans everything except always-excluded. No non-production filtering.",
+      "semgrepExcludes": ["node_modules", ".git", "dist", "build", ".next", "__pycache__", ".cache", "vendor", "third_party"],
+      "postProcessingFilter": "none"
+    }
+  },
+  "accountingFields": {
+    "filesAnalyzed": "From Semgrep paths.scanned — files actually analyzed by Semgrep",
+    "filesWithFindings": "Unique files with at least one finding (derived)",
+    "filesSkippedByEngine": "Files Semgrep could not parse (parse errors)",
+    "filesUnscannedDueToTimeout": "-1 if timeout occurred (unknown count), 0 otherwise",
+    "findingsExcludedByReportingScope": "Findings from non-production paths filtered out by scope mode"
+  },
+  "notReported": [
+    "filesTargeted — Semgrep doesn't reliably report this",
+    "filesIntentionallyExcluded — would require knowing what would have been scanned",
+    "filesUnscannedDueToError — Semgrep doesn't separate this from parse errors"
+  ],
+  "example": {
+    "repository": "anthropic-sdk-python",
+    "scopeMode": "DEFAULT_PRODUCTION",
+    "filesAnalyzed": 1137,
+    "filesWithFindings": 63,
+    "findingsExcludedByReportingScope": 90,
+    "actionableTotal": 379
+  }
+}

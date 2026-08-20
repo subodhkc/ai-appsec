@@ -19,8 +19,8 @@ export const ENGINES: Readonly<Record<EngineId, EngineInfo>> = {
   'ai-security': {
     id: 'ai-security',
     name: 'HAIEC AI Security',
-    version: '0.0.0',
-    integrated: false,
+    version: '0.1.0',
+    integrated: true,
   },
   'tenant-isolation': {
     id: 'tenant-isolation',

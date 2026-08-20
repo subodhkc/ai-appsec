@@ -1,0 +1,31 @@
+{
+  "formula": {
+    "riskAvoided": "INCIDENT_COST_RANGES[incidentType][companySize].average * severityWeight * confidenceMultiplier",
+    "gdprFine": "REGULATORY_FINE_RANGES.GDPR[violationType].average * (severityWeight * 0.3)",
+    "hipaaFine": "REGULATORY_FINE_RANGES.HIPAA['reasonable-cause'].average * (severityWeight * 0.25)",
+    "soc2Impact": "0 (qualitative only, no dollar model)",
+    "total": "sum(risksAvoided) + sum(finesPrevented)",
+    "range": "total * 0.75 to total * 1.25"
+  },
+  "inputsUsed": [
+    {"variable": "finding.severity", "source": "Finding data", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "Input"},
+    {"variable": "finding.category", "source": "Finding data", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "Input"},
+    {"variable": "finding.complianceMapping", "source": "Finding data", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "Input"},
+    {"variable": "companySize", "source": "Function parameter", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "HAIEC_MODEL_ASSUMPTION"},
+    {"variable": "confidenceLevel", "source": "Function parameter", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "HAIEC_MODEL_ASSUMPTION"},
+    {"variable": "severityWeight", "source": "Hardcoded", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "HAIEC_MODEL_ASSUMPTION"},
+    {"variable": "INCIDENT_COST_RANGES", "source": "Hardcoded constant", "mathematicallyUsed": true, "directlyDisplayed": false, "classification": "HAIEC_MODEL_ASSUMPTION"},
+    {"variable": "REGULATORY_FINE_RANGES", "source": "Hardcoded constant", "mathematicallyUsed": true, "directlyDisplayed": false, "classification": "HAIEC_MODEL_ASSUMPTION"},
+    {"variable": "confidenceMultiplier", "source": "Hardcoded", "mathematicallyUsed": true, "directlyDisplayed": true, "classification": "HAIEC_MODEL_ASSUMPTION"}
+  ],
+  "inputsClaimedButNotUsed": [
+    {"factor": "evidence strength", "action": "REMOVED from copy"},
+    {"factor": "affected scope", "action": "REMOVED from copy"},
+    {"factor": "industry", "action": "Dead parameter (adjustForIndustry never called), not in copy"}
+  ],
+  "externalSourceMetricsMathematicallyUsed": 0,
+  "disclosedHaiecModelAssumptions": 5,
+  "unsupportedExternalNumericClaimsRendered": 0,
+  "soc2DollarImpact": "QUALITATIVE_ONLY (potentialSavings = 0)",
+  "finalCopy": "A HAIEC scenario planning estimate of $X.XM over the next 12 months, based on finding severity, finding category, company size, confidence level, compliance mapping, and disclosed HAIEC scenario assumptions. Informed by published breach-cost context (IBM 2026 Cost of a Data Breach Report). Designed to support remediation prioritization; it is a modeled scenario, not a prediction of actual loss."
+}

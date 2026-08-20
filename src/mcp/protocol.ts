@@ -9,16 +9,16 @@
 /**
  * The MCP server name advertised to clients.
  */
-export const SERVER_NAME = 'haiec-agent-security';
+export const SERVER_NAME = 'ai-appsec';
 
 /**
  * The MCP server version.
  */
-export const SERVER_VERSION = '0.0.0';
+export const SERVER_VERSION = '0.1.0-rc.3';
 
 /**
  * Write a diagnostic message to stderr (never stdout).
  */
 export function writeDiagnostic(message: string): void {
-  process.stderr.write(`[haiec] ${message}\n`);
+  process.stderr.write(`[ai-appsec] ${message}\n`);
 }

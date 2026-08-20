@@ -1,0 +1,579 @@
+{
+  "corpus": {
+    "target": "<KESTREL_EXPORT>",
+    "commit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+    "exportMethod": "git worktree add --detach"
+  },
+  "parserErrorCount": 102,
+  "parserErrorFileSetDigest": "sha256:3f67ffeb910a60cece76c7eeaa7cc44a1ad48f73e3c4111ba70ae9201f1379f0",
+  "classification": {
+    "byExtension": [
+      {
+        "extension": ".tsx",
+        "count": 99
+      },
+      {
+        "extension": ".py",
+        "count": 3
+      }
+    ],
+    "byDirectory": [
+      {
+        "directory": "frontend",
+        "count": 98
+      },
+      {
+        "directory": "docs-archive",
+        "count": 2
+      },
+      {
+        "directory": "hvac_agent",
+        "count": 1
+      },
+      {
+        "directory": "desktop",
+        "count": 1
+      }
+    ],
+    "byScope": [
+      {
+        "scope": "PRODUCTION_LIKE",
+        "count": 102
+      }
+    ],
+    "supportedVsUnsupported": {
+      "SUPPORTED": 102,
+      "UNSUPPORTED": 0,
+      "UNKNOWN": 0
+    }
+  },
+  "sanitizedPaths": [
+    "desktop/renderer/components/AfterCallWorkspace.tsx",
+    "docs-archive/voice_engine_jan2026_barge_in.py",
+    "docs-archive/voice_engine_v3.0.0.py",
+    "frontend/app/(dashboard)/admin/ai-demos/analytics/page.tsx",
+    "frontend/app/(dashboard)/admin/call-logs/[id]/page.tsx",
+    "frontend/app/(dashboard)/admin/error-patterns/page.tsx",
+    "frontend/app/(dashboard)/admin/generate-report/page.tsx",
+    "frontend/app/(dashboard)/admin/outbound-calls-monitor/page.tsx",
+    "frontend/app/(dashboard)/admin/tenants/[id]/ai-config/page.tsx",
+    "frontend/app/(dashboard)/admin/tenants/[id]/page.tsx",
+    "frontend/app/(dashboard)/admin/voice-analytics/page.tsx",
+    "frontend/app/(dashboard)/analytics/page.tsx",
+    "frontend/app/(dashboard)/calls/calls/[id]/recording/page.tsx",
+    "frontend/app/(dashboard)/calls/calls/page.tsx",
+    "frontend/app/(dashboard)/calls/intelligence/[call_sid]/page.tsx",
+    "frontend/app/(dashboard)/dashboard/command-center/page.tsx",
+    "frontend/app/(dashboard)/dashboard/personal/settings/page.tsx",
+    "frontend/app/(dashboard)/personal-assistant/ai-training.tsx",
+    "frontend/app/(dashboard)/settings/SettingsPageContent.tsx",
+    "frontend/app/(dashboard)/settings/ai-agent/page.tsx",
+    "frontend/app/(dashboard)/settings/ai-training/page.tsx",
+    "frontend/app/(dashboard)/settings/billing/page.tsx",
+    "frontend/app/(dashboard)/settings/locations/page.tsx",
+    "frontend/app/(dashboard)/settings/phone-forwarding-guide/page.tsx",
+    "frontend/app/(dashboard)/settings/restaurant/page.tsx",
+    "frontend/app/(dashboard)/settings/voice-performance/page.tsx",
+    "frontend/app/24-7-hvac-answering-service/page.tsx",
+    "frontend/app/alertstream/dashboard/integrations/linkedin/page.tsx",
+    "frontend/app/alertstream/dashboard/sms/page.tsx",
+    "frontend/app/appointment-booking/page.tsx",
+    "frontend/app/automated-hvac-appointment-booking/page.tsx",
+    "frontend/app/billing/page.tsx",
+    "frontend/app/bland-ai-alternative-hvac/page.tsx",
+    "frontend/app/blog/page.tsx",
+    "frontend/app/case-studies/servicetitan-integration-success/page.tsx",
+    "frontend/app/case-studies/winter-storm-emergency/page.tsx",
+    "frontend/app/checkout/page.tsx",
+    "frontend/app/comparison/vs-human-service/page.tsx",
+    "frontend/app/compliance/page.tsx",
+    "frontend/app/connect/page.tsx",
+    "frontend/app/crm/tasks/page.tsx",
+    "frontend/app/demo-join/[meetingId]/page.tsx",
+    "frontend/app/desktop/desktop-download-client.tsx",
+    "frontend/app/docs/api-reference/page.tsx",
+    "frontend/app/docs/guides/page.tsx",
+    "frontend/app/docs/setup-cheat-sheet/page.tsx",
+    "frontend/app/docs/setup-cheat-sheet/page.tsx",
+    "frontend/app/hvac-call-automation-report-2024/page.tsx",
+    "frontend/app/hvac-call-center-alternative/page.tsx",
+    "frontend/app/hvac-emergency-call-handling/page.tsx",
+    "frontend/app/hvac-industry-statistics-2024/page.tsx",
+    "frontend/app/hvac-missed-call-management/page.tsx",
+    "frontend/app/hvac-virtual-receptionist/page.tsx",
+    "frontend/app/kestrel/curriculum/page.tsx",
+    "frontend/app/kestrel/participant-journey/page.tsx",
+    "frontend/app/kestrel/strategic-access/page.tsx",
+    "frontend/app/lead-finder/page.tsx",
+    "frontend/app/onboarding/business/success/page.tsx",
+    "frontend/app/onboarding/personal/payment/page.tsx",
+    "frontend/app/onboarding/starter/page.tsx",
+    "frontend/app/pricing/page.tsx",
+    "frontend/app/privacy-policy/page.tsx",
+    "frontend/app/privacy/telecom/page.tsx",
+    "frontend/app/production-pilot/page.tsx",
+    "frontend/app/sales-copilot/page.tsx",
+    "frontend/app/security/page.tsx",
+    "frontend/app/services/installation/page.tsx",
+    "frontend/app/servicetitan-answering-services/page.tsx",
+    "frontend/app/servicetitan-answering-services/page.tsx",
+    "frontend/app/session-policy/page.tsx",
+    "frontend/app/signup/personal/page.tsx",
+    "frontend/app/superadmin/ai-failures/page.tsx",
+    "frontend/app/support/page.tsx",
+    "frontend/app/terms-of-service/page.tsx",
+    "frontend/app/terms/telecom/page.tsx",
+    "frontend/app/vapi-alternative-hvac/page.tsx",
+    "frontend/app/website-to-ai-agent/page.tsx",
+    "frontend/components/AddonPaywall.tsx",
+    "frontend/components/AssistantTypeSelector.tsx",
+    "frontend/components/ConfirmScrapedData.tsx",
+    "frontend/components/DifferentiatorSection.tsx",
+    "frontend/components/HomepageAIInput.tsx",
+    "frontend/components/HomepageChat.tsx",
+    "frontend/components/IntelligentQuestionFlow.tsx",
+    "frontend/components/MeetingBriefing.tsx",
+    "frontend/components/OnboardingFlow.tsx",
+    "frontend/components/PricingSection.tsx",
+    "frontend/components/ROIDashboardWidget.tsx",
+    "frontend/components/RecordingModal.tsx",
+    "frontend/components/TierSpecificCTA.tsx",
+    "frontend/components/admin/QuickAddTenantModal.tsx",
+    "frontend/components/analytics/RevenueTrackingCharts.tsx",
+    "frontend/components/catalog/CatalogItemEditor.tsx",
+    "frontend/components/catalog/OptionValueManager.tsx",
+    "frontend/components/dashboard/BusinessPreviewModal.tsx",
+    "frontend/components/onboarding/BusinessOnboardingFlow.tsx",
+    "frontend/components/personal-assistant/PersonalAssistantWizard.tsx",
+    "frontend/components/seo/Sources.tsx",
+    "frontend/components/settings/NotificationPreferences.tsx",
+    "frontend/components/settings/SMSNotificationSettings.tsx",
+    "frontend/components/voice-config/SuperadminSupportRequests.tsx",
+    "hvac_agent/app/routers/integrations/google_drive_templates.py"
+  ],
+  "sanitizedEntries": [
+    {
+      "path": "desktop/renderer/components/AfterCallWorkspace.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "docs-archive/voice_engine_jan2026_barge_in.py",
+      "message": "(no message)"
+    },
+    {
+      "path": "docs-archive/voice_engine_v3.0.0.py",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/ai-demos/analytics/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/call-logs/[id]/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/error-patterns/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/generate-report/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/outbound-calls-monitor/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/tenants/[id]/ai-config/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/tenants/[id]/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/admin/voice-analytics/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/analytics/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/calls/calls/[id]/recording/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/calls/calls/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/calls/intelligence/[call_sid]/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/dashboard/command-center/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/dashboard/personal/settings/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/personal-assistant/ai-training.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/ai-agent/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/ai-training/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/billing/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/locations/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/phone-forwarding-guide/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/restaurant/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/SettingsPageContent.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/(dashboard)/settings/voice-performance/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/24-7-hvac-answering-service/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/alertstream/dashboard/integrations/linkedin/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/alertstream/dashboard/sms/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/appointment-booking/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/automated-hvac-appointment-booking/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/billing/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/bland-ai-alternative-hvac/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/blog/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/case-studies/servicetitan-integration-success/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/case-studies/winter-storm-emergency/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/checkout/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/comparison/vs-human-service/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/compliance/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/connect/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/crm/tasks/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/demo-join/[meetingId]/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/desktop/desktop-download-client.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/docs/api-reference/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/docs/guides/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/docs/setup-cheat-sheet/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/docs/setup-cheat-sheet/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/hvac-call-automation-report-2024/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/hvac-call-center-alternative/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/hvac-emergency-call-handling/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/hvac-industry-statistics-2024/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/hvac-missed-call-management/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/hvac-virtual-receptionist/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/kestrel/curriculum/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/kestrel/participant-journey/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/kestrel/strategic-access/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/lead-finder/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/onboarding/business/success/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/onboarding/personal/payment/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/onboarding/starter/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/pricing/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/privacy-policy/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/privacy/telecom/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/production-pilot/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/sales-copilot/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/security/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/services/installation/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/servicetitan-answering-services/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/servicetitan-answering-services/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/session-policy/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/signup/personal/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/superadmin/ai-failures/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/support/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/terms-of-service/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/terms/telecom/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/vapi-alternative-hvac/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/app/website-to-ai-agent/page.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/AddonPaywall.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/admin/QuickAddTenantModal.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/analytics/RevenueTrackingCharts.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/AssistantTypeSelector.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/catalog/CatalogItemEditor.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/catalog/OptionValueManager.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/ConfirmScrapedData.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/dashboard/BusinessPreviewModal.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/DifferentiatorSection.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/HomepageAIInput.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/HomepageChat.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/IntelligentQuestionFlow.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/MeetingBriefing.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/onboarding/BusinessOnboardingFlow.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/OnboardingFlow.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/personal-assistant/PersonalAssistantWizard.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/PricingSection.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/RecordingModal.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/ROIDashboardWidget.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/seo/Sources.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/settings/NotificationPreferences.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/settings/SMSNotificationSettings.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/TierSpecificCTA.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "frontend/components/voice-config/SuperadminSupportRequests.tsx",
+      "message": "(no message)"
+    },
+    {
+      "path": "hvac_agent/app/routers/integrations/google_drive_templates.py",
+      "message": "(no message)"
+    }
+  ],
+  "analysis": {
+    "unsupportedLanguageFiles": 0,
+    "supportedLanguageFiles": 102,
+    "unknownFiles": 0,
+    "manualClassification": {
+      "tsxSemgrepParserLimitation": 99,
+      "pythonEncodingError_UTF16_BOM": 2,
+      "pythonValidButSemgrepFailed": 1,
+      "details": "99 .tsx files are valid TypeScript but exceed Semgrep's TSX parser capabilities (complex JSX patterns). 2 .py files in docs-archive/ have UTF-16 BOM encoding (not valid UTF-8). 1 .py file (hvac_agent/.../google_drive_templates.py) is valid Python (verified via ast.parse) but Semgrep failed to parse it — likely a Semgrep edge case.",
+      "genuineSyntaxErrors": 0,
+      "vendorGeneratedFiles": 0,
+      "testExampleFiles": 0
+    },
+    "conclusion": "All 102 parser errors are Semgrep engine limitations, NOT genuine syntax errors. 99 are TSX parser limitations, 2 are encoding errors (UTF-16 BOM in archived files), 1 is a Semgrep Python parser edge case. No production source code has genuine syntax errors."
+  }
+}

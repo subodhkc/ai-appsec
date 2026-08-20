@@ -1,0 +1,40 @@
+{
+  "EXACT_MATCH": true,
+  "direct": {
+    "verdict": "REVIEW",
+    "completeness": "COMPLETE",
+    "detectorInstancesFound": 12,
+    "canonicalFindingsFound": 12,
+    "materialConcernsFound": 2,
+    "observationsFound": 0,
+    "filesAnalyzed": 41,
+    "securityConcernCount": 2,
+    "concernDigest": "sha256:7e68e64a23305f584e4747ae984249f9355fa43b8e04cf2adc35fc364b7e180c",
+    "findingSetDigest": "sha256:304303b910f557140ee4a51600f90e8333a84e01ed80edc533929fd24b86c4e1"
+  },
+  "packaged": {
+    "verdict": "REVIEW",
+    "completeness": "COMPLETE",
+    "detectorInstancesFound": 12,
+    "canonicalFindingsFound": 12,
+    "materialConcernsFound": 2,
+    "observationsFound": 0,
+    "filesAnalyzed": 41,
+    "securityConcernCount": 2,
+    "concernDigest": "sha256:7e68e64a23305f584e4747ae984249f9355fa43b8e04cf2adc35fc364b7e180c",
+    "findingSetDigest": "sha256:304303b910f557140ee4a51600f90e8333a84e01ed80edc533929fd24b86c4e1"
+  },
+  "comparison": {
+    "verdictMatch": true,
+    "completenessMatch": true,
+    "instancesMatch": true,
+    "canonicalMatch": true,
+    "concernsMatch": true,
+    "observationsMatch": true,
+    "filesMatch": true,
+    "concernCountMatch": true,
+    "concernDigestMatch": true,
+    "findingDigestMatch": true
+  },
+  "conclusion": "EXACT_MATCH — direct and packaged MCP produce identical semantic digests"
+}

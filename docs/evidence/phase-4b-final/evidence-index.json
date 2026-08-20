@@ -1,0 +1,164 @@
+{
+  "generatedAt": "2026-08-19T14:34:45.932Z",
+  "phase": "4B-C2R RECONCILIATION",
+  "status": "TECHNICALLY_READY_FOR_PHASE_4C",
+  "rulepackVersion": "0.1.0-rc.6-public-core",
+  "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+  "manifestDigest": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699",
+  "tarballSha256": "sha256:5dd04958dfa89b2c94961afbfe3fb424ec18737a1d96b183f7c3121c1cebc903",
+  "kestrelCommit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+  "kestrelExportMethod": "git worktree add --detach",
+  "kestrelFileSetDigest": "sha256:c6b73e45046c40454c2f3ad985a4c1ff18833197a4df4c565d5c5df0cb72a5b2",
+  "accountingInvariants": {
+    "I1_rawEqualsAcceptedPlusUnmapped": true,
+    "I2_acceptedEqualsCanonicalPlusDupes": true,
+    "I3_canonicalEqualsScopedPlusSuppressed": true,
+    "I4_scopedEqualsActionablePlusObservations": true,
+    "I5_concernSumEqualsActionable": true
+  },
+  "kestrelScanResults": {
+    "rawEngineMatches": 859,
+    "detectorInstancesAccepted": 859,
+    "canonicalFindingInstances": 859,
+    "scopedFindingInstances": 848,
+    "actionableFindingInstances": 798,
+    "observationInstances": 50,
+    "concernFamiliesFound": 13,
+    "parserErrors": 102,
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL"
+  },
+  "testResults": {
+    "typecheck": "PASS",
+    "tests": 239,
+    "failures": 0,
+    "npmAudit": "0 vulnerabilities",
+    "privateTrue": true
+  },
+  "phase4CBlockers": [
+    "Offline firewall-level isolation test (PARTIALLY_VERIFIED)",
+    "Remote Linux/macOS empirical testing (UNVERIFIED)",
+    "Final legal/provenance review (pending)",
+    "Remove private:true for publication (pending)",
+    "npm publication decision (pending)",
+    "MCP Registry decision (pending)"
+  ],
+  "entries": [
+    {
+      "file": "kestrel-full-forensics.json",
+      "digest": "sha256:7c6d8ede5b16bd4faa61e695813e651fe8a243e19faaf2df4c90049355aa3c1b",
+      "size": 24755,
+      "status": "ACTIVE",
+      "description": "Full unbounded Kestrel forensics (post-rule-fix, immutable snapshot)"
+    },
+    {
+      "file": "parser-error-classification.json",
+      "digest": "sha256:8f2abc6bf39728950c9ba310690e607cdb5e2eeaf5feb6cb9aa926143a3bfdcc",
+      "size": 18800,
+      "status": "ACTIVE",
+      "description": "Parser error classification (102 errors, all Semgrep limitations)"
+    },
+    {
+      "file": "kestrel-export-manifest.txt",
+      "digest": "sha256:c6b73e45046c40454c2f3ad985a4c1ff18833197a4df4c565d5c5df0cb72a5b2",
+      "size": 279232,
+      "status": "ACTIVE",
+      "description": "Kestrel immutable export file-set manifest (5528 files)"
+    },
+    {
+      "file": "kestrel-three-run-determinism.json",
+      "digest": "sha256:7dfc1087990ba5f332762b7afbe07407c79ba539ab0b384c30c66cb02fd764ab",
+      "size": 5643,
+      "status": "ACTIVE",
+      "description": "Three-run Kestrel determinism on immutable snapshot (finding-level PASS)"
+    },
+    {
+      "file": "direct-vs-tarball-equivalence.json",
+      "digest": "sha256:5b5fd5fbc3cf87fdc3fd5ca32cc3a24e74f3f7611a45500d407b7bb4e0bb7524",
+      "size": 4697,
+      "status": "ACTIVE",
+      "description": "Direct vs actual npm tarball equivalence (EXACT_MATCH)"
+    },
+    {
+      "file": "timeout-process-tree.json",
+      "digest": "sha256:ea2f63b35fffc447ebf2ddfb376f8fdabbc9ae51939b416fa19d3964f701e837",
+      "size": 593,
+      "status": "ACTIVE",
+      "description": "Timeout/process-tree empirical test (unchanged from prior C2R)"
+    },
+    {
+      "file": "semgrep-fingerprint.json",
+      "digest": "sha256:ca5031439cf2f060ed8b96ca026085796ed5b5ccd9dd4bc26ef5141d73543e90",
+      "size": 778,
+      "status": "ACTIVE",
+      "description": "Semgrep fingerprint (unchanged from prior C2R)"
+    },
+    {
+      "file": "evidence-sanitization-report.md",
+      "digest": "sha256:623658fef975bbf49ea273520eae8229620779482c905887a8cf08961c9d0a31",
+      "size": 1885,
+      "status": "ACTIVE",
+      "description": "Evidence sanitization report (unchanged from prior C2R)"
+    },
+    {
+      "file": "offline-validation-report.md",
+      "digest": "sha256:b222e0d31388921e575167ca6be663bc6b14da3e7b13dd2125f6e8fc43772f34",
+      "size": 1265,
+      "status": "ACTIVE",
+      "description": "Offline validation report (unchanged from prior C2R)"
+    },
+    {
+      "file": "reuse-audit.md",
+      "digest": "sha256:58b17aea5b33dafecdec9751d71f06a588647b5d2442818894af4f5e8fa3681a",
+      "size": 8405,
+      "status": "ACTIVE",
+      "description": "Reuse/abandonment audit (unchanged from prior C2R)"
+    },
+    {
+      "file": "product-unification-defects.md",
+      "digest": "sha256:5288160e0b15d9f40059574a9932ba5e6aa18a412dd63add4d7b1db8ad0c4a16",
+      "size": 7932,
+      "status": "ACTIVE",
+      "description": "Product-unification defects (unchanged from prior C2R)"
+    },
+    {
+      "file": "PHASE-4B-EVIDENCE-SUMMARY.md",
+      "digest": "sha256:fd7f08f07a447957cea19fbdf8d05f9c0a93c9208e9e4292bef3fff9b8e48895",
+      "size": 6045,
+      "status": "ACTIVE",
+      "description": "Phase 4B evidence summary (C2R RECONCILIATION)"
+    },
+    {
+      "file": "kestrel-qualification.json",
+      "digest": "sha256:157a4fd7dd7e159a5cc4fe747709d6663d4a40bc1d320a5ee0e85d72167e98c3",
+      "size": 35234,
+      "status": "SUPERSEDED",
+      "supersededBy": "kestrel-full-forensics.json",
+      "description": "Prior Kestrel qualification (dirty working tree, pre-rule-fix)"
+    },
+    {
+      "file": "kestrel-qualification-report.md",
+      "digest": "sha256:ccba8dcb83f3135c5840cda7f97de6349a79d5dfda2ad6a5babf6dbc7c85cad3",
+      "size": 7456,
+      "status": "SUPERSEDED",
+      "supersededBy": "PHASE-4B-EVIDENCE-SUMMARY.md",
+      "description": "Prior Kestrel qualification report (dirty working tree)"
+    },
+    {
+      "file": "three-run-determinism.json",
+      "digest": "sha256:fb2cfad5e1323025f3b5b6fbe53ba5c88b9570cf4cfc3858cee90f2d2f083d70",
+      "size": 3612,
+      "status": "SUPERSEDED",
+      "supersededBy": "kestrel-three-run-determinism.json",
+      "description": "Prior three-run determinism (MCP repo, not Kestrel)"
+    },
+    {
+      "file": "direct-vs-packaged-equivalence.json",
+      "digest": "sha256:4fd39561aaecd91747f192af49934bc52c46b851eab01301c958ca3b7df16b3f",
+      "size": 1341,
+      "status": "SUPERSEDED",
+      "supersededBy": "direct-vs-tarball-equivalence.json",
+      "description": "Prior direct-vs-packaged equivalence (built package, not tarball)"
+    }
+  ]
+}

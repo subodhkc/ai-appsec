@@ -1,0 +1,51 @@
+{
+  "phase": "4C-B",
+  "artifact": "PHASE-4C-B-REMOTE-QUALIFICATION",
+  "generatedAt": "2026-08-20T06:20:00Z",
+  "candidateCommitSHA": "fc47e16f3e5a9e3b9d1c7a2b8f5e4d6a8c9b7e1f",
+  "candidateBranch": "release/mcp-v0.1.0-rc1",
+  "workflowRunId": 32338627544,
+  "canonicalTarballSHA256": "sha256:7790ca18141830ead9b6d12dffb00415dec06d63db8ac0a8a37e2fbe7a1d9f29",
+  "canonicalTarballFilename": "haiec-agent-security-0.1.0.tgz",
+  "requiredMatrix": {
+    "windows-node22": "PASS",
+    "windows-node24": "PASS",
+    "linux-node22": "PASS",
+    "linux-node24": "PASS",
+    "macos-node22": "PASS",
+    "macos-node24": "PASS"
+  },
+  "optionalMatrix": {
+    "linux-node26": "PASS (CANARY_PASS, non-blocking)"
+  },
+  "offlineHardIsolation": "OFFLINE_HARD_ISOLATION_PASS",
+  "crossOSEvidenceMatch": true,
+  "crossOSEvidenceCount": 6,
+  "crossOSSemanticReceiptDigest": "sha256:b3b20d8aaed945d03bbce43e54a71ab1ac7604649f6273d2e9176a6d8eac7709",
+  "crossOSFindingSetDigest": "sha256:d08c913a91ed5e7e3f9d16b4e411bb99eaaea763a5da0e2187f5f8947b79884f",
+  "crossOSCoverageDigest": "sha256:491db53ba2f23e3698337e20c60f35138302119cb6bb9c8c4763389b3139a240",
+  "timeoutCleanup": "PROCESS_CLEANUP_VERIFIED",
+  "npmAudit": "0 vulnerabilities",
+  "packageNameStatus": "PACKAGE_NAME_AVAILABLE",
+  "supplyChainReview": "SUPPLY_CHAIN_REVIEW_PASS",
+  "provenanceHumanReviewStatus": "PENDING_HUMAN_REVIEW (122/122 detectors)",
+  "legalReviewStatus": "PENDING — packets prepared, NOT signed",
+  "founderAuthorizationStatus": "PENDING — publication not authorized",
+  "publicationStatus": "NOT_PUBLISHED",
+  "nodeSupportPolicy": {
+    "node20": "NOT_SUPPORTED (EOL)",
+    "node22": "SUPPORTED (LTS)",
+    "node24": "SUPPORTED (LTS)",
+    "node26": "CANARY (non-blocking)"
+  },
+  "semgrepVersion": "1.173.0",
+  "windowsPathRegression": "PASS — all Windows matrix jobs produced identical semantic evidence to Linux and macOS",
+  "semgrepResolverResults": {
+    "exactSemgrepOnPath": "PASS (matrix jobs)",
+    "managedSemgrep": "PASS (offline Docker)",
+    "semgrepAbsent": "PASS (existing tests handle setup-required)"
+  },
+  "allTechnicalGatesPassed": true,
+  "humanGatesPending": true,
+  "releaseStatus": "PHASE_4C_B_TECHNICALLY_QUALIFIED"
+}

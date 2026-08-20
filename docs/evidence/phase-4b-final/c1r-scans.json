@@ -1,0 +1,104 @@
+{
+  "kestrel": {
+    "repository": "kestrel-AI-Service-Call-Agent",
+    "commit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+    "branch": "main",
+    "dirtyState": true,
+    "duration": "195755ms",
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "completenessReasons": [
+      "109 parser error(s) occurred during scanning."
+    ],
+    "summary": {
+      "filesAnalyzed": 2473,
+      "filesWithFindings": 647,
+      "filesSkippedByEngine": 109,
+      "filesUnscannedDueToTimeout": 0,
+      "findingsExcludedByReportingScope": 14,
+      "actionableTotal": 1636,
+      "vulnerabilityTotal": 351,
+      "controlGapTotal": 14,
+      "riskSignalTotal": 1271,
+      "presenceTotal": 54,
+      "blockTotal": 0,
+      "reviewTotal": 1636,
+      "informationalTotal": 54,
+      "rawFindingCount": 1704
+    },
+    "truncation": {
+      "actionableReturned": 20,
+      "actionableTotal": 1636,
+      "observationsReturned": 10,
+      "observationsTotal": 54,
+      "truncated": true
+    },
+    "errors": [],
+    "limitations": [
+      "109 files had parse errors."
+    ],
+    "versions": {
+      "scanner": "HAIEC Static AI Security",
+      "scannerVersion": "0.1.0",
+      "rulepack": "haiec-ai-security",
+      "rulepackVersion": "0.1.0-rc.5-public-core",
+      "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+      "manifest": "haiec-ai-security-manifest",
+      "manifestVersion": "1.0.0",
+      "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+      "semgrep": "semgrep",
+      "semgrepVersion": "1.173.0"
+    },
+    "responseBytes": 17629,
+    "isError": false
+  },
+  "haiecSelfScan": {
+    "repository": "haiec-ai-agent-security-self",
+    "commit": "fd277140a9d8b6e18a8d0f5af0ea0bc15838a7b0",
+    "branch": "main",
+    "dirtyState": true,
+    "duration": "44035ms",
+    "verdict": "REVIEW",
+    "completeness": "COMPLETE",
+    "completenessReasons": [],
+    "summary": {
+      "filesAnalyzed": 33,
+      "filesWithFindings": 3,
+      "filesSkippedByEngine": 0,
+      "filesUnscannedDueToTimeout": 0,
+      "findingsExcludedByReportingScope": 0,
+      "actionableTotal": 10,
+      "vulnerabilityTotal": 0,
+      "controlGapTotal": 0,
+      "riskSignalTotal": 10,
+      "presenceTotal": 0,
+      "blockTotal": 0,
+      "reviewTotal": 10,
+      "informationalTotal": 0,
+      "rawFindingCount": 10
+    },
+    "truncation": {
+      "actionableReturned": 10,
+      "actionableTotal": 10,
+      "observationsReturned": 0,
+      "observationsTotal": 0,
+      "truncated": false
+    },
+    "errors": [],
+    "limitations": [],
+    "versions": {
+      "scanner": "HAIEC Static AI Security",
+      "scannerVersion": "0.1.0",
+      "rulepack": "haiec-ai-security",
+      "rulepackVersion": "0.1.0-rc.5-public-core",
+      "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+      "manifest": "haiec-ai-security-manifest",
+      "manifestVersion": "1.0.0",
+      "manifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+      "semgrep": "semgrep",
+      "semgrepVersion": "1.173.0"
+    },
+    "responseBytes": 6876,
+    "isError": false
+  }
+}

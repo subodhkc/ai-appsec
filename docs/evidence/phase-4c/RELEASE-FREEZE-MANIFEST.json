@@ -1,0 +1,69 @@
+{
+  "phase": "4C-A",
+  "artifact": "RELEASE-FREEZE-MANIFEST",
+  "generatedAt": "2026-08-19T16:10:00Z",
+  "git": {
+    "head": "fd277140a9d8b6e18a8d0f5af0ea0bc15838a7b0",
+    "branch": "main",
+    "dirty": true,
+    "modifiedCount": 8,
+    "untrackedCount": 39,
+    "tags": [],
+    "unpushedCommits": 0
+  },
+  "package": {
+    "name": "haiec-agent-security",
+    "version": "0.0.0",
+    "private": true
+  },
+  "rulepack": {
+    "rulepackVersion": "0.1.0-rc.6-public-core",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifestDigest": "sha256:2117f9b97865a42d57a3b0c44bea7e3d7171cbf9d6591c8c728421118b13327a",
+    "manifestSchemaVersion": "1.0.0",
+    "manifestVersion": "1.0.0",
+    "detectorCount": 122,
+    "securityCheckCount": 79,
+    "changedDetectorsInRc6": ["api-key-in-error-js", "api-key-in-error-python"],
+    "detectorRevisionFixApplied": true,
+    "detectorRevisionFixDescription": "api-key-in-error-js and api-key-in-error-python revision fields updated from rc.5 to rc.6 to reflect C2R metavariable-regex constraint fix"
+  },
+  "semgrep": {
+    "requiredVersion": "1.173.0",
+    "verifiedDigest": "sha256:67319956da3dcb58baf5b322899c15458e3963e7018a86aeeb5cd224e69cb77a",
+    "verifiedPlatform": "linux/amd64"
+  },
+  "schemaVersions": {
+    "manifestSchemaVersion": "1.0.0",
+    "manifestVersion": "1.0.0"
+  },
+  "contractVersions": {
+    "receiptSchemaVersion": "0.1.0",
+    "receiptVersion": "0.1.0",
+    "issueAggregationVersion": "0.1.0",
+    "concernPriorityVersion": "0.1.0",
+    "proofOfFixSchemaVersion": "0.1.0",
+    "mcpServerName": "haiec-agent-security",
+    "mcpServerVersion": "0.0.0"
+  },
+  "findingContractVersion": "0.1.0",
+  "aggregationVersion": "0.1.0",
+  "concernPriorityVersion": "0.1.0",
+  "scanReceiptVersion": "0.1.0",
+  "proofOfFixVersion": "0.1.0",
+  "freezeDeclaration": "After this point, no detector/rule semantics may change during Phase 4C-A except to correct a verified release-blocking defect.",
+  "modifiedFilesFromC2R": [
+    ".gitignore",
+    "evals/tool-selection/scenarios.json",
+    "package-lock.json",
+    "package.json",
+    "src/contracts/engine.ts",
+    "src/contracts/tool.ts",
+    "src/mcp/server-factory.ts",
+    "tests/contracts/tool-descriptors.test.ts"
+  ],
+  "phase4cChanges": [
+    "rules/public-core/manifest.json — api-key-in-error detector revision rc.5→rc.6",
+    "src/engines/ai-security/rulepack-provider.ts — expected manifest digest updated"
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "target": "<KESTREL_EXPORT>",
+  "corpus": {
+    "commit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+    "exportMethod": "git worktree add --detach C:\\ks"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "durationMs": 96748,
+      "scanId": "scan-1787174857476-30r9em",
+      "verdict": "REVIEW",
+      "completeness": "PARTIAL",
+      "rawEngineMatches": 898,
+      "detectorInstancesAccepted": 898,
+      "canonicalFindingInstances": 898,
+      "scopedFindingInstances": 887,
+      "actionableFindingInstances": 833,
+      "observationInstances": 54,
+      "concernFamiliesFound": 13,
+      "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+      "evaluatedSecurityCheckSetDigest": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+      "evaluatedDetectorSetDigest": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+      "filesAnalyzed": 2473,
+      "filesSkippedByEngine": 105
+    },
+    {
+      "run": 2,
+      "durationMs": 83275,
+      "scanId": "scan-1787174954228-y9ws2v",
+      "verdict": "REVIEW",
+      "completeness": "PARTIAL",
+      "rawEngineMatches": 898,
+      "detectorInstancesAccepted": 898,
+      "canonicalFindingInstances": 898,
+      "scopedFindingInstances": 887,
+      "actionableFindingInstances": 833,
+      "observationInstances": 54,
+      "concernFamiliesFound": 13,
+      "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+      "evaluatedSecurityCheckSetDigest": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+      "evaluatedDetectorSetDigest": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+      "filesAnalyzed": 2473,
+      "filesSkippedByEngine": 102
+    },
+    {
+      "run": 3,
+      "durationMs": 83643,
+      "scanId": "scan-1787175037508-t3uaag",
+      "verdict": "REVIEW",
+      "completeness": "PARTIAL",
+      "rawEngineMatches": 898,
+      "detectorInstancesAccepted": 898,
+      "canonicalFindingInstances": 898,
+      "scopedFindingInstances": 887,
+      "actionableFindingInstances": 833,
+      "observationInstances": 54,
+      "concernFamiliesFound": 13,
+      "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+      "evaluatedSecurityCheckSetDigest": "sha256:984cb2d777ed892f295e885be56816dd4909e643387d5b45daeaf439567b5943",
+      "evaluatedDetectorSetDigest": "sha256:11cf7a18a56e57143d801bfbdaa22c04ff2dcf67aa88b9f6e6f3a47538322ed8",
+      "filesAnalyzed": 2473,
+      "filesSkippedByEngine": 103
+    }
+  ],
+  "determinism": {
+    "allDeterministicMatch": false,
+    "allSemanticDeterministicMatch": true,
+    "filesSkippedByEngineClassification": "ENGINE_OPERATIONAL_NONDETERMINISM",
+    "filesSkippedByEngineExcludedFromDigests": true,
+    "fieldResults": [
+      {
+        "name": "verdict",
+        "match": true
+      },
+      {
+        "name": "completeness",
+        "match": true
+      },
+      {
+        "name": "rawEngineMatches",
+        "match": true
+      },
+      {
+        "name": "manifestUnmappedInstances",
+        "match": true
+      },
+      {
+        "name": "detectorInstancesAccepted",
+        "match": true
+      },
+      {
+        "name": "normalizationDuplicatesCollapsed",
+        "match": true
+      },
+      {
+        "name": "canonicalFindingInstances",
+        "match": true
+      },
+      {
+        "name": "suppressedInstances",
+        "match": true
+      },
+      {
+        "name": "scopedFindingInstances",
+        "match": true
+      },
+      {
+        "name": "actionableFindingInstances",
+        "match": true
+      },
+      {
+        "name": "observationInstances",
+        "match": true
+      },
+      {
+        "name": "concernFamiliesFound",
+        "match": true
+      },
+      {
+        "name": "concernFamilyIds",
+        "match": true
+      },
+      {
+        "name": "concernFamilyInstanceCounts",
+        "match": true
+      },
+      {
+        "name": "concernFamilySetDigest",
+        "match": true
+      },
+      {
+        "name": "evaluatedSecurityCheckIds",
+        "match": true
+      },
+      {
+        "name": "evaluatedDetectorIds",
+        "match": true
+      },
+      {
+        "name": "evaluatedSecurityCheckSetDigest",
+        "match": true
+      },
+      {
+        "name": "evaluatedDetectorSetDigest",
+        "match": true
+      },
+      {
+        "name": "rulepackDigest",
+        "match": true
+      },
+      {
+        "name": "manifestDigest",
+        "match": true
+      },
+      {
+        "name": "semgrepVersion",
+        "match": true
+      },
+      {
+        "name": "filesAnalyzed",
+        "match": true
+      },
+      {
+        "name": "filesSkippedByEngine",
+        "match": false
+      }
+    ]
+  },
+  "operationalMetadata": {
+    "durations": [
+      96748,
+      83275,
+      83643
+    ],
+    "scanIds": [
+      "scan-1787174857476-30r9em",
+      "scan-1787174954228-y9ws2v",
+      "scan-1787175037508-t3uaag"
+    ],
+    "durationsDiffer": true,
+    "scanIdsDiffer": true
+  },
+  "conclusion": "PASS — all semantic fields match across 3 runs. filesSkippedByEngine varies operationally (ENGINE_OPERATIONAL_NONDETERMINISM) and is excluded from coverageDigest and receiptDigest."
+}

@@ -1,0 +1,28 @@
+{
+  "provenanceSchemaVersion": "1.0.0",
+  "createdAt": "2026-08-19",
+  "publicCoreVersion": "0.1.0-rc.5-public-core",
+  "detectorCount": 122,
+  "securityCheckCount": 79,
+  "rulepackDigest": "sha256:33b4a0dd4a188f38afb6a4576df1b4840b1a21c51d79a037dfe5ba2dd9ae29c1",
+  "publicationManifestDigest": "sha256:0f9247ab1fcd3f520c7e7cd4710f635779d2c4203e10a14cc483bddfdbc8021e",
+  "canonicalManifestDigest": "sha256:a3f702f240e1b49282e864f037ce8e9e426cabac633157dcfcb267920834ad5f",
+  "manifestDigestExplanation": "The public-core manifest and canonical manifest differ only in the rulepackVersion field (0.1.0-rc.5-public-core vs 0.1.0-rc.5). The YAML rulepack content is identical (same digest). The public-core manifest is the authoritative publication identity.",
+  "requiredSemgrepVersion": "1.173.0",
+  "provenanceClassification": {
+    "HAIEC_ORIGINAL": 122,
+    "PERMISSIVE_DERIVATION_WITH_ATTRIBUTION": 0,
+    "OTHER_REVIEW_REQUIRED": 0
+  },
+  "provenanceEvidence": {
+    "source": "Phase 2.5 external similarity check",
+    "externalRulesCompared": 2228,
+    "strongOrExactMatch": 0,
+    "genericSimilarity": 3,
+    "noMeaningfulMatchFound": 118,
+    "conclusion": "All 122 detectors are HAIEC-authored with no third-party copying found"
+  },
+  "publicationDecision": "ALL_122_DETECTORS_HAIEC_ORIGINAL",
+  "blocksPublication": false,
+  "historicalRecordsPreserved": true
+}

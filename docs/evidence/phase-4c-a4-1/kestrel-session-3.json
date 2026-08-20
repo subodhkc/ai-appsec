@@ -1,0 +1,38 @@
+{
+  "session": 3,
+  "timestamp": "2026-08-20T04:56:44.021Z",
+  "pid": 383560,
+  "durationMs": 71565,
+  "scanId": "scan-1787201732457-r1491l",
+  "verdict": "REVIEW",
+  "completeness": "PARTIAL",
+  "rawEngineMatches": 898,
+  "actionableFindingInstances": 833,
+  "filesAnalyzed": 2473,
+  "filesSkippedByEngine": 100,
+  "receipt": {
+    "findingSetDigest": "sha256:919f64a49bfa38552f1a7cb55ed8c543a3eafa804fe799c688b3e407fb30fcb4",
+    "concernFamilySetDigest": "sha256:611fa6e442d4cfda0c6d4f30bcc80ba864ae0ce3eb48772a8168b8f9d129cecc",
+    "discoveredFileSetDigest": "sha256:adf06429210d1be46593d9caed053e76579a9d02f75cf77c80f75d2548485412",
+    "targetedFileSetDigest": "sha256:19d5a950b287a12d05c86b7de37f1cc2c11c8519e85b0daa420de1570e914004",
+    "intentionallyExcludedFileSetDigest": "sha256:4d0a4dff1f762e594ecf10f259c33a6b71a7c02f49e2ce89a95e0719a3bd0529",
+    "unsupportedFileSetDigest": "sha256:dbb70ac7391fcc3ffe5dce9e976330d9ed4e2ee385c97731e8a3aafb4b91f066",
+    "engineReportedScannedFileSetDigest": "sha256:63edbf50c8d9f96f3c6399bb6ef1d9dcddfdf77e15493a584597f2c0879a80d5",
+    "parseFailureFileSetDigest": "sha256:42897a4b4f51891b22b49de988d9120b5a880e63146a01b6baeb0afde776f7ca",
+    "successfullyAnalyzedFileSetDigest": "sha256:c806d18279dd7fcdfb3d05745d439a732e26a9073a723fd90c45f193af907113",
+    "coverageDigest": "sha256:1e1a74b2b97f95062bbf923de7b064f4754fb2f99161a53416598987a7c4f844",
+    "evaluatedSecurityCheckSetDigest": "sha256:6b1bc822e6f8e5750e3806963b74d35d4c58d69a1eb73511f44872834de04ae7",
+    "evaluatedDetectorSetDigest": "sha256:77a6b7477dcff1826265f2e3aa3c1c209eb0700ee42c5568ddf84c345e83a941",
+    "semanticReceiptDigest": "sha256:25cf5e44db49850da2a7ee6feca7bbdf1a74610f7782b7e21d9ee6506b2b4068",
+    "receiptDocumentDigest": "sha256:a95fdaf1c30199e7e3eb744cbb19b0e1a7933bb71ed11492f2148fe4024a357f",
+    "completeness": "PARTIAL",
+    "verdict": "REVIEW"
+  },
+  "evidenceEnvelope": {
+    "schemaVersion": "0.1.0",
+    "evidenceStatus": "PRODUCED",
+    "semanticReceiptDigest": "sha256:25cf5e44db49850da2a7ee6feca7bbdf1a74610f7782b7e21d9ee6506b2b4068",
+    "receiptDocumentDigest": "sha256:a95fdaf1c30199e7e3eb744cbb19b0e1a7933bb71ed11492f2148fe4024a357f",
+    "envelopeDigest": "sha256:beeab0dfd5955ccbcb019437f7354acd1fd007540f4b4d0b707a776d3bfb5f45"
+  }
+}

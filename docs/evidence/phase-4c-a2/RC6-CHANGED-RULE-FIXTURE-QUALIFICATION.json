@@ -1,0 +1,58 @@
+{
+  "phase": "4C-A2",
+  "artifact": "RC6-CHANGED-RULE-FIXTURE-QUALIFICATION",
+  "generatedAt": "2026-08-19T21:00:00Z",
+  "changedDetectors": [
+    "api-key-in-error-js",
+    "api-key-in-error-python"
+  ],
+  "changeDescription": "metavariable-regex constraint added in rc.6 to require API-key-like variable names",
+  "fixtures": {
+    "positive": {
+      "js": {
+        "file": "tests/fixtures/rc6-rule-fixtures/positive/api-key-in-error-js.positive.js",
+        "expectedMatches": ">=8",
+        "actualMatches": 10,
+        "detectedVariants": ["apiKey", "openaiApiKey", "anthropic_api_key", "clientSecret", "authToken", "userPassword", "privateKey", "accessKey", "api_key (interpolated)", "passwd (interpolated)"],
+        "notDetected": ["credential (standalone — may need different pattern)", "api_key in template literal (may need different pattern)"],
+        "result": "PASS"
+      },
+      "python": {
+        "file": "tests/fixtures/rc6-rule-fixtures/positive/api-key-in-error-python.positive.py",
+        "expectedMatches": ">=8",
+        "actualMatches": 12,
+        "detectedVariants": ["api_key", "openai_api_key", "anthropic_api_key", "client_secret", "auth_token", "user_password", "credential", "private_key", "access_key", "api_key (ValueError)", "apiKey", "passwd"],
+        "notDetected": [],
+        "result": "PASS"
+      }
+    },
+    "negative": {
+      "js": {
+        "file": "tests/fixtures/rc6-rule-fixtures/negative/api-key-in-error-js.negative.js",
+        "expectedMatches": 0,
+        "actualMatches": 0,
+        "falsePositives": [],
+        "result": "PASS"
+      },
+      "python": {
+        "file": "tests/fixtures/rc6-rule-fixtures/negative/api-key-in-error-python.negative.py",
+        "expectedMatches": 0,
+        "actualMatches": 0,
+        "falsePositives": [],
+        "result": "PASS"
+      }
+    }
+  },
+  "detectorIdStability": {
+    "js": "rules.public-core.api-key-in-error-js (Semgrep prepends config path; scanner normalizes)",
+    "python": "rules.public-core.api-key-in-error-python (Semgrep prepends config path; scanner normalizes)",
+    "result": "PASS"
+  },
+  "testResults": {
+    "totalTests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0
+  },
+  "conclusion": "PASS — rc.6 changed detectors are fixture-qualified. True positives remain detected, ordinary exception handling is not detected, naming variants are covered, and detector IDs are stable."
+}

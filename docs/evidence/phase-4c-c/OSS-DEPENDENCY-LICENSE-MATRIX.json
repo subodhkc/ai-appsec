@@ -1,0 +1,156 @@
+[
+  {
+    "package": "@modelcontextprotocol/server",
+    "version": "2.0.0",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "runtime",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": true,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW"
+  },
+  {
+    "package": "@modelcontextprotocol/core",
+    "version": "2.0.0",
+    "directOrTransitive": "transitive (via @modelcontextprotocol/server)",
+    "runtimeOrDevelopment": "runtime",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": true,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW"
+  },
+  {
+    "package": "canonicalize",
+    "version": "4.0.0",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "runtime",
+    "license": "Apache-2.0",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": true,
+    "sourceRequired": true,
+    "reviewStatus": "PENDING_HUMAN_REVIEW"
+  },
+  {
+    "package": "zod",
+    "version": "4.4.3",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "runtime",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": true,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW"
+  },
+  {
+    "package": "@modelcontextprotocol/client",
+    "version": "2.0.0",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "cross-spawn",
+    "version": "7.0.6",
+    "directOrTransitive": "transitive (via @modelcontextprotocol/client)",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "eventsource-parser",
+    "version": "3.1.1",
+    "directOrTransitive": "transitive (via @modelcontextprotocol/client)",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "eventsource",
+    "version": "3.0.7",
+    "directOrTransitive": "transitive (via @modelcontextprotocol/client)",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "jose",
+    "version": "6.2.9",
+    "directOrTransitive": "transitive (via @modelcontextprotocol/client)",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "pkce-challenge",
+    "version": "5.0.1",
+    "directOrTransitive": "transitive (via @modelcontextprotocol/client)",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "typescript",
+    "version": "5.9.3",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "development",
+    "license": "Apache-2.0",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "tsx",
+    "version": "4.23.12",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "eslint",
+    "version": "10.8.1",
+    "directOrTransitive": "direct",
+    "runtimeOrDevelopment": "development",
+    "license": "MIT",
+    "licenseSource": "npm registry metadata",
+    "noticeRequired": false,
+    "sourceRequired": false,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not in published package"
+  },
+  {
+    "package": "Semgrep",
+    "version": "1.173.0",
+    "directOrTransitive": "external (not npm)",
+    "runtimeOrDevelopment": "runtime (external engine)",
+    "license": "LGPL-2.1",
+    "licenseSource": "https://github.com/semgrep/semgrep LICENSE file",
+    "noticeRequired": true,
+    "sourceRequired": true,
+    "reviewStatus": "PENDING_HUMAN_REVIEW — not bundled, invoked as subprocess"
+  }
+]

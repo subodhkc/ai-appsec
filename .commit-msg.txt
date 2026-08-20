@@ -1,0 +1,12 @@
+fix: MCP client callTool timeout — use options arg (2nd param) not 3rd
+
+callTool(params, options) takes 2 args, not 3. The timeout option
+belongs in the 2nd argument object, not as a separate 3rd argument.
+
+Fixes same-process-recovery and output-contract test timeouts.
+
+276/276 tests PASS.
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

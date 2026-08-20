@@ -1,0 +1,89 @@
+{
+  "phase": "4C-A4.1",
+  "artifact": "SEMGREP-PATH-SEMANTICS-QUALIFICATION",
+  "generatedAt": "2026-08-20T04:20:00Z",
+  "semgrepVersion": "1.173.0",
+  "methodology": "Empirical test: created files with valid and malformed syntax in supported languages, scanned with HAIEC rulepack, observed paths.scanned and errors[].path overlap",
+  "scenarios": [
+    {
+      "file": "valid.js",
+      "syntax": "valid JavaScript",
+      "engineReportedScanned": true,
+      "parserFailed": false,
+      "findingProduced": false,
+      "errorProduced": false
+    },
+    {
+      "file": "valid.ts",
+      "syntax": "valid TypeScript",
+      "engineReportedScanned": true,
+      "parserFailed": false,
+      "findingProduced": false,
+      "errorProduced": false
+    },
+    {
+      "file": "valid.tsx",
+      "syntax": "valid TSX",
+      "engineReportedScanned": true,
+      "parserFailed": false,
+      "findingProduced": false,
+      "errorProduced": false
+    },
+    {
+      "file": "malformed.js",
+      "syntax": "malformed JavaScript (const x = ;)",
+      "engineReportedScanned": true,
+      "parserFailed": true,
+      "findingProduced": false,
+      "errorProduced": true
+    },
+    {
+      "file": "malformed.ts",
+      "syntax": "malformed TypeScript (const y: = ;)",
+      "engineReportedScanned": true,
+      "parserFailed": true,
+      "findingProduced": false,
+      "errorProduced": true
+    },
+    {
+      "file": "malformed.tsx",
+      "syntax": "malformed TSX (const App = ;)",
+      "engineReportedScanned": true,
+      "parserFailed": true,
+      "findingProduced": false,
+      "errorProduced": true
+    },
+    {
+      "file": "malformed.py",
+      "syntax": "malformed Python (def()",
+      "engineReportedScanned": true,
+      "parserFailed": true,
+      "findingProduced": false,
+      "errorProduced": true
+    },
+    {
+      "file": "bad-encoding.js",
+      "syntax": "UTF-16 BOM encoded file (0xFF 0xFE 0x00 0x61)",
+      "engineReportedScanned": true,
+      "parserFailed": true,
+      "findingProduced": false,
+      "errorProduced": true
+    }
+  ],
+  "findings": {
+    "totalScanned": 8,
+    "totalErrors": 5,
+    "overlapCount": 5,
+    "overlapFiles": ["malformed.js", "malformed.ts", "malformed.tsx", "malformed.py", "bad-encoding.js"],
+    "mutuallyExclusive": false,
+    "relationship": "PARSE_FAILED ⊆ ENGINE_REPORTED_SCANNED",
+    "explanation": "Semgrep paths.scanned includes ALL files it attempted to scan, including those that subsequently had parse errors. errors[].path is a subset of paths.scanned. The sets are NOT mutually exclusive."
+  },
+  "implications": {
+    "cannotClaimMutualExclusivity": "TARGETED ≠ ENGINE_REPORTED_SCANNED + PARSE_FAILED because the sets overlap",
+    "canDeriveSuccessfullyAnalyzed": "SUCCESSFULLY_ANALYZED = ENGINE_REPORTED_SCANNED - PARSE_FAILED is a valid set difference because PARSE_FAILED ⊆ ENGINE_REPORTED_SCANNED",
+    "engineReportedScannedSemantics": "paths.scanned means 'Semgrep attempted to scan this file', NOT 'successfully analyzed'",
+    "successfullyAnalyzedSemantics": "Derived set: files Semgrep attempted minus files that had parse errors. Empirically proven derivable."
+  },
+  "conclusion": "ENGINE_REPORTED_SCANNED has precise semantics: files Semgrep attempted to scan. SUCCESSFULLY_ANALYZED is derivable as the set difference ENGINE_REPORTED_SCANNED - PARSE_FAILED. Both are used in the corrected coverage contract v0.1.1."
+}

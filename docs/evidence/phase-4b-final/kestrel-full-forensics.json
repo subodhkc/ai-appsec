@@ -1,0 +1,827 @@
+{
+  "corpus": {
+    "repository": "kestrel/AI-Service-Call-Agent-",
+    "commit": "0f131ea63c477e1da5fee318095c3aee761eb628",
+    "treeSha": "4054fef7a5e360403e1d9ed36771d3a03a7a6b22",
+    "exportMethod": "git worktree add --detach C:\\ks",
+    "fileCount": 5528,
+    "fileSetDigest": "sha256:c6b73e45046c40454c2f3ad985a4c1ff18833197a4df4c565d5c5df0cb72a5b2",
+    "targetPath": "C:\\ks (sanitized: <KESTREL_EXPORT>)",
+    "dirtyState": false,
+    "untrackedFiles": 0
+  },
+  "scan": {
+    "duration": "see receipt",
+    "verdict": "REVIEW",
+    "completeness": "PARTIAL",
+    "completenessReasons": [
+      "136 parser error(s) occurred during scanning."
+    ],
+    "isError": false
+  },
+  "accounting": {
+    "rawEngineMatches": 859,
+    "manifestUnmappedInstances": 0,
+    "detectorInstancesAccepted": 859,
+    "normalizationDuplicatesCollapsed": 0,
+    "canonicalFindingInstances": 859,
+    "suppressedInstances": 11,
+    "scopedFindingInstances": 848,
+    "actionableFindingInstances": 798,
+    "observationInstances": 50,
+    "concernFamiliesFound": 13,
+    "invariant1_rawEqualsAcceptedPlusUnmapped": true,
+    "invariant2_acceptedEqualsCanonicalPlusDupes": true,
+    "invariant3_canonicalEqualsScopedPlusSuppressed": true,
+    "invariant4_scopedEqualsActionablePlusObservations": true,
+    "concernFamilyInstanceSum": 798,
+    "invariant5_concernSumEqualsActionable": true
+  },
+  "fullDistributions": {
+    "bySecurityCheck": [
+      {
+        "checkId": "SC-API-KEY-IN-LOGS",
+        "totalInstances": 335,
+        "totalFiles": 107,
+        "familyCount": 1,
+        "detectors": [
+          "api-key-in-logs-js",
+          "api-key-in-logs-python"
+        ]
+      },
+      {
+        "checkId": "SC-AI-RAG-POISONING",
+        "totalInstances": 156,
+        "totalFiles": 105,
+        "familyCount": 1,
+        "detectors": [
+          "ai-rag-poisoning"
+        ]
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-OPENAI-SDK",
+        "totalInstances": 87,
+        "totalFiles": 42,
+        "familyCount": 1,
+        "detectors": [
+          "ai-prompt-injection-openai",
+          "ai-prompt-injection-openai-js"
+        ]
+      },
+      {
+        "checkId": "SC-UNVALIDATED-VECTOR-STORE",
+        "totalInstances": 77,
+        "totalFiles": 46,
+        "familyCount": 1,
+        "detectors": [
+          "unvalidated-vector-store"
+        ]
+      },
+      {
+        "checkId": "SC-API-KEY-IN-ERROR-MESSAGES",
+        "totalInstances": 62,
+        "totalFiles": 55,
+        "familyCount": 1,
+        "detectors": [
+          "api-key-in-error-js",
+          "api-key-in-error-python"
+        ]
+      },
+      {
+        "checkId": "SC-VERBOSE-ERROR-MESSAGES",
+        "totalInstances": 30,
+        "totalFiles": 22,
+        "familyCount": 1,
+        "detectors": [
+          "verbose-error-messages-python"
+        ]
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+        "totalInstances": 16,
+        "totalFiles": 10,
+        "familyCount": 1,
+        "detectors": [
+          "ai-prompt-injection-anthropic"
+        ]
+      },
+      {
+        "checkId": "SC-MISSING-MAX-TOKENS",
+        "totalInstances": 13,
+        "totalFiles": 11,
+        "familyCount": 1,
+        "detectors": [
+          "missing-max-tokens-js"
+        ]
+      },
+      {
+        "checkId": "SC-AI-CONTEXT-OVERFLOW",
+        "totalInstances": 11,
+        "totalFiles": 7,
+        "familyCount": 1,
+        "detectors": [
+          "ai-context-overflow-js",
+          "ai-context-overflow-python"
+        ]
+      },
+      {
+        "checkId": "SC-DANGEROUS-TOOL-BROWSER",
+        "totalInstances": 8,
+        "totalFiles": 8,
+        "familyCount": 1,
+        "detectors": [
+          "dangerous-tool-browser"
+        ]
+      },
+      {
+        "checkId": "SC-AI-INVOCATION-HUGGINGFACE",
+        "totalInstances": 1,
+        "totalFiles": 1,
+        "familyCount": 1,
+        "detectors": [
+          "ai-prompt-injection-huggingface"
+        ]
+      },
+      {
+        "checkId": "SC-AI-MULTIMODAL-INPUT",
+        "totalInstances": 1,
+        "totalFiles": 1,
+        "familyCount": 1,
+        "detectors": [
+          "ai-multimodal-input-python"
+        ]
+      },
+      {
+        "checkId": "SC-MISSING-DATA-MINIMIZATION",
+        "totalInstances": 1,
+        "totalFiles": 1,
+        "familyCount": 1,
+        "detectors": [
+          "missing-data-minimization-js"
+        ]
+      }
+    ],
+    "byFindingKind": [
+      {
+        "kind": "RISK_SIGNAL",
+        "instances": 449,
+        "families": 10
+      },
+      {
+        "kind": "VULNERABILITY",
+        "instances": 335,
+        "families": 1
+      },
+      {
+        "kind": "CONTROL_GAP",
+        "instances": 14,
+        "families": 2
+      }
+    ],
+    "bySeverity": [
+      {
+        "severity": "MEDIUM",
+        "instances": 743,
+        "families": 9
+      },
+      {
+        "severity": "INFO",
+        "instances": 55,
+        "families": 4
+      }
+    ],
+    "byDisposition": [
+      {
+        "disposition": "REVIEW",
+        "instances": 798,
+        "families": 13
+      }
+    ],
+    "byDetector": [
+      {
+        "detector": "api-key-in-logs-js",
+        "instances": 335,
+        "families": 1
+      },
+      {
+        "detector": "api-key-in-logs-python",
+        "instances": 335,
+        "families": 1
+      },
+      {
+        "detector": "ai-rag-poisoning",
+        "instances": 156,
+        "families": 1
+      },
+      {
+        "detector": "ai-prompt-injection-openai",
+        "instances": 87,
+        "families": 1
+      },
+      {
+        "detector": "ai-prompt-injection-openai-js",
+        "instances": 87,
+        "families": 1
+      },
+      {
+        "detector": "unvalidated-vector-store",
+        "instances": 77,
+        "families": 1
+      },
+      {
+        "detector": "api-key-in-error-js",
+        "instances": 62,
+        "families": 1
+      },
+      {
+        "detector": "api-key-in-error-python",
+        "instances": 62,
+        "families": 1
+      },
+      {
+        "detector": "verbose-error-messages-python",
+        "instances": 30,
+        "families": 1
+      },
+      {
+        "detector": "ai-prompt-injection-anthropic",
+        "instances": 16,
+        "families": 1
+      },
+      {
+        "detector": "missing-max-tokens-js",
+        "instances": 13,
+        "families": 1
+      },
+      {
+        "detector": "ai-context-overflow-js",
+        "instances": 11,
+        "families": 1
+      },
+      {
+        "detector": "ai-context-overflow-python",
+        "instances": 11,
+        "families": 1
+      },
+      {
+        "detector": "dangerous-tool-browser",
+        "instances": 8,
+        "families": 1
+      },
+      {
+        "detector": "ai-prompt-injection-huggingface",
+        "instances": 1,
+        "families": 1
+      },
+      {
+        "detector": "ai-multimodal-input-python",
+        "instances": 1,
+        "families": 1
+      },
+      {
+        "detector": "missing-data-minimization-js",
+        "instances": 1,
+        "families": 1
+      }
+    ],
+    "byExtension_bounded": [
+      {
+        "extension": ".ts",
+        "boundedCount": 18
+      },
+      {
+        "extension": ".py",
+        "boundedCount": 11
+      },
+      {
+        "extension": ".js",
+        "boundedCount": 1
+      }
+    ],
+    "byDirectory_bounded": [
+      {
+        "directory": "ai-demo-call",
+        "boundedCount": 11
+      },
+      {
+        "directory": "frontend",
+        "boundedCount": 8
+      },
+      {
+        "directory": "demand-engine",
+        "boundedCount": 7
+      },
+      {
+        "directory": "hvac_agent",
+        "boundedCount": 3
+      },
+      {
+        "directory": "docs-archive",
+        "boundedCount": 1
+      }
+    ]
+  },
+  "concernFamilies": [
+    {
+      "concernId": "concern-00zdfhbq",
+      "securityCheckId": "SC-API-KEY-IN-LOGS",
+      "findingKind": "VULNERABILITY",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "API Key in Logs",
+      "remediationClass": "REMOVE_SECRETS_FROM_LOGS",
+      "instanceCount": 335,
+      "affectedFileCount": 107,
+      "affectedDetectorCount": 2,
+      "affectedDetectors": [
+        "api-key-in-logs-js",
+        "api-key-in-logs-python"
+      ],
+      "representativePaths": [
+        "ai-demo-call/scripts/generateAudio.js",
+        "ai-demo-call/scripts/generateAudioOnly.ts",
+        "ai-demo-call/scripts/generateAudioSimple.ts",
+        "ai-demo-call/scripts/generateAutomatedDemo.ts",
+        "ai-demo-call/scripts/generateLiveDemo.ts"
+      ]
+    },
+    {
+      "concernId": "concern-00xhetue",
+      "securityCheckId": "SC-AI-RAG-POISONING",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "AI RAG Poisoning",
+      "remediationClass": "VALIDATE_RAG_INPUTS",
+      "instanceCount": 156,
+      "affectedFileCount": 105,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "ai-rag-poisoning"
+      ],
+      "representativePaths": [
+        "ai-demo-call/scripts/generateLiveDemo.ts",
+        "ai-demo-call/scripts/generateMeetingDemo.ts",
+        "ai-demo-call/scripts/generateRealtimeDemo.ts",
+        "app/jobs/learning_pipeline.py",
+        "demand-engine/pdf_generator/report_generator.py"
+      ]
+    },
+    {
+      "concernId": "concern-00ebbprn",
+      "securityCheckId": "SC-AI-INVOCATION-OPENAI-SDK",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "AI Invocation — OpenAI SDK",
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "instanceCount": 87,
+      "affectedFileCount": 42,
+      "affectedDetectorCount": 2,
+      "affectedDetectors": [
+        "ai-prompt-injection-openai",
+        "ai-prompt-injection-openai-js"
+      ],
+      "representativePaths": [
+        "ai-demo-call/lib/aiDemoRecorder.ts",
+        "ai-demo-call/lib/conversationEngine.ts",
+        "ai-demo-call/lib/dailyVideoRecorder.ts",
+        "ai-demo-call/scripts/generateLiveDemo.ts",
+        "ai-demo-call/scripts/generateRestaurantDemo.ts"
+      ]
+    },
+    {
+      "concernId": "concern-00izfzxo",
+      "securityCheckId": "SC-API-KEY-IN-ERROR-MESSAGES",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "API Key in Error Messages",
+      "remediationClass": "SANITIZE_ERROR_MESSAGES",
+      "instanceCount": 62,
+      "affectedFileCount": 55,
+      "affectedDetectorCount": 2,
+      "affectedDetectors": [
+        "api-key-in-error-js",
+        "api-key-in-error-python"
+      ],
+      "representativePaths": [
+        "demand-engine/classifiers/ai_scorer.py",
+        "demand-engine/classifiers/scorer.py",
+        "demand-engine/config/api_config.py",
+        "demand-engine/email_service/resend_client.py",
+        "demand-engine/scrapers/reddit.py"
+      ]
+    },
+    {
+      "concernId": "concern-00vnrior",
+      "securityCheckId": "SC-UNVALIDATED-VECTOR-STORE",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "Unvalidated Vector Store",
+      "remediationClass": "VALIDATE_VECTOR_STORE_INPUTS",
+      "instanceCount": 77,
+      "affectedFileCount": 46,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "unvalidated-vector-store"
+      ],
+      "representativePaths": [
+        "app/jobs/learning_pipeline.py",
+        "demand-engine/pdf_generator/report_generator.py",
+        "demand-engine/routers/call_status_webhook.py",
+        "demand-engine/routers/daily_video.py",
+        "demand-engine/routers/twilio_provisioning.py"
+      ]
+    },
+    {
+      "concernId": "concern-00bn8l0d",
+      "securityCheckId": "SC-AI-INVOCATION-ANTHROPIC-SDK",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "AI Invocation — Anthropic SDK",
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "instanceCount": 16,
+      "affectedFileCount": 10,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "ai-prompt-injection-anthropic"
+      ],
+      "representativePaths": [
+        "demand-engine/services/twilio_provisioner.py",
+        "frontend/Private/alertstream-engine/src/services/smsService.js",
+        "frontend/app/api/claim/send-otp/route.ts",
+        "frontend/app/api/notifications/sms/route.ts",
+        "frontend/app/api/public/actions/route.ts"
+      ]
+    },
+    {
+      "concernId": "concern-00jnn9ec",
+      "securityCheckId": "SC-DANGEROUS-TOOL-BROWSER",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "Dangerous Tool — Browser Automation",
+      "remediationClass": "RESTRICT_BROWSER_ACCESS",
+      "instanceCount": 8,
+      "affectedFileCount": 8,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "dangerous-tool-browser"
+      ],
+      "representativePaths": [
+        "ai-demo-call/lib/customerBot.ts",
+        "ai-demo-call/lib/presenterBot.ts",
+        "ai-demo-call/scripts/generateEnhancedDemo.ts",
+        "ai-demo-call/scripts/generateLiveDemo.ts",
+        "ai-demo-call/scripts/generateMeetingDemo.ts"
+      ]
+    },
+    {
+      "concernId": "concern-00ms5sh6",
+      "securityCheckId": "SC-AI-INVOCATION-HUGGINGFACE",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "AI Invocation — HuggingFace",
+      "remediationClass": "REVIEW_PROMPT_INJECTION_RISK",
+      "instanceCount": 1,
+      "affectedFileCount": 1,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "ai-prompt-injection-huggingface"
+      ],
+      "representativePaths": [
+        "demand-engine/utils/order_parser.py"
+      ]
+    },
+    {
+      "concernId": "concern-00y8txyq",
+      "securityCheckId": "SC-AI-MULTIMODAL-INPUT",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "MEDIUM",
+      "defaultDisposition": "REVIEW",
+      "title": "AI Multimodal Input",
+      "remediationClass": "VALIDATE_MULTIMODAL_INPUTS",
+      "instanceCount": 1,
+      "affectedFileCount": 1,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "ai-multimodal-input-python"
+      ],
+      "representativePaths": [
+        "docs-archive/resize_logo.py"
+      ]
+    },
+    {
+      "concernId": "concern-00a1fauj",
+      "securityCheckId": "SC-MISSING-MAX-TOKENS",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "title": "Missing max_tokens Argument",
+      "remediationClass": "ADD_MAX_TOKENS_ARGUMENT",
+      "instanceCount": 13,
+      "affectedFileCount": 11,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "missing-max-tokens-js"
+      ],
+      "representativePaths": [
+        "ai-demo-call/scripts/generateRestaurantDemo.ts",
+        "frontend/Private/alertstream-engine/src/services/smsService.js",
+        "frontend/app/api/ai-assistant/route.ts",
+        "frontend/app/api/claim/send-otp/route.ts",
+        "frontend/app/api/notifications/sms/route.ts"
+      ]
+    },
+    {
+      "concernId": "concern-00sm2idh",
+      "securityCheckId": "SC-MISSING-DATA-MINIMIZATION",
+      "findingKind": "CONTROL_GAP",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "title": "Missing Data Minimization",
+      "remediationClass": "IMPLEMENT_DATA_MINIMIZATION",
+      "instanceCount": 1,
+      "affectedFileCount": 1,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "missing-data-minimization-js"
+      ],
+      "representativePaths": [
+        "frontend/hooks/useInteractionTracker.ts"
+      ]
+    },
+    {
+      "concernId": "concern-00ywwgh7",
+      "securityCheckId": "SC-VERBOSE-ERROR-MESSAGES",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "title": "Verbose Error Messages",
+      "remediationClass": "REDUCE_ERROR_MESSAGE_VERBOSITY",
+      "instanceCount": 30,
+      "affectedFileCount": 22,
+      "affectedDetectorCount": 1,
+      "affectedDetectors": [
+        "verbose-error-messages-python"
+      ],
+      "representativePaths": [
+        "database/migrations/deploy_021.py",
+        "database/migrations/deploy_021_production.py",
+        "database/migrations/deploy_021_sqlite.py",
+        "database/migrations/deploy_migration_021.py",
+        "database/migrations/init_and_deploy.py"
+      ]
+    },
+    {
+      "concernId": "concern-00pve0l6",
+      "securityCheckId": "SC-AI-CONTEXT-OVERFLOW",
+      "findingKind": "RISK_SIGNAL",
+      "canonicalSeverity": "INFO",
+      "defaultDisposition": "REVIEW",
+      "title": "AI Context Window Overflow Risk",
+      "remediationClass": "IMPLEMENT_CONTEXT_LIMITS",
+      "instanceCount": 11,
+      "affectedFileCount": 7,
+      "affectedDetectorCount": 2,
+      "affectedDetectors": [
+        "ai-context-overflow-js",
+        "ai-context-overflow-python"
+      ],
+      "representativePaths": [
+        "ai-demo-call/scripts/generateRestaurantDemo.ts",
+        "demand-engine/ai_agent/daily_bot.py",
+        "docs-archive/voice_engine_current.py",
+        "hvac_agent/app/agents/flexible_agent.py",
+        "hvac_agent/app/agents/hvac_agent.py"
+      ]
+    }
+  ],
+  "evaluatedSecurityCheckIds": [
+    "HAIEC-AI-OUTPUT-TO-DYNAMIC-CODE-EXECUTION",
+    "SC-AI-AGENT-LOOP",
+    "SC-AI-AGENT-RECURSIVE",
+    "SC-AI-AGENT-SAFETY-FRAMEWORK",
+    "SC-AI-CONTEXT-OVERFLOW",
+    "SC-AI-COT-EXPOSURE",
+    "SC-AI-FILESYSTEM-ACCESS",
+    "SC-AI-FRAMEWORK-IMPORT-LANGCHAIN",
+    "SC-AI-FUNCTION-CALLING",
+    "SC-AI-INVOCATION-ANTHROPIC-REST",
+    "SC-AI-INVOCATION-ANTHROPIC-SDK",
+    "SC-AI-INVOCATION-AWS-BEDROCK-REST",
+    "SC-AI-INVOCATION-AZURE-OPENAI-REST",
+    "SC-AI-INVOCATION-COHERE-REST",
+    "SC-AI-INVOCATION-GENERIC-REST",
+    "SC-AI-INVOCATION-GOOGLE",
+    "SC-AI-INVOCATION-GOOGLE-REST",
+    "SC-AI-INVOCATION-HUGGINGFACE",
+    "SC-AI-INVOCATION-HUGGINGFACE-REST",
+    "SC-AI-INVOCATION-LANGCHAIN",
+    "SC-AI-INVOCATION-LLAMAINDEX",
+    "SC-AI-INVOCATION-OPENAI-REST",
+    "SC-AI-INVOCATION-OPENAI-SDK",
+    "SC-AI-MEMORY-INJECTION",
+    "SC-AI-MODEL-EXTRACTION",
+    "SC-AI-MULTIMODAL-AV",
+    "SC-AI-MULTIMODAL-INPUT",
+    "SC-AI-OUTPUT-SQL-INJECTION",
+    "SC-AI-OUTPUT-SSRF",
+    "SC-AI-OUTPUT-XSS",
+    "SC-AI-PROVIDER-IMPORT-ANTHROPIC",
+    "SC-AI-PROVIDER-IMPORT-OPENAI",
+    "SC-AI-RAG-POISONING",
+    "SC-AI-SDK-COHERE",
+    "SC-AI-SDK-MISTRAL",
+    "SC-AI-SDK-OLLAMA",
+    "SC-AI-SDK-REPLICATE",
+    "SC-AI-SDK-TOGETHER",
+    "SC-AI-STREAMING-RESPONSE",
+    "SC-AI-TOOL-OUTPUT-INJECTION",
+    "SC-API-KEY-IN-ERROR-MESSAGES",
+    "SC-API-KEY-IN-LOGS",
+    "SC-API-KEY-IN-URL",
+    "SC-CORS-MISCONFIGURATION-AI",
+    "SC-DANGEROUS-LAMBDA-SHELL",
+    "SC-DANGEROUS-TOOL-API-REQUESTS",
+    "SC-DANGEROUS-TOOL-BROWSER",
+    "SC-DANGEROUS-TOOL-CLASS",
+    "SC-DANGEROUS-TOOL-FILESYSTEM-WRITE",
+    "SC-DANGEROUS-TOOL-PYTHON-REPL",
+    "SC-DANGEROUS-TOOL-SHELL",
+    "SC-DANGEROUS-TOOL-SQL",
+    "SC-DEBUG-MODE-PRODUCTION",
+    "SC-EMBEDDINGS-SENSITIVE-DATA",
+    "SC-HARDCODED-ANTHROPIC-API-KEY",
+    "SC-HARDCODED-API-KEY-GENERIC",
+    "SC-HARDCODED-OPENAI-API-KEY",
+    "SC-LLM-RESPONSE-PII-NOT-FILTERED",
+    "SC-MISSING-AI-AUTH",
+    "SC-MISSING-COST-TRACKING",
+    "SC-MISSING-DATA-MINIMIZATION",
+    "SC-MISSING-ERROR-LOGGING-AI",
+    "SC-MISSING-INPUT-VALIDATION-AI",
+    "SC-MISSING-LLM-RATE-LIMIT",
+    "SC-MISSING-MAX-TOKENS",
+    "SC-MISSING-MODEL-INTEGRITY",
+    "SC-MISSING-RETRIEVED-CONTEXT-VALIDATION",
+    "SC-MISSING-VECTORSTORE-AUTH",
+    "SC-MODEL-EXTRACTION-RISK",
+    "SC-MODEL-POISONING-RISK",
+    "SC-PII-IN-LLM-PROMPT",
+    "SC-RAG-METADATA-INJECTION",
+    "SC-SENSITIVE-DB-FIELDS-IN-PROMPT",
+    "SC-TRAINING-DATA-LEAKAGE",
+    "SC-UNRESTRICTED-SIMILARITY-SEARCH",
+    "SC-UNVALIDATED-VECTOR-STORE",
+    "SC-UNVERIFIED-MODEL-LOADING",
+    "SC-USER-CONTROLLED-EMBEDDING",
+    "SC-VERBOSE-ERROR-MESSAGES"
+  ],
+  "evaluatedDetectorIds": [
+    "ai-agent-loop-js",
+    "ai-agent-loop-python",
+    "ai-agent-recursive-js",
+    "ai-agent-recursive-python",
+    "ai-agent-safety-js",
+    "ai-agent-safety-python",
+    "ai-anthropic-import",
+    "ai-context-overflow-js",
+    "ai-context-overflow-python",
+    "ai-cot-exposure",
+    "ai-dangerous-lambda-shell",
+    "ai-filesystem-access",
+    "ai-function-calling-js",
+    "ai-function-calling-python",
+    "ai-langchain-import",
+    "ai-memory-injection",
+    "ai-model-extraction",
+    "ai-multimodal-av-js",
+    "ai-multimodal-av-python",
+    "ai-multimodal-input-js",
+    "ai-multimodal-input-python",
+    "ai-openai-import",
+    "ai-prompt-injection-anthropic",
+    "ai-prompt-injection-google",
+    "ai-prompt-injection-huggingface",
+    "ai-prompt-injection-langchain",
+    "ai-prompt-injection-llamaindex",
+    "ai-prompt-injection-openai",
+    "ai-prompt-injection-openai-js",
+    "ai-rag-poisoning",
+    "ai-rest-anthropic-js",
+    "ai-rest-anthropic-python",
+    "ai-rest-aws-bedrock-js",
+    "ai-rest-aws-bedrock-python",
+    "ai-rest-azure-openai-js",
+    "ai-rest-azure-openai-python",
+    "ai-rest-cohere-js",
+    "ai-rest-cohere-python",
+    "ai-rest-generic",
+    "ai-rest-google-js",
+    "ai-rest-google-python",
+    "ai-rest-huggingface-js",
+    "ai-rest-huggingface-python",
+    "ai-rest-openai-js",
+    "ai-rest-openai-python",
+    "ai-sdk-cohere-js",
+    "ai-sdk-cohere-python",
+    "ai-sdk-mistral-js",
+    "ai-sdk-mistral-python",
+    "ai-sdk-ollama-js",
+    "ai-sdk-ollama-python",
+    "ai-sdk-replicate-js",
+    "ai-sdk-replicate-python",
+    "ai-sdk-together-js",
+    "ai-sdk-together-python",
+    "ai-sql-injection-js",
+    "ai-sql-injection-python",
+    "ai-ssrf-js",
+    "ai-ssrf-python",
+    "ai-streaming-response-js",
+    "ai-streaming-response-python",
+    "ai-tool-abuse-dangerous",
+    "ai-tool-abuse-output-exec",
+    "ai-tool-output-injection-js",
+    "ai-tool-output-injection-python",
+    "ai-xss-js",
+    "ai-xss-python",
+    "api-key-in-error-js",
+    "api-key-in-error-python",
+    "api-key-in-logs-js",
+    "api-key-in-logs-python",
+    "api-key-in-url-js",
+    "api-key-in-url-python",
+    "cors-misconfiguration-ai-js",
+    "cors-misconfiguration-ai-python",
+    "dangerous-eval-exec-ai-output-js",
+    "dangerous-eval-exec-ai-output-python",
+    "dangerous-tool-api-requests",
+    "dangerous-tool-browser",
+    "dangerous-tool-filesystem-write",
+    "dangerous-tool-python-repl",
+    "dangerous-tool-shell",
+    "dangerous-tool-sql",
+    "debug-mode-production-js",
+    "debug-mode-production-python",
+    "embeddings-sensitive-data",
+    "hardcoded-anthropic-api-key-js",
+    "hardcoded-anthropic-api-key-python",
+    "hardcoded-api-key-js",
+    "hardcoded-api-key-python",
+    "hardcoded-openai-api-key",
+    "llm-response-pii-not-filtered",
+    "missing-ai-auth-js",
+    "missing-ai-auth-python",
+    "missing-cost-tracking",
+    "missing-cost-tracking-js",
+    "missing-data-minimization-js",
+    "missing-data-minimization-python",
+    "missing-error-logging-ai-js",
+    "missing-error-logging-ai-python",
+    "missing-input-validation-ai-js",
+    "missing-input-validation-ai-python",
+    "missing-llm-rate-limit-js",
+    "missing-llm-rate-limit-python",
+    "missing-max-tokens",
+    "missing-max-tokens-js",
+    "missing-model-integrity",
+    "missing-retrieved-context-validation",
+    "missing-vectorstore-auth",
+    "model-extraction-risk",
+    "model-poisoning-risk",
+    "pii-in-llm-prompt",
+    "rag-metadata-injection",
+    "sensitive-db-fields-in-prompt-js",
+    "sensitive-db-fields-in-prompt-python",
+    "training-data-leakage",
+    "unrestricted-similarity-search",
+    "unvalidated-vector-store",
+    "unverified-model-loading",
+    "user-controlled-embedding",
+    "verbose-error-messages-js",
+    "verbose-error-messages-python"
+  ],
+  "versions": {
+    "scanner": "HAIEC Static AI Security",
+    "scannerVersion": "0.1.0",
+    "rulepack": "haiec-ai-security",
+    "rulepackVersion": "0.1.0-rc.6-public-core",
+    "rulepackDigest": "sha256:013e2da09d22ceb9786109a2c04f82a80288213a42427d85c1a301ad5640289e",
+    "manifest": "haiec-ai-security-manifest",
+    "manifestVersion": "1.0.0",
+    "manifestDigest": "sha256:6d68142fd91210fbd5da4c802ad3f3613c45e4bb0ae595444a00991f22724699",
+    "semgrep": "semgrep",
+    "semgrepVersion": "1.173.0"
+  },
+  "limitations": [
+    "Extension and directory distributions are from bounded output (representative samples).",
+    "All other distributions are from FULL unbounded concern family data.",
+    "The scanner does not expose the full unbounded finding list directly.",
+    "Concern family instance counts are computed from the FULL actionable set before bounding."
+  ]
+}

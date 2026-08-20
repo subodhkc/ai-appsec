@@ -88,9 +88,13 @@ describe('Tool descriptor contracts', () => {
     assert.ok(!llm.positiveUseCases.some((u) => u.toLowerCase().includes('source-code')));
   });
 
-  it('all tools are marked as not implemented in Phase 0', () => {
+  it('only scan_ai_security is implemented (Phase 4A); others remain contract-only', () => {
     for (const tool of TOOL_DESCRIPTORS) {
-      assert.equal(tool.implemented, false, `${tool.name} should be marked not implemented in Phase 0`);
+      if (tool.name === 'scan_ai_security') {
+        assert.equal(tool.implemented, true, 'scan_ai_security should be implemented in Phase 4A');
+      } else {
+        assert.equal(tool.implemented, false, `${tool.name} should remain not implemented`);
+      }
     }
   });
 

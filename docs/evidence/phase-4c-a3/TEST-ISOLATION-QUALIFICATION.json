@@ -1,0 +1,19 @@
+{
+  "phase": "4C-A3",
+  "artifact": "TEST-ISOLATION-QUALIFICATION",
+  "generatedAt": "2026-08-20T02:30:00Z",
+  "issue": "2 tests failed because they expected Semgrep NOT installed, but Semgrep 1.173.0 was installed in the test environment.",
+  "fix": "Created test-resolvers.ts with AbsentSemgrepResolver and RecoverableSemgrepResolver. Tests now inject custom resolvers that explicitly control Semgrep availability regardless of PATH state.",
+  "changes": [
+    "tests/fixtures/test-resolvers.ts — new file with AbsentSemgrepResolver and RecoverableSemgrepResolver",
+    "tests/mcp/no-semgrep-recovery.test.ts — uses AbsentSemgrepResolver instead of isolated HAIEC_HOME",
+    "tests/mcp/same-process-recovery.test.ts — uses RecoverableSemgrepResolver instead of isolated HAIEC_HOME + runSetup"
+  ],
+  "result": {
+    "noSemgrepRecoveryTests": "2/2 PASS",
+    "sameProcessRecoveryTest": "1/1 PASS",
+    "stdioE2eTests": "4/4 PASS",
+    "approach": "Dependency injection — no global PATH modification, no Semgrep uninstallation"
+  },
+  "conclusion": "PASS — all tests are now hermetic. No environment-dependent failures."
+}

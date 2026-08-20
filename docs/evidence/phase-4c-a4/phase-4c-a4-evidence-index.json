@@ -1,0 +1,67 @@
+{
+  "phase": "4C-A4",
+  "artifact": "phase-4c-a4-evidence-index",
+  "generatedAt": "2026-08-20T04:21:56.404Z",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.11.1",
+    "semgrep": "1.173.0"
+  },
+  "artifacts": [
+    {
+      "file": "complete-session-1.json",
+      "sizeBytes": 2330,
+      "sha256": "sha256:9916a7dc1b208b4620240983212f409752abb07f8e48c3f53004fc24e6969cef"
+    },
+    {
+      "file": "complete-session-2.json",
+      "sizeBytes": 2330,
+      "sha256": "sha256:7e18ac9b1fc85fada33fbf616081f9099b4f0c69375a8745f16dd990955e65df"
+    },
+    {
+      "file": "complete-session-3.json",
+      "sizeBytes": 2330,
+      "sha256": "sha256:eb926fd1ff8d8240f49f3172bf1ec275469f8c4b45058dc344c925fbd3d74d73"
+    },
+    {
+      "file": "DIRECT-VS-FINAL-TARBALL.json",
+      "sizeBytes": 2384,
+      "sha256": "sha256:ce5a7b29af8fa6ac681eb42a7e50762ab704a368aaf72de054d3020ef6d03ae7"
+    },
+    {
+      "file": "HAIEC-COVERAGE-CONTRACT-V0.1.md",
+      "sizeBytes": 5864,
+      "sha256": "sha256:ffb4469b47152240e556704a3c974ae977450b27321f41a180e8fe47f7e77f89"
+    },
+    {
+      "file": "kestrel-session-1.json",
+      "sizeBytes": 2340,
+      "sha256": "sha256:0f2f90e228c585ed69562cb242a11c5232717a3e8bf40a9b4202362124f6a6f4"
+    },
+    {
+      "file": "kestrel-session-2.json",
+      "sizeBytes": 2339,
+      "sha256": "sha256:f0385fba7f771a5718fabea954c4c7fd7bc7049eaaaa4e2e230d529913e00894"
+    },
+    {
+      "file": "kestrel-session-3.json",
+      "sizeBytes": 2339,
+      "sha256": "sha256:0afa1f17a38d8c69b814d1c5c24149ec4c318df5cdf8c4c1bf41356724b42e02"
+    },
+    {
+      "file": "PROVENANCE-IDENTITY-COVERAGE.json",
+      "sizeBytes": 54932,
+      "sha256": "sha256:022f967c7fbd931536772079de0ebd12fa55efcab243f2dc529dc9da28b6277b"
+    },
+    {
+      "file": "RELEASE-CANDIDATE-MANIFEST.json",
+      "sizeBytes": 3176,
+      "sha256": "sha256:957a4ef5cd231e695442545ddad28d5b42d6b56315cc77b40d2ade5f96af4cc2"
+    },
+    {
+      "file": "REMOTE-CI-HANDOFF.md",
+      "sizeBytes": 2263,
+      "sha256": "sha256:bce58d20d7424200a8d112518dd052efb494a8bd2d8fe7703f031e46f84f78de"
+    }
+  ]
+}

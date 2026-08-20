@@ -1,0 +1,1368 @@
+{
+  "phase": "4C-A4",
+  "artifact": "PROVENANCE-IDENTITY-COVERAGE",
+  "generatedAt": "2026-08-20T04:11:22.896Z",
+  "totalDetectors": 122,
+  "distribution": {
+    "originEvidence": {
+      "STRONG": 122,
+      "MODERATE": 0,
+      "INCOMPLETE": 0
+    },
+    "licenseDisposition": {
+      "HAIEC_CAN_LICENSE": 122,
+      "ATTRIBUTION_REQUIRED": 0,
+      "REVIEW_REQUIRED": 0
+    },
+    "finalLegalDisposition": {
+      "PENDING_HUMAN_REVIEW": 122,
+      "APPROVED": 0,
+      "BLOCKED": 0
+    }
+  },
+  "evidenceBasis": "Phase 2.5 external similarity check (2228 rules, 0 strong/exact matches) + Git authorship (all by Subodh). The 122nd detector is a language split of an existing detector, not a new external import.",
+  "records": [
+    {
+      "detectorId": "ai-prompt-injection-openai",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-openai-import",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-anthropic-import",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-openai-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-anthropic",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-langchain",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-langchain-import",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-llamaindex",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-huggingface",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-prompt-injection-google",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-abuse-dangerous",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-abuse-output-exec",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-dangerous-lambda-shell",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rag-poisoning",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-model-extraction",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-api-key-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-api-key-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-memory-injection",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-anthropic-api-key-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-anthropic-api-key-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-logs-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-logs-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-error-python",
+      "currentRevision": "rc.6.1",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-error-js",
+      "currentRevision": "rc.6.1",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-url-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "api-key-in-url-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "pii-in-llm-prompt",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "sensitive-db-fields-in-prompt-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "sensitive-db-fields-in-prompt-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-data-minimization-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-data-minimization-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "llm-response-pii-not-filtered",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "training-data-leakage",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "embeddings-sensitive-data",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "unvalidated-vector-store",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "user-controlled-embedding",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-vectorstore-auth",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "rag-metadata-injection",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "unrestricted-similarity-search",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-retrieved-context-validation",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-llm-rate-limit-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-llm-rate-limit-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-max-tokens",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-max-tokens-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-cost-tracking",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-cost-tracking-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-ai-auth-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-ai-auth-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "cors-misconfiguration-ai-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "cors-misconfiguration-ai-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-input-validation-ai-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-input-validation-ai-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "debug-mode-production-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "debug-mode-production-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-error-logging-ai-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-error-logging-ai-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "verbose-error-messages-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "verbose-error-messages-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "unverified-model-loading",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "model-poisoning-risk",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "missing-model-integrity",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "model-extraction-risk",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-openai-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-openai-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-anthropic-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-anthropic-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-google-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-google-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-cohere-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-cohere-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-huggingface-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-huggingface-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-aws-bedrock-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-aws-bedrock-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-azure-openai-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-azure-openai-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-rest-generic",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-cohere-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-cohere-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-mistral-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-mistral-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-ollama-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-ollama-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-replicate-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-replicate-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-together-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sdk-together-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-python-repl",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-shell",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-filesystem-write",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-sql",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-browser",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-tool-api-requests",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-eval-exec-ai-output-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "dangerous-eval-exec-ai-output-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "hardcoded-openai-api-key",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-loop-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-loop-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-recursive-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-recursive-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-safety-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-agent-safety-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-context-overflow-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-context-overflow-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-cot-exposure",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-function-calling-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-function-calling-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-output-injection-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-tool-output-injection-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-streaming-response-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-streaming-response-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-xss-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-xss-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sql-injection-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-sql-injection-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-ssrf-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-ssrf-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-input-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-input-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-av-python",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-multimodal-av-js",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "detectorId": "ai-filesystem-access",
+      "currentRevision": "rc.5",
+      "originEvidence": "STRONG",
+      "evidenceReferences": [
+        "Phase 2.5 — Git history: authored by Subodh (subodhkc, subodh@haiec.com)",
+        "Phase 2.5 — External similarity: 2228 rules compared, 0 strong/exact matches"
+      ],
+      "licenseDisposition": "HAIEC_CAN_LICENSE",
+      "finalLegalDisposition": "PENDING_HUMAN_REVIEW"
+    }
+  ]
+}

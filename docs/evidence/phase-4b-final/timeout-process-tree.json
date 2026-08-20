@@ -1,0 +1,20 @@
+{
+  "target": "<HAIEC_HOME>\\Desktop\\App Building\\Github\\HAIEC-workspace\\haiec-ai-agent-security-free-mcp",
+  "timeoutMs": 1000,
+  "durationMs": 8044,
+  "verdict": "ERROR",
+  "completeness": "ERROR",
+  "errorCodes": [
+    "SEMGREP_TIMEOUT"
+  ],
+  "filesAnalyzed": 0,
+  "rawFindings": 0,
+  "timeoutDetected": true,
+  "hasPartialResult": false,
+  "preScanSemgrepProcesses": 0,
+  "postScanSemgrepProcesses": 0,
+  "noOrphanProcesses": true,
+  "classification": "ERROR (correct)",
+  "gracePeriodMs": 3000,
+  "conclusion": "PASS — timeout detected, classified correctly, no orphan processes"
+}

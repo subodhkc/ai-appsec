@@ -1,0 +1,53 @@
+{
+  "phase": "4C-A",
+  "artifact": "phase-4c-evidence-index",
+  "generatedAt": "2026-08-19T16:45:00Z",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.11.1",
+    "semgrep": "1.173.0",
+    "target": "Kestrel 0f131ea63 (immutable worktree)"
+  },
+  "artifacts": [
+    {
+      "file": "kestrel-three-run-determinism.json",
+      "sizeBytes": 5278,
+      "sha256": "sha256:1b495db15aecc825b4497b5fa46c8cd03d374cac0686975af5bee04a5cda91c1"
+    },
+    {
+      "file": "OFFLINE-VALIDATION.md",
+      "sizeBytes": 2841,
+      "sha256": "sha256:eeb483f35a1c0c8fa2096b75716882f94771ef0a3abff60a2cbd5abaf5bc046b"
+    },
+    {
+      "file": "PARSER-FAILURE-CLASSIFICATION.md",
+      "sizeBytes": 4525,
+      "sha256": "sha256:92fd28ff75ca706924ef9a46a80ed75efed5e45359ed661717a02dd5d01243ae"
+    },
+    {
+      "file": "PUBLIC-CORE-PROVENANCE-RELEASE-PACKET.md",
+      "sizeBytes": 3463,
+      "sha256": "sha256:a7e70e5c6cc9ce096220288f6d0710a95dd37af443a92b32077b01318e5f12cf"
+    },
+    {
+      "file": "RELEASE-CANDIDATE-MANIFEST.json",
+      "sizeBytes": 3482,
+      "sha256": "sha256:d6dc60539f134faff11cbb98b142ade835849b414acd5d037dea0cc116166abd"
+    },
+    {
+      "file": "RELEASE-FREEZE-MANIFEST.json",
+      "sizeBytes": 2486,
+      "sha256": "sha256:4c70f044b04492e87e2719b3e6e58e3bb38375ab7ae52d5c7759899f43780a1b"
+    },
+    {
+      "file": "REMOTE-CI-HANDOFF.md",
+      "sizeBytes": 3813,
+      "sha256": "sha256:3779c22f652eecd90c0a043fbc8bec9656c0aff0d7ee373ce2fc60bc55fb9fdb"
+    },
+    {
+      "file": "VERSION-IDENTITY-MATRIX.md",
+      "sizeBytes": 4686,
+      "sha256": "sha256:f84c78d9f185af6dff16c120b97034970c371068562f38f4e0311cdf0592268d"
+    }
+  ]
+}

@@ -1,0 +1,1157 @@
+[
+  {
+    "detectorId": "ai-anthropic-import",
+    "checkId": "ai-anthropic-import",
+    "relativePath": "ai-anthropic-import.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-anthropic-import",
+    "checkId": "ai-anthropic-import",
+    "relativePath": "ai-prompt-injection-anthropic.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-anthropic-import",
+    "checkId": "ai-anthropic-import",
+    "relativePath": "hardcoded-anthropic-api-key-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-cot-exposure",
+    "checkId": "ai-cot-exposure",
+    "relativePath": "ai-agent-recursive-python.py",
+    "startLine": 3,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-agent-loop-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-agent-recursive-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-agent-safety-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-filesystem-access.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-langchain-import.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-memory-injection.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-prompt-injection-langchain.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "ai-prompt-injection-langchain.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "dangerous-tool-api-requests.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "dangerous-tool-browser.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "dangerous-tool-filesystem-write.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "dangerous-tool-python-repl.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "dangerous-tool-shell.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-langchain-import",
+    "checkId": "ai-langchain-import",
+    "relativePath": "dangerous-tool-sql.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-memory-injection",
+    "checkId": "ai-memory-injection",
+    "relativePath": "ai-memory-injection.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-model-extraction",
+    "checkId": "ai-model-extraction",
+    "relativePath": "ai-model-extraction.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-model-extraction",
+    "checkId": "ai-model-extraction",
+    "relativePath": "model-extraction-risk.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-context-overflow-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-cot-exposure.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-function-calling-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-multimodal-av-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-multimodal-input-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-openai-import.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-prompt-injection-openai.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-sql-injection-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-ssrf-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-streaming-response-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-tool-abuse-output-exec-falsepos.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-tool-abuse-output-exec-negative.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-tool-output-injection-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "ai-xss-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "dangerous-eval-exec-ai-output.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "debug-mode-production-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "embeddings-sensitive-data.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "hardcoded-api-key-falsepos.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "hardcoded-api-key-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "hardcoded-openai-api-key-falsepos.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "hardcoded-openai-api-key.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "llm-response-pii-not-filtered.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-ai-auth-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-cost-tracking.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-data-minimization-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-error-logging-ai-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-input-validation-ai-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-llm-rate-limit-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "missing-max-tokens.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "pii-in-llm-prompt.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "sensitive-db-fields-in-prompt-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "training-data-leakage.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "user-controlled-embedding.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-openai-import",
+    "checkId": "ai-openai-import",
+    "relativePath": "verbose-error-messages-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-prompt-injection-anthropic",
+    "checkId": "ai-prompt-injection-anthropic",
+    "relativePath": "ai-prompt-injection-anthropic.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-anthropic",
+    "checkId": "ai-prompt-injection-anthropic",
+    "relativePath": "ai-prompt-injection-anthropic.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-google",
+    "checkId": "ai-prompt-injection-google",
+    "relativePath": "ai-prompt-injection-google.py",
+    "startLine": 4,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-huggingface",
+    "checkId": "ai-prompt-injection-huggingface",
+    "relativePath": "ai-sdk-cohere-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-huggingface",
+    "checkId": "ai-prompt-injection-huggingface",
+    "relativePath": "ai-tool-abuse-output-exec.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-langchain",
+    "checkId": "ai-prompt-injection-langchain",
+    "relativePath": "ai-agent-loop-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-langchain",
+    "checkId": "ai-prompt-injection-langchain",
+    "relativePath": "ai-agent-safety-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-langchain",
+    "checkId": "ai-prompt-injection-langchain",
+    "relativePath": "ai-langchain-import.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-langchain",
+    "checkId": "ai-prompt-injection-langchain",
+    "relativePath": "ai-prompt-injection-langchain.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-llamaindex",
+    "checkId": "ai-prompt-injection-llamaindex",
+    "relativePath": "missing-retrieved-context-validation.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-llamaindex",
+    "checkId": "ai-prompt-injection-llamaindex",
+    "relativePath": "unrestricted-similarity-search.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-llamaindex",
+    "checkId": "ai-prompt-injection-llamaindex",
+    "relativePath": "unvalidated-vector-store.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-context-overflow-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-context-overflow-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-cot-exposure.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-cot-exposure.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-function-calling-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-function-calling-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-multimodal-input-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-multimodal-input-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-prompt-injection-openai.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-prompt-injection-openai.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-sql-injection-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-sql-injection-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-ssrf-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-ssrf-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-streaming-response-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-tool-abuse-output-exec-falsepos.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-tool-abuse-output-exec-falsepos.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-tool-abuse-output-exec-negative.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-tool-abuse-output-exec-negative.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-tool-output-injection-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-tool-output-injection-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-xss-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-xss-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "cors-misconfiguration-ai-python.py",
+    "startLine": 6,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "dangerous-eval-exec-ai-output.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "dangerous-eval-exec-ai-output.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "llm-response-pii-not-filtered.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "llm-response-pii-not-filtered.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-ai-auth-python.py",
+    "startLine": 6,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-cost-tracking.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-cost-tracking.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-data-minimization-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-data-minimization-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-error-logging-ai-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-error-logging-ai-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-input-validation-ai-python.py",
+    "startLine": 7,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-llm-rate-limit-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-max-tokens.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "missing-max-tokens.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "pii-in-llm-prompt.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "pii-in-llm-prompt.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "sensitive-db-fields-in-prompt-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "sensitive-db-fields-in-prompt-python.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "training-data-leakage.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "training-data-leakage.py",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "verbose-error-messages-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "verbose-error-messages-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai-js",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-prompt-injection-openai-js.js",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai-js",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-sql-injection-js.js",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai-js",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-ssrf-js.js",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai-js",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-streaming-response-js.js",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-prompt-injection-openai-js",
+    "checkId": "ai-prompt-injection-openai",
+    "relativePath": "ai-xss-js.js",
+    "startLine": 2,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "ai-rest-aws-bedrock-python",
+    "checkId": "ai-rest-aws-bedrock",
+    "relativePath": "ai-rest-aws-bedrock-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-aws-bedrock-python",
+    "checkId": "ai-rest-aws-bedrock",
+    "relativePath": "ai-rest-aws-bedrock-python.py",
+    "startLine": 3,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-generic",
+    "checkId": "ai-rest-generic",
+    "relativePath": "ai-rest-google-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-generic",
+    "checkId": "ai-rest-generic",
+    "relativePath": "ai-rest-openai-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-generic",
+    "checkId": "ai-rest-generic",
+    "relativePath": "api-key-in-url-js.js",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-generic",
+    "checkId": "ai-rest-generic",
+    "relativePath": "api-key-in-url-negative.js",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-generic",
+    "checkId": "ai-rest-generic",
+    "relativePath": "api-key-in-url-negative.py",
+    "startLine": 3,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-rest-generic",
+    "checkId": "ai-rest-generic",
+    "relativePath": "api-key-in-url-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-cohere-python",
+    "checkId": "ai-sdk-cohere",
+    "relativePath": "ai-sdk-cohere-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-cohere-python",
+    "checkId": "ai-sdk-cohere",
+    "relativePath": "ai-sdk-cohere-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-mistral-python",
+    "checkId": "ai-sdk-mistral",
+    "relativePath": "ai-sdk-mistral-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-mistral-python",
+    "checkId": "ai-sdk-mistral",
+    "relativePath": "ai-sdk-mistral-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-ollama-python",
+    "checkId": "ai-sdk-ollama",
+    "relativePath": "ai-sdk-ollama-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-ollama-python",
+    "checkId": "ai-sdk-ollama",
+    "relativePath": "ai-sdk-ollama-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-replicate-python",
+    "checkId": "ai-sdk-replicate",
+    "relativePath": "ai-sdk-replicate-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-replicate-python",
+    "checkId": "ai-sdk-replicate",
+    "relativePath": "ai-sdk-replicate-python.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-sdk-together-python",
+    "checkId": "ai-sdk-together",
+    "relativePath": "ai-sdk-together-python.py",
+    "startLine": 1,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-streaming-response-js",
+    "checkId": "ai-streaming-response",
+    "relativePath": "ai-streaming-response-js.js",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "ai-tool-abuse-dangerous",
+    "checkId": "ai-tool-abuse-dangerous",
+    "relativePath": "dangerous-tool-shell.py",
+    "startLine": 5,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "ai-tool-abuse-output-exec",
+    "checkId": "ai-tool-abuse-output-exec",
+    "relativePath": "ai-dangerous-lambda-shell.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "ai-tool-abuse-output-exec",
+    "checkId": "ai-tool-abuse-output-exec",
+    "relativePath": "ai-tool-abuse-dangerous.py",
+    "startLine": 3,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "ai-tool-abuse-output-exec",
+    "checkId": "ai-tool-abuse-output-exec",
+    "relativePath": "ai-tool-abuse-output-exec.py",
+    "startLine": 3,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "ai-tool-abuse-output-exec",
+    "checkId": "ai-tool-abuse-output-exec",
+    "relativePath": "dangerous-tool-shell.py",
+    "startLine": 4,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "ai-xss-js",
+    "checkId": "ai-xss",
+    "relativePath": "ai-xss-js.js",
+    "startLine": 6,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "api-key-in-error-js",
+    "checkId": "api-key-in-error",
+    "relativePath": "api-key-in-error-js.js",
+    "startLine": 1,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "api-key-in-error-python",
+    "checkId": "api-key-in-error",
+    "relativePath": "api-key-in-error-python.py",
+    "startLine": 1,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "api-key-in-error-python",
+    "checkId": "api-key-in-error",
+    "relativePath": "verbose-error-messages-python.py",
+    "startLine": 5,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "api-key-in-logs-js",
+    "checkId": "api-key-in-logs",
+    "relativePath": "ai-streaming-response-js.js",
+    "startLine": 8,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "api-key-in-logs-js",
+    "checkId": "api-key-in-logs",
+    "relativePath": "api-key-in-logs-js.js",
+    "startLine": 1,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "api-key-in-logs-python",
+    "checkId": "api-key-in-logs",
+    "relativePath": "ai-tool-abuse-output-exec-falsepos.py",
+    "startLine": 4,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "dangerous-eval-exec-ai-output",
+    "checkId": "dangerous-eval-exec-ai-output",
+    "relativePath": "dangerous-tool-python-repl.py",
+    "startLine": 3,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "hardcoded-api-key-python",
+    "checkId": "hardcoded-api-key",
+    "relativePath": "hardcoded-openai-api-key-falsepos.py",
+    "startLine": 3,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "hardcoded-api-key-python",
+    "checkId": "hardcoded-api-key",
+    "relativePath": "hardcoded-openai-api-key.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "llm-response-pii-not-filtered",
+    "checkId": "llm-response-pii-not-filtered",
+    "relativePath": "ai-agent-recursive-python.py",
+    "startLine": 3,
+    "severity": "WARNING"
+  },
+  {
+    "detectorId": "missing-model-integrity",
+    "checkId": "missing-model-integrity",
+    "relativePath": "ai-model-extraction.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "missing-model-integrity",
+    "checkId": "missing-model-integrity",
+    "relativePath": "missing-model-integrity.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "missing-model-integrity",
+    "checkId": "missing-model-integrity",
+    "relativePath": "model-extraction-risk.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "missing-model-integrity",
+    "checkId": "missing-model-integrity",
+    "relativePath": "model-poisoning-risk.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "missing-model-integrity",
+    "checkId": "missing-model-integrity",
+    "relativePath": "unverified-model-loading.py",
+    "startLine": 2,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "model-extraction-risk",
+    "checkId": "model-extraction-risk",
+    "relativePath": "ai-model-extraction.py",
+    "startLine": 3,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "model-extraction-risk",
+    "checkId": "model-extraction-risk",
+    "relativePath": "model-extraction-risk.py",
+    "startLine": 3,
+    "severity": "INFO"
+  },
+  {
+    "detectorId": "unverified-model-loading",
+    "checkId": "unverified-model-loading",
+    "relativePath": "ai-model-extraction.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "unverified-model-loading",
+    "checkId": "unverified-model-loading",
+    "relativePath": "missing-model-integrity.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "unverified-model-loading",
+    "checkId": "unverified-model-loading",
+    "relativePath": "model-extraction-risk.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "unverified-model-loading",
+    "checkId": "unverified-model-loading",
+    "relativePath": "model-poisoning-risk.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  },
+  {
+    "detectorId": "unverified-model-loading",
+    "checkId": "unverified-model-loading",
+    "relativePath": "unverified-model-loading.py",
+    "startLine": 2,
+    "severity": "ERROR"
+  }
+]
