@@ -147,11 +147,20 @@ jobs:
           semgrep --version
 
       - name: Clean install from canonical tarball
+        shell: bash
         run: |
           mkdir test-install
           cd test-install
           npm init -y
-          npm install ../haiec-agent-security-*.tgz
+          # Find the tarball (glob doesn't work on Windows cmd)
+          TARBALL=$(ls ../haiec-agent-security-*.tgz 2>/dev/null || echo "")
+          if [ -z "$TARBALL" ]; then
+            echo "ERROR: No tarball found"
+            ls -la ..
+            exit 1
+          fi
+          echo "Installing: $TARBALL"
+          npm install "$TARBALL"
           # Verify dist exists
           test -d node_modules/haiec-agent-security/dist
           # Verify rules exist
@@ -162,11 +171,18 @@ jobs:
           mkdir -p corpus-export
           tar xzf golden-corpus.tar.gz -C corpus-export
 
+      - name: Install MCP client for testing
+        run: |
+          cd test-install
+          npm install @modelcontextprotocol/client@^2.0.0
+
       - name: MCP initialize + tools/list
+        shell: bash
         run: |
           echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1.0.0"}}}' | node test-install/node_modules/haiec-agent-security/dist/mcp/index.js 2>&1 | head -20
 
       - name: Scan golden corpus and verify semantic evidence
+        shell: bash
         run: |
           node -e "
           const { createServer } = require('./test-install/node_modules/haiec-agent-security/dist/mcp/server-factory.js');
@@ -253,7 +269,9 @@ jobs:
           mkdir test-install
           cd test-install
           npm init -y
-          npm install ../haiec-agent-security-*.tgz
+          TARBALL=$(ls ../haiec-agent-security-*.tgz)
+          npm install "$TARBALL"
+          npm install @modelcontextprotocol/client@^2.0.0
       - name: Export corpus
         run: |
           mkdir -p corpus-export
@@ -359,7 +377,9 @@ jobs:
           mkdir test-install
           cd test-install
           npm init -y
-          npm install ../haiec-agent-security-*.tgz
+          TARBALL=$(ls ../haiec-agent-security-*.tgz)
+          npm install "$TARBALL"
+          npm install @modelcontextprotocol/client@^2.0.0
 
       - name: Export corpus
         run: |
@@ -368,16 +388,23 @@ jobs:
 
       - name: Hard offline scan (network=none via Docker)
         run: |
-          # Pack the test environment for Docker
-          tar czf /tmp/offline-env.tar.gz test-install corpus-export
+          # Pack the test environment for Docker (including node_modules and Semgrep)
+          # Install Semgrep into the test environment so it's available offline
+          pip install semgrep==${{ env.SEMGREP_VERSION }} --target /tmp/semgrep-offline
+          tar czf /tmp/offline-env.tar.gz test-install corpus-export /tmp/semgrep-offline
 
           # Run in Docker with --network=none
-          docker run --network=none -v /tmp/offline-env.tar.gz:/env.tar.gz node:24 bash -c '
+          # Mount Semgrep binary from the runner since we can't install it offline
+          SEMGREP_BIN=$(which semgrep)
+          docker run --network=none \
+            -v /tmp/offline-env.tar.gz:/env.tar.gz \
+            -v ${SEMGREP_BIN}:/usr/local/bin/semgrep:ro \
+            -v $(dirname $(dirname ${SEMGREP_BIN}))/lib/python3.12/site-packages:/semgrep-packages:ro \
+            node:24 bash -c '
             cd /tmp
             tar xzf /env.tar.gz
-            # Verify Semgrep is available (installed in the Docker image via pip)
-            pip install semgrep==1.173.0 2>/dev/null || true
-            semgrep --version 2>/dev/null || echo "Semgrep not in Docker - using PATH"
+            export PYTHONPATH=/semgrep-packages:$PYTHONPATH
+            semgrep --version 2>/dev/null || echo "Semgrep not available in Docker"
 
             node -e "
               const { createServer } = require(\"./test-install/node_modules/haiec-agent-security/dist/mcp/server-factory.js\");
@@ -495,19 +522,18 @@ jobs:
           SHA256=$(sha256sum "$FILENAME" | cut -d' ' -f1)
           SIZE=$(stat -c%s "$FILENAME")
           FILE_COUNT=$(tar tzf "$FILENAME" | wc -l)
-          UNPACKED_SIZE=$(tar tzf "$FILENAME" | xargs -I{} sh -c 'echo 0' | wc -l)
           echo "Filename: $FILENAME"
           echo "SHA-256: sha256:$SHA256"
           echo "Size: $SIZE bytes"
           echo "File count: $FILE_COUNT"
-          # Check for secrets/private content
-          if tar tzf "$FILENAME" | grep -E '\.env|secret|credential|private-rule-staging|kestrel'; then
+          # Check for actual sensitive files (not source code modules like secret-redaction.js)
+          if tar tzf "$FILENAME" | grep -E '\.env$|\.env\.|private-rule-staging|kestrel|credential\.json|\.pem$|\.key$'; then
             echo "WARNING: Potentially sensitive content found in tarball"
-            tar tzf "$FILENAME" | grep -E '\.env|secret|credential|private-rule-staging|kestrel'
+            tar tzf "$FILENAME" | grep -E '\.env$|\.env\.|private-rule-staging|kestrel|credential\.json|\.pem$|\.key$'
             exit 1
           fi
           echo "No secrets/private content found in tarball"
-          # npm audit
+          # npm audit on the source tree
           npm audit
           echo "SUPPLY_CHAIN_REVIEW_PASS"
 
