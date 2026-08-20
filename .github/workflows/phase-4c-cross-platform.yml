@@ -2,7 +2,7 @@ name: AI AppSec Remote Release Qualification
 
 on:
   push:
-    branches: [release/ai-appsec-v0.1.0-rc1]
+    branches: [release/ai-appsec-v0.1.0-rc1, release/ai-appsec-v0.1.0-rc2]
   workflow_dispatch:
 
 env:
