@@ -1,22 +1,11 @@
-release: AI AppSec v0.1.0-rc.2 — MCP Registry contract + Trusted Publishing + release hardening
+fix: MCP client callTool timeout — use options arg (2nd param) not 3rd
 
-RC2 release-contract changes:
-- package.json: version 0.1.0-rc.2, added mcpName field
-- package-lock.json: regenerated with correct name and version
-- .mcp/server.json: updated to RC2, aligned with 2025-12-11 schema
-- src/mcp/protocol.ts: SERVER_VERSION 0.1.0-rc.2
-- tests/mcp/server-factory.test.ts: version assertion updated
-- README.md: install examples use @next during prerelease
+callTool(params, options) takes 2 args, not 3. The timeout option
+belongs in the 2nd argument object, not as a separate 3rd argument.
 
-Trusted Publishing preparation:
-- .github/workflows/publish.yml: OIDC publish workflow with founder gate
-- GitHub environment: npm-release (manual approval)
-- permissions: contents: read, id-token: write
-- Node 24, npm CLI, provenance attestation
+Fixes same-process-recovery and output-contract test timeouts.
 
-Bootstrap token retirement plan:
-- docs/evidence/phase-4c-e/BOOTSTRAP-NPM-TOKEN-RETIREMENT.md
-- Token will be retired after OIDC publishing is verified
+276/276 tests PASS.
 
 Generated with [Devin](https://devin.ai)
 
