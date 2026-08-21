@@ -67,18 +67,25 @@ jobs:
           SHA256=$(sha256sum "$FILENAME" | cut -d' ' -f1)
           SIZE=$(stat -c%s "$FILENAME")
           FILE_COUNT=$(tar tzf "$FILENAME" | wc -l)
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          NODE_VERSION=$(node --version)
           cat > CANONICAL-REMOTE-PACKAGE-MANIFEST.json << EOF
           {
-            "phase": "4C-B",
-            "artifact": "CANONICAL-REMOTE-PACKAGE-MANIFEST",
+            "qualificationProfile": "AI_APPSEC_REMOTE_RELEASE_QUALIFICATION_V1",
             "generatedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "buildEnvironment": { "os": "ubuntu-latest", "node": "24" },
-            "packageVersion": "0.1.0",
+            "repository": "${{ github.repository }}",
+            "sourceCommit": "${{ github.sha }}",
+            "workflowRunId": "${{ github.run_id }}",
+            "workflowRunAttempt": "${{ github.run_attempt }}",
+            "packageName": "$PACKAGE_NAME",
+            "packageVersion": "$PACKAGE_VERSION",
+            "buildEnvironment": { "os": "ubuntu-latest", "node": "$NODE_VERSION" },
+            "semgrepVersion": "$SEMGREP_VERSION",
             "tarballFilename": "$FILENAME",
             "tarballSHA256": "sha256:$SHA256",
             "tarballSizeBytes": $SIZE,
-            "tarballFileCount": $FILE_COUNT,
-            "semgrepVersion": "$SEMGREP_VERSION"
+            "tarballFileCount": $FILE_COUNT
           }
           EOF
 
@@ -335,7 +342,7 @@ jobs:
             results[f] = { match, values };
             if (!match) allMatch = false;
           }
-          const output = { phase: '4C-B', crossOSEvidenceMatch: allMatch, results, evidenceCount: allEvidence.length };
+          const output = { qualificationProfile: 'AI_APPSEC_REMOTE_RELEASE_QUALIFICATION_V1', crossOSEvidenceMatch: allMatch, results, evidenceCount: allEvidence.length };
           fs.writeFileSync('cross-os-equivalence.json', JSON.stringify(output, null, 2));
           console.log(JSON.stringify(output, null, 2));
           if (!allMatch) { process.exit(1); }
