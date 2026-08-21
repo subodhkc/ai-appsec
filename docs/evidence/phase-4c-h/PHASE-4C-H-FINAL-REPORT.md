@@ -17,7 +17,7 @@ One human action remains: npm Trusted Publisher configuration.
 
 ## 4. RC3 Final Publication Source SHA
 
-`6349e4585d183c37834ec8a9bf44ebca9c7fd360`
+`9acae82782d5fe3205be58285295be939e14a545`
 
 ## 5. npm-release Environment
 
@@ -122,7 +122,7 @@ Node 24 (pinned in both workflows)
 
 ## 19. Final RC3 Qualification Run ID
 
-`32442974942`
+`32443390406`
 
 ## 20. Final Qualification Result
 
@@ -145,7 +145,7 @@ VERIFIED — CI-generated manifest contains:
 - qualificationProfile: AI_APPSEC_REMOTE_RELEASE_QUALIFICATION_V1
 - packageName: ai-appsec (derived dynamically)
 - packageVersion: 0.1.0-rc.3 (derived dynamically)
-- sourceCommit: 6349e4585d183c37834ec8a9bf44ebca9c7fd360
+- sourceCommit: 9acae82782d5fe3205be58285295be939e14a545
 
 ## 24-31. Remote Qualification (all 13 CI jobs)
 
@@ -174,7 +174,7 @@ gh workflow run publish.yml `
   -f qualification_run_id=32442974942 `
   -f artifact_name=canonical-tarball `
   -f expected_sha256=4b5b109a33dcb70bc0f8396c8337e5eff02ddd701de15410ee8a2f4a368d19ce `
-  -f expected_source_sha=6349e4585d183c37834ec8a9bf44ebca9c7fd360 `
+  -f expected_source_sha=9acae82782d5fe3205be58285295be939e14a545 `
   -f version=0.1.0-rc.3 `
   -f dist_tag=next
 ```

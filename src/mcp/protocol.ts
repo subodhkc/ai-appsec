@@ -14,7 +14,7 @@ export const SERVER_NAME = 'ai-appsec';
 /**
  * The MCP server version.
  */
-export const SERVER_VERSION = '0.1.0-rc.3';
+export const SERVER_VERSION = '0.1.0';
 
 /**
  * Write a diagnostic message to stderr (never stdout).

@@ -1,6 +1,6 @@
 {
   "name": "ai-appsec",
-  "version": "0.1.0-rc.3",
+  "version": "0.1.0",
   "mcpName": "io.github.subodhkc/ai-appsec",
   "description": "Audit AI applications and agents for security risks before commit, PR, merge, or deployment. Deterministic findings with coverage and evidence receipts.",
   "type": "module",
@@ -43,7 +43,9 @@
     "pre-push-security",
     "pr-security",
     "security-evidence",
-    "prompt-injection"
+    "prompt-injection",
+    "mcp-server",
+    "model-context-protocol"
   ],
   "files": [
     "dist",
