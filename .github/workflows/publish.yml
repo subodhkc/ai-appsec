@@ -143,15 +143,22 @@ jobs:
           repository: ${{ github.repository }}
           run-id: ${{ inputs.qualification_run_id }}
 
-      - name: Verify tarball exists and compute SHA-256
+      - name: Verify exactly one tarball and compute SHA-256
         id: sha
         run: |
           set -euo pipefail
-          TARBALL=$(ls ./tarball/*.tgz 2>/dev/null | head -1)
-          if [ -z "$TARBALL" ]; then
+          TARBALL_COUNT=$(ls ./tarball/*.tgz 2>/dev/null | wc -l)
+          if [ "$TARBALL_COUNT" -eq 0 ]; then
             echo "ERROR: No tarball found in artifact"
             exit 1
           fi
+          if [ "$TARBALL_COUNT" -gt 1 ]; then
+            echo "ERROR: Multiple tarballs found in artifact ($TARBALL_COUNT) — refusing to publish"
+            ls -la ./tarball/*.tgz
+            exit 1
+          fi
+          TARBALL=$(ls ./tarball/*.tgz)
+          echo "Exactly one tarball found: $TARBALL"
           echo "TARBALL=$TARBALL" >> $GITHUB_ENV
           ACTUAL_SHA256=$(sha256sum "$TARBALL" | awk '{print $1}')
           echo "Actual SHA-256: $ACTUAL_SHA256"
@@ -166,6 +173,72 @@ jobs:
           fi
           echo "SHA-256 verified — tarball matches qualification artifact"
           echo "actualSha256=$ACTUAL_SHA256" >> $GITHUB_OUTPUT
+
+      - name: Verify canonical manifest
+        run: |
+          set -euo pipefail
+          MANIFEST_COUNT=$(ls ./tarball/CANONICAL-REMOTE-PACKAGE-MANIFEST.json 2>/dev/null | wc -l)
+          if [ "$MANIFEST_COUNT" -eq 0 ]; then
+            echo "ERROR: CANONICAL-REMOTE-PACKAGE-MANIFEST.json not found in artifact"
+            exit 1
+          fi
+          MANIFEST="./tarball/CANONICAL-REMOTE-PACKAGE-MANIFEST.json"
+          echo "Manifest found: $MANIFEST"
+
+          # Parse and verify all required fields
+          M_PROFILE=$(node -p "require('$MANIFEST').qualificationProfile")
+          M_REPO=$(node -p "require('$MANIFEST').repository")
+          M_SOURCE=$(node -p "require('$MANIFEST').sourceCommit")
+          M_RUNID=$(node -p "require('$MANIFEST').workflowRunId")
+          M_PKGNAME=$(node -p "require('$MANIFEST').packageName")
+          M_PKGVER=$(node -p "require('$MANIFEST').packageVersion")
+          M_TARBALL=$(node -p "require('$MANIFEST').tarballFilename")
+          M_SHA256=$(node -p "require('$MANIFEST').tarballSHA256")
+          M_SEMGREP=$(node -p "require('$MANIFEST').semgrepVersion")
+
+          echo "manifest.qualificationProfile: $M_PROFILE"
+          echo "manifest.repository: $M_REPO"
+          echo "manifest.sourceCommit: $M_SOURCE"
+          echo "manifest.workflowRunId: $M_RUNID"
+          echo "manifest.packageName: $M_PKGNAME"
+          echo "manifest.packageVersion: $M_PKGVER"
+          echo "manifest.tarballFilename: $M_TARBALL"
+          echo "manifest.tarballSHA256: $M_SHA256"
+          echo "manifest.semgrepVersion: $M_SEMGREP"
+
+          EXPECTED_PROFILE="AI_APPSEC_REMOTE_RELEASE_QUALIFICATION_V1"
+          EXPECTED_REPO="subodhkc/ai-appsec"
+          EXPECTED_SOURCE="${{ inputs.expected_source_sha }}"
+          EXPECTED_RUNID="${{ inputs.qualification_run_id }}"
+          EXPECTED_PKGNAME="ai-appsec"
+          EXPECTED_PKGVER="${{ inputs.version }}"
+          EXPECTED_TARBALL=$(basename "$TARBALL")
+          EXPECTED_SHA256="sha256:${{ inputs.expected_sha256 }}"
+          EXPECTED_SEMGREP="1.173.0"
+
+          fail=0
+          check() {
+            if [ "$1" != "$2" ]; then
+              echo "ERROR: $3 mismatch — expected '$2', got '$1'"
+              fail=1
+            fi
+          }
+
+          check "$M_PROFILE" "$EXPECTED_PROFILE" "qualificationProfile"
+          check "$M_REPO" "$EXPECTED_REPO" "repository"
+          check "$M_SOURCE" "$EXPECTED_SOURCE" "sourceCommit"
+          check "$M_RUNID" "$EXPECTED_RUNID" "workflowRunId"
+          check "$M_PKGNAME" "$EXPECTED_PKGNAME" "packageName"
+          check "$M_PKGVER" "$EXPECTED_PKGVER" "packageVersion"
+          check "$M_TARBALL" "$EXPECTED_TARBALL" "tarballFilename"
+          check "$M_SHA256" "$EXPECTED_SHA256" "tarballSHA256"
+          check "$M_SEMGREP" "$EXPECTED_SEMGREP" "semgrepVersion"
+
+          if [ "$fail" -ne 0 ]; then
+            echo "ERROR: Canonical manifest verification failed — refusing to publish"
+            exit 1
+          fi
+          echo "Canonical manifest verified — all fields match"
 
       - name: Inspect package identity inside tarball
         run: |
@@ -240,6 +313,3 @@ jobs:
           sleep 10
           npm view ai-appsec@${{ inputs.version }} dist.integrity
           npm view ai-appsec dist-tags --json
-
-
-
