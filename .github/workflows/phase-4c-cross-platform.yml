@@ -2,7 +2,7 @@ name: AI AppSec Remote Release Qualification
 
 on:
   push:
-    branches: [release/ai-appsec-v0.1.0-rc1, release/ai-appsec-v0.1.0-rc2, release/ai-appsec-v0.1.0-rc3]
+    branches: [release/ai-appsec-v0.1.0-rc1, release/ai-appsec-v0.1.0-rc2, release/ai-appsec-v0.1.0-rc3, release/ai-appsec-v0.1.0]
   workflow_dispatch:
 
 env:
@@ -22,10 +22,10 @@ jobs:
       tarball-filename: ${{ steps.pack.outputs.filename }}
       golden-corpus-digest: ${{ steps.corpus.outputs.digest }}
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node 24
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: 24
           # No cache for canonical release build — clean install ensures
@@ -92,7 +92,7 @@ jobs:
           EOF
 
       - name: Upload tarball artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@v4
         with:
           name: canonical-tarball
           path: |
@@ -114,7 +114,7 @@ jobs:
           tar czf golden-corpus.tar.gz -C "$CORPUS_DIR" .
 
       - name: Upload golden corpus artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@v4
         with:
           name: golden-corpus
           path: golden-corpus.tar.gz
@@ -133,20 +133,20 @@ jobs:
         node: [22, 24]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node ${{ matrix.node }}
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: Download canonical tarball
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: canonical-tarball
 
       - name: Download golden corpus
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: golden-corpus
 
@@ -249,7 +249,7 @@ jobs:
           mv matrix-evidence.json "matrix-evidence-${{ matrix.os }}-node${{ matrix.node }}.json"
 
       - name: Upload matrix evidence
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@v4
         with:
           name: matrix-evidence-${{ matrix.os }}-node${{ matrix.node }}
           path: "matrix-evidence-${{ matrix.os }}-node${{ matrix.node }}.json"
@@ -263,17 +263,17 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@v4
       - name: Setup Node 26
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: 26
       - name: Download canonical tarball
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: canonical-tarball
       - name: Download golden corpus
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: golden-corpus
       - name: Install Semgrep
@@ -322,7 +322,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download all matrix evidence
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           pattern: matrix-evidence-*
           path: evidence
@@ -351,7 +351,7 @@ jobs:
           "
 
       - name: Upload cross-OS evidence
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@v4
         with:
           name: cross-os-equivalence
           path: cross-os-equivalence.json
@@ -364,20 +364,20 @@ jobs:
     needs: canonical-build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node 24
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: 24
 
       - name: Download canonical tarball
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: canonical-tarball
 
       - name: Download golden corpus
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: golden-corpus
 
@@ -456,7 +456,7 @@ jobs:
 
       - name: Upload offline evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@v4
         with:
           name: offline-hard-isolation
           path: |
@@ -471,9 +471,9 @@ jobs:
     needs: canonical-build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@v4
       - name: Setup Node 24
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
@@ -484,7 +484,7 @@ jobs:
       - name: Install Semgrep
         run: pip install semgrep==${{ env.SEMGREP_VERSION }}
       - name: Download golden corpus
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: golden-corpus
       - name: Export corpus
@@ -526,13 +526,13 @@ jobs:
     needs: canonical-build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@v4
       - name: Setup Node 24
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: 24
       - name: Download canonical tarball
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: canonical-tarball
       - name: Inspect tarball contents
@@ -578,14 +578,22 @@ jobs:
   package-name-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check npm registry for ai-appsec RC3 availability
+      - name: Check npm registry for ai-appsec target version availability
         run: |
-          # Package now exists (RC1/RC2 published). Check that RC3 does NOT exist yet.
-          RESULT=$(npm view ai-appsec@0.1.0-rc.3 version 2>&1 || echo "NOT_FOUND")
+          # Check that the target version does NOT exist yet on npm.
+          # Version is derived from package.json dynamically.
+          # For stable: 0.1.0 must not exist. For RC: rc.N must not exist.
+          TARGET_VERSION=$(node -p "require('./package.json').version" 2>/dev/null || echo "")
+          if [ -z "$TARGET_VERSION" ]; then
+            # Fallback: read from branch context
+            TARGET_VERSION="0.1.0"
+          fi
+          echo "Target version: $TARGET_VERSION"
+          RESULT=$(npm view ai-appsec@$TARGET_VERSION version 2>&1 || echo "NOT_FOUND")
           echo "Registry result: $RESULT"
           if echo "$RESULT" | grep -q "NOT_FOUND\|E404"; then
-            echo "RC3_VERSION_AVAILABLE — safe to publish"
+            echo "VERSION_AVAILABLE — safe to publish $TARGET_VERSION"
           else
-            echo "RC3_VERSION_CONFLICT — version already exists: $RESULT"
+            echo "VERSION_CONFLICT — version already exists: $RESULT"
             exit 1
           fi

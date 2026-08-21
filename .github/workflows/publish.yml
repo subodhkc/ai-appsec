@@ -21,7 +21,7 @@ on:
         required: true
         type: string
       version:
-        description: 'Version to publish (e.g. 0.1.0-rc.3)'
+        description: 'Version to publish (e.g. 0.1.0 or 0.1.0-rc.3)'
         required: true
         type: string
       dist_tag:
@@ -32,6 +32,14 @@ on:
         options:
           - next
           - latest
+      mode:
+        description: 'Publish mode: direct publish or staged (requires 2FA approval)'
+        required: true
+        type: choice
+        default: 'publish'
+        options:
+          - publish
+          - stage
 
 permissions:
   contents: read
@@ -120,22 +128,22 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@v4
 
       - name: Setup Node 24
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@v4
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Pin npm CLI to verified version
         run: |
-          npm install -g npm@11.5.1
+          npm install -g npm@11.19.0
           echo "Node version: $(node --version)"
           echo "npm version: $(npm --version)"
 
       - name: Download canonical tarball from qualification run
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact_name }}
           path: ./tarball
@@ -304,12 +312,39 @@ jobs:
 
       - name: Publish to npm via OIDC (Trusted Publishing)
         run: |
-          npm publish "$TARBALL" --tag "$DIST_TAG" --provenance --access public
+          set -euo pipefail
+          VERSION="${{ inputs.version }}"
+          DIST_TAG="${{ inputs.dist_tag }}"
+          MODE="${{ inputs.mode }}"
+
+          # Version safety: stable stage to latest must be exact 0.1.0 for this phase
+          if [ "$MODE" == "stage" ] && [ "$DIST_TAG" == "latest" ]; then
+            if [[ "$VERSION" == *"-rc."* ]] || [[ "$VERSION" == *"-alpha."* ]] || [[ "$VERSION" == *"-beta."* ]] || [[ "$VERSION" == *"-preview."* ]]; then
+              echo "ERROR: prerelease version $VERSION cannot be staged to latest"
+              exit 1
+            fi
+          fi
+
+          if [ "$MODE" == "stage" ]; then
+            echo "Staging package via OIDC Trusted Publishing (requires 2FA approval)..."
+            npm stage publish "$TARBALL" --tag "$DIST_TAG" --provenance --access public
+            echo "Package staged — maintainer must approve with 2FA via npmjs.com or 'npm stage approve <stage-id>'"
+          else
+            echo "Publishing package via OIDC Trusted Publishing..."
+            npm publish "$TARBALL" --tag "$DIST_TAG" --provenance --access public
+          fi
         env:
           DIST_TAG: ${{ inputs.dist_tag }}
 
       - name: Verify publication
         run: |
           sleep 10
-          npm view ai-appsec@${{ inputs.version }} dist.integrity
-          npm view ai-appsec dist-tags --json
+          MODE="${{ inputs.mode }}"
+          if [ "$MODE" == "stage" ]; then
+            echo "Staged mode — listing staged packages (not yet public)..."
+            npm stage list || true
+            echo "Package is staged, not yet public. Maintainer must approve with 2FA."
+          else
+            npm view ai-appsec@${{ inputs.version }} dist.integrity
+            npm view ai-appsec dist-tags --json
+          fi
