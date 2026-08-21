@@ -16,6 +16,10 @@ on:
         description: 'Expected SHA-256 of the canonical tarball'
         required: true
         type: string
+      expected_source_sha:
+        description: 'Expected source commit SHA from qualification run'
+        required: true
+        type: string
       version:
         description: 'Version to publish (e.g. 0.1.0-rc.3)'
         required: true
@@ -42,6 +46,79 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      - name: Verify publish workflow source SHA matches expected
+        run: |
+          set -euo pipefail
+          ACTUAL_SHA="${{ github.sha }}"
+          EXPECTED_SHA="${{ inputs.expected_source_sha }}"
+          echo "Publish workflow GITHUB_SHA: $ACTUAL_SHA"
+          echo "Expected source SHA: $EXPECTED_SHA"
+          if [ "$ACTUAL_SHA" != "$EXPECTED_SHA" ]; then
+            echo "ERROR: Source SHA mismatch — refusing to publish"
+            echo "publishWorkflowSha=$ACTUAL_SHA"
+            echo "expectedSourceSha=$EXPECTED_SHA"
+            exit 1
+          fi
+          echo "Source SHA verified — publish workflow matches qualification source"
+
+      - name: Verify qualification run succeeded with expected source SHA
+        id: qual
+        run: |
+          set -euo pipefail
+          RUN_ID="${{ inputs.qualification_run_id }}"
+          EXPECTED_SHA="${{ inputs.expected_source_sha }}"
+          EXPECTED_REPO="subodhkc/ai-appsec"
+          EXPECTED_WORKFLOW=".github/workflows/phase-4c-cross-platform.yml"
+
+          # Fetch qualification run details via GitHub API
+          RUN_DATA=$(gh api "/repos/${{ github.repository }}/actions/runs/$RUN_ID" 2>&1)
+          if [ $? -ne 0 ]; then
+            echo "ERROR: Cannot fetch qualification run $RUN_ID"
+            echo "$RUN_DATA"
+            exit 1
+          fi
+
+          RUN_STATUS=$(echo "$RUN_DATA" | node -p "JSON.parse(require('fs').readFileSync(0)).status")
+          RUN_CONCLUSION=$(echo "$RUN_DATA" | node -p "JSON.parse(require('fs').readFileSync(0)).conclusion")
+          RUN_HEAD_SHA=$(echo "$RUN_DATA" | node -p "JSON.parse(require('fs').readFileSync(0)).head_sha")
+          RUN_REPO=$(echo "$RUN_DATA" | node -p "JSON.parse(require('fs').readFileSync(0)).repository.full_name")
+          RUN_WORKFLOW=$(echo "$RUN_DATA" | node -p "JSON.parse(require('fs').readFileSync(0)).path")
+
+          echo "qualificationRunId=$RUN_ID"
+          echo "qualificationStatus=$RUN_STATUS"
+          echo "qualificationConclusion=$RUN_CONCLUSION"
+          echo "qualificationHeadSha=$RUN_HEAD_SHA"
+          echo "qualificationRepository=$RUN_REPO"
+          echo "qualificationWorkflow=$RUN_WORKFLOW"
+          echo "expectedSourceSha=$EXPECTED_SHA"
+
+          if [ "$RUN_STATUS" != "completed" ]; then
+            echo "ERROR: Qualification run is not completed (status: $RUN_STATUS)"
+            exit 1
+          fi
+          if [ "$RUN_CONCLUSION" != "success" ]; then
+            echo "ERROR: Qualification run did not succeed (conclusion: $RUN_CONCLUSION)"
+            exit 1
+          fi
+          if [ "$RUN_HEAD_SHA" != "$EXPECTED_SHA" ]; then
+            echo "ERROR: Qualification head SHA mismatch"
+            echo "qualificationHeadSha=$RUN_HEAD_SHA"
+            echo "expectedSourceSha=$EXPECTED_SHA"
+            exit 1
+          fi
+          if [ "$RUN_REPO" != "$EXPECTED_REPO" ]; then
+            echo "ERROR: Qualification run is from wrong repository: $RUN_REPO"
+            exit 1
+          fi
+          if [ "$RUN_WORKFLOW" != "$EXPECTED_WORKFLOW" ]; then
+            echo "ERROR: Qualification run is from wrong workflow: $RUN_WORKFLOW"
+            exit 1
+          fi
+
+          echo "Qualification run verified — all checks passed"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -51,8 +128,11 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Upgrade npm CLI
-        run: npm install -g npm@latest
+      - name: Pin npm CLI to verified version
+        run: |
+          npm install -g npm@11.5.1
+          echo "Node version: $(node --version)"
+          echo "npm version: $(npm --version)"
 
       - name: Download canonical tarball from qualification run
         uses: actions/download-artifact@v4
@@ -67,7 +147,7 @@ jobs:
         id: sha
         run: |
           set -euo pipefail
-          TARBALL=$(ls ./tarball/*.tgz | head -1)
+          TARBALL=$(ls ./tarball/*.tgz 2>/dev/null | head -1)
           if [ -z "$TARBALL" ]; then
             echo "ERROR: No tarball found in artifact"
             exit 1
