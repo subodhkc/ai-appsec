@@ -1,0 +1,45 @@
+name: Publish to MCP Registry
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version being published to MCP Registry'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish-registry:
+    name: Publish server.json to MCP Registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Install mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+          mcp-publisher --help
+
+      - name: Validate server.json
+        run: |
+          mcp-publisher validate --file .mcp/server.json
+
+      - name: Login via GitHub OIDC
+        run: |
+          mcp-publisher login github-oidc
+
+      - name: Publish to MCP Registry
+        run: |
+          mcp-publisher publish .mcp/server.json
+
+      - name: Verify publication
+        run: |
+          sleep 5
+          curl -s "https://registry.modelcontextprotocol.io/v0.1/servers/io.github.subodhkc/ai-appsec" | head -50
