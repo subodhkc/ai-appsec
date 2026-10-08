@@ -1,6 +1,6 @@
 {
   "name": "ai-appsec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "mcpName": "io.github.subodhkc/ai-appsec",
   "description": "Audit AI applications and agents for security risks before commit, PR, merge, or deployment. Deterministic findings with coverage and evidence receipts.",
   "type": "module",
@@ -67,9 +67,10 @@
     "test:evals": "tsx --test tests/evals/**/*.test.ts"
   },
   "dependencies": {
-    "@modelcontextprotocol/server": "2.0.0",
+    "@modelcontextprotocol/server": "^2.3.1",
     "canonicalize": "4.0.0",
-    "zod": "4.4.3"
+    "zod": "4.4.3",
+    "@modelcontextprotocol/client": "^2.3.1"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
