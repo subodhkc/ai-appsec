@@ -2,7 +2,7 @@
 
 Evidence-backed AppSec for AI applications and agents.
 
-Powered by HAIEC.
+Powered by [HAIEC](https://www.haiec.com).
 
 Audit AI code for security risks before you commit, push, merge, or deploy.
 
@@ -241,3 +241,7 @@ provenance, licensing, and publication.
   verification (independent product, separate repository)
 - [Tenant Isolation](https://github.com/subodhkc/mcp-tenant-isolation) —
   Cross-tenant boundary checks (independent product, separate repository)
+
+---
+
+Built by [Subodh Kc](https://subodhkc.com) — a [HAIEC](https://www.haiec.com) (Human AI Evidence Company) product.
